@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{ trans('Grades_trans.title_page') }}
+    File Numbers
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-{{ trans('main_trans.Grades') }}
+File Numbers
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -38,7 +38,7 @@
             @endif
 
             <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                {{ trans('Grades_trans.add_Grade') }}
+                Add File Number
             </button>
             <br><br>
 
@@ -48,9 +48,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>{{ trans('Grades_trans.Name') }}</th>
-                            <th>{{ trans('Grades_trans.Notes') }}</th>
-                            <th>{{ trans('Grades_trans.Processes') }}</th>
+                            <th>File Number</th>
+                            <th>File Owner</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -72,7 +72,7 @@
                                 </td>
                             </tr>
 
-                            <!-- edit_modal_Grade -->
+                            <!-- edit_modal_Filenum -->
                             <div class="modal fade" id="edit{{ $filenum->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -80,7 +80,7 @@
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                 id="exampleModalLabel">
-                                                Edit Grade
+                                                Edit File Number
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -97,37 +97,21 @@
                                                         <label for="Name"
                                                             class="mr-sm-2">Number
                                                             :</label>
-                                                        <input id="Name" type="text" name="Number"
+                                                        <input id="file_number" type="text" name="file_number"
                                                             class="form-control"
-                                                            value="{{ $Grade->getTranslation('Name', 'ar') }}"
+                                                            value="{{ $filenum->filenum }}"
                                                             required>
                                                         <input id="id" type="hidden" name="id" class="form-control"
-                                                            value="{{ $Grade->id }}">
+                                                            value="{{ $filenum->id }}">
                                                     </div>
-                                                    <div class="col">
-                                                        <label for="Name_en"
-                                                            class="mr-sm-2">{{ trans('Grades_trans.stage_name_en') }}
-                                                            :</label>
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $Grade->getTranslation('Name', 'en') }}"
-                                                            name="Name_en" required>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label
-                                                        for="exampleFormControlTextarea1">{{ trans('Grades_trans.Notes') }}
-                                                        :</label>
-                                                    <textarea class="form-control" name="Notes"
-                                                        id="exampleFormControlTextarea1"
-                                                        rows="3">{{ $Grade->Notes }}</textarea>
                                                 </div>
                                                 <br><br>
 
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
+                                                        data-dismiss="modal">Close</button>
                                                     <button type="submit"
-                                                        class="btn btn-success">{{ trans('Grades_trans.submit') }}</button>
+                                                        class="btn btn-success">Submit</button>
                                                 </div>
                                             </form>
 
@@ -136,15 +120,15 @@
                                 </div>
                             </div>
 
-                            <!-- delete_modal_Grade -->
-                            <div class="modal fade" id="delete{{ $Grade->id }}" tabindex="-1" role="dialog"
+                            <!-- delete_modal_FileNumb -->
+                            <div class="modal fade" id="delete{{ $filenum->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                 id="exampleModalLabel">
-                                                {{ trans('Grades_trans.delete_Grade') }}
+                                                Delete File Number
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -152,17 +136,17 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('Grades.destroy', 'test') }}" method="post">
+                                            <form action="{{ route('filenum.destroy', 'test') }}" method="post">
                                                 {{ method_field('Delete') }}
                                                 @csrf
-                                                {{ trans('Grades_trans.Warning_Grade') }}
+                                                Are Sure Of The Deletion Process ?'
                                                 <input id="id" type="hidden" name="id" class="form-control"
-                                                    value="{{ $Grade->id }}">
+                                                    value="{{ $filenum->id }}">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
+                                                        data-dismiss="modal">Close</button>
                                                     <button type="submit"
-                                                        class="btn btn-danger">{{ trans('Grades_trans.submit') }}</button>
+                                                        class="btn btn-danger">Submit</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -200,22 +184,22 @@
                         <div class="col">
                             <label for="Number" class="mr-sm-2">Number
                                 :</label>
-                            <input id="Number" type="text" name="Number" class="form-control">
+                            <input id="file_number" type="text" name="file_number" class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="File Owner" class="mr-sm-2">File Owner
                                 :</label>
-                            <input id="File_Owner" type="text" name="File Owner" class="form-control">
+                            <input id="file_owner" type="text" name="file_owner" class="form-control">
                         </div>
                     </div>
                     <br><br>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
-                    data-dismiss="modal">{{ trans('Grades_trans.Close') }}</button>
-                <button type="submit" class="btn btn-success">{{ trans('Grades_trans.submit') }}</button>
+                    data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Submit</button>
             </div>
             </form>
 

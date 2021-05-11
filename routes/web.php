@@ -67,12 +67,13 @@ Route::group(
     Route::group(['namespace' => 'Teachers'], function () {
         Route::resource('Teachers', 'TeacherController');
     });
-});
 
-
-
-
-   //==============================FileNum============================
+    //==============================FileNum============================
     Route::group(['namespace' => 'FileNums'], function () {
-        Route::resource('filenum', 'FileNumController');
+    Route::resource('filenum', 'FileNumController');
+    });
 });
+
+
+
+

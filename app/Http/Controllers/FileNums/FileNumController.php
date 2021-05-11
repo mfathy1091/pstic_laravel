@@ -18,6 +18,7 @@ class FileNumController extends Controller
 	 */
 	public function index()
 	{
+		
 		$filenums = FileNum::all();
 		return view('pages.FileNums.FileNums', compact('filenums'));
 	}
@@ -36,16 +37,21 @@ class FileNumController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store(StoreFileNumRequest $request)
+	public function store(Request $request)
 	{
 
-		try {
-			$validated = $request->validated();
-			$filenum = new FileNum();
+		$name = $request->input('name');
 
-			$filenum = new FileNum;
-			$filenum->filenum = $request->filenum;
-			$filenum->save();
+		//dd($request->input('file_number'));
+		//dd($request->input('file_owner'));
+		//dd(request()->all());
+		try {
+			//$validated = $request->validated();
+			$filenumber = new FileNum();
+
+			$filenumber->filenum = $request->file_number;
+			$filenumber->fileowner = $request->file_owner;
+			$filenumber->save();
 			toastr()->success('Added Successfuly');
 			return redirect()->route('filenum.index');
 		}
