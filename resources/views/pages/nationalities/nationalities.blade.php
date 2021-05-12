@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    File Numbers
+    Nationalities
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-File Numbers
+Nationalities
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -38,7 +38,7 @@ File Numbers
             @endif
 
             <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                Add File Number
+                Add Nationality
             </button>
             <br><br>
 
@@ -48,39 +48,37 @@ File Numbers
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>File Number</th>
-                            <th>File Owner</th>
+                            <th>Nationality</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 0; ?>
-                        @foreach ($filenums as $filenum)
+                        @foreach ($nationalities as $nationality)
                             <tr>
                                 <?php $i++; ?>
                                 <td>{{ $i }}</td>
-                                <td>{{ $filenum->filenum }}</td>
-                                <td>{{ $filenum->fileowner }}</td>
+                                <td>{{ $nationality->name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#edit{{ $filenum->id }}"
+                                        data-target="#edit{{ $nationality->id }}"
                                         title="Edit"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#delete{{ $filenum->id }}"
+                                        data-target="#delete{{ $nationality->id }}"
                                         title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
 
-                            <!-- edit_modal_Filenum -->
-                            <div class="modal fade" id="edit{{ $filenum->id }}" tabindex="-1" role="dialog"
+                            <!-- EDIT MODAL -->
+                            <div class="modal fade" id="edit{{ $nationality->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                 id="exampleModalLabel">
-                                                Edit File Number
+                                                Edit Nationality
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -89,20 +87,20 @@ File Numbers
                                         </div>
                                         <div class="modal-body">
                                             <!-- add_form -->
-                                            <form action="{{ route('filenum.update', 'test') }}" method="post">
+                                            <form action="{{ route('nationalities.update', $nationality->id) }}" method="post">
                                                 {{ method_field('patch') }}
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col">
-                                                        <label for="Name"
-                                                            class="mr-sm-2">Number
+                                                        <label for="nationality"
+                                                            class="mr-sm-2">Nationality
                                                             :</label>
-                                                        <input id="file_number" type="text" name="file_number"
+                                                        <input id="nationality" type="text" name="nationality"
                                                             class="form-control"
-                                                            value="{{ $filenum->filenum }}"
+                                                            value="{{ $nationality->name }}"
                                                             required>
                                                         <input id="id" type="hidden" name="id" class="form-control"
-                                                            value="{{ $filenum->id }}">
+                                                            value="{{ $nationality->id }}">
                                                     </div>
                                                 </div>
                                                 <br><br>
@@ -120,15 +118,15 @@ File Numbers
                                 </div>
                             </div>
 
-                            <!-- delete_modal_FileNumb -->
-                            <div class="modal fade" id="delete{{ $filenum->id }}" tabindex="-1" role="dialog"
+                            <!-- delete_modal_Nationality -->
+                            <div class="modal fade" id="delete{{ $nationality->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                 id="exampleModalLabel">
-                                                Delete File Number
+                                                Delete Nationality
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -136,12 +134,12 @@ File Numbers
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('filenum.destroy', 'test') }}" method="post">
+                                            <form action="{{ route('nationalities.destroy', $nationality->id) }}" method="post">
                                                 {{ method_field('Delete') }}
                                                 @csrf
                                                 Are Sure Of The Deletion Process ?'
                                                 <input id="id" type="hidden" name="id" class="form-control"
-                                                    value="{{ $filenum->id }}">
+                                                    value="{{ $nationality->id }}">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close</button>
@@ -163,14 +161,14 @@ File Numbers
 </div>
 
 
-<!-- add_modal_FileNum -->
+<!-- ADD MODAL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                    Add FileNumber
+                    Add Nationality
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -178,22 +176,16 @@ File Numbers
             </div>
             <div class="modal-body">
                 <!-- add_form -->
-                <form action="{{ route('filenum.store') }}" method="POST">
+                <form action="{{ route('nationalities.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <label for="Number" class="mr-sm-2">Number
+                            <label for="nationality" class="mr-sm-2">Nationality
                                 :</label>
-                            <input id="file_number" type="text" name="file_number" class="form-control">
+                            <input id="nationality" type="text" name="nationality" class="form-control">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <label for="File Owner" class="mr-sm-2">File Owner
-                                :</label>
-                            <input id="file_owner" type="text" name="file_owner" class="form-control">
-                        </div>
-                    </div>
+
                     <br><br>
             </div>
             <div class="modal-footer">

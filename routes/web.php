@@ -68,9 +68,19 @@ Route::group(
         Route::resource('Teachers', 'TeacherController');
     });
 
-    //==============================FileNum============================
-    Route::group(['namespace' => 'FileNums'], function () {
-    Route::resource('filenum', 'FileNumController');
+    //==============================Identity Cards============================
+    Route::group(['namespace' => 'IdentityCards'], function () {
+        Route::resource('identitycards', 'IdentityCardController');
+    });
+
+    //==============================Nationality============================
+    Route::namespace('Nationality')->group(function () {
+        Route::resource('nationalities', 'NationalityController');
+    });
+
+    //==============================Referral Sources============================
+    Route::namespace('ReferralSources')->group(function () {
+        Route::resource('referralsources', 'ReferralSourceController');
     });
 });
 

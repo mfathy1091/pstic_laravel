@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FileNum extends Model 
+class IdentityCard extends Model
 {
-
-    protected $table = 'FileNums';
+    protected $table = 'identity_cards';
     public $timestamps = true;
-
 }

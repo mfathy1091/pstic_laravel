@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\FileNums;
+namespace App\Http\Controllers\ReferralSources;
 
 use App\Http\Controllers\Controller;
-use App\Models\FileNum;
-use App\Models\Grade;
+use App\Models\ReferralSource;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreFileNumRequest;
 
-class FileNumController extends Controller
+class ReferralSourceController extends Controller
 {
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -19,8 +16,8 @@ class FileNumController extends Controller
 	public function index()
 	{
 		
-		$filenums = FileNum::all();
-		return view('pages.FileNums.FileNums', compact('filenums'));
+		$referralSources = ReferralSource::all();
+		return view('pages.referral_sources.referral_sources', compact('referralSources'));
 	}
 
 	/**
@@ -39,26 +36,22 @@ class FileNumController extends Controller
 	 */
 	public function store(Request $request)
 	{
+        $name = $request->input('name');
+        //dd($request);
 
-		$name = $request->input('name');
-
-		//dd($request->input('file_number'));
-		//dd($request->input('file_owner'));
-		//dd(request()->all());
 		try {
 			//$validated = $request->validated();
-			$filenumber = new FileNum();
+			$referralSource = new ReferralSource();
 
-			$filenumber->filenum = $request->file_number;
-			$filenumber->fileowner = $request->file_owner;
-			$filenumber->save();
+			$referralSource->name = $request->name;
+			$referralSource->save();
 			toastr()->success('Added Successfuly');
-			return redirect()->route('filenum.index');
+			return redirect()->route('referralsources.index');
 		}
 		
 		catch (\Exception $e){
 			return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-		}
+		} 
 
 	}
 
@@ -82,15 +75,18 @@ class FileNumController extends Controller
 	{
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
+
+	public function update(Request $request, $id)
 	{
+		//dd($request);
+
+		$referralSources = ReferralSource::find($id);
+		$referralSources->name = $request->name;
+		$referralSources->save();
+
+		return redirect()->route('referralsources.index');
 	}
+
 
 	/**
 	 * Remove the specified resource from storage.
@@ -98,7 +94,9 @@ class FileNumController extends Controller
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Request $request, $id)
 	{
+		ReferralSource::findOrFail($request->id)->delete();
+		return redirect()->route('referralsources.index');
 	}
 }

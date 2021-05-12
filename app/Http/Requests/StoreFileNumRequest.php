@@ -24,8 +24,8 @@ class StoreFileNumRequest extends FormRequest
     public function rules()
     {
         return [
-            'filenum' => ['required'],
-            'fileowner' => ['required'],
+            'number' => ['required'],
+            'owner' => ['required'],
         ];
     }
 }

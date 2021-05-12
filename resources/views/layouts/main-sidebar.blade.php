@@ -30,30 +30,32 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="themify-icons.html">Manage Roles & Permis</a> </li>
-                            <li> <a href="themify-icons.html">Manage Locations</a> </li>
+                            <li> <a href="{{ url('/referralsources') }}">Manage Referral Sources</a> </li>
+                            <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
                             <li> <a href="themify-icons.html">Manage Case Statuses</a> </li>
                             <li> <a href="themify-icons.html">Manage Case Types</a> </li>
+                            <li> <a href="themify-icons.html">Manage Roles & Permis</a> </li>
+                            <li> <a href="themify-icons.html">Manage Locations</a> </li>
                             <li> <a href="themify-icons.html">Manage Job Titles</a> </li>
-                            <li> <a href="themify-icons.html">Manage Referral Sources</a> </li>
-                            <li> <a href="themify-icons.html">Manage Nationalities</a> </li>
+
                             
                         </ul>
                     </li>
 
-                    <!-- FileNums-->
+                    <!-- FileNumbers-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#filenums-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#identitycards-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">FileNumbers</span></div>
+                                    class="right-nav-text">Identity Cards</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="filenums-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('filenum.index')}}">FileNumbers List</a></li>
-
+                        <ul id="identitycards-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('identitycards.index')}}">Identity Cards</a></li>
                         </ul>
                     </li>
+
+
                     
                     <br>
                     <br>
