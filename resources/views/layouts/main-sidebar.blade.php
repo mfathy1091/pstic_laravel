@@ -6,15 +6,41 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
-    <a href="{{ url('/dashboard') }}">
-        <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
-        </div>
-        <div class="clearfix"></div>
-    </a>
-</li>
-                    <!-- menu title -->
-                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{trans('main_trans.Programname')}} </li>
+                        <a href="{{ url('/dashboard') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
+
+                    <!-- Profile -->
+                    <li>
+                        <a href="{{ url('/dashboard') }}">
+                            <div class="pull-left"><i class="fas fa-user-tie"></i><span class="right-nav-text">Profile</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
                     
+                    <!-- Settings-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
+                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">System Config</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="themify-icons.html">Manage Roles & Permis</a> </li>
+                            <li> <a href="themify-icons.html">Manage Locations</a> </li>
+                            <li> <a href="themify-icons.html">Manage Case Statuses</a> </li>
+                            <li> <a href="themify-icons.html">Manage Case Types</a> </li>
+                            <li> <a href="themify-icons.html">Manage Job Titles</a> </li>
+                            <li> <a href="themify-icons.html">Manage Referral Sources</a> </li>
+                            <li> <a href="themify-icons.html">Manage Nationalities</a> </li>
+                            
+                        </ul>
+                    </li>
+
                     <!-- FileNums-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#filenums-menu">
@@ -183,21 +209,6 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Onlineclasses-icon" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
-                            <li> <a href="themify-icons.html">Themify icons</a> </li>
-                            <li> <a href="weather-icon.html">Weather icons</a> </li>
-                        </ul>
-                    </li>
-
-
-                    <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">{{trans('main_trans.Settings')}}</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="fontawesome-icon.html">font Awesome</a> </li>
                             <li> <a href="themify-icons.html">Themify icons</a> </li>
                             <li> <a href="weather-icon.html">Weather icons</a> </li>
