@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Nationality;
+namespace App\Http\Controllers\CaseStatuses;
 
 use App\Http\Controllers\Controller;
-use App\Models\Nationality;
 use Illuminate\Http\Request;
+use App\Models\CaseStatus;
 
-class NationalityController extends Controller
+class CaseStatusController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
@@ -16,8 +16,8 @@ class NationalityController extends Controller
 	public function index()
 	{
 		
-		$nationalities = Nationality::all();
-		return view('pages.nationalities.nationalities', compact('nationalities'));
+		$caseStatuses = CaseStatus::all();
+		return view('pages.case_statuses.case_statuses', compact('caseStatuses'));
 	}
 
 	/**
@@ -41,12 +41,12 @@ class NationalityController extends Controller
 
 		try {
 			//$validated = $request->validated();
-			$nationality = new Nationality();
+			$caseStatus = new CaseStatus();
 
-			$nationality->name = $request->name;
-			$nationality->save();
+			$caseStatus->name = $request->name;
+			$caseStatus->save();
 			toastr()->success('Added Successfuly');
-			return redirect()->route('nationalities.index');
+			return redirect()->route('casestatuses.index');
 		}
 		
 		catch (\Exception $e){
@@ -80,11 +80,11 @@ class NationalityController extends Controller
 	{
 		//dd($request);
 
-		$nationality = Nationality::find($id);
-		$nationality->name = $request->name;
-		$nationality->save();
+		$caseStatus = CaseStatus::find($id);
+		$caseStatus->name = $request->name;
+		$caseStatus->save();
 
-		return redirect()->route('nationalities.index');
+		return redirect()->route('casestatuses.index');
 	}
 
 
@@ -96,7 +96,7 @@ class NationalityController extends Controller
 	 */
 	public function destroy(Request $request, $id)
 	{
-		Nationality::findOrFail($request->id)->delete();
-		return redirect()->route('nationalities.index');
+		CaseStatus::findOrFail($request->id)->delete();
+		return redirect()->route('casestatuses.index');
 	}
 }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Nationality;
+namespace App\Http\Controllers\CaseTypes;
 
 use App\Http\Controllers\Controller;
-use App\Models\Nationality;
 use Illuminate\Http\Request;
+use App\Models\CaseType;
 
-class NationalityController extends Controller
+
+class CaseTypeController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
@@ -16,8 +17,8 @@ class NationalityController extends Controller
 	public function index()
 	{
 		
-		$nationalities = Nationality::all();
-		return view('pages.nationalities.nationalities', compact('nationalities'));
+		$caseTypes = CaseType::all();
+		return view('pages.case_types.case_types', compact('caseTypes'));
 	}
 
 	/**
@@ -41,12 +42,12 @@ class NationalityController extends Controller
 
 		try {
 			//$validated = $request->validated();
-			$nationality = new Nationality();
+			$caseType = new CaseType();
 
-			$nationality->name = $request->name;
-			$nationality->save();
+			$caseType->name = $request->name;
+			$caseType->save();
 			toastr()->success('Added Successfuly');
-			return redirect()->route('nationalities.index');
+			return redirect()->route('casetypes.index');
 		}
 		
 		catch (\Exception $e){
@@ -80,11 +81,11 @@ class NationalityController extends Controller
 	{
 		//dd($request);
 
-		$nationality = Nationality::find($id);
-		$nationality->name = $request->name;
-		$nationality->save();
+		$caseType = CaseType::find($id);
+		$caseType->name = $request->name;
+		$caseType->save();
 
-		return redirect()->route('nationalities.index');
+		return redirect()->route('casetypes.index');
 	}
 
 
@@ -96,7 +97,7 @@ class NationalityController extends Controller
 	 */
 	public function destroy(Request $request, $id)
 	{
-		Nationality::findOrFail($request->id)->delete();
-		return redirect()->route('nationalities.index');
+		CaseType::findOrFail($request->id)->delete();
+		return redirect()->route('casetypes.index');
 	}
 }

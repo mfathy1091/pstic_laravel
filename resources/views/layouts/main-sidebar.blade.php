@@ -32,8 +32,8 @@
                         <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ url('/referralsources') }}">Manage Referral Sources</a> </li>
                             <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
-                            <li> <a href="themify-icons.html">Manage Case Statuses</a> </li>
-                            <li> <a href="themify-icons.html">Manage Case Types</a> </li>
+                            <li> <a href="{{ url('/casestatuses') }}">Manage Case Statuses</a> </li>
+                            <li> <a href="{{ url('/casetypes') }}">Manage Case Types</a> </li>
                             <li> <a href="themify-icons.html">Manage Roles & Permis</a> </li>
                             <li> <a href="themify-icons.html">Manage Locations</a> </li>
                             <li> <a href="themify-icons.html">Manage Job Titles</a> </li>

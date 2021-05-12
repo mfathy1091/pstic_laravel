@@ -82,6 +82,16 @@ Route::group(
     Route::namespace('ReferralSources')->group(function () {
         Route::resource('referralsources', 'ReferralSourceController');
     });
+
+    //==============================Case Statuses============================
+    Route::namespace('CaseStatuses')->group(function () {
+        Route::resource('casestatuses', 'CaseStatusController');
+    });
+
+    //==============================Case Types============================
+    Route::namespace('CaseTypes')->group(function () {
+        Route::resource('casetypes', 'CaseTypeController');
+    });
 });
 
 

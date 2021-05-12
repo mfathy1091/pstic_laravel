@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    Nationalities
+    Case Type
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-Nationalities
+Case Type
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -38,7 +38,7 @@ Nationalities
             @endif
 
             <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                Add Nationality
+                Add Case Type
             </button>
             <br><br>
 
@@ -48,37 +48,37 @@ Nationalities
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nationality</th>
+                            <th>Case Type</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 0; ?>
-                        @foreach ($nationalities as $nationality)
+                        @foreach ($caseTypes as $caseType)
                             <tr>
                                 <?php $i++; ?>
                                 <td>{{ $i }}</td>
-                                <td>{{ $nationality->name }}</td>
+                                <td>{{ $caseType->name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#edit{{ $nationality->id }}"
+                                        data-target="#edit{{ $caseType->id }}"
                                         title="Edit"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#delete{{ $nationality->id }}"
+                                        data-target="#delete{{ $caseType->id }}"
                                         title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
 
                             <!-- EDIT MODAL -->
-                            <div class="modal fade" id="edit{{ $nationality->id }}" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="edit{{ $caseType->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                 id="exampleModalLabel">
-                                                Edit Nationality
+                                                Edit Case Type
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -87,20 +87,20 @@ Nationalities
                                         </div>
                                         <div class="modal-body">
                                             <!-- add_form -->
-                                            <form action="{{ route('nationalities.update', $nationality->id) }}" method="post">
+                                            <form action="{{ route('casetypes.update', $caseType->id) }}" method="post">
                                                 {{ method_field('patch') }}
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col">
-                                                        <label for="nationality"
-                                                            class="mr-sm-2">Nationality
+                                                        <label for="name"
+                                                            class="mr-sm-2">Case Type
                                                             :</label>
-                                                        <input id="nationality" type="text" name="name"
+                                                        <input id="name" type="text" name="name"
                                                             class="form-control"
-                                                            value="{{ $nationality->name }}"
+                                                            value="{{ $caseType->name }}"
                                                             required>
                                                         <input id="id" type="hidden" name="id" class="form-control"
-                                                            value="{{ $nationality->id }}">
+                                                            value="{{ $caseType->id }}">
                                                     </div>
                                                 </div>
                                                 <br><br>
@@ -118,15 +118,15 @@ Nationalities
                                 </div>
                             </div>
 
-                            <!-- delete_modal_Nationality -->
-                            <div class="modal fade" id="delete{{ $nationality->id }}" tabindex="-1" role="dialog"
+                            <!-- delete modal -->
+                            <div class="modal fade" id="delete{{ $caseType->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                 id="exampleModalLabel">
-                                                Delete Nationality
+                                                Delete Case Type
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -134,12 +134,12 @@ Nationalities
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('nationalities.destroy', $nationality->id) }}" method="post">
+                                            <form action="{{ route('casetypes.destroy', $caseType->id) }}" method="post">
                                                 {{ method_field('Delete') }}
                                                 @csrf
                                                 Are Sure Of The Deletion Process ?'
                                                 <input id="id" type="hidden" name="id" class="form-control"
-                                                    value="{{ $nationality->id }}">
+                                                    value="{{ $caseType->id }}">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close</button>
@@ -168,7 +168,7 @@ Nationalities
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                    Add Nationality
+                    Add Case Type
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -176,13 +176,13 @@ Nationalities
             </div>
             <div class="modal-body">
                 <!-- add_form -->
-                <form action="{{ route('nationalities.store') }}" method="POST">
+                <form action="{{ route('casetypes.store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <label for="nationality" class="mr-sm-2">Nationality
+                            <label for="name" class="mr-sm-2">Case Type
                                 :</label>
-                            <input id="nationality" type="text" name="name" class="form-control">
+                            <input id="name" type="text" name="name" class="form-control">
                         </div>
                     </div>
 

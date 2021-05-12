@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCaseStatusesTable extends Migration
+class CreateCaseTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCaseStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('case_statuses', function (Blueprint $table) {
+        Schema::create('case_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateCaseStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('case_statuses');
+        Schema::dropIfExists('case_types');
     }
 }
