@@ -13,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            'App\Repositories\PsWorkerRepositoryInterface',
+            'App\Repositories\PsWorkerRepository'
+        );
     }
 
     /**
@@ -26,3 +29,4 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 }
+

@@ -84,11 +84,11 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col">
-                                    <label for="inputState">{{trans('Teacher_trans.Gender')}}</label>
+                                    <label for="inputState">Gender</label>
                                     <select class="custom-select my-1 mr-sm-2" name="Gender_id">
                                         <option selected disabled>{{trans('Parent_trans.Choose')}}...</option>
                                         @foreach($genders as $gender)
-                                            <option value="{{$gender->id}}">{{$gender->Name}}</option>
+                                            <option value="{{$gender->id}}">{{$gender->name}}</option>
                                         @endforeach
                                     </select>
                                     @error('Gender_id')

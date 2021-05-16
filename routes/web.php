@@ -92,6 +92,21 @@ Route::group(
     Route::namespace('CaseTypes')->group(function () {
         Route::resource('casetypes', 'CaseTypeController');
     });
+
+    //==============================Referrals============================
+    Route::namespace('Referrals')->group(function () {
+        Route::resource('referrals', 'ReferralController');
+    });
+
+    //==============================PS Workers============================
+    Route::namespace('PsTeams')->group(function () {
+        Route::resource('psteams', 'PsTeamController');
+    });
+
+    //==============================PS Workers============================
+    Route::namespace('PsWorkers')->group(function () {
+        Route::resource('psworkers', 'PsWorkerController');
+    });
 });
 
 

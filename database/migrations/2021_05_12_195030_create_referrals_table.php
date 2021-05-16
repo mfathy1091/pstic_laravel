@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGendersTable extends Migration
+class CreateReferralsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,17 @@ class CreateGendersTable extends Migration
      */
     public function up()
     {
-        Schema::create('genders', function (Blueprint $table) {
+        Schema::create('referrals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+
+            //$table->unsignedBigInteger('identy_card_id');
+            $table->unsignedBigInteger('referral_source_id');
+            $table->string('referral_date');
+            $table->string('direct_beneficiary_name');
+
             $table->timestamps();
+
+            $table->index('referral_source_id');
         });
     }
 
@@ -27,6 +34,6 @@ class CreateGendersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genders');
+        Schema::dropIfExists('referrals');
     }
 }

@@ -30,13 +30,16 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="/psteams">Manage PS Teams</a> </li>
+                            <li> <a href="/psworkers">Manage PS Workers</a> </li>
                             <li> <a href="{{ url('/referralsources') }}">Manage Referral Sources</a> </li>
                             <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
                             <li> <a href="{{ url('/casestatuses') }}">Manage Case Statuses</a> </li>
                             <li> <a href="{{ url('/casetypes') }}">Manage Case Types</a> </li>
-                            <li> <a href="themify-icons.html">Manage Roles & Permis</a> </li>
-                            <li> <a href="themify-icons.html">Manage Locations</a> </li>
-                            <li> <a href="themify-icons.html">Manage Job Titles</a> </li>
+                            <li> <a href="#">Manage Roles & Permis</a> </li>
+                            <li> <a href="#">Manage Locations</a> </li>
+                            <li> <a href="#">Manage Job Titles</a> </li>
+
 
                             
                         </ul>
@@ -46,12 +49,14 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#identitycards-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">Identity Cards</span></div>
+                                    class="right-nav-text">Psychosocial</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="identitycards-menu" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('identitycards.index')}}">Identity Cards</a></li>
+                            <li><a href="{{route('referrals.index')}}">Referrals</a></li>
+                            <li><a href="{{route('psworkers.index')}}">PS Workers</a></li>
                         </ul>
                     </li>
 

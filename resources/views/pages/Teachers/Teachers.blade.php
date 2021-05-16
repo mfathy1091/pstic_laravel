@@ -44,7 +44,7 @@
                                             <?php $i++; ?>
                                             <td>{{ $i }}</td>
                                             <td>{{$Teacher->Name}}</td>
-                                            <td>{{$Teacher->genders->Name}}</td>
+                                            <td>{{$Teacher->genders->name}}</td>
                                             <td>{{$Teacher->Joining_Date}}</td>
                                             <td>{{$Teacher->specializations->Name}}</td>
                                                 <td>
