@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SpecializationsTableSeeder::class);
         $this->call(PsTeamsSeeder::class);
         $this->call(PsWorkersSeeder::class);
+        $this->call(MonthsSeeder::class);
 
     }
 }
