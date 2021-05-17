@@ -1,11 +1,17 @@
 <?php namespace App\Repositories;
 
-use App\Models\PsWorker;
-use App\Repositories\PsWrokerRepositoryInterface;
+use App\Models\Gender;
+use App\Models\Nationality;
+use App\Models\PsTeam;
 
-class PsWorkerRepository implements PsWrokerRepositoryInterface
+use App\Models\PsWorker;
+use App\Repositories\PsWorkerRepositoryInterface;
+use Illuminate\Support\Facades\Hash;
+
+
+class PsWorkerRepository implements PsWorkerRepositoryInterface
 {
-	public function getAll(){
+	public function getAllPsWorkers(){
 		return PsWorker::all();
 	}
 
@@ -13,4 +19,41 @@ class PsWorkerRepository implements PsWrokerRepositoryInterface
 		return PsWorker::findOrFail($id);
 	}
 
+	public function getAllGenders()
+	{
+		return Gender::all();
+	}
+
+	public function getAllNationalities()
+	{
+		return Nationality::all();
+	}
+
+	public function getAllPsTeams()
+	{
+		return PsTeam::all();
+	}
+
+
+	public function storePsWorker($request)
+	{
+		try {
+            $psWorker = new PsWorker();
+            $psWorker->email = $request->email;
+            $psWorker->password =  Hash::make($request->password);
+            $psWorker->name = $request->name;
+			$psWorker->team_id = $request->team_id;
+            $psWorker->gender_id = $request->gender_id;
+            $psWorker->nationality_id = $request->nationality_id;
+            $psWorker->recruitment_date = $request->recruitment_date;
+            $psWorker->save();
+            toastr()->success(trans('messages.success'));
+            return redirect()->route('psworkers.index');
+        }
+        catch (Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
+
+	}
 }
+

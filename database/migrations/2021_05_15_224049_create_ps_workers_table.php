@@ -18,18 +18,17 @@ class CreatePsWorkersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name');
-
             $table->bigInteger('team_id')->unsigned();
-            $table->foreign('team_id')->references('id')->on('ps_teams')->onDelete('cascade');
-            
             $table->bigInteger('gender_id')->unsigned();
-            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
-            
             $table->bigInteger('nationality_id')->unsigned();
-            $table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('cascade');
-            
             $table->date('recruitment_date');
             $table->timestamps();
+
+            // foreign keys
+            $table->foreign('team_id')->references('id')->on('ps_teams')->onDelete('cascade');
+            $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
+            $table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('cascade');
+
         });
     }
 

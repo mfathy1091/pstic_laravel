@@ -38,6 +38,7 @@ class TeacherRepository implements TeacherRepositoryInterface{
         catch (Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
+        
 
     }
 

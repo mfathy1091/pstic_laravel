@@ -107,6 +107,11 @@ Route::group(
     Route::namespace('PsWorkers')->group(function () {
         Route::resource('psworkers', 'PsWorkerController');
     });
+
+    //==============================Referral Activities============================
+    Route::namespace('ReferralActivities')->group(function () {
+        Route::resource('referralactivities', 'ReferralActivityController');
+    });
 });
 
 
