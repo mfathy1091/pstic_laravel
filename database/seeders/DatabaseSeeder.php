@@ -20,11 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call(CaseStatusesSeeder::class);
         $this->call(CaseTypesSeeder::class);
         $this->call(GendersSeeder::class);
-        $this->call(ReferralsSeeder::class);
         $this->call(SpecializationsTableSeeder::class);
         $this->call(PsTeamsSeeder::class);
         $this->call(PsWorkersSeeder::class);
         $this->call(MonthsSeeder::class);
+        $this->call(ReferralsSeeder::class);
+
 
     }
 }

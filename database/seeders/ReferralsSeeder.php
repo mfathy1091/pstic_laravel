@@ -19,14 +19,18 @@ class ReferralsSeeder extends Seeder
 
         $data = [
             [    
-                'referral_date' => '19 Feb 2021',
+                'referral_date' => '19-02-2021',
                 'direct_beneficiary_name' => 'Amira Abdellatief',
                 'referral_source_id' => '1',
+                'ps_worker_id' => '1',
+                'is_emergency' => 'yes',
             ],
             [
-                'referral_date' => '13 Mar 2021',
+                'referral_date' => '13-03-2021',
                 'direct_beneficiary_name' => 'Mostafa Abdelatief',
                 'referral_source_id' => '2',
+                'ps_worker_id' => '2',
+                'is_emergency' => '',
             ],
         ];
 

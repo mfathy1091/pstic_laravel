@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Referral;
 use App\Models\ReferralSource;
+use App\Models\PsWorker;
 
 class ReferralController extends Controller
 {
@@ -16,9 +17,11 @@ class ReferralController extends Controller
      */
     public function index()
     {
+        
         $referrals = Referral::all();
         $referralSources = ReferralSource::all();
-        return view('pages.referrals.referrals', compact('referrals', 'referralSources'));
+        $psWorkers = PsWorker::all();
+        return view('pages.referrals.referrals', compact('referrals', 'referralSources', 'psWorkers', ));
     }
 
     /**
@@ -42,7 +45,6 @@ class ReferralController extends Controller
         //$referralSource = ReferralSource::where(['referral_source'=>($request->referral_source)])->firstOrFail();
         //dd($referralSource);
 
-
         try {
             //$validated = $request->validated();
             $referral = new Referral();
@@ -50,6 +52,14 @@ class ReferralController extends Controller
             $referral->referral_source_id = $request->referral_source;
             $referral->referral_date = $request->referral_date;
             $referral->direct_beneficiary_name = $request->direct_beneficiary_name;
+            $referral->assigned_ps_worker = $request->assigned_ps_worker;
+
+            if( $request->has('is_emergency')){
+                $referral->is_emergency = $request->is_emergency;
+            }else{
+                $referral->is_emergency = "";
+            }
+
 
             $referral->save();
             toastr()->success('Added Successfuly');

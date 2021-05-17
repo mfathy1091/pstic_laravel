@@ -56,7 +56,7 @@
                         <ul id="identitycards-menu" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('identitycards.index')}}">Identity Cards</a></li>
                             <li><a href="{{route('referrals.index')}}">Referrals</a></li>
-                            <li><a href="{{route('psworkers.index')}}">PS Workers</a></li>
+                            <li><a href="{{route('referralactivities.index')}}">Referral Activities</a></li>
                         </ul>
                     </li>
 

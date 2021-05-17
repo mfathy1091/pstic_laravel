@@ -18,12 +18,16 @@ class CreateReferralsTable extends Migration
 
             //$table->unsignedBigInteger('identy_card_id');
             $table->unsignedBigInteger('referral_source_id');
-            $table->string('referral_date');
+            $table->date('referral_date');
             $table->string('direct_beneficiary_name');
+            $table->boolean('is_emergency');
+            $table->string('ps_worker_id');
 
             $table->timestamps();
 
-            $table->index('referral_source_id');
+            $table->foreign('referral_source_id')->references('id')->on('referral_sources')->onDelete('cascade');
+            $table->foreign('ps_worker_id')->references('id')->on('ps_workers')->onDelete('cascade');
+
         });
     }
 

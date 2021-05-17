@@ -24,4 +24,19 @@ class PsWorker extends Model
     {
         return $this->belongsTo('App\Models\PsTeam','team_id');
     }
+
+    public function referrals()
+    {
+        return $this->hasMany(Referral::class);
+    }
+
+    public function caseStatus()
+    {
+        return $this->belongsTo(CaseStatus::class);
+    }
+
+    public function month()
+    {
+        return $this->belongsTo(Month::class);
+    }
 }

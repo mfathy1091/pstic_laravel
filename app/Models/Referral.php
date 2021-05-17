@@ -14,4 +14,11 @@ class Referral extends Model
     {
         return $this->belongsTo(ReferralSource::class);
     }
+
+    public function psWorker()
+    {
+        return $this->belongsTo(PsWorker::class, 'ps_worker_id');
+    }
+
+
 }

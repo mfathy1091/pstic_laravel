@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    Referrals
+    Referral Activities
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-Referrals
+Referrals Activities
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -38,7 +38,7 @@ Referrals
             @endif
 
             <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                Add Referral
+                Add Activity
             </button>
             <br><br>
 
@@ -48,38 +48,32 @@ Referrals
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Referral Source</th>
-                            <th>Referral Date</th>
-                            <th>Direct Beneficiary Name</th>
-                            <th>Emergency</th>
-                            <th>Assigned PSW</th>
+                            <th>Month</th>
+                            <th>Case Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 0; ?>
-                        @foreach ($referrals as $referral)
+                        @foreach ($referralActivities as $referralActivity)
                             <tr>
                                 <?php $i++; ?>
                                 <td>{{ $i }}</td>
-                                <td>{{ $referral->referralSource->name }}</td>
-                                <td>{{ $referral->referral_date }}</td>
-                                <td>{{ $referral->direct_beneficiary_name }}</td>
-                                <td>{{ $referral->is_emergency }}</td>
-                                <td>{{ $referral->psWorker->name }}</td>
+                                <td>{{ $referralActivity->month->name }}</td>
+                                <td>{{ $referralActivity->caseStatus->name }}</td>
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#edit{{ $referral->id }}"
+                                        data-target="#edit{{ $referralActivity->id }}"
                                         title="Edit"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#delete{{ $referral->id }}"
+                                        data-target="#delete{{ $referralActivity->id }}"
                                         title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
 
                             <!-- EDIT MODAL -->
-                            <div class="modal fade" id="edit{{ $referral->id }}" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="edit{{ $referralActivity->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
@@ -95,46 +89,29 @@ Referrals
                                         </div>
                                         <div class="modal-body">
                                             <!-- edit_form -->
-                                            <form action="{{ route('referrals.update', $referral->id) }}" method="post">
+                                            <form action="{{ route('referralactivities.update', $referralActivity->id) }}" method="post">
                                                 {{ method_field('patch') }}
                                                 @csrf
 
-                                                <div class="form-row">
-                                                    <div class="col">
-                                                        <label for="referral_date">Referral Date</label>
-                                                        <div class='input-group date'>
-                                                            <input class="form-control" value="{{ $referral->referral_date }}" type="text"  id="datepicker-action" name="referral_date" data-date-format="dd-M-yyyy"  required>
-                                                        </div>
-                                                        @error('referral_date')
-                                                        <div class="alert alert-danger">{{ $message }}</div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <label for="direct_beneficiary_name" class="mr-sm-2">
-                                                            Direct beneficiary name:
-                                                        </label>
-                                                        <input id="direct_beneficiary_name" type="text" name="direct_beneficiary_name" class="form-control"
-                                                            value="{{ $referral->direct_beneficiary_name }}"
-                                                            required>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <input id="id" type="hidden" name="id" class="form-control"
-                                                            value="{{ $referral->id }}">
-                                                    </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputCity">Month</label>
+                                                    <select class="custom-select my-1 mr-sm-2">
+                                                        <option selected>Select Month</option>
+                                                        @foreach($months as $month)
+                                                            <option value="{{$month->id}}">{{$month->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('Nationality_Father_id')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputCity">Referral Source</label>
+                                                    <label for="inputCity">Case Status</label>
                                                     <select class="custom-select my-1 mr-sm-2">
-                                                        <option selected>Select Source</option>
-                                                        @foreach($referralSources as $referralSource)
-                                                            <option value="{{$referralSource->id}}">{{$referralSource->name}}</option>
+                                                        <option selected>Select status</option>
+                                                        @foreach($caseStatuses as $caseStatus)
+                                                            <option value="{{$caseStatus->id}}">{{$caseStatus->name}}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('Nationality_Father_id')
@@ -158,14 +135,14 @@ Referrals
                             </div>
 
                             <!-- delete modal -->
-                            <div class="modal fade" id="delete{{ $referral->id }}" tabindex="-1" role="dialog"
+                            <div class="modal fade" id="delete{{ $referralActivity->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                                 id="exampleModalLabel">
-                                                Delete Referral Source
+                                                Delete Referral Activity
                                             </h5>
                                             <button type="button" class="close" data-dismiss="modal"
                                                 aria-label="Close">
@@ -173,12 +150,12 @@ Referrals
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{ route('referrals.destroy', $referral->id) }}" method="post">
+                                            <form action="{{ route('referralactivities.destroy', $referralActivity->id) }}" method="post">
                                                 {{ method_field('Delete') }}
                                                 @csrf
                                                 Are Sure Of The Deletion Process ?'
                                                 <input id="id" type="hidden" name="id" class="form-control"
-                                                    value="{{ $referral->id }}">
+                                                    value="{{ $referralActivity->id }}">
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-dismiss="modal">Close</button>
@@ -199,7 +176,6 @@ Referrals
     </div>
 </div>
 
-
 <!-- ADD MODAL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -207,7 +183,7 @@ Referrals
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                    Add Referral
+                    Add Referral Activity
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -215,34 +191,18 @@ Referrals
             </div>
             <div class="modal-body">
                 <!-- add_form -->
-                <form action="{{ route('referrals.store') }}" method="POST">
+                <form action="{{ route('referralactivities.store') }}" method="POST">
                     @csrf
 
-                    <div class="form-row">
-                        <div class="col">
-                            <label for="referral_date">Referral Date</label>
-                            <div class='input-group date'>
-                                <input class="form-control" type="text"  id="datepicker-action" name="referral_date" data-date-format="dd-mm-yyyy"  required>
-                            </div>
-                            @error('referral_date')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col">
-                            <label for="direct_beneficiary_name" class="mr-sm-2">Direct Beneficiary Name:</label>
-                            <input id="direct_beneficiary_name" type="text" name="direct_beneficiary_name" class="form-control">
-                        </div>
-                    </div>
+
 
                     <div class="form-group col-md-6">
-                        <label for="inputCity">Referral Source</label>
-                        <select class="custom-select my-1 mr-sm-2" name="referral_source">
-                            <option selected>Select Source</option>
-                            @foreach($referralSources as $referralSource)
-                                <option value="{{$referralSource->id}}">{{$referralSource->name}}</option>
+                        <label for="inputCity">Month</label>
+                        <select class="custom-select my-1 mr-sm-2" name="month_id">
+                            <option selected>Select Month</option>
+                            @foreach($months as $month)
+                                <option value="{{$month->id}}">{{$month->name}}</option>
                             @endforeach
                         </select>
                         @error('Nationality_Father_id')
@@ -250,21 +210,13 @@ Referrals
                         @enderror
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Yes" id="flexCheckDefault" name="is_emergency">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Emergency
-                            </label>
-                        </div>
-                    </div>
 
                     <div class="form-group col-md-6">
-                        <label for="assigned_ps_worker">Assigned PSW</label>
+                        <label for="assigned_ps_worker">Case Status</label>
                         <select class="custom-select my-1 mr-sm-2" name="assigned_ps_worker">
-                            <option selected>Select PSW</option>
-                            @foreach($psWorkers as $psWorker)
-                                <option value="{{$psWorker->id}}">{{$psWorker->name}}</option>
+                            <option selected>Select Status</option>
+                            @foreach($caseStatuses as $caseStatus)
+                                <option value="{{$caseStatus->id}}">{{$caseStatus->name}}</option>
                             @endforeach
                         </select>
                         @error('assigned_ps_worker')
@@ -283,6 +235,7 @@ Referrals
 
         </div>
     </div>
+
 </div>
 
 </div>

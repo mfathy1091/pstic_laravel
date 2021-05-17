@@ -4,6 +4,9 @@ namespace App\Http\Controllers\ReferralActivities;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ReferralActivity;
+use App\Models\Month;
+use App\Models\CaseStatus;
 
 class ReferralActivityController extends Controller
 {
@@ -14,7 +17,10 @@ class ReferralActivityController extends Controller
      */
     public function index()
     {
-        //
+        $referralActivities = ReferralActivity::all();
+        $months = Month::all();
+        $caseStatuses = CaseStatus::all();
+        return view('pages.referral_activities.index', compact('referralActivities', 'months', 'caseStatuses'));
     }
 
     /**
