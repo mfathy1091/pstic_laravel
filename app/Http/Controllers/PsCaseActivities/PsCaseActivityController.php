@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\ReferralActivities;
+namespace App\Http\Controllers\PsCaseActivities;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ReferralActivity;
+use App\Models\PsCaseActivity;
 use App\Models\Month;
 use App\Models\CaseStatus;
 
-class ReferralActivityController extends Controller
+class PsCaseActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class ReferralActivityController extends Controller
      */
     public function index()
     {
-        $referralActivities = ReferralActivity::all();
+        $psCaseActivities = PsCaseActivity::all();
         $months = Month::all();
         $caseStatuses = CaseStatus::all();
-        return view('pages.referral_activities.index', compact('referralActivities', 'months', 'caseStatuses'));
+        return view('pages.ps_case_activities.index', compact('psCaseActivities', 'months', 'caseStatuses'));
     }
 
     /**

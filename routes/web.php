@@ -93,11 +93,6 @@ Route::group(
         Route::resource('casetypes', 'CaseTypeController');
     });
 
-    //==============================Referrals============================
-    Route::namespace('Referrals')->group(function () {
-        Route::resource('referrals', 'ReferralController');
-    });
-
     //==============================PS Workers============================
     Route::namespace('PsTeams')->group(function () {
         Route::resource('psteams', 'PsTeamController');
@@ -108,9 +103,14 @@ Route::group(
         Route::resource('psworkers', 'PsWorkerController');
     });
 
-    //==============================Referral Activities============================
-    Route::namespace('ReferralActivities')->group(function () {
-        Route::resource('referralactivities', 'ReferralActivityController');
+    //==============================PsCase============================
+    Route::namespace('PsCases')->group(function () {
+        Route::resource('pscases', 'PsCaseController');
+    });
+
+    //==============================PsCase Activities============================
+    Route::namespace('PsCaseActivities')->group(function () {
+        Route::resource('pscaseactivities', 'PsCaseActivityController');
     });
 });
 

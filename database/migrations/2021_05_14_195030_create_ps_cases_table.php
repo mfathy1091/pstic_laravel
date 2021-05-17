@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReferralsTable extends Migration
+class CreatePsCasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateReferralsTable extends Migration
      */
     public function up()
     {
-        Schema::create('referrals', function (Blueprint $table) {
+        Schema::create('ps_cases', function (Blueprint $table) {
             $table->id();
 
             //$table->unsignedBigInteger('identy_card_id');
+            $table->string('file_number');
             $table->unsignedBigInteger('referral_source_id');
             $table->date('referral_date');
             $table->string('direct_beneficiary_name');
@@ -38,6 +39,6 @@ class CreateReferralsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('referrals');
+        Schema::dropIfExists('ps_cases');
     }
 }

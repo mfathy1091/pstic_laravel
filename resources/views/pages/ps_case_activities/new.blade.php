@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{ trans('Sections_trans.title_page') }}
+Add Case Activity
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    {{ trans('Sections_trans.title_page') }}
+Add Case Activity
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -19,7 +19,7 @@
             <div class="card card-statistics h-100">
                 <div class="card-body">
                     <a class="button x-small" href="#" data-toggle="modal" data-target="#exampleModal">
-                        {{ trans('Sections_trans.add_section') }}</a>
+                        Add Case Activity</a>
                 </div>
 
                 @if ($errors->any())
@@ -39,10 +39,10 @@
                     <div class="card-body">
                         <div class="accordion gray plus-icon round">
 
-                            @foreach ($Grades as $Grade)
+                            @foreach ($caseStatuses as $caseStatus)
 
                                 <div class="acd-group">
-                                    <a href="#" class="acd-heading">{{ $Grade->Name }}</a>
+                                    <a href="#" class="acd-heading">{{ $caseStatus->name }}</a>
                                     <div class="acd-des">
 
                                         <div class="row">
@@ -58,16 +58,15 @@
                                                                 <thead>
                                                                 <tr class="text-dark">
                                                                     <th>#</th>
-                                                                    <th>{{ trans('Sections_trans.Name_Section') }}
-                                                                    </th>
-                                                                    <th>{{ trans('Sections_trans.Name_Class') }}</th>
-                                                                    <th>{{ trans('Sections_trans.Status') }}</th>
-                                                                    <th>{{ trans('Sections_trans.Processes') }}</th>
+                                                                    <th>case_id</th>
+                                                                    <th>Month</th>
+                                                                    <th>Case Status</th>
+                                                                    <th>Action</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 <?php $i = 0; ?>
-                                                                @foreach ($Grade->Sections as $list_Sections)
+                                                                @foreach ($psCaseActivity->Sections as $list_Sections)
                                                                     <tr>
                                                                         <?php $i++; ?>
                                                                         <td>{{ $i }}</td>
@@ -158,8 +157,8 @@
                                                                                                     onclick="console.log($(this).val())">
                                                                                                 <!--placeholder-->
                                                                                                 <option
-                                                                                                    value="{{ $Grade->id }}">
-                                                                                                    {{ $Grade->Name }}
+                                                                                                    value="{{ $psCaseActivity->id }}">
+                                                                                                    {{ $psCaseActivity->Name }}
                                                                                                 </option>
                                                                                                 @foreach ($list_Grades as $list_Grade)
                                                                                                     <option

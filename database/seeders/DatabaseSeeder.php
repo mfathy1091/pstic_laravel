@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PsTeamsSeeder::class);
         $this->call(PsWorkersSeeder::class);
         $this->call(MonthsSeeder::class);
-        $this->call(ReferralsSeeder::class);
+        $this->call(PsCasesSeeder::class);
 
 
     }

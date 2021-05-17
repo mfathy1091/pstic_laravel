@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Referrals;
+namespace App\Http\Controllers\PsCases;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Referral;
+use App\Models\PsCase;
 use App\Models\ReferralSource;
 use App\Models\PsWorker;
 
-class ReferralController extends Controller
+class PsCaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +18,10 @@ class ReferralController extends Controller
     public function index()
     {
         
-        $referrals = Referral::all();
+        $psCases = PsCase::all();
         $referralSources = ReferralSource::all();
         $psWorkers = PsWorker::all();
-        return view('pages.referrals.referrals', compact('referrals', 'referralSources', 'psWorkers', ));
+        return view('pages.ps_cases.ps_cases', compact('psCases', 'referralSources', 'psWorkers'));
     }
 
     /**
@@ -47,23 +47,23 @@ class ReferralController extends Controller
 
         try {
             //$validated = $request->validated();
-            $referral = new Referral();
+            $psCase = new PsCase();
 
-            $referral->referral_source_id = $request->referral_source;
-            $referral->referral_date = $request->referral_date;
-            $referral->direct_beneficiary_name = $request->direct_beneficiary_name;
-            $referral->assigned_ps_worker = $request->assigned_ps_worker;
+            $psCase->referral_source_id = $request->referral_source;
+            $psCase->referral_date = $request->referral_date;
+            $psCase->direct_beneficiary_name = $request->direct_beneficiary_name;
+            $psCase->ps_worker_id = $request->ps_worker_id;
 
             if( $request->has('is_emergency')){
-                $referral->is_emergency = $request->is_emergency;
+                $psCase->is_emergency = $request->is_emergency;
             }else{
-                $referral->is_emergency = "";
+                $psCase->is_emergency = "";
             }
 
 
-            $referral->save();
+            $psCase->save();
             toastr()->success('Added Successfuly');
-            return redirect()->route('referrals.index');
+            return redirect()->route('pscases.index');
         }
         
         catch (\Exception $e){
@@ -98,14 +98,14 @@ class ReferralController extends Controller
 
         try {
             //$validated = $request->validated();
-            $referral = Referral::find($id);
+            $psCase = PsCase::find($id);
 
-            $referral->referral_date = $request->referral_date;
-            $referral->direct_beneficiary_name = $request->direct_beneficiary_name;
+            $psCase->referral_date = $request->referral_date;
+            $psCase->direct_beneficiary_name = $request->direct_beneficiary_name;
 
-            $referral->save();
+            $psCase->save();
             toastr()->success('Added Successfuly');
-            return redirect()->route('referrals.index');
+            return redirect()->route('pscases.index');
         }
         
         catch (\Exception $e){
@@ -123,7 +123,7 @@ class ReferralController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        Referral::findOrFail($request->id)->delete();
-        return redirect()->route('referrals.index');
+        PsCase::findOrFail($request->id)->delete();
+        return redirect()->route('pscases.index');
     }
 }
