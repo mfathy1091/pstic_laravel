@@ -36,7 +36,7 @@
                             <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
                             <li> <a href="{{ url('/casestatuses') }}">Manage Case Statuses</a> </li>
                             <li> <a href="{{ url('/casetypes') }}">Manage Case Types</a> </li>
-                            <li> <a href="#">Manage Roles & Permis</a> </li>
+                            <li> <a href="#">Manage users Roles & Permis</a> </li>
                             <li> <a href="#">Manage Locations</a> </li>
                             <li> <a href="#">Manage Job Titles</a> </li>
 
@@ -66,16 +66,16 @@
                     <br>
                     <br>
 
-                    <!-- Grades-->
+                    <!-- Surveys-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">{{trans('main_trans.Grades')}}</span></div>
+                                    class="right-nav-text">Surveys</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="Grades-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('Grades.index')}}">{{trans('main_trans.Grades_list')}}</a></li>
+                            <li><a href="{{route('surveys.index')}}">Survey List</a></li>
 
                         </ul>
                     </li>

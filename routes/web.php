@@ -112,6 +112,11 @@ Route::group(
     Route::namespace('PsCaseActivities')->group(function () {
         Route::resource('pscaseactivities', 'PsCaseActivityController');
     });
+
+    //==============================Surveys============================
+    Route::namespace('Surveys')->group(function () {
+        Route::resource('surveys', 'SurveyController');
+    });
 });
 
 
