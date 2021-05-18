@@ -54,9 +54,11 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="identitycards-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('identitycards.index')}}">Identity Cards</a></li>
                             <li><a href="{{route('pscases.index')}}">PS Caeses</a></li>
+                            <li><a href="{{route('visits.index')}}">Case Visits</a></li>
                             <li><a href="{{route('pscaseactivities.index')}}">Case Activities</a></li>
+                            <li><a href="{{route('identitycards.index')}}">UNHCR Cards</a></li>
+                            <li><a href="#">Statistics</a></li>
                         </ul>
                     </li>
 

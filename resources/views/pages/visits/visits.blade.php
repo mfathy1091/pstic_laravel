@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    PS Cases
+    Visits
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-PS Cases
+Visits
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -48,48 +48,30 @@ PS Cases
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>File Number</th>
-                            <th>Referral Source</th>
-                            <th>Referral Date</th>
-                            <th>Status</th>
-                            <th>Emergency</th>
-                            <th>Assigned PSW</th>
-                            <th>Direct Beneficiary Name</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th>Nationality</th>
+                            <th>Visit Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 0; ?>
-                        @foreach ($psCases as $psCase)
+                        @foreach ($visits as $visit)
                             <tr>
                                 <?php $i++; ?>
                                 <td>{{ $i }}</td>
-                                <td>{{ $psCase->file_number }}</td>
-                                <td>{{ $psCase->referralSource->name }}</td>
-                                <td>{{ $psCase->referral_date }}</td>
-                                <td>{{ $psCase->caseStatus->name }}</td>
-                                <td>{{ $psCase->is_emergency }}</td>
-                                <td>{{ $psCase->psWorker->name }}</td>
-                                <td>{{ $psCase->directBeneficiary->name }}</td>
-                                <td>{{ $psCase->directBeneficiary->age }}</td>
-                                <td>{{ $psCase->directBeneficiary->gender->name }}</td>
-                                <td>{{ $psCase->directBeneficiary->nationality->name }}</td>
+                                <td>{{ $visit->date }}</td>
 
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                        data-target="#edit{{ $psCase->id }}"
+                                        data-target="#edit{{ $visit->id }}"
                                         title="Edit"><i class="fa fa-edit"></i></button>
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#delete{{ $psCase->id }}"
+                                        data-target="#delete{{ $visit->id }}"
                                         title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
 
-                            <!-- EDIT MODAL -->
+                            {{-- <!-- EDIT MODAL -->
                             <div class="modal fade" id="edit{{ $psCase->id }}" tabindex="-1" role="dialog"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -200,7 +182,7 @@ PS Cases
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                         @endforeach
@@ -211,7 +193,7 @@ PS Cases
 </div>
 
 
-<!-- ADD MODAL -->
+{{-- <!-- ADD MODAL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -294,7 +276,7 @@ PS Cases
 
         </div>
     </div>
-</div>
+</div> --}}
 
 </div>
 

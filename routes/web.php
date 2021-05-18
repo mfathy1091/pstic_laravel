@@ -93,6 +93,11 @@ Route::group(
         Route::resource('casetypes', 'CaseTypeController');
     });
 
+    //==============================Visits============================
+    Route::namespace('Visits')->group(function () {
+        Route::resource('visits', 'VisitController');
+    });
+
     //==============================PS Workers============================
     Route::namespace('PsTeams')->group(function () {
         Route::resource('psteams', 'PsTeamController');

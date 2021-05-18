@@ -20,7 +20,8 @@ class CreatePsCasesTable extends Migration
             $table->string('file_number');
             $table->unsignedBigInteger('referral_source_id');
             $table->date('referral_date');
-            $table->string('direct_beneficiary_name');
+            $table->bigInteger('case_status_id')->unsigned();
+            $table->string('direct_beneficiary_id');
             $table->boolean('is_emergency');
             $table->string('ps_worker_id');
 
@@ -28,7 +29,7 @@ class CreatePsCasesTable extends Migration
 
             $table->foreign('referral_source_id')->references('id')->on('referral_sources')->onDelete('cascade');
             $table->foreign('ps_worker_id')->references('id')->on('ps_workers')->onDelete('cascade');
-
+            $table->foreign('case_status_id')->references('id')->on('case_statuses')->onDelete('cascade');
         });
     }
 

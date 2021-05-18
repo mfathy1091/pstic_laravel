@@ -24,9 +24,10 @@ class DatabaseSeeder extends Seeder
         $this->call(PsTeamsSeeder::class);
         $this->call(PsWorkersSeeder::class);
         $this->call(MonthsSeeder::class);
+        $this->call(DirectBeneficiariesSeeder::class);
+        $this->call(VisitsSeeder::class);
         $this->call(PsCasesSeeder::class);
         $this->call(SurveysTableSeeder::class);
-
 
     }
 }
