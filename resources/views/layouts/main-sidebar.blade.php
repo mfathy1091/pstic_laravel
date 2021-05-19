@@ -45,15 +45,15 @@
                         </ul>
                     </li>
 
-                    <!-- FileNumbers-->
+                    <!-- Psychosocial-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#identitycards-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#psychosocial-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
                                     class="right-nav-text">Psychosocial</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="identitycards-menu" class="collapse" data-parent="#sidebarnav">
+                        <ul id="psychosocial-menu" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('pscases.index')}}">PS Caeses</a></li>
                             <li><a href="{{route('visits.index')}}">Case Visits</a></li>
                             <li><a href="{{route('pscaseactivities.index')}}">Case Activities</a></li>
@@ -70,17 +70,32 @@
 
                     <!-- Surveys-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Grades-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#surveys-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
                                     class="right-nav-text">Surveys</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="Grades-menu" class="collapse" data-parent="#sidebarnav">
+                        <ul id="surveys-menu" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('surveys.index')}}">Survey List</a></li>
 
                         </ul>
                     </li>
+
+                    <!-- Inventory-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Inventory-menu">
+                            <div class="pull-left"><i class="fas fa-school"></i><span
+                                    class="right-nav-text">Inventory</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="Inventory-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('surveys.index')}}">Inventory List</a></li>
+
+                        </ul>
+                    </li>
+{{-- 
                     <!-- classes-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#classes-menu">
@@ -222,7 +237,7 @@
                             <li> <a href="themify-icons.html">Themify icons</a> </li>
                             <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
-                    </li>
+                    </li> 
 
 
                     <!-- Users-->
@@ -237,7 +252,7 @@
                             <li> <a href="themify-icons.html">Themify icons</a> </li>
                             <li> <a href="weather-icon.html">Weather icons</a> </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                 </ul>
             </div>
