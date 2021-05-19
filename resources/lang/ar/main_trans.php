@@ -4,8 +4,8 @@ return [
 
     'Dashboard'=>'الرئيسية',
     'Dashboard_page'=>'لوحة التحكم',
-    'Main_title'=>'برنامج مورا سوفت لادارة المدارس',
-    'Programname' => 'برنامج مورا سوفت لادارة المدارس',
+    'Main_title'=>'بستك',
+    'Programname' => 'بستك',
     'change_language'=>'تغير اللغة',
     'Grades'=>'المراحل الدراسية',
     'Grades_list'=>'قائمة المراحل الدراسية',
@@ -27,7 +27,7 @@ return [
     'Settings'=>'الاعدادات',
     'Users'=>'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
-    'Name_Programer' => 'سمير جمال مورا سوفت'
+    'Name_Programer' => 'محمد فتحي'
 
 
 ];
