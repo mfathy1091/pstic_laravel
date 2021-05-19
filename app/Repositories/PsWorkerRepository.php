@@ -1,11 +1,11 @@
 <?php namespace App\Repositories;
 
+use Exception;
 use App\Models\Gender;
 use App\Models\Nationality;
 use App\Models\PsTeam;
 
 use App\Models\PsWorker;
-use App\Repositories\PsWorkerRepositoryInterface;
 use Illuminate\Support\Facades\Hash;
 
 

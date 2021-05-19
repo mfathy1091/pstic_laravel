@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\PsCases;
 
+use App\Repositories\PsCaseRepositoryInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\PsCase;
@@ -10,6 +11,14 @@ use App\Models\PsWorker;
 
 class PsCaseController extends Controller
 {
+    private $repository;
+
+    public function __construct(PsCaseRepositoryInterface $repository)
+	{
+	    $this->repository = $repository;
+	}
+
+
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +26,7 @@ class PsCaseController extends Controller
      */
     public function index()
     {
-        
-        $psCases = PsCase::all();
+        $psCases = $this->repository->getAll();
         $referralSources = ReferralSource::all();
         $psWorkers = PsWorker::all();
         return view('pages.ps_cases.ps_cases', compact('psCases', 'referralSources', 'psWorkers'));
@@ -40,35 +48,7 @@ class PsCaseController extends Controller
      */
     public function store(Request $request)
     {
-        //$name = $request->input('name');
-        //dd($request);
-        //$referralSource = ReferralSource::where(['referral_source'=>($request->referral_source)])->firstOrFail();
-        //dd($referralSource);
-
-        try {
-            //$validated = $request->validated();
-            $psCase = new PsCase();
-
-            $psCase->referral_source_id = $request->referral_source;
-            $psCase->referral_date = $request->referral_date;
-            $psCase->direct_beneficiary_name = $request->direct_beneficiary_name;
-            $psCase->ps_worker_id = $request->ps_worker_id;
-
-            if( $request->has('is_emergency')){
-                $psCase->is_emergency = $request->is_emergency;
-            }else{
-                $psCase->is_emergency = "";
-            }
-
-
-            $psCase->save();
-            toastr()->success('Added Successfuly');
-            return redirect()->route('pscases.index');
-        }
         
-        catch (\Exception $e){
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        } 
 
     }
 

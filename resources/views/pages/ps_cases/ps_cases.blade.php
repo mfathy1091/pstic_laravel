@@ -51,13 +51,15 @@ PS Cases
                             <th>File Number</th>
                             <th>Referral Source</th>
                             <th>Referral Date</th>
-                            <th>Status</th>
+                            <th>Current Status</th>
                             <th>Emergency</th>
                             <th>Assigned PSW</th>
                             <th>Direct Beneficiary Name</th>
                             <th>Age</th>
                             <th>Gender</th>
                             <th>Nationality</th>
+                            <th>Activities</th>
+                            <th>Visits</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -79,6 +81,28 @@ PS Cases
                                 <td>{{ $psCase->directBeneficiary->nationality->name }}</td>
 
                                 <td>
+                                    @php
+                                        $psCaseActivities = $psCase->psCaseActivities
+                                    @endphp
+                                    
+                                    @foreach ( $psCaseActivities as $psCaseActivity)
+                                    <div>{{ $psCaseActivity->month->name }}, {{$psCaseActivity->caseStatus->name  }}</div>
+                                    
+                                    @endforeach
+                                </td>
+
+                                <td>
+                                    @php
+                                        $visits = $psCase->visits
+                                    @endphp
+                                    
+                                    @foreach ( $visits as $visit)
+                                    <div>{{ $visit->date }}</div>
+                                    
+                                    @endforeach
+                                </td>
+
+                                <td>
                                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                         data-target="#edit{{ $psCase->id }}"
                                         title="Edit"><i class="fa fa-edit"></i></button>
@@ -87,7 +111,9 @@ PS Cases
                                         title="Delete"><i
                                             class="fa fa-trash"></i></button>
                                 </td>
+
                             </tr>
+
 
                             <!-- EDIT MODAL -->
                             <div class="modal fade" id="edit{{ $psCase->id }}" tabindex="-1" role="dialog"

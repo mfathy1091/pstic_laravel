@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VisitsSeeder::class);
         $this->call(PsCasesSeeder::class);
         $this->call(SurveysTableSeeder::class);
+        $this->call(PsCaseActivitiesSeeder::class);
 
     }
 }

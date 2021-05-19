@@ -34,5 +34,11 @@ class PsCase extends Model
     {
         return $this->hasMany(Visit::class);
     }
+    
+
+    public function psCaseActivities()
+    {
+        return $this->hasMany(PsCaseActivity::class, 'case_id');
+    }
 
 }
