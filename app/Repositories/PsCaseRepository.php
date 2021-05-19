@@ -3,6 +3,7 @@
 use App\Models\Gender;
 use App\Models\Nationality;
 use App\Models\PsCaseActivity;
+use App\Models\PsCase;
 use App\Models\PsTeam;
 
 use App\Models\PsWorker;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Hash;
 class PsCaseRepository extends PsCaseRepositoryInterface
 {
 
-
+    public $currentMonthId = '5';
 
     public function getMonthCaseStatus($psCaseId, $monthId)
     {
@@ -25,9 +26,9 @@ class PsCaseRepository extends PsCaseRepositoryInterface
 
     public function storePsCase($request)
     {
-        $currentMonthId = '5';
-        $psCase = new PsCase();
-        $currentMonthStatus = getMonthCaseStatus(, $currentMonthId);
+        
+        $psCaseId = new PsCase();
+        $currentMonthStatus = getMonthCaseStatus($psCaseId, $currentMonthId);
         
         
         try {
@@ -59,12 +60,12 @@ class PsCaseRepository extends PsCaseRepositoryInterface
 
     public function initiateCaseStatus(){
         // New
-        if($currentMonth == $referralMonth){
+        if($currentMonthId == $referralMonth){
             return '1';
         }
 
         // Ongoing
-        if($currentMonth != $referralMonth && !is_null($currentMonth->visits)){
+        if($currentMonthId != $referralMonth && !is_null($currentMonth->visits)){
             return '2';
         }
     }
