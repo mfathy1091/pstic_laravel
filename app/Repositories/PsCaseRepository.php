@@ -8,11 +8,103 @@ use App\Models\PsTeam;
 
 use App\Models\PsWorker;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
-class PsCaseRepository extends PsCaseRepositoryInterface
+
+class PsCaseRepository implements PsCaseRepositoryInterface
 {
 
-    public $currentMonthId = '5';
+
+    public function getAllPsCases()
+    {
+		return PsCase::all();
+	}
+
+
+    public function storePsCase($request)
+    {        
+        // add case
+        try {
+            $psCase = new PsCase();
+
+            $psCase->file_number = $request->referral_number;
+            $psCase->referral_source_id = $request->referral_source;
+            $psCase->referral_date = $request->referral_date;
+            $psCase->direct_beneficiary_id = $request->direct_beneficiary_id;
+            $psCase->ps_worker_id = $request->ps_worker_id;
+
+            if( $request->has('is_emergency')){
+                $psCase->is_emergency = $request->is_emergency;
+            }else{
+                $psCase->is_emergency = "";
+            }
+            
+            // validate if referradate is in future (reject it - it must be today or older)
+
+
+            // initialize default current case status
+            $referralDate = $request->referral_date;
+            $ConvertedReferralDate = strtotime($referralDate);
+            $referralMonth = date("m", $ConvertedReferralDate);
+
+            
+
+            if(date("m") == $referralMonth){
+                $psCase->case_status_id = '1';  // new
+            }
+            elseif(date("m") > $referralMonth){
+                $psCase->case_status_id = '4';  // inctive
+            }
+
+            $psCase->save();
+
+            // add default caseActivities
+            $this->insertDefaultMonthlyStatuses($psCase->id, $referralMonth);
+
+
+            toastr()->success('Added Successfuly');
+            return redirect()->route('pscases.index');
+        }
+        
+        catch (\Exception $e){
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }
+    }
+
+
+
+    public function insertDefaultMonthlyStatuses($psCaseID, $referralMonth)
+    {
+        // count of months starting with referral month to current month
+        $monthsCount = date("m") - $referralMonth + 1;
+
+        // array of months starting with referral month to current month
+        for ($x = 0; $x <= $monthsCount; $x++) {
+            $months[$x] = date("m") + $x;
+        }
+        
+        // insert to the table
+        for ($x = 0; $x <= $monthsCount; $x++) {
+            if($x==0){
+                $data[0] = [
+                    'case_id' => $psCaseID,
+                    'month_id' => $months[0],
+                    'case_status_id' => '1',
+                ];
+            }else{
+                $data[$x] = [
+                    'case_id' => $psCaseID,
+                    'month_id' => $months[$x],   // using id is wrong because feb id may not be 2
+                    'case_status_id' => '4',
+                ];
+            }
+        }
+
+        DB::table('ps_case_activities')->insert($data);
+    }
+
+
+
 
     public function getMonthCaseStatus($psCaseId, $monthId)
     {
@@ -24,77 +116,9 @@ class PsCaseRepository extends PsCaseRepositoryInterface
 
 
 
-    public function storePsCase($request)
-    {
-        
-        $psCaseId = new PsCase();
-        $currentMonthStatus = getMonthCaseStatus($psCaseId, $currentMonthId);
-        
-        
-        try {
-            //$validated = $request->validated();
-            $psCase = new PsCase();
-
-            $psCase->referral_source_id = $request->referral_source;
-            $psCase->referral_date = $request->referral_date;
-            $psCase->direct_beneficiary_name = $request->direct_beneficiary_name;
-            $psCase->ps_worker_id = $request->ps_worker_id;
-
-            if( $request->has('is_emergency')){
-                $psCase->is_emergency = $request->is_emergency;
-            }else{
-                $psCase->is_emergency = "";
-            }
-
-            $psCase->case_status_id = $request->ps_worker_id;
-
-            $psCase->save();
-            toastr()->success('Added Successfuly');
-            return redirect()->route('pscases.index');
-        }
-        
-        catch (\Exception $e){
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
-    }
-
-    public function initiateCaseStatus(){
-        // New
-        if($currentMonthId == $referralMonth){
-            return '1';
-        }
-
-        // Ongoing
-        if($currentMonthId != $referralMonth && !is_null($currentMonth->visits)){
-            return '2';
-        }
-    }
-
-    public function storePsCase($request)
-    {
-
-    }
 
 
-    public function getAll()
-    {
-		return PsCase::all();
-	}
 
 
 }
 
-
-        $referralMonth = $referral_date.getMonth();
-        
-        // New
-        if($currentMonth == $referralMonth){
-            return '1';
-        }
-
-        // Ongoing
-        if($currentMonth != $referralMonth && !is_null($currentMonth->visits)){
-            return '2';
-        }
-
-        $referralMonth = $referral_date.getMonth();

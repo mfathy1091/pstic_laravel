@@ -15,7 +15,7 @@ class PsCaseController extends Controller
 
     public function __construct(PsCaseRepositoryInterface $repository)
 	{
-	    $this->repository = $repository;
+        $this->repository = $repository;
 	}
 
 
@@ -26,7 +26,7 @@ class PsCaseController extends Controller
      */
     public function index()
     {
-        $psCases = $this->repository->getAll();
+        $psCases = $this->repository->getAllPsCases();
         $referralSources = ReferralSource::all();
         $psWorkers = PsWorker::all();
         return view('pages.ps_cases.ps_cases', compact('psCases', 'referralSources', 'psWorkers'));
@@ -49,7 +49,7 @@ class PsCaseController extends Controller
     public function store(Request $request)
     {
         
-
+        $this->repository->storePsCase($request);
     }
 
     /**

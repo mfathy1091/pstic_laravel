@@ -2,11 +2,14 @@
 
 interface PsCaseRepositoryInterface{
 	
-    public function getMonthCaseStatus($psCaseId, $monthId);
+    public function getAllPsCases();
 
     public function storePsCase($request);
 
-    public function getAll();
+    public function insertDefaultMonthlyStatuses($psCaseID, $referralMonth);
+
+    public function getMonthCaseStatus($psCaseId, $monthId);
+
 
 }
 
