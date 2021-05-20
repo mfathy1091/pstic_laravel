@@ -255,6 +255,13 @@ PS Cases
                 <form action="{{ route('pscases.store') }}" method="POST">
                     @csrf
 
+                    <div class="row">
+                        <div class="col">
+                            <label for="file_number" class="mr-sm-2">File Number:</label>
+                            <input id="file_number" type="text" name="file_number" class="form-control">
+                        </div>
+                    </div>
+                        
                     <div class="form-row">
                         <div class="col">
                             <label for="referral_date">Referral Date</label>
@@ -274,15 +281,54 @@ PS Cases
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col">
+                            <label for="direct_beneficiary_age" class="mr-sm-2">Age:</label>
+                            <input id="direct_beneficiary_age" type="text" name="direct_beneficiary_age" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="inputState">Gender</label>
+                            <select class="custom-select my-1 mr-sm-2" name="gender_id">
+                                <option selected disabled>Choose...</option>
+                                @foreach($genders as $gender)
+                                    <option value="{{$gender->id}}">{{$gender->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('gender_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-row">
+                        <div class="form-group col">
+                            <label for="inputCity">Nationality</label>
+                            <select class="custom-select my-1 mr-sm-2" name="nationality_id">
+                                <option selected disabled>Choose...</option>
+                                @foreach($nationalities as $nationality)
+                                    <option value="{{$nationality->id}}">{{$nationality->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('nationality_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="form-group col-md-6">
                         <label for="inputCity">Referral Source</label>
-                        <select class="custom-select my-1 mr-sm-2" name="referral_source">
+                        <select class="custom-select my-1 mr-sm-2" name="referral_source_id">
                             <option selected>Select Source</option>
                             @foreach($referralSources as $referralSource)
                                 <option value="{{$referralSource->id}}">{{$referralSource->name}}</option>
                             @endforeach
                         </select>
-                        @error('Nationality_Father_id')
+                        @error('referral_source_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>

@@ -1,5 +1,6 @@
 <?php namespace App\Repositories;
 
+use App\Models\DirectBeneficiary;
 use App\Models\Gender;
 use App\Models\Nationality;
 use App\Models\PsCaseActivity;
@@ -23,14 +24,22 @@ class PsCaseRepository implements PsCaseRepositoryInterface
 
     public function storePsCase($request)
     {        
-        // add case
         try {
+            // insert direct beneficiary
+            $directBeneficiary = new DirectBeneficiary();
+            $directBeneficiary->name = $request->direct_beneficiary_name;
+            $directBeneficiary->age = $request->direct_beneficiary_age;
+            $directBeneficiary->gender_id = $request->gender_id;
+            $directBeneficiary->nationality_id = $request->nationality_id;
+            $directBeneficiary->save();
+            
+            // insert PS Case
             $psCase = new PsCase();
+            $psCase->direct_beneficiary_id = $directBeneficiary->id;
 
-            $psCase->file_number = $request->referral_number;
-            $psCase->referral_source_id = $request->referral_source;
+            $psCase->file_number = $request->file_number;
+            $psCase->referral_source_id = $request->referral_source_id;
             $psCase->referral_date = $request->referral_date;
-            $psCase->direct_beneficiary_id = $request->direct_beneficiary_id;
             $psCase->ps_worker_id = $request->ps_worker_id;
 
             if( $request->has('is_emergency')){
@@ -46,14 +55,13 @@ class PsCaseRepository implements PsCaseRepositoryInterface
             $referralDate = $request->referral_date;
             $ConvertedReferralDate = strtotime($referralDate);
             $referralMonth = date("m", $ConvertedReferralDate);
-
             
 
             if(date("m") == $referralMonth){
                 $psCase->case_status_id = '1';  // new
             }
             elseif(date("m") > $referralMonth){
-                $psCase->case_status_id = '4';  // inctive
+                $psCase->case_status_id = '2';  // inctive
             }
 
             $psCase->save();
@@ -64,6 +72,7 @@ class PsCaseRepository implements PsCaseRepositoryInterface
 
             toastr()->success('Added Successfuly');
             return redirect()->route('pscases.index');
+
         }
         
         catch (\Exception $e){
@@ -79,12 +88,12 @@ class PsCaseRepository implements PsCaseRepositoryInterface
         $monthsCount = date("m") - $referralMonth + 1;
 
         // array of months starting with referral month to current month
-        for ($x = 0; $x <= $monthsCount; $x++) {
-            $months[$x] = date("m") + $x;
+        for ($x = 0; $x < $monthsCount; $x++) {
+            $months[$x] = $referralMonth + $x;
         }
         
         // insert to the table
-        for ($x = 0; $x <= $monthsCount; $x++) {
+        for ($x = 0; $x < $monthsCount; $x++) {
             if($x==0){
                 $data[0] = [
                     'case_id' => $psCaseID,
@@ -95,7 +104,7 @@ class PsCaseRepository implements PsCaseRepositoryInterface
                 $data[$x] = [
                     'case_id' => $psCaseID,
                     'month_id' => $months[$x],   // using id is wrong because feb id may not be 2
-                    'case_status_id' => '4',
+                    'case_status_id' => '2',
                 ];
             }
         }
