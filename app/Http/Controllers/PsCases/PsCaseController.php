@@ -76,6 +76,8 @@ class PsCaseController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
+    
         try {
  
             $this->repository->storePsCase($request);

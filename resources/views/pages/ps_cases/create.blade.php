@@ -139,7 +139,7 @@ Add PS Case
                             <br><br>
 
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Next</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Save</button>
                     </form>
                         </div>
                     </div>
