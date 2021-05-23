@@ -92,7 +92,7 @@ class PsCaseRepository implements PsCaseRepositoryInterface
                 $data[$x] = [
                     'case_id' => $psCaseID,
                     'month_id' => $months[$x],   // using id is wrong because feb id may not be 2
-                    'case_status_id' => '2',
+                    'case_status_id' => '4',
                 ];
             }
         }

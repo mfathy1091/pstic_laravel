@@ -13,6 +13,7 @@ use App\Models\PsWorker;
 use App\Models\DirectBeneficiary;
 use App\Models\PsCaseActivity;
 use App\Models\CaseStatus;
+use App\Models\PsTeam;
 
 class PsCaseController extends Controller
 {
@@ -32,40 +33,25 @@ class PsCaseController extends Controller
     public function index(Request $request)
     {
         $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')->get();
-        //dd($psCases);
 
-        $newPsCases = $psCases->where('case_status_id', '=', '1');
-        $ongoingPsCases = $psCases->where('case_status_id', '=', '2');
+        $tabs = array();
+        $caseStatuses = CaseStatus::all();
 
-/*         $tabs = collect([
-            'New' => $newPsCases,
-            'Ongoing' => $ongoingPsCases,
-        ]); */
+        $i = 0;
+        foreach($caseStatuses as $caseStatus){
+            $statusName = $caseStatus->name;
+            $statusId = $caseStatus->id;
+            $cases = $psCases->where('case_status_id', '=', $statusId);
+            $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
+            $i++;
+        }
 
-        $tabs = collect([
-            ['name' => 'New', 'cases' => $newPsCases],
-            ['name' => 'Ongoing', 'cases' => $ongoingPsCases],
-        ]);
-    
-            
-    
-        //dd($tabs);
-        //$psCases = $this->repository->getAllPsCases();
         $referralSources = ReferralSource::all();
         $psWorkers = PsWorker::all();
         $genders = Gender::all();
         $nationalities = Nationality::all();
-        //$tabs = CaseStatus::all();
 
-        //$tabs = [
-        //    'New' => $psCases->where('case_status_id', '=', '1'),
-        //    'Ongoing' => $psCases->where('case_status_id', '=', '1'),
-        //]
-
-        //dd($request);
         return view('pages.ps_cases.index')->with('tabs', $tabs);
-
-        //return view('pages.ps_cases.index', compact('psCases', 'referralSources', 'psWorkers', 'genders', 'nationalities', 'tabs', 'newPsCases', 'ongoingPsCases'));
     }
 
     /**
@@ -75,6 +61,12 @@ class PsCaseController extends Controller
      */
     public function create()
     {
+        $referralSources = ReferralSource::all();
+        $psWorkers = PsWorker::all();
+        $genders = Gender::all();
+        $nationalities = Nationality::all();
+
+		return view('pages.ps_cases.create',compact('referralSources','psWorkers', 'genders', 'nationalities'));
     }
 
     /**
@@ -97,6 +89,11 @@ class PsCaseController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
+
+
+
+
 
     /**
      * Display the specified resource.

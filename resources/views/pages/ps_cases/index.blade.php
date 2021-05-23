@@ -18,9 +18,11 @@ PS Cases
 @section('content')
     {{-- tabs --}}
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
+        <?php $n = 0; ?>
         @foreach ($tabs as $tab)
+        <?php $n++; ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link{{ $tab['name'] == 'New' ? ' active' : '' }}" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#{{ $tab['name'] }}" type="button" role="tab" aria-controls="{{ $tab['name'] }}" aria-selected="{{ $tab['name'] == 'New' ? 'true' : 'false' }}">{{ $tab['name'] }}</button>
+                <button class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#{{ $tab['name'] }}" type="button" role="tab" aria-controls="{{ $tab['name'] }}" aria-selected="{{ $tab['name'] == 'New' ? 'true' : 'false' }}">{{ $tab['name'] }}</button>
             </li>
         @endforeach
     </ul>
@@ -28,8 +30,10 @@ PS Cases
 {{-- tab contents --}}
 
 <div class="tab-content" id="pills-tabContent">
+    <?php $n = 0; ?>
     @foreach ($tabs as $tab)
-        <div class="tab-pane fade{{ $tab['name'] == 'New' ? ' show active' : '' }}" id="{{ $tab['name'] }}" role="tabpanel" aria-labelledby="{{ $tab['name'] }}-tab">
+    <?php $n++; ?>
+        <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $tab['name'] }}" role="tabpanel" aria-labelledby="{{ $tab['name'] }}-tab">
         
             <!-- row -->
             <div class="row">
@@ -52,10 +56,11 @@ PS Cases
                                 </div>
                             @endif
                             {{-- add button --}}
-                            <button type="button" class="button x-small" data-toggle="modal" data-target="#exampleModal">
-                                Add PS Case
-                            </button>
+                            <a href="{{route('pscases.create')}}" class="btn btn-success btn-sm" role="button"
+                            aria-pressed="true">Add PS Case</a><br><br>
                             <br><br>
+
+
 
 
    
