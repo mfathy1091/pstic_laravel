@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PsTeam extends Model
 {
     protected $fillable =['name'];
+
 }

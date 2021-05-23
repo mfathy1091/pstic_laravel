@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class CaseStatus extends Model
 {
     protected $fillable =['name'];
+
+
+    public function psCases()
+    {
+        return $this->hasMany(PsCase::class);
+    }
 }

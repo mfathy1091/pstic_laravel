@@ -23,23 +23,17 @@ class PsCaseRepository implements PsCaseRepositoryInterface
 
 
     public function storePsCase($request)
-    {        
-        try {
-            // insert direct beneficiary
-            $directBeneficiary = new DirectBeneficiary();
-            $directBeneficiary->name = $request->direct_beneficiary_name;
-            $directBeneficiary->age = $request->direct_beneficiary_age;
-            $directBeneficiary->gender_id = $request->gender_id;
-            $directBeneficiary->nationality_id = $request->nationality_id;
-            $directBeneficiary->save();
-            
+    {     
+            // validate if referradate is in future (reject it - it must be today or older)
+
             // insert PS Case
             $psCase = new PsCase();
-            $psCase->direct_beneficiary_id = $directBeneficiary->id;
-
+            $psCase->referral_date = $request->referral_date;
             $psCase->file_number = $request->file_number;
             $psCase->referral_source_id = $request->referral_source_id;
-            $psCase->referral_date = $request->referral_date;
+            $psCase->referring_person_name = $request->referring_person_name;
+            $psCase->referring_person_email = $request->referring_person_email;
+            $psCase->case_type_id = $request->case_type_id;
             $psCase->ps_worker_id = $request->ps_worker_id;
 
             if( $request->has('is_emergency')){
@@ -48,36 +42,30 @@ class PsCaseRepository implements PsCaseRepositoryInterface
                 $psCase->is_emergency = "";
             }
             
-            // validate if referradate is in future (reject it - it must be today or older)
-
-
-            // initialize default current case status
             $referralDate = $request->referral_date;
             $ConvertedReferralDate = strtotime($referralDate);
             $referralMonth = date("m", $ConvertedReferralDate);
             
-
             if(date("m") == $referralMonth){
                 $psCase->case_status_id = '1';  // new
             }
             elseif(date("m") > $referralMonth){
-                $psCase->case_status_id = '2';  // inctive
-            }
+                $psCase->case_status_id = '4';  // inctive
+            } 
 
             $psCase->save();
 
-            // add default caseActivities
+            // insert direct beneficiary
+            $directBeneficiary = new DirectBeneficiary();
+            $directBeneficiary->name = $request->direct_beneficiary_name;
+            $directBeneficiary->age = $request->direct_beneficiary_age;
+            $directBeneficiary->gender_id = $request->gender_id;
+            $directBeneficiary->nationality_id = $request->nationality_id;
+            $directBeneficiary->save();
+
+            // insert default caseActivities
             $this->insertDefaultMonthlyStatuses($psCase->id, $referralMonth);
 
-
-            toastr()->success('Added Successfuly');
-            return redirect()->route('pscases.index');
-
-        }
-        
-        catch (\Exception $e){
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
     }
 
 

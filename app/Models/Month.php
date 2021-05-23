@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Month extends Model
 {
-    use HasFactory;
+    protected $fillable =['name'];
 }

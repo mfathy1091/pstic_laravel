@@ -10,6 +10,7 @@ class PsWorker extends Model
 {
     protected $guarded=[];
 
+    // parent tables
     public function nationality()
     {
         return $this->belongsTo('App\Models\Nationality', 'nationality_id');
@@ -25,11 +26,6 @@ class PsWorker extends Model
         return $this->belongsTo('App\Models\PsTeam','team_id');
     }
 
-    public function referrals()
-    {
-        return $this->hasMany(Referral::class);
-    }
-
     public function caseStatus()
     {
         return $this->belongsTo(CaseStatus::class);
@@ -38,5 +34,11 @@ class PsWorker extends Model
     public function month()
     {
         return $this->belongsTo(Month::class);
+    }
+
+    // child tables
+    public function psCases()
+    {
+        return $this->hasMany(PsCase::class);
     }
 }

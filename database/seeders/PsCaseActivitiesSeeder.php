@@ -19,24 +19,24 @@ class PsCaseActivitiesSeeder extends Seeder
 
         $data = [
             [
-                'case_id' => '1',
                 'month_id' => '2',
                 'case_status_id' => '1',
+                'ps_case_id' => '1',
             ],
             [
-                'case_id' => '1',
                 'month_id' => '3',
                 'case_status_id' => '2',
+                'ps_case_id' => '1',
             ],
             [
-                'case_id' => '1',
                 'month_id' => '4',
                 'case_status_id' => '2',
+                'ps_case_id' => '1',
             ],
             [
-                'case_id' => '1',
                 'month_id' => '5',
                 'case_status_id' => '2',
+                'ps_case_id' => '1',
             ],
         ];
 

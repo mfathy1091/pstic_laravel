@@ -15,17 +15,18 @@ class CreateDirectBeneficiariesTable extends Migration
     {
         Schema::create('direct_beneficiaries', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-
             $table->string('name');
-            $table->integer('age')->unsigned();
-            $table->bigInteger('gender_id')->unsigned();
-            $table->bigInteger('nationality_id')->unsigned();
-
+            $table->integer('age');
+            $table->unsignedbigInteger('gender_id');
+            $table->unsignedbigInteger('nationality_id');
+            $table->unsignedbigInteger('ps_case_id');            
+            $table->timestamps();
 
             // foreign keys
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('cascade');
+            $table->foreign('ps_case_id')->references('id')->on('ps_cases')->onDelete('cascade');
+
         });
     }
 

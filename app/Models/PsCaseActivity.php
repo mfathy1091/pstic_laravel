@@ -10,17 +10,16 @@ class PsCaseActivity extends Model
     protected $guarded =[];
 
 
+    // parent tables
     public function psCase()
     {
         return $this->belongsTo(PsCase::class, 'case_id');
     }
 
-
     public function month()
     {
         return $this->belongsTo(Month::class, 'month_id');
     }
-
 
     public function caseStatus()
     {

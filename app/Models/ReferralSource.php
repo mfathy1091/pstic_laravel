@@ -10,7 +10,7 @@ class ReferralSource extends Model
     protected $fillable =['name'];
 
 
-    public function referral(){
-        return $this->hasOne(Referral::class);
+    public function ps_case(){
+        return $this->hasOne(PsCase::class);
     }
 }

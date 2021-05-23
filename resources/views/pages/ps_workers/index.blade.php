@@ -23,6 +23,7 @@ PS Workers
                             <div class="card-body">
                                 <a href="{{route('psworkers.create')}}" class="btn btn-success btn-sm" role="button"
                                    aria-pressed="true">Add PS Worker</a><br><br>
+                                
                                 <div class="table-responsive">
                                     <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                            data-page-length="50"
@@ -86,6 +87,7 @@ PS Workers
                                         @endforeach
                                     </table>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

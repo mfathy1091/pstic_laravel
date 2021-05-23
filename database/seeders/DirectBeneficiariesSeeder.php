@@ -23,18 +23,21 @@ class DirectBeneficiariesSeeder extends Seeder
                 'age' => '34',
                 'gender_id' => '2',
                 'nationality_id' => '2',
+                'ps_case_id' => '1',
             ],
             [
                 'name' => 'Mariam Elsadig',
                 'age' => '3',
                 'gender_id' => '2',
                 'nationality_id' => '2',
+                'ps_case_id' => '2',
             ],
             [
                 'name' => 'Elsadig Imam',
                 'age' => '41',
                 'gender_id' => '1',
                 'nationality_id' => '2',
+                'ps_case_id' => '3',
             ],
 
         ];

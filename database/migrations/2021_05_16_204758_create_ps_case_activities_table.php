@@ -15,15 +15,15 @@ class CreatePsCaseActivitiesTable extends Migration
     {
         Schema::create('ps_case_activities', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('case_id')->unsigned();
-            $table->bigInteger('month_id')->unsigned();
-            $table->bigInteger('case_status_id')->unsigned();
+            $table->unsignedBigInteger('month_id');
+            $table->unsignedBigInteger('case_status_id');
+            $table->unsignedBigInteger('ps_case_id');
             $table->timestamps();
 
             // foreign keys
-            $table->foreign('case_id')->references('id')->on('ps_cases')->onDelete('cascade');
             $table->foreign('month_id')->references('id')->on('months')->onDelete('cascade');
             $table->foreign('case_status_id')->references('id')->on('case_statuses')->onDelete('cascade');
+            $table->foreign('ps_case_id')->references('id')->on('ps_cases')->onDelete('cascade');
 
         });
     }

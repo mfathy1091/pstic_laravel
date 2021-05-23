@@ -11,6 +11,8 @@ use App\Models\PsCase;
 use App\Models\ReferralSource;
 use App\Models\PsWorker;
 use App\Models\DirectBeneficiary;
+use App\Models\PsCaseActivity;
+use App\Models\CaseStatus;
 
 class PsCaseController extends Controller
 {
@@ -27,14 +29,43 @@ class PsCaseController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $psCases = $this->repository->getAllPsCases();
+        $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')->get();
+        //dd($psCases);
+
+        $newPsCases = $psCases->where('case_status_id', '=', '1');
+        $ongoingPsCases = $psCases->where('case_status_id', '=', '2');
+
+/*         $tabs = collect([
+            'New' => $newPsCases,
+            'Ongoing' => $ongoingPsCases,
+        ]); */
+
+        $tabs = collect([
+            ['name' => 'New', 'cases' => $newPsCases],
+            ['name' => 'Ongoing', 'cases' => $ongoingPsCases],
+        ]);
+    
+            
+    
+        //dd($tabs);
+        //$psCases = $this->repository->getAllPsCases();
         $referralSources = ReferralSource::all();
         $psWorkers = PsWorker::all();
         $genders = Gender::all();
         $nationalities = Nationality::all();
-        return view('pages.ps_cases.ps_cases', compact('psCases', 'referralSources', 'psWorkers', 'genders', 'nationalities'));
+        //$tabs = CaseStatus::all();
+
+        //$tabs = [
+        //    'New' => $psCases->where('case_status_id', '=', '1'),
+        //    'Ongoing' => $psCases->where('case_status_id', '=', '1'),
+        //]
+
+        //dd($request);
+        return view('pages.ps_cases.index')->with('tabs', $tabs);
+
+        //return view('pages.ps_cases.index', compact('psCases', 'referralSources', 'psWorkers', 'genders', 'nationalities', 'tabs', 'newPsCases', 'ongoingPsCases'));
     }
 
     /**
@@ -54,50 +85,8 @@ class PsCaseController extends Controller
     public function store(Request $request)
     {
         try {
-            // insert direct beneficiary
-            $directBeneficiary = new DirectBeneficiary();
-            $directBeneficiary->name = $request->direct_beneficiary_name;
-            $directBeneficiary->age = $request->direct_beneficiary_age;
-            $directBeneficiary->gender_id = $request->gender_id;
-            $directBeneficiary->nationality_id = $request->nationality_id;
-            $directBeneficiary->save();
-            
-            // insert PS Case
-            $psCase = new PsCase();
-            $psCase->direct_beneficiary_id = $directBeneficiary->id;
-
-            $psCase->file_number = $request->file_number;
-            $psCase->referral_source_id = $request->referral_source_id;
-            $psCase->referral_date = $request->referral_date;
-            $psCase->ps_worker_id = $request->ps_worker_id;
-
-            if( $request->has('is_emergency')){
-                $psCase->is_emergency = $request->is_emergency;
-            }else{
-                $psCase->is_emergency = "";
-            }
-            
-            // validate if referradate is in future (reject it - it must be today or older)
-
-
-            // initialize default current case status
-            $referralDate = $request->referral_date;
-            $ConvertedReferralDate = strtotime($referralDate);
-            $referralMonth = date("m", $ConvertedReferralDate);
-            
-
-            if(date("m") == $referralMonth){
-                $psCase->case_status_id = '1';  // new
-            }
-            elseif(date("m") > $referralMonth){
-                $psCase->case_status_id = '2';  // inctive
-            }
-
-            $psCase->save();
-
-            // add default caseActivities
-            $this->repository->insertDefaultMonthlyStatuses($psCase->id, $referralMonth);
-
+ 
+            $this->repository->storePsCase($request);
 
             toastr()->success('Added Successfuly');
             return redirect()->route('pscases.index');

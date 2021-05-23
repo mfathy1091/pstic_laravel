@@ -20,4 +20,9 @@ class DirectBeneficiary extends Model
     {
         return $this->belongsTo('App\Models\Gender', 'gender_id');
     }
+
+    public function ps_case()
+    {
+        return $this->belongsTo('App\Models\PsCase', 'ps_case_id');
+    }
 }
