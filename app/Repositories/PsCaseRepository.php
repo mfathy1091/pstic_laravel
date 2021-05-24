@@ -50,17 +50,18 @@ class PsCaseRepository implements PsCaseRepositoryInterface
                 $psCase->case_status_id = '1';  // new
             }
             elseif(date("m") > $referralMonth){
-                $psCase->case_status_id = '4';  // inctive
+                $psCase->case_status_id = '2';  // inctive
             } 
 
             $psCase->save();
-            dd($psCase);
+            //dd($psCase);
             // insert direct beneficiary
             $directBeneficiary = new DirectBeneficiary();
             $directBeneficiary->name = $request->direct_beneficiary_name;
             $directBeneficiary->age = $request->direct_beneficiary_age;
             $directBeneficiary->gender_id = $request->gender_id;
             $directBeneficiary->nationality_id = $request->nationality_id;
+            $directBeneficiary->ps_case_id = $psCase->id;
             $directBeneficiary->save();
 
             // insert default caseActivities
@@ -84,15 +85,15 @@ class PsCaseRepository implements PsCaseRepositoryInterface
         for ($x = 0; $x < $monthsCount; $x++) {
             if($x==0){
                 $data[0] = [
-                    'case_id' => $psCaseID,
+                    'ps_case_id' => $psCaseID,
                     'month_id' => $months[0],
                     'case_status_id' => '1',
                 ];
             }else{
                 $data[$x] = [
-                    'case_id' => $psCaseID,
+                    'ps_case_id' => $psCaseID,
                     'month_id' => $months[$x],   // using id is wrong because feb id may not be 2
-                    'case_status_id' => '4',
+                    'case_status_id' => '2',
                 ];
             }
         }

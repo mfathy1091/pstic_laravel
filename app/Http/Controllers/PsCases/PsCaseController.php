@@ -13,7 +13,7 @@ use App\Models\PsWorker;
 use App\Models\DirectBeneficiary;
 use App\Models\PsCaseActivity;
 use App\Models\CaseStatus;
-use App\Models\PsTeam;
+use App\Models\CaseType;
 
 class PsCaseController extends Controller
 {
@@ -50,8 +50,9 @@ class PsCaseController extends Controller
         $psWorkers = PsWorker::all();
         $genders = Gender::all();
         $nationalities = Nationality::all();
+        
 
-        return view('pages.ps_cases.index')->with('tabs', $tabs);
+		return view('pages.ps_cases.index', compact('tabs','psWorkers', 'genders', 'nationalities'));
     }
 
     /**
@@ -65,8 +66,9 @@ class PsCaseController extends Controller
         $psWorkers = PsWorker::all();
         $genders = Gender::all();
         $nationalities = Nationality::all();
+        $caseTypes = CaseType::all();
 
-		return view('pages.ps_cases.create',compact('referralSources','psWorkers', 'genders', 'nationalities'));
+		return view('pages.ps_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes'));
     }
 
     /**

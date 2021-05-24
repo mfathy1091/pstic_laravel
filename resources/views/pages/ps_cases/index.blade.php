@@ -61,9 +61,6 @@ PS Cases
                             <br><br>
 
 
-
-
-   
                             <!-- table -->
                             <div class="table-responsive">
                                 <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
@@ -85,7 +82,6 @@ PS Cases
                                             <th>Age</th>
                                             <th>Gender</th>
                                             <th>Nationality</th>
-                                            <th>Activities</th>
                                             <th>Visits</th>
                                             <th>Action</th>
                                         </tr>
@@ -110,26 +106,14 @@ PS Cases
                                                 <td>{{ $psCase->directBeneficiary->gender->name }}</td>
                                                 <td>{{ $psCase->directBeneficiary->nationality->name }}</td>
 
-                                                <td>
-                                                    @php
-                                                        $psCaseActivities = $psCase->psCaseActivities
-                                                    @endphp
-                                                    
-                                                    @foreach ( $psCaseActivities as $psCaseActivity)
-                                                    <div>{{ $psCaseActivity->month->name }}, {{$psCaseActivity->caseStatus->name  }}</div>
-                                                    
-                                                    @endforeach
-                                                </td>
+
 
                                                 <td>
-                                                    @php
-                                                        $visits = $psCase->visits
-                                                    @endphp
-                                                    
-                                                    @foreach ( $visits as $visit)
-                                                    <div>{{ $visit->date }}</div>
-                                                    
-                                                    @endforeach
+                                                    <!-- Button trigger modal -->
+                                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                                        Show
+                                                                    </button>
+                                                                    
                                                 </td>
 
                                                 <td>
@@ -137,6 +121,8 @@ PS Cases
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_ps_case{{ $psCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
+
+
 
                                             <div class="modal fade" id="delete_ps_case{{$psCase->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">

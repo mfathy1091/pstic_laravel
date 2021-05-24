@@ -85,6 +85,8 @@ PS Cases
                                                 </td>
                 
                                                 <td>
+                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#show-visits{{ $psCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
+
                                                     @php
                                                         $visits = $psCase->visits
                                                     @endphp
@@ -100,6 +102,8 @@ PS Cases
                                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_ps_case{{ $psCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                                                 </td>
                                             </tr>
+
+                                            
 
                                             <div class="modal fade" id="delete_ps_case{{$psCase->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">

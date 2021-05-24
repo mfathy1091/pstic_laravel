@@ -35,7 +35,7 @@ class PsCasesSeeder extends Seeder
                 'referring_person_name' => 'Omnia',
                 'referring_person_email' => 'omnia@gmail.com',
                 'case_type_id' => '2',
-                'case_status_id' => '4',
+                'case_status_id' => '1',
                 'is_emergency' => '',
                 'ps_worker_id' => '2',
             ],

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\PsWorkers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\PsWorkerRepositoryInterface;
+use App\Models\PsWorker;
 
 class PsWorkerController extends Controller
 {
@@ -28,6 +29,28 @@ class PsWorkerController extends Controller
 		//return view('psworkers.show')->with('data', $data);
 
 	}
+
+	    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        //dd($request);
+
+        $psWorker = PsWorker::find($id);
+        $psWorker->name = $request->name;
+        $psWorker->save();
+
+        return redirect()->route('psworkers.index');
+    }
 
 
 	public function create()

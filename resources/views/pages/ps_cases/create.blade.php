@@ -54,6 +54,35 @@ Add PS Case
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label for="referring_person_name" class="mr-sm-2">Referring Person Name:</label>
+                                    <input id="referring_person_name" type="text" name="referring_person_name" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label for="referring_person_email" class="mr-sm-2">Referring Person Email:</label>
+                                    <input id="referring_person_email" type="text" name="referring_person_email" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="inputState">Case Status</label>
+                                    <select class="custom-select my-1 mr-sm-2" name="case_type_id">
+                                        <option selected disabled>Choose...</option>
+                                        @foreach($caseTypes as $caseType)
+                                            <option value="{{$caseType->id}}">{{$caseType->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('case_type_id')
+                                    <div class="alert alert-danger">{{ $caseType }}</div>
+                                    @enderror
+                                </div>
+                            </div>
         
                             <div class="row">
                                 <div class="col">
@@ -100,44 +129,49 @@ Add PS Case
                                     @enderror
                                 </div>
                             </div>
-        
-                            <div class="form-group col-md-6">
-                                <label for="inputCity">Referral Source</label>
-                                <select class="custom-select my-1 mr-sm-2" name="referral_source_id">
-                                    <option selected>Select Source</option>
-                                    @foreach($referralSources as $referralSource)
-                                        <option value="{{$referralSource->id}}">{{$referralSource->name}}</option>
-                                    @endforeach
-                                </select>
-                                @error('referral_source_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-        
-                            <div class="form-group col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Yes" id="flexCheckDefault" name="is_emergency">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        Emergency
-                                    </label>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputCity">Referral Source</label>
+                                    <select class="custom-select my-1 mr-sm-2" name="referral_source_id">
+                                        <option selected>Select Source</option>
+                                        @foreach($referralSources as $referralSource)
+                                            <option value="{{$referralSource->id}}">{{$referralSource->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('referral_source_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
-        
-                            <div class="form-group col-md-6">
-                                <label for="ps_worker_id">Assigned PSW</label>
-                                <select class="custom-select my-1 mr-sm-2" name="ps_worker_id">
-                                    <option selected>Select PSW</option>
-                                    @foreach($psWorkers as $psWorker)
-                                        <option value="{{$psWorker->id}}">{{$psWorker->name}}</option>
-                                    @endforeach
-                                </select>
-                                @error('ps_worker_id')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
+                            
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="Yes" id="flexCheckDefault" name="is_emergency">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            Emergency
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-        
-                            <br><br>
 
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="ps_worker_id">Assigned PSW</label>
+                                    <select class="custom-select my-1 mr-sm-2" name="ps_worker_id">
+                                        <option selected>Select PSW</option>
+                                        @foreach($psWorkers as $psWorker)
+                                            <option value="{{$psWorker->id}}">{{$psWorker->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('ps_worker_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <br><br>
 
                             <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Save</button>
                     </form>
