@@ -54,7 +54,7 @@ class PsCaseRepository implements PsCaseRepositoryInterface
             } 
 
             $psCase->save();
-
+            dd($psCase);
             // insert direct beneficiary
             $directBeneficiary = new DirectBeneficiary();
             $directBeneficiary->name = $request->direct_beneficiary_name;

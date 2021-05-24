@@ -77,19 +77,20 @@ class PsCaseController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-    
-        try {
- 
-            $this->repository->storePsCase($request);
+        $this->repository->storePsCase($request);
 
-            toastr()->success('Added Successfuly');
-            return redirect()->route('pscases.index');
+        toastr()->success('Added Successfuly');
+        return redirect()->route('pscases.index');
+
+    
+/*         try {
+ 
 
         }
         
         catch (\Exception $e){
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
+        } */
     }
 
 
