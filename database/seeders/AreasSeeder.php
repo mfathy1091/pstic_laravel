@@ -84,27 +84,11 @@ class AreasSeeder extends Seeder
                 'city_id' => '1',
             ],
             [    
-                'name' => 'Miami',
-                'city_id' => '2',
+                'name' => 'Damietta',
+                'city_id' => '3',
             ],
             [    
-                'name' => 'Sidi Bishr',
-                'city_id' => '2',
-            ],
-            [    
-                'name' => 'Kilo 21',
-                'city_id' => '2',
-            ],
-            [    
-                'name' => 'Faisal',
-                'city_id' => '2',
-            ],
-            [    
-                'name' => 'Mandara',
-                'city_id' => '2',
-            ],
-            [    
-                'name' => 'Asafra',
+                'name' => 'Alexandria',
                 'city_id' => '2',
             ],
             

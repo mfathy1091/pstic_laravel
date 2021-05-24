@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html lang="en" dir="auto">
 
 <head>
     <meta charset="utf-8">
@@ -39,16 +39,13 @@
         <!--=================================
  login-->
 
-        <section class="height-100vh d-flex align-items-center page-section-ptb login"
-            style="background-image: url(assets/images/login-bg.jpg);">
+        <section class="height-100vh d-flex align-items-center page-section-ptb login">
             <div class="container">
                 <div class="row justify-content-center no-gutters vertical-align">
                     <div class="col-lg-4 col-md-6 login-fancy-bg bg"
                         style="background-image: url(images/login-inner-bg.jpg);">
                         <div class="login-fancy">
-                            <h2 class="text-white mb-20">Hello world!</h2>
-                            <p class="mb-20 text-white">Create tailor-cut websites with the exclusive multi-purpose
-                                responsive template along with powerful features.</p>
+                            <h2 class="text-white mb-20">PSTIC</h2>
                             <ul class="list-unstyled  pos-bot pb-30">
                                 <li class="list-inline-item"><a class="text-white" href="#"> Terms of Use</a> </li>
                                 <li class="list-inline-item"><a class="text-white" href="#"> Privacy Policy</a></li>
@@ -57,13 +54,13 @@
                     </div>
                     <div class="col-lg-4 col-md-6 bg-white">
                         <div class="login-fancy pb-40 clearfix">
-                            <h3 class="mb-30">تسجيل الدخول</h3>
+                            <h3 class="mb-30">Login</h3>
 
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
 
                                 <div class="section-field mb-20">
-                                    <label class="mb-10" for="name">البريدالالكتروني*</label>
+                                    <label class="mb-10" for="name">Email*</label>
                                     <input id="email" type="email"
                                         class="form-control @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -76,7 +73,7 @@
                                 </div>
 
                                 <div class="section-field mb-20">
-                                    <label class="mb-10" for="Password">كلمة المرور * </label>
+                                    <label class="mb-10" for="Password">Password*</label>
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
@@ -91,11 +88,11 @@
                                 <div class="section-field">
                                     <div class="remember-checkbox mb-30">
                                         <input type="checkbox" class="form-control" name="two" id="two" />
-                                        <label for="two"> تذكرني</label>
-                                        <a href="#" class="float-right">هل نسيت كلمةالمرور ؟</a>
+                                        <label for="two">ٌRemember Me</label>
+                                        <a href="#" class="float-right">Did you forgot your password?</a>
                                     </div>
                                 </div>
-                                <button class="button"><span>دخول</span><i class="fa fa-check"></i></button>
+                                <button class="button"><span>Log In</span><i class="fa fa-check"></i></button>
                             </form>
                         </div>
                     </div>

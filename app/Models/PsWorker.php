@@ -31,6 +31,11 @@ class PsWorker extends Model
         return $this->belongsTo(CaseStatus::class);
     }
 
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
     public function month()
     {
         return $this->belongsTo(Month::class);

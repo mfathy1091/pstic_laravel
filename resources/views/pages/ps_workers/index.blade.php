@@ -35,6 +35,7 @@ PS Workers
                                             <th>Gender</th>
                                             <th>Nationality</th>
                                             <th>Team</th>
+                                            <th>Area</th>
                                             <th>Recruitment Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -49,6 +50,7 @@ PS Workers
                                             <td>{{$psWorker->gender->name}}</td>
                                             <td>{{$psWorker->nationality->name}}</td>
                                             <td>{{$psWorker->team->name}}</td>
+                                            <td>{{$psWorker->area->name}}</td>
                                             <td>{{$psWorker->recruitment_date}}</td>
                                                 <td>
                                                     <a href="{{route('psworkers.edit',$psWorker->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

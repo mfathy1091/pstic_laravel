@@ -110,6 +110,21 @@ Add PS Worker
                             </div>
 
                             <div class="form-row">
+                                <div class="form-group col">
+                                    <label for="inputCity">Area</label>
+                                    <select class="custom-select my-1 mr-sm-2" name="area_id">
+                                        <option selected disabled>Choose...</option>
+                                        @foreach($areas as $area)
+                                            <option value="{{$area->id}}">{{$area->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('area_id')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-row">
                                 <div class="col">
                                     <label for="title">Recruitment Date</label>
                                     <div class='input-group date'>

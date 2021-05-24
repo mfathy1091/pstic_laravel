@@ -43,6 +43,7 @@ class PsWorkerRepository implements PsWorkerRepositoryInterface
             $psWorker->password =  Hash::make($request->password);
             $psWorker->name = $request->name;
 			$psWorker->team_id = $request->team_id;
+			$psWorker->area_id = $request->area_id;
             $psWorker->gender_id = $request->gender_id;
             $psWorker->nationality_id = $request->nationality_id;
             $psWorker->recruitment_date = $request->recruitment_date;

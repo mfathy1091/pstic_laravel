@@ -223,7 +223,7 @@ var $window = $(window),
 /*************************
       DataTable
 *************************/
-POTENZA.datatables = function () {
+ POTENZA.datatables = function () {
    if ($('#datatable22').exists()) {
        loadScript(plugin_path + 'bootstrap-datatables/jquery.dataTables.min.js', function() {
        loadScript(plugin_path + 'bootstrap-datatables/dataTables.bootstrap4.min.js', function() {
@@ -231,7 +231,7 @@ POTENZA.datatables = function () {
      });
        });
     }
- };
+ }; 
 
 /*********************************
     Wow animation on scroll
@@ -289,8 +289,8 @@ POTENZA.fancyselect = function () {
 /*************************
        Search
 *************************/
-POTENZA.searchbox = function () {
-   if (jQuery('.search').exists()) {
+ POTENZA.searchbox = function () {
+    if (jQuery('.search').exists()) {
       jQuery('.search-btn').on("click", function () {
          jQuery('.search').toggleClass("search-open");
            return false;

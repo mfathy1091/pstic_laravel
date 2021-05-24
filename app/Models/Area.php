@@ -13,4 +13,9 @@ class Area extends Model
     {
         return $this->belongsTo(City::class, 'city_id');
     }
+
+    public function psWorkers()
+    {
+        return $this->hasMany(PsWorker::class);
+    }
 }

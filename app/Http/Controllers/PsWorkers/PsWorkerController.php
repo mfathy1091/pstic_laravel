@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\PsWorkerRepositoryInterface;
 use App\Models\PsWorker;
+use App\Models\Area;
+
 
 class PsWorkerController extends Controller
 {
@@ -19,8 +21,9 @@ class PsWorkerController extends Controller
 	public function index()
 	{
 		$psWorkers = $this->repository->getAllPsWorkers();
+		$areas = Area::all();
 
-		return view('pages.ps_workers.index', compact('psWorkers'));
+		return view('pages.ps_workers.index', compact('psWorkers', 'areas'));
 	}
 
 
@@ -58,7 +61,8 @@ class PsWorkerController extends Controller
 		$genders = $this->repository->getAllGenders();
 		$psTeams = $this->repository->getAllPsTeams();
 		$nationalities = $this->repository->getAllNationalities();
-		return view('pages.ps_workers.create',compact('genders','nationalities', 'psTeams'));
+		$areas = Area::all();
+		return view('pages.ps_workers.create',compact('genders','nationalities', 'psTeams', 'areas'));
     }
 
 
@@ -66,6 +70,18 @@ class PsWorkerController extends Controller
     {
 		//dd($request);
 		return $this->repository->storePsWorker($request);
+    }
+
+	    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy(Request $request, $id)
+    {
+        PsWorker::findOrFail($request->id)->delete();
+        return redirect()->route('psworkers.index');
     }
 
 }

@@ -16,50 +16,50 @@ PS Cases
 
 
 @section('content')
-    {{-- tabs --}}
-    <ul class="nav nav-pills" id="pills-tab" role="tablist">
-        <?php $n = 0; ?>
-        @foreach ($tabs as $tab)
-        <?php $n++; ?>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#{{ $tab['name'] }}" type="button" role="tab" aria-controls="{{ $tab['name'] }}" aria-selected="{{ $tab['name'] == 'New' ? 'true' : 'false' }}">{{ $tab['name'] }}</button>
-            </li>
-        @endforeach
-    </ul>
 
-{{-- tab contents --}}
+<div class="row">
 
-<div class="tab-content" id="pills-tabContent">
-    <?php $n = 0; ?>
-    @foreach ($tabs as $tab)
-    <?php $n++; ?>
-        <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $tab['name'] }}" role="tabpanel" aria-labelledby="{{ $tab['name'] }}-tab">
-        
-            <!-- row -->
-            <div class="row">
+    @if ($errors->any())
+        <div class="error">{{ $errors->first('Name') }}</div>
+    @endif
+
+    <div class="col-xl-12 mb-30">
+        <div class="card card-statistics h-100">
+            <div class="card-body">
 
                 @if ($errors->any())
-                    <div class="error">{{ $errors->first('Name') }}</div>
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
 
-                <div class="col-xl-12 mb-30">
-                    <div class="card card-statistics h-100">
-                        <div class="card-body">
+                {{-- add button --}}
+                <a href="{{route('pscases.create')}}" class="btn btn-success btn-sm" role="button"
+                aria-pressed="true">Add PS Case</a><br><br>
+                <br><br>
 
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            {{-- add button --}}
-                            <a href="{{route('pscases.create')}}" class="btn btn-success btn-sm" role="button"
-                            aria-pressed="true">Add PS Case</a><br><br>
-                            <br><br>
+                {{-- tabs --}}
+                <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                    <?php $n = 0; ?>
+                    @foreach ($tabs as $tab)
+                    <?php $n++; ?>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#{{ $tab['name'] }}" type="button" role="tab" aria-controls="{{ $tab['name'] }}" aria-selected="{{ $tab['name'] == 'New' ? 'true' : 'false' }}">{{ $tab['name'] }}</button>
+                        </li>
+                    @endforeach
+                </ul>
+                {{-- end tabs --}}
 
+                {{-- tab contents --}}
+                <div class="tab-content" id="pills-tabContent">
+                    <?php $n = 0; ?>
+                    @foreach ($tabs as $tab)
+                        <?php $n++; ?>
+                        <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $tab['name'] }}" role="tabpanel" aria-labelledby="{{ $tab['name'] }}-tab">
 
                             <!-- table -->
                             <div class="table-responsive">
@@ -158,19 +158,19 @@ PS Cases
                             </div>
                             <!-- end table -->
                                     
+
                         </div>
-                    </div> 
-                    
-                    
+                    @endforeach
                 </div>
+                <!-- tab contents -->
+                    
+                    
             </div>
-            <!-- row closed -->
-        
         </div>
-    @endforeach
+            
+        
+    </div>
 </div>
-
-
 
 @endsection
 @section('js')
