@@ -18,7 +18,7 @@ class ReferralSourcesSeeder extends Seeder
     {
         DB::table('referral_sources')->delete();
         
-        $referralSources = ['MSF', 'SCI', 'IOM', 'Care'];
+        $referralSources = ['MSF', 'SCI', 'IOM', 'Care', 'Caritas'];
 
         foreach ($referralSources as $referralSource) {
             ReferralSource::create(['name' => $referralSource]);
