@@ -21,6 +21,15 @@
                             <div class="clearfix"></div>
                         </a>
                     </li>
+
+                    <!-- Users-->
+                    <li>
+                        <a href="{{ route('admin.users.index') }}">
+                            <div class="pull-left"><i class="fas fa-user-tie"></i><span class="right-nav-text">Users</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
                     
                     <!-- Settings-->
                     <li>
@@ -36,7 +45,6 @@
                             <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
                             <li> <a href="{{ url('/casestatuses') }}">Manage Case Statuses</a> </li>
                             <li> <a href="{{ url('/casetypes') }}">Manage Case Types</a> </li>
-                            <li> <a href="#">Manage users Roles & Permis</a> </li>
                             <li> <a href="#">Manage Locations</a> </li>
                             <li> <a href="#">Manage Job Titles</a> </li>
 

@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash; // <-- import it at the top
 
+use App\Models\User;
+
 class UsersSeeder extends Seeder
 {
     /**
@@ -17,6 +19,9 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->delete();
 
+        User::factory()->times(10)->create();
+
+        
         $data = [
             [
                 'name' => 'Mohamed Fathy',
@@ -32,7 +37,7 @@ class UsersSeeder extends Seeder
         ];
 
         DB::table('users')->insert($data);
-        
+         
 
     }
 }

@@ -13,25 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
-
-Route::group(['middleware' => ['guest']], function () {
-
-    Route::get('/', function () {
-        return view('auth.login');
-    });
-
-});
 
 
  //==============================Translate all pages============================
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'] // add 'auth'
     ], function () {
 
-     //==============================dashboard============================
+    // Admin Routes
+    Route::prefix('admin')->name('admin.')->group( function () {
+        Route::resource('/users', Admin\UserController::class);
+    });
+
+
+
+    //==============================dashboard============================
     Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
    //==============================grades============================
