@@ -27,6 +27,13 @@ Route::group(
         Route::resource('/users', Admin\UserController::class);
     });
 
+    // PS-Worker-Related Routes
+    Route::prefix('psworker')->name('psworker.')->group( function () {
+        Route::resource('/profile', PsWorkers\PsWorkerController::class);
+        Route::resource('/cases', PsWorkers\CaseController::class);
+    });
+    //for now, create the CaseController inside the PSWorkers controllers namespace
+    //then check how to add cases using the adim user (I think admin shouldn't add cases for workers)
 
 
     //==============================dashboard============================
