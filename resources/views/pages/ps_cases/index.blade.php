@@ -100,7 +100,7 @@ PS Cases
                                                 <td>{{ $psCase->referring_person_email }}</td>
                                                 <td>{{ $psCase->caseType->name }}</td>                                              
                                                 <td>{{ $psCase->is_emergency }}</td>
-                                                <td>{{ $psCase->psWorker->name }}</td>
+                                                <td>{{ $psCase->psWorker->user->name }}</td>
                                                 <td>{{ $psCase->directBeneficiary->name }}</td>
                                                 <td>{{ $psCase->directBeneficiary->age }}</td>
                                                 <td>{{ $psCase->directBeneficiary->gender->name }}</td>

@@ -48,6 +48,10 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
+    public function psWorker(){
+        return $this->hasOne(PsWorker::class);
+    }
+
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role');

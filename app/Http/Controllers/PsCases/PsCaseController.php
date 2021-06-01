@@ -4,7 +4,8 @@ namespace App\Http\Controllers\PsCases;
 
 use App\Repositories\PsCaseRepositoryInterface;
 use App\Http\Controllers\Controller;
-use App\Models\Gender;
+use Illuminate\Support\Facades\Auth;use App\Models\Gender;
+
 use App\Models\Nationality;
 use Illuminate\Http\Request;
 use App\Models\PsCase;
@@ -14,6 +15,7 @@ use App\Models\DirectBeneficiary;
 use App\Models\PsCaseActivity;
 use App\Models\CaseStatus;
 use App\Models\CaseType;
+use App\Models\User;
 
 class PsCaseController extends Controller
 {
@@ -32,7 +34,16 @@ class PsCaseController extends Controller
      */
     public function index(Request $request)
     {
-        $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')->get();
+        $psWorker = Auth::user()->psWorker;
+
+        if($psWorker == null){
+            return redirect('/');
+        }
+        $psWorkerId = $psWorker->id;
+
+        $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')
+            ->where('ps_worker_id', $psWorkerId)
+            ->get();
 
         $tabs = array();
         $caseStatuses = CaseStatus::all();

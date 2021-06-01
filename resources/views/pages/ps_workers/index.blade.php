@@ -46,7 +46,7 @@ PS Workers
                                             <tr>
                                             <?php $i++; ?>
                                             <td>{{ $i }}</td>
-                                            <td>{{$psWorker->name}}</td>
+                                            <td>{{$psWorker->user->name}}</td>
                                             <td>{{$psWorker->gender->name}}</td>
                                             <td>{{$psWorker->nationality->name}}</td>
                                             <td>{{$psWorker->team->name}}</td>

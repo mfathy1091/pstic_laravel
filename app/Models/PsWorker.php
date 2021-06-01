@@ -11,6 +11,11 @@ class PsWorker extends Model
     protected $guarded=[];
 
     // parent tables
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+
     public function nationality()
     {
         return $this->belongsTo('App\Models\Nationality', 'nationality_id');
@@ -46,4 +51,6 @@ class PsWorker extends Model
     {
         return $this->hasMany(PsCase::class);
     }
+
+
 }

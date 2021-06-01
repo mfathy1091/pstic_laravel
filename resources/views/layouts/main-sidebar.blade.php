@@ -15,15 +15,20 @@
 
 
                     @can('is-admin')
-                    <!-- Users-->
+                    <!-- MAnage Users / Workers-->
                     <li>
-                        <a href="{{ route('admin.users.index') }}">
-                            <div class="pull-left"><i class="fas fa-user-tie"></i><span class="right-nav-text">Users</span>
-                            </div>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
+                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Manage Users/Workers</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
+                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('admin.users.index') }}">Users</a> </li>
+                            <li> <a href="{{ route('psworkers.index') }}">PS Workers</a> </li>
+                        </ul>
                     </li>
-                    
+
+
                     <!-- Settings-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
