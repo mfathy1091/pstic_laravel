@@ -13,15 +13,8 @@
                         </a>
                     </li>
 
-                    <!-- Profile -->
-                    <li>
-                        <a href="{{ url('/dashboard') }}">
-                            <div class="pull-left"><i class="fas fa-user-tie"></i><span class="right-nav-text">Profile</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </li>
 
+                    @can('is-admin')
                     <!-- Users-->
                     <li>
                         <a href="{{ route('admin.users.index') }}">
@@ -53,29 +46,6 @@
                         </ul>
                     </li>
 
-                    <!-- Psychosocial-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#psychosocial-menu">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">Psychosocial</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="psychosocial-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('pscases.index')}}">PS Caeses</a></li>
-                            <li><a href="{{route('visits.index')}}">Case Visits</a></li>
-                            <li><a href="{{route('pscaseactivities.index')}}">Case Activities</a></li>
-                            <li><a href="{{route('identitycards.index')}}">UNHCR Cards</a></li>
-                            <li><a href="#">Statistics</a></li>
-                        </ul>
-                    </li>
-
-
-                    
-                    <br>
-                    <br>
-                    <br>
-
                     <!-- Surveys-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#surveys-menu">
@@ -103,6 +73,33 @@
 
                         </ul>
                     </li>
+
+                    @endcan
+
+                    <!-- Psychosocial-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#psychosocial-menu">
+                            <div class="pull-left"><i class="fas fa-school"></i><span
+                                    class="right-nav-text">Psychosocial</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="psychosocial-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('pscases.index')}}">PS Caeses</a></li>
+                            <li><a href="{{route('visits.index')}}">Case Visits</a></li>
+                            <li><a href="{{route('pscaseactivities.index')}}">Case Activities</a></li>
+                            <li><a href="{{route('identitycards.index')}}">UNHCR Cards</a></li>
+                            <li><a href="#">Statistics</a></li>
+                        </ul>
+                    </li>
+
+
+                    
+                    <br>
+                    <br>
+                    <br>
+
+
 {{-- 
                     <!-- classes-->
                     <li>

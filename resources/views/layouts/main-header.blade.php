@@ -65,14 +65,7 @@ header start-->
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">New registered user <small
                         class="float-right text-muted time">Just now</small> </a>
-                <a href="#" class="dropdown-item">New invoice received <small
-                        class="float-right text-muted time">22 mins</small> </a>
-                <a href="#" class="dropdown-item">Server error report<small
-                        class="float-right text-muted time">7 hrs</small> </a>
-                <a href="#" class="dropdown-item">Database report<small class="float-right text-muted time">1
-                        days</small> </a>
-                <a href="#" class="dropdown-item">Order confirmation<small class="float-right text-muted time">2
-                        days</small> </a>
+
             </div>
         </li>
         <li class="nav-item dropdown ">
@@ -83,7 +76,7 @@ header start-->
                     <strong>Quick Links</strong>
                 </div>
                 <div class="dropdown-divider"></div>
-                <div class="nav-grid">
+{{--                 <div class="nav-grid">
                     <a href="#" class="nav-grid-item"><i class="ti-files text-primary"></i>
                         <h5>New Task</h5>
                     </a>
@@ -98,7 +91,7 @@ header start-->
                     <a href="#" class="nav-grid-item"><i class="ti-truck text-danger "></i>
                         <h5>New Orders</h5>
                     </a>
-                </div>
+                </div> --}}
             </div>
         </li>
         <li class="nav-item dropdown mr-30">
@@ -118,14 +111,10 @@ header start-->
                     </div>
                 </div>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#"><i class="text-secondary ti-reload"></i>Activity</a>
-                <a class="dropdown-item" href="#"><i class="text-success ti-email"></i>Messages</a>
                 <a class="dropdown-item" href="#"><i class="text-warning ti-user"></i>Profile</a>
-                <a class="dropdown-item" href="#"><i class="text-dark ti-layers-alt"></i>Projects <span
-                        class="badge badge-info">6</span> </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#"><i class="text-info ti-settings"></i>Settings</a>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="text-danger ti-unlock"></i>{{ __('Sidebar_trans.Logoff') }}</a>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="text-danger ti-unlock"></i>Log Out</a>
                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                 </form>

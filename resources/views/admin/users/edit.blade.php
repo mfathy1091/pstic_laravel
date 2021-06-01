@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-Create New User
+Edit User
 @stop
 @endsection
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-Create New User
+Edit User
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -33,8 +33,9 @@ Create New User
                         <div class="col-md-12">
                             <br>
 
-                            <form method="POST" action="{{route('admin.users.store')}}">
-                                @include('admin.users.partials.form', ['create' => true])
+                            <form method="POST" action="{{route('admin.users.update', $user->id)}}">
+                                @method('PATCH')
+                                @include('admin.users.partials.form')
                             </form>
                         </div>
                     </div>

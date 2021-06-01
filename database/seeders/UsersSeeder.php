@@ -19,7 +19,7 @@ class UsersSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        User::factory()->times(10)->create();
+        //User::factory()->times(10)->create();
 
         
         $data = [
@@ -30,9 +30,15 @@ class UsersSeeder extends Seeder
     
             ],
             [
-                'name' => 'Mohamed Tito',
-                'email' => 'tito@gmail.com',
+                'name' => 'Maha Osman',
+                'email' => 'maha@gmail.com',
                 'password' => Hash::make('pstic12345'),
+            ],
+            [
+                'name' => 'Ahmed Alrajeh',
+                'email' => 'ahmed@gmail.com',
+                'password' => Hash::make('pstic12345'),
+    
             ],
         ];
 

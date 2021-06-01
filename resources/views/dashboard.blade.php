@@ -2,13 +2,13 @@
 @section('css')
 
 @section('title')
-    empty
+Dashboard
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    empty
+Dashboard
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -18,7 +18,6 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                <h1>index</h1>
             </div>
         </div>
     </div>

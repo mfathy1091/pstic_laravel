@@ -23,17 +23,19 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <a role="button" class="btn btn-success btn-sm float-left" href="{{ route('admin.users.create') }}">Create</a>
+                        <a role="button" class="btn btn-success btn float-left" href="{{ route('admin.users.create') }}">Create</a>
                     </div>
                 </div>
 
-                <div class="card mt-3">
-                    <table class="table">
+                <div class="table-responsive mt-3">
+                    <table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
+                        style="text-align: center">
                         <thead>
                             <tr>
                                 <th scope="col">#Id</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Roles</th>
                                 <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -43,6 +45,15 @@
                                 <th scope="row">{{ $user->id }}</th>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>
+                                    @php
+                                    $userRoles = $user->roles->pluck('name')
+                                    @endphp
+
+                                    @foreach ( $userRoles as $userRole)
+                                        <div>{{ $userRole }}</div>
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a role="button" title="Edit" class="btn btn-info btn-sm" href="{{ route('admin.users.edit', $user->id) }}"><i class="fa fa-edit"></i></a>
                                     
