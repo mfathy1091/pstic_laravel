@@ -25,23 +25,23 @@ class UsersSeeder extends Seeder
         $data = [
             [
                 'name' => 'Mohamed Fathy',
-                'email' => 'mfathy@gmail.com',
+                'email' => 'mohammedfathy@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
     
             ],
             [
                 'name' => 'Maha Osman',
-                'email' => 'maha@gmail.com',
+                'email' => 'mahahussaien@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
             ],
             [
                 'name' => 'Ahmed Alrajeh',
-                'email' => 'alrajeh@gmail.com',
+                'email' => 'ahmedalrajeh@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
             ],
             [
                 'name' => 'Malak Dalal',
-                'email' => 'malak@gmail.com',
+                'email' => 'malakdalal@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
             ],
             [
