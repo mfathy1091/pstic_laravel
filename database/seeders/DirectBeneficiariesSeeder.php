@@ -63,7 +63,7 @@ class DirectBeneficiariesSeeder extends Seeder
 
         ];
 
-        DB::table('direct_beneficiaries')->insert($data);
+        //DB::table('direct_beneficiaries')->insert($data);
     }
     
 }

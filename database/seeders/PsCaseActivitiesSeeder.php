@@ -40,6 +40,6 @@ class PsCaseActivitiesSeeder extends Seeder
             ],
         ];
 
-        DB::table('ps_case_activities')->insert($data);
+        //DB::table('ps_case_activities')->insert($data);
     }
 }

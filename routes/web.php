@@ -22,6 +22,18 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ], function () {
 
+        // users and roles
+        Route::resource('users', UserController::class);
+        Route::resource('roles', RoleController::class);
+
+        // PS Cases
+        Route::namespace('PsCaseActivities')->group(function () {
+            Route::resource('pscaseactivities', 'PsCaseActivityController');
+        });
+
+
+
+
         // Home (Dashboard)
         Route::get('/', 'HomeController@index')->name('dashboard');
 
@@ -121,10 +133,7 @@ Route::group(
             Route::resource('pscases', 'PsCaseController');
         });
 
-        //==============================PsCase Activities============================
-        Route::namespace('PsCaseActivities')->group(function () {
-            Route::resource('pscaseactivities', 'PsCaseActivityController');
-        });
+
 
         //==============================Surveys============================
         Route::namespace('Surveys')->group(function () {

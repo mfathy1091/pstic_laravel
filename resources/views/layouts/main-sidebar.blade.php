@@ -6,7 +6,7 @@
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     <!-- menu item Dashboard-->
                     <li>
-                        <a href="{{ url('/dashboard') }}">
+                        <a href="{{ url('/') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
                             </div>
                             <div class="clearfix"></div>
@@ -14,16 +14,42 @@
                     </li>
 
 
-                    @can('is-admin')
-                    <!-- MAnage Users / Workers-->
+
+                    <!-- Users -->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Manage Users/Workers</span></div>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#users">
+                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Users</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
+                        <ul id="users" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('users.index') }}">Users</a> </li>
+                            <li> <a href="{{ route('roles.index') }}">roles</a> </li>
+                        </ul>
+                    </li>
+
+
+                    
+                    <!-- Manage Users -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#manage-users">
+                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Manage Users</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="manage-users" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('admin.users.index') }}">Users</a> </li>
+                        </ul>
+                    </li>
+
+                    <!-- Manage Staff-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#manage-staff">
+                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Manage Staff</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="manage-staff" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('psworkers.index') }}">PS Workers</a> </li>
                         </ul>
                     </li>
@@ -31,12 +57,12 @@
 
                     <!-- Settings-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Settings-icon">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#settings">
                             <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">System Config</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="Settings-icon" class="collapse" data-parent="#sidebarnav">
+                        <ul id="settings" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="/psteams">Manage PS Teams</a> </li>
                             <li> <a href="/psworkers">Manage PS Workers</a> </li>
                             <li> <a href="{{ url('/referralsources') }}">Manage Referral Sources</a> </li>
@@ -67,19 +93,18 @@
 
                     <!-- Inventory-->
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#Inventory-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#inventory-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span
                                     class="right-nav-text">Inventory</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="Inventory-menu" class="collapse" data-parent="#sidebarnav">
+                        <ul id="inventory-menu" class="collapse" data-parent="#sidebarnav">
                             <li><a href="{{route('surveys.index')}}">Inventory List</a></li>
 
                         </ul>
                     </li>
 
-                    @endcan
 
                     <!-- Psychosocial-->
                     <li>

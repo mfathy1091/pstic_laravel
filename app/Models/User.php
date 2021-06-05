@@ -6,11 +6,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +23,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-    ];
+        //'roles_name',
+        //'status',
+    ]; 
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -40,41 +45,37 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        //'roles_name' => 'array',
     ];
 
-    public function setPasswordAttribute($password)
+
+
+    // if we use elequent to seed users, it will hash in seeder, then here, so the password will be wrong
+/*      public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = Hash::make($password);
-    }
-
+    } 
+ */
 
     public function psWorker(){
         return $this->hasOne(PsWorker::class);
     }
 
-    public function roles()
+    public function groups()
     {
-        return $this->belongsToMany('App\Models\Role');
+        return $this->belongsToMany('App\Models\Group');
     }
 
-    /**
-     * Check if the user has a role
-     * @param string $role
-     * @return bool
-     */
-    public function hasRole(string $role)
+
+    public function hasGroup(string $group)
     {
-        return null !== $this->roles()->where('name', $role)->first();
+        return null !== $this->groups()->where('name', $group)->first();
     }
 
-    /**
-     * Check if the user has any role from the given roles
-     * @param array $roles
-     * @return bool
-     */
-    public function hasAnyRoles(array $roles)
+
+    public function hasAnyGroups(array $groups)
     {
-        return null !== $this->roles()->whereIn('name', $roles)->first();
+        return null !== $this->groups()->whereIn('name', $groups)->first();
     }
 
 }

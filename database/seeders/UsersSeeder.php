@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash; // <-- import it at the top
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 
@@ -21,41 +21,53 @@ class UsersSeeder extends Seeder
 
         //User::factory()->times(10)->create();
 
+
+
+
         
         $data = [
             [
                 'name' => 'Mohamed Fathy',
                 'email' => 'mohammedfathy@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'Owner',
+                //'Status' => 'Active'
     
             ],
             [
                 'name' => 'Maha Osman',
                 'email' => 'mahahussaien@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
             ],
             [
                 'name' => 'Ahmed Alrajeh',
                 'email' => 'ahmedalrajeh@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
             ],
             [
                 'name' => 'Malak Dalal',
                 'email' => 'malakdalal@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
             ],
             [
                 'name' => 'Mohamed Ghassan',
                 'email' => 'ghassan@gmail.com',
                 'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
             ],
 
         ];
 
 
-
         DB::table('users')->insert($data);
-         
+        
 
     }
 }

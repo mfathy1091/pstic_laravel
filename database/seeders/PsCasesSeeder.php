@@ -86,7 +86,7 @@ class PsCasesSeeder extends Seeder
         ];
 
 
-        DB::table('ps_cases')->insert($data);
+        //DB::table('ps_cases')->insert($data);
                 
     }
 }

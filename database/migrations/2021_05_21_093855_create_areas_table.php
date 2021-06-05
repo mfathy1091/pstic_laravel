@@ -21,6 +21,7 @@ class CreateAreasTable extends Migration
 
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
 
+            $table->unique(['name']);
         });
     }
 

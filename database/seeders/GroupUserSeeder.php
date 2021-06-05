@@ -4,11 +4,11 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
-use App\Models\Role;
+use App\Models\Group;
 use Illuminate\Support\Facades\DB;
 
 
-class RoleUserSeeder extends Seeder
+class GroupUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -26,7 +26,7 @@ class RoleUserSeeder extends Seeder
         });*/
 
 
-        DB::table('role_user')->delete();
+        DB::table('group_user')->delete();
 
         //User::factory()->times(10)->create();
 
@@ -34,33 +34,33 @@ class RoleUserSeeder extends Seeder
         $data = [
             [
                 'user_id' => '1',
-                'role_id' => '1',    
+                'group_id' => '1',    
             ],
             [
                 'user_id' => '1',
-                'role_id' => '2',    
+                'group_id' => '2',    
             ],
 
 
             [
                 'user_id' => '2',
-                'role_id' => '2',   
+                'group_id' => '2',   
             ],
             [
                 'user_id' => '3',
-                'role_id' => '2',   
+                'group_id' => '2',   
             ],
             [
                 'user_id' => '4',
-                'role_id' => '2',   
+                'group_id' => '2',   
             ],
             [
                 'user_id' => '5',
-                'role_id' => '2',   
+                'group_id' => '2',   
             ],
         ];
 
-        DB::table('role_user')->insert($data);
+        //DB::table('group_user')->insert($data);
 
     
     } 
