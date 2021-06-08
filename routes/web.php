@@ -38,11 +38,6 @@ Route::group(
         Route::get('/', 'HomeController@index')->name('dashboard');
 
 
-        // Admin Routes
-        Route::prefix('admin')->middleware('auth.isAdmin')->name('admin.')->group( function () {
-            Route::resource('/users', Admin\UserController::class);
-        });
-
         // PS-Worker-Related Routes
         Route::prefix('psworker')->name('psworker.')->group( function () {
             Route::resource('/profile', PsWorkers\PsWorkerController::class);

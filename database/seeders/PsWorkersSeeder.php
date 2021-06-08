@@ -51,6 +51,6 @@ class PsWorkersSeeder extends Seeder
             ],
         ];
 
-        //DB::table('ps_workers')->insert($data);
+        DB::table('ps_workers')->insert($data);
     }
 }

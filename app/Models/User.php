@@ -61,21 +61,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(PsWorker::class);
     }
 
-    public function groups()
-    {
-        return $this->belongsToMany('App\Models\Group');
-    }
 
-
-    public function hasGroup(string $group)
-    {
-        return null !== $this->groups()->where('name', $group)->first();
-    }
-
-
-    public function hasAnyGroups(array $groups)
-    {
-        return null !== $this->groups()->whereIn('name', $groups)->first();
-    }
 
 }

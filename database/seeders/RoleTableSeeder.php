@@ -23,10 +23,11 @@ class RoleTableSeeder extends Seeder
             Role::create(['name' => $role]);
         }
 
-        $role = Role::findById(1);
-        $role->givePermissionTo('role-list');
-        $role->givePermissionTo('role-delete');
-        $role->givePermissionTo('role-edit');
-        $role->givePermissionTo('role-create');
+        $ownerRole = Role::findById(1);
+        $ownerRole->syncPermissions(['user-list', 'user-delete', 'user-edit', 'user-create',
+                                    'role-list', 'role-delete', 'role-edit', 'role-create']);
+
+        $psWorkerRole = Role::findById(2);
+        $psWorkerRole->syncPermissions(['ps-case-list', 'ps-case-delete', 'ps-case-edit', 'ps-case-create']);
     }
 }

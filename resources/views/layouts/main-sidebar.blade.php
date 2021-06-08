@@ -14,8 +14,11 @@
                     </li>
 
 
-
+                    
+                        
+                    
                     <!-- Users -->
+                    @can('user-list')
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#users">
                             <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Users</span></div>
@@ -24,23 +27,14 @@
                         </a>
                         <ul id="users" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('users.index') }}">Users</a> </li>
+                            
+                            @can('role-list')
                             <li> <a href="{{ route('roles.index') }}">roles</a> </li>
+                            @endcan
+                            
                         </ul>
                     </li>
-
-
-                    
-                    <!-- Manage Users -->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#manage-users">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Manage Users</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="manage-users" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('admin.users.index') }}">Users</a> </li>
-                        </ul>
-                    </li>
+                    @endcan
 
                     <!-- Manage Staff-->
                     <li>
