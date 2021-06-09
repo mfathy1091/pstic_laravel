@@ -16,7 +16,7 @@ class NationalitySeeder extends Seeder
     public function run()
     {
         DB::table('nationalities')->delete();
-        $nationalities = ['Syria', 'Sudan', 'Eritrea', 'Yemen', 'S. Sudan', 'Somalia'];
+        $nationalities = ['Egypt', 'Syria', 'Sudan', 'Eritrea', 'Yemen', 'S. Sudan', 'Somalia'];
 
         foreach ($nationalities as $n) {
             Nationality::create(['name' => $n]);

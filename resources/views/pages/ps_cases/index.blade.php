@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    PS Cases
+    My PS Cases
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-PS Cases
+My PS Cases
 @stop
 <!-- breadcrumb -->
 @endsection

@@ -16,6 +16,7 @@ use App\Models\PsCaseActivity;
 use App\Models\CaseStatus;
 use App\Models\CaseType;
 use App\Models\User;
+use App\Models\Employee;
 
 class PsCaseController extends Controller
 {
@@ -34,11 +35,22 @@ class PsCaseController extends Controller
      */
     public function index(Request $request)
     {
-        $psWorker = Auth::user()->psWorker;
+        
+        $psWorkersIds = Employee::where('job_title_id', '1')->pluck('id');
+        
+        $Employee = Auth::user()->employee;
 
-        if($psWorker == null){
+        if(!$psWorkersIds->contains($Employee->id)){
+
+            dd('You are not a PS Worker!');
             return redirect('/');
         }
+
+
+        
+        $psWorker = $Employee;
+
+
         $psWorkerId = $psWorker->id;
 
         $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')

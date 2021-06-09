@@ -48,26 +48,19 @@ class UsersSeeder extends Seeder
                 //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
-            [
-                'name' => 'Malak Dalal',
-                'email' => 'malakdalal@pstic-egypt.org',
-                'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
-                //'Status' => 'Active'
-            ],
-            [
-                'name' => 'Mohamed Ghassan',
-                'email' => 'ghassan@gmail.com',
-                'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
-                //'Status' => 'Active'
-            ],
 
         ];
-
-
         DB::table('users')->insert($data);
         
+
+        $user = User::create([
+            'name' => 'Admin', 
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('pstic12345'),
+            //'roles_name' => ['Owner'],
+            //'Status' => 'Active'
+        ]);  
+        $user->assignRole('Owner');
 
     }
 }

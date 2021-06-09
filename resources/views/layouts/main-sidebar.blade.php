@@ -43,6 +43,11 @@
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
+
+                        <ul id="manage-staff" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{ route('employees.index') }}">Employees</a> </li>
+                        </ul>
+
                         <ul id="manage-staff" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('psworkers.index') }}">PS Workers</a> </li>
                         </ul>

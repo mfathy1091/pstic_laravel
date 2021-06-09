@@ -26,6 +26,8 @@ Route::group(
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);
 
+        Route::resource('employees', EmployeeController::class);
+
         // PS Cases
         Route::namespace('PsCaseActivities')->group(function () {
             Route::resource('pscaseactivities', 'PsCaseActivityController');
@@ -43,6 +45,8 @@ Route::group(
             Route::resource('/profile', PsWorkers\PsWorkerController::class);
             Route::resource('/cases', PsWorkers\CaseController::class);
         });
+
+
         //for now, create the CaseController inside the PSWorkers controllers namespace
         //then check how to add cases using the adim user (I think admin shouldn't add cases for workers)
 

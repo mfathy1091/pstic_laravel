@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use App\Models\Employee;
 
 use Illuminate\Http\Request;
 
@@ -28,7 +29,7 @@ class HomeController extends Controller
     {
         $role = Role::findById(1);
 
-
+        $psWorkers = Employee::where('job_title_id', '1')->get()->count();
         //$permission = Permission::create(['name'=>'role-list']);
         //$permission = Permission::findById(1);
 
@@ -51,6 +52,6 @@ class HomeController extends Controller
         //return auth()->user();
 
 
-        return view('dashboard');
+        return view('dashboard', compact('psWorkers'));
     }
 }
