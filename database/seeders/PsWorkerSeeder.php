@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class PsWorkersSeeder extends Seeder
+class PsWorkerSeeder extends Seeder
 {
     /**
      * Run the database seeds.

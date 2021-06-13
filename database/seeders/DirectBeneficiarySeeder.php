@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\DirectBeneficiary;
 
-class DirectBeneficiariesSeeder extends Seeder
+class DirectBeneficiarySeeder extends Seeder
 {
     /**
      * Run the database seeds.

@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Month;
 
-class MonthsSeeder extends Seeder
+class MonthSeeder extends Seeder
 {
     /**
      * Run the database seeds.

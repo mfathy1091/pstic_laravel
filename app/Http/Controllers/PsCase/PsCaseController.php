@@ -28,30 +28,9 @@ class PsCaseController extends Controller
      */
     public function index(Request $request)
     {
-        $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')
+        $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'psCaseActivities', 'visits')
             ->get();
             
-        $pscases = PsCase::get()
-            ->map(function($psCase){
-            return [
-                'id' => $psCase->id,
-                'referral_date' => $psCase->referral_date,
-                'file_number' => $psCase->file_number,
-                'referral_source' => $psCase->referralSource->name,
-                'referring_person_name' => $psCase->referring_person_name,
-                'referring_person_name' => $psCase->referring_person_email,
-                'referral_source' => $psCase->referral_source_id,
-                'case_type_id' => $psCase->caseType->name,
-                'case_status' => $psCase->caseStatus->name,
-                'is_emergency' => $psCase->referral_source_id,
-                'direct_beneficiary_name' => $psCase->beneficiaryDirect()->first()->name,
-                'direct_beneficiary_age' => $psCase->beneficiaryDirect()->first()->age,
-                'direct_beneficiary_gender' => $psCase->beneficiaryDirect()->first()->gender->name,
-                'direct_beneficiary_nationality' => $psCase->beneficiaryDirect()->first()->nationality->name,
-            ];
-        });
-
-        
 
         $tabs = array();
         $caseStatuses = CaseStatus::all();
@@ -74,9 +53,7 @@ class PsCaseController extends Controller
         $budgets = Budget::all();
 
 
-            //dd(PsCase::find(0)->employee->name);
-        
-            dd($pscases);
+        //dd($psCases);
 		return view('ps_cases.all_cases.index', compact('tabs','psWorkers', 'genders', 'nationalities', 'teams', 'budgets'));
     }
 
@@ -133,6 +110,9 @@ class PsCaseController extends Controller
      */
     public function show($id)
     {
+        $psCase = PsCase::find($id);
+
+        return view('ps_cases.all_cases.show', compact('psCase'));
     }
 
     /**

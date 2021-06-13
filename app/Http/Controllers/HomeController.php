@@ -50,9 +50,9 @@ class HomeController extends Controller
                 'case_type_id' => $psCase->caseType->name,
                 'case_status' => $psCase->caseStatus->name,
                 'is_emergency' => $psCase->referral_source_id,
-                'direct_beneficiary_name' => $psCase->beneficiaryDirect()->name,
-                'direct_beneficiary_age' => $psCase->beneficiaryDirect()->age,
-                'direct_beneficiary_nationality' => $psCase->beneficiaryDirect()->nationality->name,
+                'direct_beneficiary_name' => $psCase->directBeneficiary->name,
+                'direct_beneficiary_age' => $psCase->directBeneficiary->age,
+                'direct_beneficiary_nationality' => $psCase->directBeneficiary->nationality->name,
             ];
 	    });
 

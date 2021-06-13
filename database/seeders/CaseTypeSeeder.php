@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\CaseType;
 
-class CaseTypesSeeder extends Seeder
+class CaseTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.

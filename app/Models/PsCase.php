@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\User;
+use App\Models\User;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,25 +34,27 @@ class PsCase extends Model
     {
         return $this->belongsTo(Employee::class, 'employee_id');
     }
+    public function createdUser()
+    {
+        return $this->belongsTo(User::class, 'created_user_id');
+    }
 
 
     // child tables
-    public function directBeneficiary()
+/*     public function directBeneficiary()
     {
         return $this->hasOne(DirectBeneficiary::class);
-    }
+    } */
 
 
-
-
-
-
-    public function beneficiaryDirect()
+    public function directBeneficiary()
     {
-        return $this->hasMany(Beneficiary::class)->direct();
-        // or this way:
-        // return $this->posts()->published();
-    }
+        return $this->hasOne(Beneficiary::class)->direct();;
+    } 
+
+
+
+ 
 
     public function beneficiariesIndirect()
     {

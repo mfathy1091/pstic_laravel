@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Beneficiary;
 
-class PsCasesSeeder extends Seeder
+class PsCaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -27,10 +27,11 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '2',
                 'case_status_id' => '4',
                 'is_emergency' => 'yes',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
-                'referral_date' => '13-03-2021',
+                'referral_date' => '13-06-2021',
                 'file_number' => '555-19C06345',
                 'referral_source_id' => '5',
                 'referring_person_name' => 'Christina Philip',
@@ -38,10 +39,11 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '2',
                 'case_status_id' => '1',
                 'is_emergency' => '',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
-                'referral_date' => '15-05-2021',
+                'referral_date' => '15-06-2021',
                 'file_number' => '555-19C07914',
                 'referral_source_id' => '1',
                 'referring_person_name' => 'Dalia Elsady',
@@ -49,10 +51,11 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
-                'referral_date' => '15-05-2021',
+                'referral_date' => '15-06-2021',
                 'file_number' => '555-14C04384',
                 'referral_source_id' => '2',
                 'referring_person_name' => 'Samira',
@@ -60,10 +63,11 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
-                'referral_date' => '15-05-2021',
+                'referral_date' => '15-06-2021',
                 'file_number' => '555-19C09225',
                 'referral_source_id' => '5',
                 'referring_person_name' => 'Maram Salah',
@@ -71,6 +75,7 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '1',
                 'is_emergency' => '',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
@@ -82,13 +87,14 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '2',
                 'is_emergency' => '',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             
             
             
             [
-                'referral_date' => '15-05-2021',
+                'referral_date' => '15-06-2021',
                 'file_number' => '555-14C04384',
                 'referral_source_id' => '2',
                 'referring_person_name' => 'Samira',
@@ -96,10 +102,11 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
-                'referral_date' => '15-05-2021',
+                'referral_date' => '15-06-2021',
                 'file_number' => '555-19C09225',
                 'referral_source_id' => '5',
                 'referring_person_name' => 'Maram Salah',
@@ -107,6 +114,7 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '1',
                 'is_emergency' => '',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
@@ -118,6 +126,7 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '2',
                 'is_emergency' => '',
+                'created_user_id' => '1',
                 'employee_id' => '3',
             ],
             [
@@ -129,6 +138,7 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
+                'created_user_id' => '1',
                 'employee_id' => '2',
             ],
             [
@@ -140,6 +150,7 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '1',
                 'is_emergency' => '',
+                'created_user_id' => '1',
                 'employee_id' => '2',
             ],
             [
@@ -151,6 +162,7 @@ class PsCasesSeeder extends Seeder
                 'case_type_id' => '1',
                 'case_status_id' => '2',
                 'is_emergency' => '',
+                'created_user_id' => '1',
                 'employee_id' => '2',
             ],
 
@@ -193,7 +205,7 @@ class PsCasesSeeder extends Seeder
                 'name' => 'Amany Ali AL Karar',
                 'age' => '41',
                 'gender_id' => '2',
-                'nationality_id' => '1',
+                'nationality_id' => '2',
                 'beneficiary_type_id' => '2',
                 'ps_case_id' => '1',
             ],
@@ -225,7 +237,7 @@ class PsCasesSeeder extends Seeder
                 'name' => 'Amany Ali AL Karar',
                 'age' => '41',
                 'gender_id' => '2',
-                'nationality_id' => '1',
+                'nationality_id' => '2',
                 'beneficiary_type_id' => '1',
                 'ps_case_id' => '5',
             ],

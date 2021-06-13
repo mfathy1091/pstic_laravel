@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\ReferralSource;
 use Illuminate\Support\Facades\DB;
 
-class ReferralSourcesSeeder extends Seeder
+class ReferralSourceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
