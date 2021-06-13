@@ -16,7 +16,8 @@ class CreateVisitsTable extends Migration
         Schema::create('visits', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->date('ps_case_id');
+            $table->unsignedBigInteger('ps_case_id');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

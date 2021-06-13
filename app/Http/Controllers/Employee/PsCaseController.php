@@ -49,12 +49,12 @@ class PsCaseController extends Controller
         $worker = Auth::user()->employee;
 
         $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')
-            ->where('employee_id', $worker->id)
+            ->where('assigned_employee_id', $worker->id)
             ->get();
 
 
 
-        //dd($psCases);
+        //dd($worker->name);
 
         $tabs = array();
         $caseStatuses = CaseStatus::all();

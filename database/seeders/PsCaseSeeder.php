@@ -28,7 +28,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '4',
                 'is_emergency' => 'yes',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '13-06-2021',
@@ -40,7 +40,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => '',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '15-06-2021',
@@ -52,7 +52,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '15-06-2021',
@@ -64,7 +64,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '15-06-2021',
@@ -76,7 +76,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => '',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '13-04-2021',
@@ -88,7 +88,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '2',
                 'is_emergency' => '',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             
             
@@ -103,7 +103,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '15-06-2021',
@@ -115,7 +115,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => '',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '13-04-2021',
@@ -127,7 +127,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '2',
                 'is_emergency' => '',
                 'created_user_id' => '1',
-                'employee_id' => '3',
+                'assigned_employee_id' => '3',
             ],
             [
                 'referral_date' => '15-06-2021',
@@ -139,7 +139,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => 'yes',
                 'created_user_id' => '1',
-                'employee_id' => '2',
+                'assigned_employee_id' => '2',
             ],
             [
                 'referral_date' => '15-06-2021',
@@ -151,7 +151,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '1',
                 'is_emergency' => '',
                 'created_user_id' => '1',
-                'employee_id' => '2',
+                'assigned_employee_id' => '2',
             ],
             [
                 'referral_date' => '13-03-2021',
@@ -163,7 +163,7 @@ class PsCaseSeeder extends Seeder
                 'case_status_id' => '2',
                 'is_emergency' => '',
                 'created_user_id' => '1',
-                'employee_id' => '2',
+                'assigned_employee_id' => '2',
             ],
 
         ];
