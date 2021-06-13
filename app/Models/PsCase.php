@@ -30,13 +30,41 @@ class PsCase extends Model
     {
         return $this->belongsTo(PsWorker::class, 'ps_worker_id');
     }
-
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
 
 
     // child tables
     public function directBeneficiary()
     {
         return $this->hasOne(DirectBeneficiary::class);
+    }
+
+
+
+
+
+
+    public function beneficiaryDirect()
+    {
+        return $this->hasMany(Beneficiary::class)->direct();
+        // or this way:
+        // return $this->posts()->published();
+    }
+
+    public function beneficiariesIndirect()
+    {
+        return $this->hasMany(Beneficiary::class)->indirect();
+        // or this way:
+        // return $this->posts()->published();
+    }
+
+
+    public function beneficiaries()
+    {
+        return $this->hasMany(Beneficiary::class);
     }
 
     public function psCaseActivities()

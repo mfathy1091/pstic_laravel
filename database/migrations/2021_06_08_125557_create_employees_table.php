@@ -18,6 +18,7 @@ class CreateEmployeesTable extends Migration
             $table->string('name');
             $table->unsignedInteger('job_title_id');
             $table->unsignedInteger('department_id');
+            $table->unsignedInteger('team_id')->nullable();
             $table->decimal('salary')->nullable();
             $table->unsignedInteger('budget_id');
             $table->date('hire_date');
@@ -33,6 +34,7 @@ class CreateEmployeesTable extends Migration
             // foreign keys
             $table->foreign('job_title_id')->references('id')->on('job_titles')->onDelete('cascade');
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->foreign('team_id')->references('id')->on('departments')->onDelete('cascade');
             $table->foreign('budget_id')->references('id')->on('budgets')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

@@ -21,12 +21,15 @@ class DatabaseSeeder extends Seeder
         $this->call(GendersSeeder::class);
         $this->call(CitiesSeeder::class);
         $this->call(AreasSeeder::class);
-        $this->call(PsTeamsSeeder::class);
+        $this->call(DepartmentSeeder::class);
+        $this->call(TeamSeeder::class);
 
         $this->call(JobTitleSeeder::class);
-        $this->call(DepartmentSeeder::class);
         $this->call(BudgetSeeder::class);
         $this->call(EmployeeSeeder::class);
+
+        $this->call(BeneficiaryTypeSeeder::class);
+        $this->call(BeneficiarySeeder::class);
 
         $this->call(IdentityCardsSeeder::class);
         $this->call(ReferralSourcesSeeder::class);

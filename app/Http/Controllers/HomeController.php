@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use App\Models\User;
+use App\Models\PsCase;
 use App\Models\Employee;
+use App\Models\Beneficiary;
 
 use Illuminate\Http\Request;
 
@@ -27,6 +28,39 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        //$beneficiaries = Beneficiary::direct()->first();
+        //dd($beneficiaries);
+
+
+        $psCase = PsCase::find(1);
+        $beneficiaries = $psCase->beneficiaries;
+        
+        
+        $pscases = PsCase::get()
+            ->map(function($psCase){
+            return [
+                'id' => $psCase->id,
+                'referral_date' => $psCase->referral_date,
+                'file_number' => $psCase->file_number,
+                'referral_source' => $psCase->referralSource->name,
+                'referring_person_name' => $psCase->referring_person_name,
+                'referring_person_name' => $psCase->referring_person_email,
+                'referral_source' => $psCase->referral_source_id,
+                'case_type_id' => $psCase->caseType->name,
+                'case_status' => $psCase->caseStatus->name,
+                'is_emergency' => $psCase->referral_source_id,
+                'direct_beneficiary_name' => $psCase->beneficiaryDirect()->name,
+                'direct_beneficiary_age' => $psCase->beneficiaryDirect()->age,
+                'direct_beneficiary_nationality' => $psCase->beneficiaryDirect()->nationality->name,
+            ];
+	    });
+
+
+
+        dd($pscases);
+
+
         $role = Role::findById(1);
 
         $psWorkers = Employee::where('job_title_id', '1')->get()->count();

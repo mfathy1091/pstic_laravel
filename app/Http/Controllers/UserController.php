@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Repositories\UserRepositoryInterface;
 use Spatie\Permission\Models\Role;
 // use DB;
 // use Hash;
@@ -15,6 +16,15 @@ use Illuminate\Support\Arr;
     
 class UserController extends Controller
 {
+
+    private $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +32,13 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
+/*         $users = $this->userRepository->all();
+
+        return view('users.index', [
+            'users' => $users
+        ]); */
+
+
         $data = User::orderBy('id','DESC')->paginate(5);
         return view('users.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);

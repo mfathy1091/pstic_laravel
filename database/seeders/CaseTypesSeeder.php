@@ -16,7 +16,7 @@ class CaseTypesSeeder extends Seeder
     public function run()
     {
         DB::table('case_types')->delete();
-        $caseTypes = ['Family', 'Individual'];
+        $caseTypes = ['Family', 'Individual', 'SGBV'];
 
         foreach ($caseTypes as $n) {
             CaseType::create(['name' => $n]);

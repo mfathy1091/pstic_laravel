@@ -62,7 +62,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="settings" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="/psteams">Manage PS Teams</a> </li>
+                            <li> <a href="/teams">Manage Teams</a> </li>
                             <li> <a href="/psworkers">Manage PS Workers</a> </li>
                             <li> <a href="{{ url('/referralsources') }}">Manage Referral Sources</a> </li>
                             <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
@@ -105,6 +105,22 @@
                     </li>
 
 
+                    <!-- PS Cases-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ps-cases-menu">
+                            <div class="pull-left"><i class="fas fa-school"></i><span
+                                    class="right-nav-text">PS Cases</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="ps-cases-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('pscases.mycases.index')}}">My PS Cases</a></li>
+                            <li><a href="{{route('pscases.teamcases.index')}}">Team PS Cases</a></li>
+                            <li><a href="{{route('pscases.allcases.index')}}">All PS Cases</a></li>
+                            <li><a href="#">Statistics</a></li>
+                        </ul>
+                    </li>
+
                     <!-- Psychosocial-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#psychosocial-menu">
@@ -114,7 +130,6 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="psychosocial-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('pscases.index')}}">PS Caeses</a></li>
                             <li><a href="{{route('visits.index')}}">Case Visits</a></li>
                             <li><a href="{{route('pscaseactivities.index')}}">Case Activities</a></li>
                             <li><a href="{{route('identitycards.index')}}">UNHCR Cards</a></li>

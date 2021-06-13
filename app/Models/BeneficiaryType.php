@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Budget extends Model
+class BeneficiaryType extends Model
 {
     use HasFactory;
-
-    public function employees(){
-        return $this->hasMany(Employee::class);
-    }
 }

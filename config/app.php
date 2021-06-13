@@ -181,8 +181,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
 
         App\Providers\TelescopeServiceProvider::class,
-        App\Providers\RepoServiceProvider::class,
-        App\Providers\PsCaseServiceProvider::class,
+        App\Providers\RepositoryServiceProvider::class,
         
     ],
 

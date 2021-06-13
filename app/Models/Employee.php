@@ -11,30 +11,39 @@ class Employee extends Model
 
     public function nationality()
     {
-        return $this->belongsTo('App\Models\Nationality', 'nationality_id');
+        return $this->belongsTo(Nationality::class, 'nationality_id');
     }
 
     public function gender()
     {
-        return $this->belongsTo('App\Models\Gender', 'gender_id');
+        return $this->belongsTo(Gender::class, 'gender_id');
     }
 
     public function jobTitle()
     {
-        return $this->belongsTo('App\Models\JobTitle', 'job_title_id');
+        return $this->belongsTo(JobTitle::class, 'job_title_id');
     }
 
     public function department()
     {
-        return $this->belongsTo('App\Models\Department', 'department_id');
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 
     public function budget()
     {
-        return $this->belongsTo('App\Models\Budget', 'budget_id');
+        return $this->belongsTo(Budget::class, 'budget_id');
     }
 
-
+    // child tables
+    public function psCases()
+    {
+        return $this->hasMany(PsCase::class);
+    }
 
 
 

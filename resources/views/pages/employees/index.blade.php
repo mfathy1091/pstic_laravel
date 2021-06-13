@@ -34,6 +34,7 @@ Employees
                                             <th>Name</th>
                                             <th>Title</th>
                                             <th>Department</th>
+                                            <th>Team</th>
                                             <th>Budget</th>
                                             <th>Action</th>
                                         </tr>
@@ -47,6 +48,7 @@ Employees
                                                 <td>{{$employee->name}}</td>
                                                 <td>{{$employee->jobTitle->name}}</td>
                                                 <td>{{$employee->department->name}}</td>
+                                                <td>{{$employee->team->name}}</td>
                                                 <td>{{$employee->budget->name}}</td>
                                                 <td>
                                                     <a href="{{route('employees.edit',$employee->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>

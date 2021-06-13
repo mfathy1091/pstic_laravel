@@ -23,13 +23,14 @@ class CreatePsCasesTable extends Migration
             $table->unsignedBigInteger('case_type_id');
             $table->unsignedBigInteger('case_status_id');
             $table->boolean('is_emergency');
-            $table->unsignedBigInteger('ps_worker_id');
+            $table->unsignedBigInteger('employee_id');
             $table->timestamps();
 
             $table->foreign('referral_source_id')->references('id')->on('referral_sources')->onDelete('cascade');
             $table->foreign('case_type_id')->references('id')->on('case_types')->onDelete('cascade');
             $table->foreign('case_status_id')->references('id')->on('case_statuses')->onDelete('cascade');
-            $table->foreign('ps_worker_id')->references('id')->on('ps_workers')->onDelete('cascade');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+
         });
     }
 
