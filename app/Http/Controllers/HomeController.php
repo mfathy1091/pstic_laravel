@@ -28,64 +28,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        //$beneficiaries = Beneficiary::direct()->first();
-        //dd($beneficiaries);
-
-
-        $psCase = PsCase::find(1);
-        $beneficiaries = $psCase->beneficiaries;
-        
-        
-        $pscases = PsCase::get()
-            ->map(function($psCase){
-            return [
-                'id' => $psCase->id,
-                'referral_date' => $psCase->referral_date,
-                'file_number' => $psCase->file_number,
-                'referral_source' => $psCase->referralSource->name,
-                'referring_person_name' => $psCase->referring_person_name,
-                'referring_person_name' => $psCase->referring_person_email,
-                'referral_source' => $psCase->referral_source_id,
-                'case_type_id' => $psCase->caseType->name,
-                'case_status' => $psCase->caseStatus->name,
-                'is_emergency' => $psCase->referral_source_id,
-                'direct_beneficiary_name' => $psCase->directBeneficiary->name,
-                'direct_beneficiary_age' => $psCase->directBeneficiary->age,
-                'direct_beneficiary_nationality' => $psCase->directBeneficiary->nationality->name,
-            ];
-	    });
+        $psWorkersCount = Employee::where('job_title_id', '1')->get()->count();
+        $psCasesCount = PsCase::all()->count();
 
 
-
-        dd($pscases);
-
-
-        $role = Role::findById(1);
-
-        $psWorkers = Employee::where('job_title_id', '1')->get()->count();
-        //$permission = Permission::create(['name'=>'role-list']);
-        //$permission = Permission::findById(1);
-
-        //auth()->user()->givePermissionTo('role-list');
-        //auth()->user()->givePermissionTo('role-delete');
-
-        //auth()->user()->revokePermissionTo('role-list');
-        //auth()->user()->revokePermissionTo('role-list');
-
-
-        //auth()->user()->assignRole($role);
-
-        //$permission = Permission::findById(1);
-        //$role->givePermissionTo('role-list');
-        $role = Role::findById(1);
-        //return $role->hasPermissionTo('role-list');
-        //return $roles = auth()->user()->getRoleNames();
-        //return User::doesntHave('roles')->get();
-
-        //return auth()->user();
-
-
-        return view('dashboard', compact('psWorkers'));
+        return view('dashboard', compact('psWorkersCount', 'psCasesCount'));
     }
 }

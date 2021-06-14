@@ -61,13 +61,33 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <h4 class="card-text text-dark">Ps Workers</h4>
-                                    <h4>{{ $psWorkers }}</h4>
+                                    <h4>{{ $psWorkersCount }}</h4>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="row" >
+                <div class="col-xl-2 col-lg-6 col-md-6 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <span class="text-danger">
+                                        <i class="fa fa-bar-chart-o highlight-icon" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                                <div class="float-right text-right">
+                                    <h4 class="card-text text-dark">Ps Cases</h4>
+                                    <h4>{{ $psCasesCount }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                 
 
