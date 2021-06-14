@@ -19,90 +19,61 @@
                     
                     <!-- Users -->
                     @can('user-list')
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#users">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Users</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="users" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('users.index') }}">Users</a> </li>
-                            
-                            @can('role-list')
-                            <li> <a href="{{ route('roles.index') }}">roles</a> </li>
-                            @endcan
-                            
-                        </ul>
-                    </li>
+                        <li>
+                            <a href="javascript:void(0);" data-toggle="collapse" data-target="#users">
+                                <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Users</span></div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+                            <ul id="users" class="collapse" data-parent="#sidebarnav">
+                                <li> <a href="{{ route('users.index') }}">Users</a> </li>
+                                
+                                @can('role-list')
+                                    <li> <a href="{{ route('roles.index') }}">roles</a> </li>
+                                @endcan
+                                
+                            </ul>
+                        </li>
                     @endcan
 
-                    <!-- Manage Staff-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#manage-staff">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Manage Staff</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-
-                        <ul id="manage-staff" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('employees.index') }}">Employees</a> </li>
-                        </ul>
-
-                        <ul id="manage-staff" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('psworkers.index') }}">PS Workers</a> </li>
-                        </ul>
-                    </li>
-
-
                     <!-- Settings-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#settings">
-                            <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">System Config</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="settings" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="/teams">Manage Teams</a> </li>
-                            <li> <a href="/psworkers">Manage PS Workers</a> </li>
-                            <li> <a href="{{ url('/referralsources') }}">Manage Referral Sources</a> </li>
-                            <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
-                            <li> <a href="{{ url('/casestatuses') }}">Manage Case Statuses</a> </li>
-                            <li> <a href="{{ url('/casetypes') }}">Manage Case Types</a> </li>
-                            <li> <a href="#">Manage Locations</a> </li>
-                            <li> <a href="#">Manage Job Titles</a> </li>
+                    @can('settings-menu')
+                        <li>
+                            <a href="javascript:void(0);" data-toggle="collapse" data-target="#settings">
+                                <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">System Config</span></div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+                            <ul id="settings" class="collapse" data-parent="#sidebarnav">
+                                <li> <a href="{{ route('employees.index') }}">Employees</a> </li>
+                                <li> <a href="/teams">Manage Teams</a> </li>
+                                <li> <a href="/psworkers">Manage PS Workers</a> </li>
+                                <li> <a href="{{ url('/referralsources') }}">Manage Referral Sources</a> </li>
+                                <li> <a href="{{ url('/nationalities') }}">Manage Nationalities</a> </li>
+                                <li> <a href="{{ url('/casestatuses') }}">Manage Case Statuses</a> </li>
+                                <li> <a href="{{ url('/casetypes') }}">Manage Case Types</a> </li>
+                                <li> <a href="#">Manage Locations</a> </li>
+                                <li> <a href="#">Manage Job Titles</a> </li>
+                            </ul>
+                        </li>
+                    @endcan
 
+                    @can('surveys-menu')
+                        <!-- Surveys-->
+                        <li>
+                            <a href="javascript:void(0);" data-toggle="collapse" data-target="#surveys-menu">
+                                <div class="pull-left"><i class="fas fa-school"></i><span
+                                        class="right-nav-text">Surveys</span></div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+                            <ul id="surveys-menu" class="collapse" data-parent="#sidebarnav">
+                                <li><a href="{{route('surveys.index')}}">Survey List</a></li>
 
-                            
-                        </ul>
-                    </li>
+                            </ul>
+                        </li>
+                    @endcan
 
-                    <!-- Surveys-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#surveys-menu">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">Surveys</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="surveys-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('surveys.index')}}">Survey List</a></li>
-
-                        </ul>
-                    </li>
-
-                    <!-- Inventory-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#inventory-menu">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">Inventory</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="inventory-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('surveys.index')}}">Inventory List</a></li>
-
-                        </ul>
-                    </li>
 
 
                     <!-- PS Cases-->
@@ -118,6 +89,20 @@
                             <li><a href="{{route('pscases.teamcases.index')}}">Team PS Cases</a></li>
                             <li><a href="{{route('pscases.allcases.index')}}">All PS Cases</a></li>
                             <li><a href="#">Statistics</a></li>
+                        </ul>
+                    </li>
+{{-- 
+                        <!-- Inventory-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#inventory-menu">
+                            <div class="pull-left"><i class="fas fa-school"></i><span
+                                    class="right-nav-text">Inventory</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="inventory-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('surveys.index')}}">Inventory List</a></li>
+
                         </ul>
                     </li>
 
@@ -144,7 +129,7 @@
                     <br>
 
 
-{{-- 
+
                     <!-- classes-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#classes-menu">
