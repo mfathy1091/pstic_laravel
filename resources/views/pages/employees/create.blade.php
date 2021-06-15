@@ -33,7 +33,7 @@ Add PS Worker
                         <div class="col-md-12">
                             <br>
                             <form action="{{route('psworkers.store')}}" method="post">
-                             @csrf
+                            @csrf
                             <div class="form-row">
                                 <div class="col">
                                     <label for="title">Email</label>

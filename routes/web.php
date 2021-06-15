@@ -26,6 +26,9 @@ Route::group(
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);
 
+        // Files
+        Route::resource('files', FileController::class);
+
         // Employees
         Route::resource('employees', Employee\EmployeeController::class);
 
@@ -45,6 +48,7 @@ Route::group(
         Route::namespace('PsCaseActivities')->group(function () {
             Route::resource('pscaseactivities', 'PsCaseActivityController');
         });
+
 
         // Home (Dashboard)
         Route::get('/', 'HomeController@index')->name('dashboard');

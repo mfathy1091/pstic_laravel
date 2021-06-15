@@ -30,7 +30,13 @@ class PermissionTableSeeder extends Seeder
             'ps-case-edit',
             'ps-case-delete',
             'ps-case-export-excel',
+
+            'settings-menu',
+            
+            'surveys-menu',
+            'surveys-list'
         ];
+
         
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);

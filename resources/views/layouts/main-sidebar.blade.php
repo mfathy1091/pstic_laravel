@@ -4,6 +4,7 @@
         <div class="side-menu-fixed">
             <div class="scrollbar side-menu-bg" style="overflow: scroll">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
+                    
                     <!-- menu item Dashboard-->
                     <li>
                         <a href="{{ url('/') }}">
@@ -14,7 +15,14 @@
                     </li>
 
 
-                    
+                    <!-- menu item Dashboard-->
+                    <li>
+                        <a href="{{ route('files.index') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Files</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
                         
                     
                     <!-- Users -->
