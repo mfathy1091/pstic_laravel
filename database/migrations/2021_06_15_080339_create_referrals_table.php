@@ -19,20 +19,15 @@ class CreateReferralsTable extends Migration
             $table->string('referral_code')->nullable();
             $table->unsignedInteger('referral_source_id');
             $table->date('referral_date')->nullable();
-            $table->timestamps();
             $table->string('referring_person_name');
             $table->string('referring_person_email');
-
-            $table->boolean('is_emergency');    /* first month only */
+            //$table->boolean('is_emergency');    /* first month only */
             $table->unsignedBigInteger('created_user_id');
-            $table->unsignedBigInteger('assigned_employee_id');
             $table->timestamps();
 
             $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
             $table->foreign('referral_source_id')->references('id')->on('referral_sources')->onDelete('cascade');
-            
             $table->foreign('created_user_id')->references('id')->on('users')->onDelete('cascade');  //do nothing on delete
-            $table->foreign('assigned_employee_id')->references('id')->on('employees')->onDelete('cascade');
 
         });
     }

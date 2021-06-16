@@ -17,5 +17,10 @@ class File extends Model
     public function members()
     {
         return $this->hasMany(FileMember::class);
+    }
+
+    public function referrals()
+    {
+        return $this->hasMany(Referral::class);
     } 
 }

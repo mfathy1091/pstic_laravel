@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,13 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(NationalitySeeder::class);
-        $this->call(GenderSeeder::class);
-        $this->call(FileSeeder::class);
-
         $this->call(PermissionTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(UserSeeder::class);
+
+        $this->call(NationalitySeeder::class);
+        $this->call(GenderSeeder::class);
+        $this->call(FileSeeder::class);
+        $this->call(ReferralSourceSeeder::class);
+        $this->call(ReferralSeeder::class);
+
 
         $this->call(CitySeeder::class);
         $this->call(AreaSeeder::class);
@@ -34,7 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(BeneficiarySeeder::class);
 
         $this->call(IdentityCardsSeeder::class);
-        $this->call(ReferralSourceSeeder::class);
         $this->call(CaseStatusSeeder::class);
         $this->call(CaseTypeSeeder::class);
         $this->call(MonthSeeder::class);
@@ -44,13 +47,5 @@ class DatabaseSeeder extends Seeder
         $this->call(DirectBeneficiarySeeder::class);
         $this->call(SurveySeeder::class);
         $this->call(PsCaseActivitySeeder::class);
-
-
-
-        //$this->call(GroupSeeder::class);
-        //$this->call(GroupUserSeeder::class);
-        //$this->call(PsWorkersSeeder::class);
-
-
     }
 }

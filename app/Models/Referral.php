@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Referral extends Model
 {
     protected $guarderd = [];
+
+    public function referralSource()
+    {
+        return $this->belongsTo(ReferralSource::class, 'referral_source_id');
+    }
 }
