@@ -29,6 +29,9 @@ Route::group(
         // Files
         Route::resource('files', FileController::class);
 
+        // Referrals
+        Route::resource('referrals', ReferralController::class);
+
         // Employees
         Route::resource('employees', Employee\EmployeeController::class);
 
@@ -42,6 +45,11 @@ Route::group(
             Route::resource('/mycases', Employee\PsCaseController::class);
             Route::resource('/teamcases', Team\PsCaseController::class);
             Route::resource('/allcases', PsCase\PsCaseController::class);
+        });
+
+        //PSS Cases
+        Route::prefix('psscases')->name('psscases.')->group( function () {
+            Route::resource('/all', PssCase\PssCaseController::class);
         });
 
         // PS Cases Activities

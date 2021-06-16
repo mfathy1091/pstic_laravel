@@ -5,7 +5,7 @@
             <div class="scrollbar side-menu-bg" style="overflow: scroll">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     
-                    <!-- menu item Dashboard-->
+                    <!-- Dashboard-->
                     <li>
                         <a href="{{ url('/') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
@@ -15,7 +15,7 @@
                     </li>
 
 
-                    <!-- menu item Dashboard-->
+                    <!-- Files -->
                     <li>
                         <a href="{{ route('files.index') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Files</span>
@@ -24,6 +24,14 @@
                         </a>
                     </li>
                         
+                    <!-- Referrals -->
+                    <li>
+                        <a href="{{ route('referrals.index') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Referrals</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
                     
                     <!-- Users -->
                     @can('user-list')
@@ -96,6 +104,20 @@
                             <li><a href="{{route('pscases.mycases.index')}}">My PS Cases</a></li>
                             <li><a href="{{route('pscases.teamcases.index')}}">Team PS Cases</a></li>
                             <li><a href="{{route('pscases.allcases.index')}}">All PS Cases</a></li>
+                            <li><a href="#">Statistics</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- PSS Cases-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#pss-cases-menu">
+                            <div class="pull-left"><i class="fas fa-school"></i><span
+                                    class="right-nav-text">PS Cases</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="pss-cases-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('psscases.all.index')}}">All PSS Cases</a></li>
                             <li><a href="#">Statistics</a></li>
                         </ul>
                     </li>

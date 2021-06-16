@@ -23,8 +23,7 @@ class CreatePssCasesTable extends Migration
 
             $table->foreign('referral_id')->references('id')->on('referrals')->onDelete('cascade');
             $table->foreign('current_case_status_id')->references('id')->on('case_statuses')->onDelete('cascade');
-            $table->foreign('created_user_id')->references('id')->on('users')->onDelete('cascade');  //do nothing on delete
-            $table->foreign('assigned_employee_id')->references('id')->on('employees')->onDelete('cascade');
+            $table->foreign('assigned_psw_id')->references('id')->on('employees')->onDelete('cascade');
 
         });
     }

@@ -17,11 +17,11 @@ class FileSeeder extends Seeder
     {
         $files = [
             [
-                'number' => '91412C00001',
+                'number' => '914-12C00001',
                 'created_user_id' => '1',
             ],
             [
-                'number' => '91412C00002',
+                'number' => '914-12C00002',
                 'created_user_id' => '1',
             ],
 

@@ -115,7 +115,7 @@ File Number
                                             <td>{{ $referral->referral_date }}</td>
 
                                             <td>
-                                                <a href="{{route('pscases.allcases.show',$referral->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
+                                                <a href="{{route('referrals.show',$referral->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
                         
                                                 <a href="{{route('pscases.allcases.edit',$referral->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_ps_case{{ $referral->id }}" title="Delete"><i class="fa fa-trash"></i></button>
