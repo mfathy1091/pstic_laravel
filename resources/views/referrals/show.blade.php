@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('css')
-
 @section('title')
 Referral Detail
 @stop
@@ -15,17 +14,12 @@ Referral Details:
 @section('content')
 <!-- row -->
     
-    <div class="col-md-12 mb-30">
-        <div class="card card-statistics h-100">
-            <div class="card-body">
-                
 
+            <div class="card-body">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="text-dark">
-                            {{ $referral->file->number }} <span class="text-muted ml-2 mr-2">|</span> 
-                            {{ $referral->pssCase->directBeneficiary->name }} 
-                            <span class="badge badge-pill badge-primary ml-3">{{ $referral->pssCase->currentCaseStatus->name }}</span>
+                            {{ $referral->file->number }} <span class="text-muted ml-2 mr-2"></span> 
                         </h4>
                         <h5 class="text-primary">
                             {{ $referral->referralSource->name }} <span class="text-muted ml-2 mr-2">|</span> {{ $referral->referral_date }}
@@ -58,84 +52,137 @@ Referral Details:
                                 </div>
                             </div>
                             
-
-
                         </div>
-
-
-
-                    </div>
-                </div>
-
-                <!-- beneficiaries -->
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <h5>Beneficiaries</h5>
-                        <div class="table-responsive">
-                            <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
-                                data-page-length="50"
-                                style="text-align: center">
-                                <thead>
-                                    <tr>
-                                        <th class="align-middle">#</th>
-                        
-                                        <th class="align-middle">Name</th>
-                                        <th class="align-middle">Age</th>
-                                        <th class="align-middle">Gender</th>
-                                        <th class="align-middle">Nationality</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td> 
-                                        <td>{{ $referral->pssCase->directBeneficiary->name }}<span class=" text-info font-italic ml-4">Direct</span></td>
-                                        <td>{{ $referral->pssCase->directBeneficiary->age }}</td>
-                                        <td>{{ $referral->pssCase->directBeneficiary->gender->name }}</td>
-                                        <td>{{ $referral->pssCase->directBeneficiary->nationality->name }}</td>
-
-                                    </tr>
-                                    <?php $i = 1; ?>
-                                    <?php $indirectBeneficiaries = $referral->pssCase->beneficiariesIndirect; ?>
-                                    @foreach ($indirectBeneficiaries as $indirectBeneficiary)
+                            <h5>Beneficiaries</h5>
+                            <div class="table-responsive">
+                                <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
+                                    data-page-length="50"
+                                    style="text-align: center">
+                                    <thead>
                                         <tr>
-                                            <?php $i++; ?>
-                                            <td>{{ $i }}</td> 
-                                            <td>{{ $indirectBeneficiary->name }}<span class="text-muted font-italic ml-4">Indirect</span></td>
-                                            <td>{{ $indirectBeneficiary->age }}</td>
-                                            <td>{{ $indirectBeneficiary->gender->name }}</td>
-                                            <td>{{ $indirectBeneficiary->nationality->name }}</td>
-                        
+                                            <th class="align-middle">#</th>
+                            
+                                            <th class="align-middle">Name</th>
+                                            <th class="align-middle">Age</th>
+                                            <th class="align-middle">Gender</th>
+                                            <th class="align-middle">Nationality</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td> 
+                                            <td>{{ $referral->pssCase->directBeneficiary->name }}</td>
+                                            <td>{{ $referral->pssCase->directBeneficiary->age }}</td>
+                                            <td>{{ $referral->pssCase->directBeneficiary->gender->name }}</td>
+                                            <td>{{ $referral->pssCase->directBeneficiary->nationality->name }}</td>
 
                                         </tr>
-                        
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                        <?php $i = 1; ?>
+                                        <?php $indirectBeneficiaries = $referral->pssCase->beneficiariesIndirect; ?>
+                                        @foreach ($indirectBeneficiaries as $indirectBeneficiary)
+                                            <tr>
+                                                <?php $i++; ?>
+                                                <td>{{ $i }}</td> 
+                                                <td>{{ $indirectBeneficiary->name }}</td>
+                                                <td>{{ $indirectBeneficiary->age }}</td>
+                                                <td>{{ $indirectBeneficiary->gender->name }}</td>
+                                                <td>{{ $indirectBeneficiary->nationality->name }}</td>
+                            
+
+                                            </tr>
+                            
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+
                     </div>
                 </div>
 
-                <!-- visits -->
-                <div class="card mt-3">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-auto">
-                                <h5>Visits</h5>
-                            </div>
-                            <div class="col-md-auto">
-                                <a href="{{route('visits.create')}}" class="btn btn-success btn-sm" role="button"
-                                aria-pressed="true">Add Visit</a>
-                            </div>
-
-                        </div>
-                        
-                </div>
+                
 
 
                 
             </div>
-        </div>
-    </div>
+            <br>
+
+            <div id="accordion">
+
+                <div class="card ml-3 mr-3">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h5>PSS
+                                    <span class="text-muted ml-2 mr-2">|</span>
+                                    {{ $referral->pssCase->assignedPsw->name }}
+                                    <span class="text-muted ml-2 mr-2">|</span>
+                                    <span class="badge badge-pill badge-primary">{{ $referral->pssCase->currentCaseStatus->name }}</span>
+                                </h5> 
+                            </button>
+                        </h5>
+                    </div>
+            
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            
+                            <!-- beneficiaries -->
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    
+                                </div>
+                            </div>
+
+                            <!-- visits -->
+                            <div class="card mt-3">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-auto">
+                                            <h5>Visits</h5>
+                                        </div>
+                                        <div class="col-md-auto">
+                                            <a href="{{route('visits.create')}}" class="btn btn-success btn-sm" role="button"
+                                            aria-pressed="true">Add Visit</a>
+                                        </div>
+
+                                    </div>
+                                    
+                            </div>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header" id="heading2">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                                <h5>Housing
+                                    <span class="text-muted ml-2 mr-2">|</span>
+                                    Mohamed aher
+                                    <span class="text-muted ml-2 mr-2">|</span>
+                                    <span class="badge badge-pill badge-primary">Rejected</span>
+                                </h5> 
+                            </button>
+                        </h5>
+                    </div>
+            
+                    <div id="collapse2" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            Anim 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+                
+                
+    
+
 </div>
 <!-- row closed -->
 @endsection
