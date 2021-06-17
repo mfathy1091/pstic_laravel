@@ -112,7 +112,7 @@ Referral Details:
                 <div class="card ml-3 mr-3">
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 <h5>PSS
                                     <span class="text-muted ml-2 mr-2">|</span>
                                     {{ $referral->pssCase->assignedPsw->name }}
@@ -160,7 +160,7 @@ Referral Details:
                 <div class="card">
                     <div class="card-header" id="heading2">
                         <h5 class="mb-0">
-                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
                                 <h5>Housing
                                     <span class="text-muted ml-2 mr-2">|</span>
                                     Mohamed aher
