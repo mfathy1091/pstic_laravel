@@ -89,7 +89,25 @@
                 </div>
             </div>
 
-                
+            <table class="table table-bordered">
+                <tr>
+                    <th>Month</th>
+                    <th>Referrals</th>
+                </tr>
+                @foreach ($months as $month)
+                <tr>
+                    <td>{{ $month->name }}</td>
+                    <td>
+                        <ul>
+                            @foreach ($month->referrals as $referral)
+                                <li>{{ $referral->file->number }}, {{ $referral->pivot->case_status }}</li>
+                            @endforeach    
+                        </ul>    
+                    </td>
+
+                </tr>
+                @endforeach
+            </table>
 
 
 

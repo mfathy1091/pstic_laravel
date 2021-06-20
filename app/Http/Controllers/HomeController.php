@@ -6,6 +6,7 @@ use Spatie\Permission\Models\Permission;
 use App\Models\PsCase;
 use App\Models\Employee;
 use App\Models\Beneficiary;
+use App\Models\Month;
 
 use Illuminate\Http\Request;
 
@@ -31,7 +32,10 @@ class HomeController extends Controller
         $psWorkersCount = Employee::where('job_title_id', '1')->get()->count();
         $psCasesCount = PsCase::all()->count();
 
+        $months = Month::with('referrals')
+            ->where('name', 'June')
+            ->get();
 
-        return view('dashboard', compact('psWorkersCount', 'psCasesCount'));
+        return view('dashboard', compact('psWorkersCount', 'psCasesCount', 'months'));
     }
 }
