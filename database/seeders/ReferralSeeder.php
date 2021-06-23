@@ -74,18 +74,19 @@ class ReferralSeeder extends Seeder
                 'section_id' => '1',
                 'direct_beneficiary_id' => '1',
                 'assigned_worker_id' => '3',
+                'current_status_id' => '2',
             ],
             [   'referral_id' => '1',
-                'section_id' => '1',
+                'section_id' => '2',
                 'direct_beneficiary_id' => '2',
-                'assigned_worker_id' => '3',
+                'assigned_worker_id' => '4',
+                'current_status_id' => '6',
             ],
         ];
 
         foreach ($referral_sections as $n) {
             ReferralSection::create($n);
         }
-
 
 
 

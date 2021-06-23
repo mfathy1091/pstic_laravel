@@ -19,6 +19,7 @@ class CreateReferralSectionsTable extends Migration
             $table->unsignedInteger('section_id');
             $table->unsignedInteger('assigned_worker_id');
             $table->unsignedInteger('direct_beneficiary_id');
+            $table->unsignedInteger('current_status_id')->nullable();
             $table->timestamps();
 
             // foreign keys
@@ -26,6 +27,8 @@ class CreateReferralSectionsTable extends Migration
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->foreign('assigned_worker_id')->references('id')->on('employees')->onDelete('cascade');
             $table->foreign('direct_beneficiary_id')->references('id')->on('beneficiaries')->onDelete('cascade');
+            $table->foreign('current_status_id')->references('id')->on('case_statuses')->onDelete('cascade');
+
         });
     }
 

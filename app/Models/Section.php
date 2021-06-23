@@ -12,4 +12,13 @@ class Section extends Model
 
     public const PSYCHOSOCIAL = 1;
     public const HOUSING = 2;
+
+
+
+    public function referrals()
+    {
+        return $this->belongstoMany(Referral::class, 'referral_sections', 'referral_id', 'section_id')
+        ->withPivot(['assigned_worker_id', 'direct_beneficiary_id', 'current_status_id'])
+        ->using(ReferralSection::class);
+    }
 }

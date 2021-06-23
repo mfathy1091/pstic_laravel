@@ -48,6 +48,13 @@ class UserSeeder extends Seeder
                 //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
+            [
+                'name' => 'Mohamed Maher',
+                'email' => 'mahershweiki@pstic-egypt.org',
+                'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
+            ],
 
         ];
         DB::table('users')->insert($data);

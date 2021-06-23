@@ -32,6 +32,9 @@ Route::group(
         // Referrals
         Route::resource('referrals', ReferralController::class);
 
+        // PSS
+        Route::resource('pss', PssController::class);
+
         // Employees
         Route::resource('employees', Employee\EmployeeController::class);
 

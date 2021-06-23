@@ -16,7 +16,7 @@ class CaseStatusSeeder extends Seeder
     public function run()
     {
         DB::table('case_statuses')->delete();
-        $caseStatuses = ['New', 'Ongoing', 'Closed', 'Inactive'];
+        $caseStatuses = ['New', 'Ongoing', 'Closed', 'Inactive', 'Accepted', 'Rejected'];
 
         foreach ($caseStatuses as $n) {
             CaseStatus::create(['name' => $n]);

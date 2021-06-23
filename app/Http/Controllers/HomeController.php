@@ -7,6 +7,8 @@ use App\Models\PsCase;
 use App\Models\Employee;
 use App\Models\Beneficiary;
 use App\Models\Month;
+use App\Models\Referral;
+use App\Models\Section;
 
 use Illuminate\Http\Request;
 
@@ -35,6 +37,14 @@ class HomeController extends Controller
         $months = Month::with('referrals')
             ->where('name', 'June')
             ->get();
+        
+        $referral = Referral::find(1);
+        foreach($referral->sections as $section)
+        {
+            //dd($section->pivot->assigned_worker_id);
+            //dd($section->pivot->assignedWorker);
+        }
+
 
         return view('dashboard', compact('psWorkersCount', 'psCasesCount', 'months'));
     }
