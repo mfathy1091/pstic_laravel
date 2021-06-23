@@ -21,10 +21,10 @@ File Number
                 
 
                 
-                <!-- File Members -->
+                <!-- File Individuals -->
                 <div class="card mt-3">
                     <div class="card-body">
-                        <h5>File Members</h5>
+                        <h5>File Individuals</h5>
                         <div class="table-responsive">
                             <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
                                 data-page-length="50"
@@ -41,18 +41,18 @@ File Number
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
-                                    <?php $members = $file->members; ?>
-                                    @foreach ($members as $member)
+                                    <?php $beneficiaries = $file->beneficiaries; ?>
+                                    @foreach ($beneficiaries as $beneficiary)
                                         <tr>
                                             <?php $i++; ?>
                                             <td>{{ $i }}</td> 
-                                            <td>{{ $member->name }}{{-- <span class="text-muted font-italic ml-4">Owner</span></td> --}}
-                                            <td>{{ $member->age }}</td>
-                                            <td>{{ $member->gender->name }}</td>
-                                            <td>{{ $member->nationality->name }}</td>
+                                            <td>{{ $beneficiary->name }}{{-- <span class="text-muted font-italic ml-4">Owner</span></td> --}}
+                                            <td>{{ $beneficiary->age }}</td>
+                                            <td>{{ $beneficiary->gender->name }}</td>
+                                            <td>{{ $beneficiary->nationality->name }}</td>
                                         </tr>
                         
-                                        <div class="modal fade" id="delete_member{{$member->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="delete_member{{$beneficiary->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <form action="" method="post">
                                                     {{method_field('delete')}}
@@ -66,7 +66,7 @@ File Number
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>'Are You Sure?'</p>
-                                                        <input type="hidden" name="id"  value="{{$member->id}}">
+                                                        <input type="hidden" name="id"  value="{{$beneficiary->id}}">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <div class="modal-footer">
@@ -122,7 +122,7 @@ File Number
                                             </td>
                                         </tr>
                         
-                                        <div class="modal fade" id="delete_member{{$member->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="delete_member{{$beneficiary->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <form action="" method="post">
                                                     {{method_field('delete')}}
@@ -136,7 +136,7 @@ File Number
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>'Are You Sure?'</p>
-                                                        <input type="hidden" name="id"  value="{{$member->id}}">
+                                                        <input type="hidden" name="id"  value="{{$beneficiary->id}}">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <div class="modal-footer">

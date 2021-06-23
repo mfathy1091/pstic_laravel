@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BudgetSeeder::class);
         $this->call(EmployeeSeeder::class);
 
+        $this->call(SectionSeeder::class);
         $this->call(FileSeeder::class);
         $this->call(BeneficiaryTypeSeeder::class);
         $this->call(ReferralSourceSeeder::class);

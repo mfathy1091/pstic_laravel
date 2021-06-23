@@ -15,19 +15,21 @@ class CreateBeneficiariesTable extends Migration
     {
         Schema::create('beneficiaries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedbigInteger('pss_case_id');
+            $table->unsignedbigInteger('file_id');
+            $table->string('individual_number')->nullable();
+            $table->string('passport_number')->nullable();
             $table->string('name');
             $table->integer('age');
             $table->unsignedbigInteger('gender_id');
             $table->unsignedbigInteger('nationality_id');
-            $table->unsignedbigInteger('beneficiary_type_id');
+            $table->unsignedbigInteger('relation_to_pa')->nullable();
             $table->timestamps();
 
             // foreign keys
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
             $table->foreign('gender_id')->references('id')->on('genders')->onDelete('cascade');
             $table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('cascade');
-            $table->foreign('pss_case_id')->references('id')->on('pss_cases')->onDelete('cascade');
-            $table->foreign('beneficiary_type_id')->references('id')->on('beneficiary_types')->onDelete('cascade');
+            $table->foreign('relation_to_pa')->references('id')->on('relationships')->onDelete('cascade');
         });
     }
 

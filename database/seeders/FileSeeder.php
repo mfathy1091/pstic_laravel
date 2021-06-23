@@ -4,7 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\File;
-use App\Models\FileMember;
+use App\Models\Relationship;
+use App\Models\Beneficiary;
 
 class FileSeeder extends Seeder
 {
@@ -15,6 +16,20 @@ class FileSeeder extends Seeder
      */
     public function run()
     {
+        
+        $relationships = [
+            'Principal Applicant',
+            'Wife',
+            'Husband',
+            'Son',
+            'Daughter'
+        ];
+        foreach ($relationships as $n) {
+            Relationship::create(['name' => $n]);
+        }
+        
+        
+        
         $files = [
             [
                 'number' => '914-12C00001',
@@ -32,40 +47,27 @@ class FileSeeder extends Seeder
         }
 
 
-        $members = [
+
+        $beneficiaries = [
             [
                 'file_id' => '1',
-                'name' => 'Ibrahim Mohamed',
-                'age' => '50',
-                'gender_id' => '1',
-                'nationality_id' => '2',
-            ],
-            [
-                'file_id' => '1',
-                'name' => 'Maszen Ibrahim',
-                'age' => '33',
-                'gender_id' => '1',
-                'nationality_id' => '2',
-            ],
-            [
-                'file_id' => '1',
-                'name' => 'Fatma Ibrahim',
-                'age' => '16',
+                'name' => 'Amira',
+                'age' => '34',
                 'gender_id' => '2',
-                'nationality_id' => '2',
+                'nationality_id' => '3',
             ],
             [
                 'file_id' => '1',
-                'name' => 'Amany Ali AL Karar',
-                'age' => '41',
+                'name' => 'Mariam',
+                'age' => '3',
                 'gender_id' => '2',
-                'nationality_id' => '2',
-            ],  
+                'nationality_id' => '3',
+            ],
 
         ];
 
-        foreach ($members as $n) {
-            FileMember::create($n);
+        foreach ($beneficiaries as $n) {
+            Beneficiary::create($n);
         } 
     }
 }
