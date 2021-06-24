@@ -26,6 +26,12 @@ File Number
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="referrals-tab" data-toggle="tab" href="#referrals" role="tab" aria-controls="referrals" aria-selected="false">Referrals</a>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pss-cases-tab" data-toggle="tab" href="#pss-cases" role="tab" aria-controls="pss-cases" aria-selected="false">PSS Cases</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="housing-cases-tab" data-toggle="tab" href="#housing-cases" role="tab" aria-controls="housing-cases" aria-selected="false">Housing Cases</a>
+                    </li>
                 </ul>
                 
                 
@@ -188,6 +194,24 @@ File Number
 
 
                     </div>
+
+                    <!-- PSS Cases tab pane-->
+                    <div class="tab-pane fade" id="pss-cases" role="tabpanel" aria-labelledby="pss-cases-tab">
+                        
+                       
+
+
+                    </div>
+
+                    <!-- Housing Cases tab pane-->
+                    <div class="tab-pane fade" id="housing-cases" role="tabpanel" aria-labelledby="housing-cases-tab">
+    
+    
+
+
+                    </div>
+
+
                 </div>
 
                 
