@@ -22,5 +22,10 @@ class File extends Model
     public function referrals()
     {
         return $this->hasMany(Referral::class);
+    }
+
+    public function pssCases()
+    {
+        return $this->hasMany(PssCase::class);
     } 
 }

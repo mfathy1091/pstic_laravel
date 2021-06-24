@@ -1,23 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\PsCase;
+namespace App\Http\Controllers\Psw;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Repositories\PsCaseRepositoryInterface;
+use Illuminate\Support\Facades\Auth;use App\Models\Gender;
+
+use App\Models\Nationality;
+use Illuminate\Http\Request;
 use App\Models\PsCase;
 use App\Models\ReferralSource;
 use App\Models\PsWorker;
-use App\Models\CaseStatus;
+use App\Models\DirectBeneficiary;
+use App\Models\PsCaseActivity;
+use App\Models\PssStatus;
 use App\Models\CaseType;
-use App\Models\Gender;
-use App\Models\Nationality;
 use App\Models\Team;
-use App\Models\Budget;
+use App\Models\Employee;
+use App\Models\JobTitle;
 
-class PsCaseController extends Controller
+class PssCaseController extends Controller
 {
-
 
 
 
@@ -28,18 +31,39 @@ class PsCaseController extends Controller
      */
     public function index(Request $request)
     {
-        $psCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'psCaseActivities', 'visits')
+        // permissions
+        $employee = Auth::user()->employee;
+
+        //$psWorkersIds = JobTitle::employees;
+        //dd($employee->name);
+
+        $psWorkersIds = Employee::where('job_title_id', '1')->pluck('id');
+        if(!$psWorkersIds->contains($employee->id)){
+
+            dd('You are not a PS Worker!');
+            return redirect('/');
+        }
+
+
+        
+        $worker = Auth::user()->employee;
+
+        $pssCases = PsCase::with('referralSource', 'caseType', 'psWorker', 'directBeneficiary', 'psCaseActivities', 'visits')
+            ->where('assigned_employee_id', $worker->id)
             ->get();
-            
+
+
+
+        //dd($worker->name);
 
         $tabs = array();
-        $caseStatuses = CaseStatus::all();
+        $pssStatuses = PssStatus::all();
 
         $i = 0;
-        foreach($caseStatuses as $caseStatus){
-            $statusName = $caseStatus->name;
-            $statusId = $caseStatus->id;
-            $cases = $psCases->where('case_status_id', '=', $statusId);
+        foreach($pssStatuses as $pssStatus){
+            $statusName = $pssStatus->name;
+            $statusId = $pssStatus->id;
+            $cases = $pssCases->where('current_pss_status_id', '=', $statusId);
             $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
             $i++;
         }
@@ -48,13 +72,14 @@ class PsCaseController extends Controller
         $psWorkers = PsWorker::all();
         $genders = Gender::all();
         $nationalities = Nationality::all();
+
+
+
+        $teams = Team::all();
+
         
-        $teams = Team::where('department_id', '1')->get();
-        $budgets = Budget::all();
 
-
-        //dd($psCases);
-		return view('ps_cases.all_cases.index', compact('tabs','psWorkers', 'genders', 'nationalities', 'teams', 'budgets'));
+		return view('psw.pss_cases.index', compact('tabs','psWorkers', 'genders', 'nationalities', 'teams'));
     }
 
     /**
@@ -70,7 +95,7 @@ class PsCaseController extends Controller
         $nationalities = Nationality::all();
         $caseTypes = CaseType::all();
 
-		return view('ps_cases.all_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes'));
+		return view('pages.ps_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes'));
     }
 
     /**
@@ -81,10 +106,10 @@ class PsCaseController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $this->repository->storePsCase($request);
+        $this->psCaseRepo->storePsCase($request);
 
         toastr()->success('Added Successfuly');
-        return redirect()->route('pscases.allcases.index');
+        return redirect()->route('pscases.index');
 
     
 /*         try {
@@ -110,9 +135,6 @@ class PsCaseController extends Controller
      */
     public function show($id)
     {
-        $psCase = PsCase::find($id);
-
-        return view('ps_cases.all_cases.show', compact('psCase'));
     }
 
     /**
@@ -138,7 +160,7 @@ class PsCaseController extends Controller
 
             $psCase->save();
             toastr()->success('Added Successfuly');
-            return redirect()->route('pscases.allcases.index');
+            return redirect()->route('pscases.index');
         }
         
         catch (\Exception $e){
@@ -157,6 +179,6 @@ class PsCaseController extends Controller
     public function destroy(Request $request, $id)
     {
         PsCase::findOrFail($request->id)->delete();
-        return redirect()->route('pscases.allcases.index');
+        return redirect()->route('pscases.index');
     }
 }

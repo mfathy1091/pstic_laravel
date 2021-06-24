@@ -10,7 +10,6 @@
                 <th class="align-middle">Emergency</th>
                 <th class="align-middle">Referral Date</th>
                 <th class="align-middle">Referral Source</th>
-                <th class="align-middle">Case Type</th>
 
                 <th class="align-middle">Direct Beneficiary Name</th>
                 <th class="align-middle">Age</th>
@@ -18,7 +17,6 @@
                 <th class="align-middle">Nationality</th>
 
                 <th class="align-middle">Assigned PSW</th>
-                <th class="align-middle">Created By</th>
 
 
 {{--                 <th class="align-middle">Referring Person Name</th>
@@ -29,27 +27,25 @@
         </thead>
         <tbody>
             <?php $i = 0; ?>
-            @foreach ($tab['cases'] as $psCase)
+            @foreach ($tab['cases'] as $pssCase)
                 <tr>
                     <?php $i++; ?>
                     <td>{{ $i }}</td>
-                    <td>{{ $psCase->file_number }}</td>
-                    <td>{{ $psCase->caseStatus->name }}</td>
-                    <td>{{ $psCase->is_emergency }}</td>
-                    <td>{{ $psCase->referral_date }}</td>
-                    <td>{{ $psCase->referralSource->name }}</td>
-                    <td>{{ $psCase->caseType->name }}</td>                                              
+                    <td>{{ $pssCase->file->number }}</td>
+                    <td>{{ $pssCase->currentPssStatus->name }}</td>
+                    <td>{{ $pssCase->is_emergency }}</td>
+                    <td>{{ $pssCase->referral->referral_date }}</td>
+                    <td>{{ $pssCase->referral->referralSource->name }}</td>
                     
-                    <td>{{ $psCase->directBeneficiary->name }}</td>
-                    <td>{{ $psCase->directBeneficiary->age }}</td>
-                    <td>{{ $psCase->directBeneficiary->gender->name }}</td>
-                    <td>{{ $psCase->directBeneficiary->nationality->name }}</td>
+                    <td>{{ $pssCase->directBeneficiary->name }}</td>
+                    <td>{{ $pssCase->directBeneficiary->age }}</td>
+                    <td>{{ $pssCase->directBeneficiary->gender->name }}</td>
+                    <td>{{ $pssCase->directBeneficiary->nationality->name }}</td>
 
-                    <td>{{ $psCase->employee->name }}</td>
-                    <td>{{ $psCase->createdUser->name }}</td>
+                    <td>{{ $pssCase->assignedPsw->name }}</td>
 
-{{--                     <td>{{ $psCase->referring_person_name }}</td>
-                    <td>{{ $psCase->referring_person_email }}</td>
+{{--                     <td>{{ $pssCase->referring_person_name }}</td>
+                    <td>{{ $pssCase->referring_person_email }}</td>
                     <td>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -58,18 +54,18 @@
                     </td> --}}
 
                     <td>
-                        <a href="{{route('pscases.allcases.show',$psCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
+                        <a href="{{route('psscases.allcases.show',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
 
-                        <a href="{{route('pscases.allcases.edit',$psCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_ps_case{{ $psCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
+                        <a href="{{route('psscases.allcases.edit',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_ps_case{{ $pssCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
 
 
 
-                <div class="modal fade" id="delete_ps_case{{$psCase->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delete_ps_case{{$pssCase->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <form action="{{route('pscases.allcases.destroy','test')}}" method="post">
+                        <form action="{{route('psscases.allcases.destroy','test')}}" method="post">
                             {{method_field('delete')}}
                             {{csrf_field()}}
                         <div class="modal-content">
@@ -81,7 +77,7 @@
                             </div>
                             <div class="modal-body">
                                 <p>'Are You Sure?'</p>
-                                <input type="hidden" name="id"  value="{{$psCase->id}}">
+                                <input type="hidden" name="id"  value="{{$pssCase->id}}">
                             </div>
                             <div class="modal-footer">
                                 <div class="modal-footer">

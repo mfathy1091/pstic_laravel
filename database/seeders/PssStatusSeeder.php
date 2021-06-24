@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\CaseStatus;
+use App\Models\PssStatus;
 
-class CaseStatusSeeder extends Seeder
+class PssStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,11 @@ class CaseStatusSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('case_statuses')->delete();
-        $caseStatuses = ['New', 'Ongoing', 'Closed', 'Inactive', 'Accepted', 'Rejected'];
+        DB::table('pss_statuses')->delete();
+        $caseStatuses = ['New', 'Ongoing', 'Closed', 'Inactive'];
 
         foreach ($caseStatuses as $n) {
-            CaseStatus::create(['name' => $n]);
+            PssStatus::create(['name' => $n]);
         }
     }
 }

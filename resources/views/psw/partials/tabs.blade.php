@@ -19,7 +19,7 @@
             <br>
             
             <!-- table -->
-            @include('ps_cases.partials.table')
+            @include('psscases.partials.table')
             <!-- end table -->
                     
 

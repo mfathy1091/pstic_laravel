@@ -20,8 +20,6 @@ class CreateMonthReferralTable extends Migration
 
             $table->timestamps();
 
-            // foreign keys
-            //$table->foreign('case_status_id')->references('id')->on('case_statuses')->onDelete('cascade');
         });
     }
 

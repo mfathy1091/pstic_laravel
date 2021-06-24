@@ -11,14 +11,20 @@ class PssCase extends Model
     protected $guarded =[];
 
     // parent tables
+
+    public function file()
+    {
+        return $this->belongsTo(File::class, 'file_id');
+    }
+
     public function referral()
     {
         return $this->belongsTo(Referral::class, 'referral_id');
     }
 
-    public function currentCaseStatus()
+    public function currentPssStatus()
     {
-        return $this->belongsTo(CaseStatus::class, 'current_case_status_id');
+        return $this->belongsTo(PssStatus::class, 'current_pss_status_id');
     }
 
     public function assignedPsw()
@@ -26,14 +32,19 @@ class PssCase extends Model
         return $this->belongsTo(Employee::class, 'assigned_psw_id');
     }
 
+    public function directBeneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class, 'direct_beneficiary_id');
+    }
+
 
 
     // child tables
-    public function directBeneficiary()
+/*     public function directBeneficiary()
     {
         return $this->hasOne(Beneficiary::class)->direct();;
     }
-
+ */
     public function beneficiariesIndirect()
     {
         return $this->hasMany(Beneficiary::class)->indirect();
@@ -68,4 +79,9 @@ class PssCase extends Model
         return $status[0]['currentStatus'];
     }
 
+
+    public function user_referrals()
+    {
+        return $this->hasMany(Referral::class)->where('user_id', auth()->id());
+    }
 }

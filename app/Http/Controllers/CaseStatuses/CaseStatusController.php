@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\CaseStatuses;
+namespace App\Http\Controllers\PssStatuses;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\CaseStatus;
+use App\Models\PssStatus;
 
-class CaseStatusController extends Controller
+class PssStatusController extends Controller
 {
 	/**
 	 * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CaseStatusController extends Controller
 	public function index()
 	{
 		
-		$caseStatuses = CaseStatus::all();
-		return view('pages.case_statuses.case_statuses', compact('caseStatuses'));
+		$pssStatuses = PssStatus::all();
+		return view('pages.pss_statuses.pss_statuses', compact('pssStatuses'));
 	}
 
 	/**
@@ -41,12 +41,12 @@ class CaseStatusController extends Controller
 
 		try {
 			//$validated = $request->validated();
-			$caseStatus = new CaseStatus();
+			$pssStatus = new PssStatus();
 
-			$caseStatus->name = $request->name;
-			$caseStatus->save();
+			$pssStatus->name = $request->name;
+			$pssStatus->save();
 			toastr()->success('Added Successfuly');
-			return redirect()->route('casestatuses.index');
+			return redirect()->route('pssstatuses.index');
 		}
 		
 		catch (\Exception $e){
@@ -80,11 +80,11 @@ class CaseStatusController extends Controller
 	{
 		//dd($request);
 
-		$caseStatus = CaseStatus::find($id);
-		$caseStatus->name = $request->name;
-		$caseStatus->save();
+		$pssStatus = PSSStatus::find($id);
+		$pssStatus->name = $request->name;
+		$pssStatus->save();
 
-		return redirect()->route('casestatuses.index');
+		return redirect()->route('pssstatuses.index');
 	}
 
 
@@ -96,7 +96,7 @@ class CaseStatusController extends Controller
 	 */
 	public function destroy(Request $request, $id)
 	{
-		CaseStatus::findOrFail($request->id)->delete();
-		return redirect()->route('casestatuses.index');
+		PssStatus::findOrFail($request->id)->delete();
+		return redirect()->route('pssstatuses.index');
 	}
 }

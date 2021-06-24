@@ -8,7 +8,7 @@ All PS Cases
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-All PS Cases
+All PSS Cases
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -73,7 +73,7 @@ All PS Cases
 
                 
                 {{-- add button --}}
-                <a href="{{route('pscases.allcases.create')}}" class="btn btn-success btn-sm" role="button"
+                <a href="{{route('psscases.allcases.create')}}" class="btn btn-success btn-sm" role="button"
                 aria-pressed="true">Add PS Case</a>
                 <br><br>
 

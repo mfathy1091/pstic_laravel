@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\PsCase;
+use App\Models\PssCase;
 use App\Models\Employee;
 use App\Models\Beneficiary;
 use App\Models\Month;
@@ -44,7 +45,6 @@ class HomeController extends Controller
             //dd($section->pivot->assigned_worker_id);
             //dd($section->pivot->assignedWorker);
         }
-
 
         return view('dashboard', compact('psWorkersCount', 'psCasesCount', 'months'));
     }

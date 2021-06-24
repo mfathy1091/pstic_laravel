@@ -33,9 +33,9 @@ class Referral extends Model
         return $this->hasOne(PssCase::class);
     }
 
-    public function user_referrals()
+    public function userPssCases()
     {
-        return $this->hasMany(Referral::class)->where('user_id', auth()->id());
+        return $this->hasMany(PssCase::class)->where('assigned_psw_id', auth()->id());
     }
 
 

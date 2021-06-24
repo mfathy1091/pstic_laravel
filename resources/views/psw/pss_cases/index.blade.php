@@ -38,12 +38,12 @@ My PS Cases
                 @endif
 
                 {{-- add button --}}
-                <a href="{{route('pscases.allcases.create')}}" class="btn btn-success btn-sm" role="button"
+                <a href="{{route('psw.psscases.create')}}" class="btn btn-success btn-sm" role="button"
                 aria-pressed="true">Add PS Case</a><br><br>
                 <br><br>
 
                 <!-- tabs with table-->
-                @include('ps_cases.partials.tabs')
+                @include('psw.partials.tabs')
                 <!-- end with table -->
                     
                     

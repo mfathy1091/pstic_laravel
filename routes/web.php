@@ -43,12 +43,18 @@ Route::group(
             Route::resource('teams', 'TeamController');
         });
 
-        //PS Cases
-        Route::prefix('pscases')->name('pscases.')->group( function () {
+        //PSS Cases
+        Route::prefix('psscases')->name('psscases.')->group( function () {
             Route::resource('/mycases', Employee\PsCaseController::class);
             Route::resource('/teamcases', Team\PsCaseController::class);
-            Route::resource('/allcases', PsCase\PsCaseController::class);
+            Route::resource('/allcases', PssCase\PssCaseController::class);
         });
+
+        //PSW
+        Route::prefix('psw')->name('psw.')->group( function () {
+            Route::resource('/psscases', Psw\PssCaseController::class);
+        });
+
 
         //PSS Cases
         Route::prefix('psscases')->name('psscases.')->group( function () {

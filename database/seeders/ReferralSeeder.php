@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Referral;
-use App\Models\ReferralSection;
+use App\Models\PssCase;
 use App\Models\ReferralBeneficiary;
 
 class ReferralSeeder extends Seeder
@@ -69,23 +69,24 @@ class ReferralSeeder extends Seeder
 
 
         // (3) Referral Sections
-        $referral_sections = [
-            [   'referral_id' => '1',
-                'section_id' => '1',
+        $pssCases = [
+            [   'file_id' => '1',
+                'referral_id' => '1',
                 'direct_beneficiary_id' => '1',
-                'assigned_worker_id' => '3',
-                'current_status_id' => '2',
+                'assigned_psw_id' => '3',
+                'current_pss_status_id' => '2',
             ],
-            [   'referral_id' => '1',
-                'section_id' => '2',
+            [   'file_id' => '1',
+                'referral_id' => '2',
                 'direct_beneficiary_id' => '2',
-                'assigned_worker_id' => '4',
-                'current_status_id' => '6',
+                'assigned_psw_id' => '3',
+                'current_pss_status_id' => '1',
             ],
         ];
 
-        foreach ($referral_sections as $n) {
-            ReferralSection::create($n);
+
+        foreach ($pssCases as $n) {
+            PssCase::create($n);
         }
 
 
