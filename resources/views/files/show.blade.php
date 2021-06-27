@@ -19,7 +19,7 @@ File Number
         <div class="card card-statistics h-100">
             <div class="card-body">
                 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals" aria-selected="true">Individuals</a>
                     </li>
@@ -44,8 +44,13 @@ File Number
                                 data-page-length="50"
                                 style="text-align: center">
                                 <thead>
-                                    <tr>                                
+                                    <tr>   
+                                        <th class="align-middle">File Number</th>
+                                        <th class="align-middle">Individual ID</th>
+                                        <th class="align-middle">Individual Passport #</th>                     
                                         <th class="align-middle">Name</th>
+                                        <th class="align-middle">Native Name</th>
+                                        <th class="align-middle">Relationship</th>
                                         <th class="align-middle">Age</th>
                                         <th class="align-middle">Gender</th>
                                         <th class="align-middle">Nationality</th>
@@ -55,7 +60,12 @@ File Number
                                     <?php $beneficiaries = $file->beneficiaries; ?>
                                     @foreach ($beneficiaries as $beneficiary)
                                         <tr>
-                                            <td>{{ $beneficiary->name }}{{-- <span class="text-muted font-italic ml-4">Owner</span></td> --}}
+                                            <td>{{ $beneficiary->file->number }}
+                                            <td>{{ $beneficiary->individual_id }}
+                                            <td>{{ $beneficiary->passport_number }}
+                                            <td>{{ $beneficiary->name }}
+                                            <td>{{ $beneficiary->native_name }}
+                                            <td>{{ $beneficiary->relationship->name }}
                                             <td>{{ $beneficiary->age }}</td>
                                             <td>{{ $beneficiary->gender->name }}</td>
                                             <td>{{ $beneficiary->nationality->name }}</td>
@@ -98,7 +108,6 @@ File Number
                     
                     <!-- Referrals tab pane-->
                     <div class="tab-pane fade" id="referrals" role="tabpanel" aria-labelledby="referrals-tab">
-                        
                         <?php $referrals = $file->referrals; ?>
                         @foreach ($referrals as $referral)
                         <div class="card-body">
@@ -183,9 +192,6 @@ File Number
                                         </div>
 
 
-
-                                    
-            
                                 </div>
                             </div>
                         </div>
@@ -197,8 +203,15 @@ File Number
 
                     <!-- PSS Cases tab pane-->
                     <div class="tab-pane fade" id="pss-cases" role="tabpanel" aria-labelledby="pss-cases-tab">
-                        
-                       
+                        {{-- add button --}}
+                        <a href="{{route('psw.psscases.create', [$file->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">Add PSS Case
+                    </a>
+                        <br>
+
+                        <!-- table -->
+                        @include('files.partials.pss_cases')
+                        <!-- end table -->
+                    
 
 
                     </div>

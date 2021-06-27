@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
-use App\Models\PsCase;
 use App\Models\PssCase;
 use App\Models\Employee;
 use App\Models\Beneficiary;
@@ -33,7 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $psWorkersCount = Employee::where('job_title_id', '1')->get()->count();
-        $psCasesCount = PsCase::all()->count();
+        $psCasesCount = PssCase::all()->count();
 
         $months = Month::with('referrals')
             ->where('name', 'June')

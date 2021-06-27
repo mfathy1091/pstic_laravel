@@ -33,4 +33,14 @@ class Beneficiary extends Model
     {
         return $query->whereBetween(['age', [$from, $to]]);
     }
+
+    public function relationship()
+    {
+        return $this->belongsTo(Relationship::class, 'relationship_id');
+    }
+
+    public function file()
+    {
+        return $this->belongsTo(File::class, 'file_id');
+    }
 }

@@ -1,14 +1,14 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
+@toastr_css
 @section('title')
-    My PSS Cases
+PSS Cases
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-My PSS Cases
+PS Cases
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -38,12 +38,12 @@ My PSS Cases
                 @endif
 
                 {{-- add button --}}
-                <a href="{{route('psw.psscases.create')}}" class="btn btn-success btn-sm" role="button"
-                aria-pressed="true">Add PSS Case</a><br><br>
+                <a href="{{route('supervisor.psscases.create')}}" class="btn btn-success btn-sm" role="button"
+                aria-pressed="true">Add PS Case</a><br><br>
                 <br><br>
 
                 <!-- tabs with table-->
-                @include('psw.pss_cases.partials.tabs')
+                @include('supervisor.pss_cases.partials.tabs')
                 <!-- end with table -->
                     
                     

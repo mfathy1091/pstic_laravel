@@ -112,7 +112,7 @@ class PssCaseController extends Controller
     {
         $psCase = PssCase::find($id);
 
-        return view('ps_cases.all_cases.show', compact('psCase'));
+        return view('pss_cases.all_cases.show', compact('psCase'));
     }
 
     /**

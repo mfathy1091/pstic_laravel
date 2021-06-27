@@ -17,12 +17,12 @@ use Illuminate\Support\Arr;
 class UserController extends Controller
 {
 
-    private $userRepository;
+/*     private $userRepository;
 
     public function __construct(UserRepositoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
-    }
+    } */
 
 
     /**

@@ -32,9 +32,6 @@ Route::group(
         // Referrals
         Route::resource('referrals', ReferralController::class);
 
-        // PSS
-        Route::resource('pss', PssController::class);
-
         // Employees
         Route::resource('employees', Employee\EmployeeController::class);
 
@@ -43,22 +40,27 @@ Route::group(
             Route::resource('teams', 'TeamController');
         });
 
-        //PSS Cases
-        Route::prefix('psscases')->name('psscases.')->group( function () {
-            Route::resource('/mycases', Employee\PsCaseController::class);
-            Route::resource('/teamcases', Team\PsCaseController::class);
-            Route::resource('/allcases', PssCase\PssCaseController::class);
+        // Statistics
+        Route::prefix('statistics')->name('statistics.')->group( function () {
+        });
+
+        // Supervisor
+        Route::prefix('supervisor')->name('supervisor.')->group( function () {
+            Route::resource('/psscases', Supervisor\PssCaseController::class);
+            Route::resource('/statistics', Supervisor\StatisticController::class);
         });
 
         //PSW
         Route::prefix('psw')->name('psw.')->group( function () {
-            Route::resource('/psscases', Psw\PssCaseController::class);
+            Route::get('/psscases/create/{id}', 'Psw\PssCaseController@create')->name('psscases.create');
+            Route::resource('/psscases', Psw\PssCaseController::class, ['except' => ['create']]);
+
         });
 
 
         //PSS Cases
         Route::prefix('psscases')->name('psscases.')->group( function () {
-            Route::resource('/all', PssCase\PssCaseController::class);
+            Route::resource('/', PssCase\PssCaseController::class);
         });
 
         // PS Cases Activities

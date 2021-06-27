@@ -15,24 +15,17 @@
                     </li>
 
 
-                    <!-- Files -->
+                    <!--Search Files -->
                     <li>
                         <a href="{{ route('files.index') }}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Files</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </li>
-                        
-                    <!-- Referrals -->
-                    <li>
-                        <a href="{{ route('referrals.index') }}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Referrals</span>
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Search Files</span>
                             </div>
                             <div class="clearfix"></div>
                         </a>
                     </li>
                     
+
+
                     <!-- Users -->
                     @can('user-list')
                         <li>
@@ -74,7 +67,39 @@
                         </li>
                     @endcan
 
-                    @can('surveys-menu')
+
+                    <!-- Supervisor -->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#supervisor-menu">
+                            <div class="pull-left"><i class="fas fa-school"></i><span
+                                    class="right-nav-text">supervisor</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="supervisor-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('supervisor.psscases.index')}}">PSS Cases</a></li>
+                            <li><a href="{{ route('supervisor.statistics.index') }}">Statistics</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- PSW-->
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#psw-menu">
+                            <div class="pull-left"><i class="fas fa-school"></i><span
+                                    class="right-nav-text">PSW</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="psw-menu" class="collapse" data-parent="#sidebarnav">
+                            <li><a href="{{route('psw.psscases.index')}}">PSS Cases</a></li>
+                        </ul>
+                    </li>
+
+
+
+{{-- 
+                    
+                        @can('surveys-menu')
                         <!-- Surveys-->
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#surveys-menu">
@@ -91,52 +116,7 @@
                     @endcan
 
 
-
-                    <!-- PSS Cases-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#pss-cases-menu">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">PSS Cases</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="pss-cases-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('psscases.mycases.index')}}">My PSS Cases</a></li>
-                            <li><a href="{{route('psscases.teamcases.index')}}">Team PSS Cases</a></li>
-                            <li><a href="{{route('psscases.allcases.index')}}">All PSS Cases</a></li>
-                            <li><a href="#">Statistics</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- PSW-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#psw-menu">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">PSW</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="psw-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('psw.psscases.index')}}">My PSS Cases</a></li>
-                        </ul>
-                    </li>
-
-
-                    <!-- PSS Cases-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#pss-cases-menu2">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">PS Cases old</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="pss-cases-menu2" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('psscases.all.index')}}">All PSS Cases</a></li>
-                            <li><a href="#">Statistics</a></li>
-                        </ul>
-                    </li>
-{{-- 
-                        <!-- Inventory-->
+                    <!-- Inventory-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#inventory-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span

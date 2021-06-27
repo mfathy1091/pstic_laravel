@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Psw;
+namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\PsCaseRepositoryInterface;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Gender;
+use Illuminate\Support\Facades\Auth;use App\Models\Gender;
 
 use App\Models\Nationality;
 use Illuminate\Http\Request;
 use App\Models\PsCase;
 use App\Models\PssCase;
 use App\Models\ReferralSource;
-use App\Models\File;
+use App\Models\PsWorker;
 use App\Models\DirectBeneficiary;
-use App\Models\PsCaseActivity;
+use App\Models\PssCaseActivity;
 use App\Models\PssStatus;
 use App\Models\CaseType;
 use App\Models\Team;
@@ -33,23 +32,7 @@ class PssCaseController extends Controller
      */
     public function index(Request $request)
     {
-        // permissions
-        $employee = Auth::user()->employee;
-
-
-        $psWorkersIds = Employee::where('job_title_id', '1')->pluck('id');
-        if(!$psWorkersIds->contains($employee->id)){
-
-            dd('You are not a PS Worker!');
-            return redirect('/');
-        }
-
-
-        
-        $worker = Auth::user()->employee;
-
-        $pssCases = PssCase::where('assigned_psw_id', $worker->id)
-            ->get();
+        $pssCases = PssCase::all();
 
         $tabs = array();
         $pssStatuses = PssStatus::all();
@@ -63,10 +46,7 @@ class PssCaseController extends Controller
             $i++;
         }
 
-
-        
-
-		return view('psw.pss_cases.index', compact('tabs'));
+		return view('supervisor.pss_cases.index', compact('tabs'));
     }
 
     /**
@@ -74,18 +54,16 @@ class PssCaseController extends Controller
      *
      * @return Response
      */
-    public function create($id)
+    public function create()
     {
+
         $referralSources = ReferralSource::all();
         $psWorkers = Employee::where('job_title_id', '1')->get();
         $genders = Gender::all();
         $nationalities = Nationality::all();
         $caseTypes = CaseType::all();
-        $files = File::all();
-        $file = File::find($id);
-        //dd($id);
 
-		return view('psw.pss_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes', 'files', 'file'));
+		return view('supervisor.pss_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes'));
     }
 
     /**
@@ -125,6 +103,16 @@ class PssCaseController extends Controller
      */
     public function show($id)
     {
+        $pssCase = PssCase::find($id);
+        $referral = $pssCase->referral;
+        $pssCaseActivities = $pssCase->pssCaseActivities;
+
+        $beneficiaries = $pssCase->pssCaseBeneficiaries;
+
+        //dd($pssCaseActivities);
+
+        return view('supervisor.pss_cases.show', compact('pssCase', 'referral', 'pssCaseActivities', 'beneficiaries'));
+
     }
 
     /**

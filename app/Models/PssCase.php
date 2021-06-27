@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class PssCase extends Model
 {
@@ -64,9 +65,11 @@ class PssCase extends Model
     }
 
 
+
+
     public function currentStatus()
     {
-        $status = PsCaseActivity::with('caseStatus', 'month')
+        $status = PssCaseActivity::with('caseStatus', 'month')
         ->where('month_id', date('n'))
         ->get()
         ->map(function ($psCaseActivity){
@@ -84,4 +87,63 @@ class PssCase extends Model
     {
         return $this->hasMany(Referral::class)->where('user_id', auth()->id());
     }
+
+
+
+    public function pssCaseActivities()
+    {
+        return $this->hasMany(PssCaseActivity::class)->orderBy('month_id', 'DESC');
+    }
+
+    public function pssCaseBeneficiaries()
+    {
+        return $this->hasMany(PssCaseBeneficiary::class)->orderBy('is_direct', 'DESC');
+    }
+
+
+    public function pssCaseActivitiesByMonth($month)
+    {
+        return $this->hasMany(PssCaseActivity::class)
+            ->where('month', $month);
+    }
+
+
+
+    public function pssCaseActivitiesByMonthlyStatus($month, $status)
+    {
+        return $this->hasMany(PssCaseActivity::class)
+            ->where('month', $month)
+            ->where('pss_status_id', $status);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function scopeUserPssCases($query)
+    {
+        $worker = Auth::user()->employee;
+
+        $pssCases = PssCase::where('assigned_psw_id', $worker->id)
+            ->get();
+    }
+
+
+
+
+
+
+
+
+
 }

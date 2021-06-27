@@ -22,4 +22,10 @@ class Month extends Model
     }
 
 
+    public function pssCaseActivities()
+    {
+        return $this->hasMany(PssCaseActivity::class)->where('month_id', '6');
+    }
+
+
 }
