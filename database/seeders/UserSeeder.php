@@ -59,14 +59,16 @@ class UserSeeder extends Seeder
         DB::table('users')->insert($data);
         
 
-        $user = User::create([
+        $admin = User::create([
             'name' => 'Admin', 
             'email' => 'admin@gmail.com',
             'password' => bcrypt('pstic12345'),
             //'roles_name' => ['Owner'],
             //'Status' => 'Active'
         ]);  
-        $user->assignRole('Administrator');
+        $admin->assignRole('Administrator');
+
+        
 
     }
 }

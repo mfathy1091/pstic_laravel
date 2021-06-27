@@ -75,7 +75,7 @@ class ReferralSeeder extends Seeder
                 'referral_id' => '3',
                 'direct_beneficiary_id' => '1',
                 'assigned_psw_id' => '2',
-                'current_pss_status_id' => '2',
+                'current_pss_status_id' => '1',
             ],
 
         ];
