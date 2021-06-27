@@ -2,13 +2,13 @@
 @section('css')
 @toastr_css
 @section('title')
-PSS Cases
+All PSS Cases
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-PS Cases
+All PSS Cases
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -36,11 +36,6 @@ PS Cases
                         </ul>
                     </div>
                 @endif
-
-                {{-- add button --}}
-                <a href="{{route('supervisor.psscases.create')}}" class="btn btn-success btn-sm" role="button"
-                aria-pressed="true">Add PS Case</a><br><br>
-                <br><br>
 
                 <!-- tabs with table-->
                 @include('supervisor.pss_cases.partials.tabs')

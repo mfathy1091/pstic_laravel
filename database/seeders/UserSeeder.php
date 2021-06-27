@@ -66,7 +66,7 @@ class UserSeeder extends Seeder
             //'roles_name' => ['Owner'],
             //'Status' => 'Active'
         ]);  
-        $user->assignRole('Owner');
+        $user->assignRole('Administrator');
 
     }
 }

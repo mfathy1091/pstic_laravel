@@ -37,11 +37,6 @@ My PSS Cases
                     </div>
                 @endif
 
-                {{-- add button --}}
-                <a href="{{route('psw.psscases.create')}}" class="btn btn-success btn-sm" role="button"
-                aria-pressed="true">Add PSS Case</a><br><br>
-                <br><br>
-
                 <!-- tabs with table-->
                 @include('psw.pss_cases.partials.tabs')
                 <!-- end with table -->

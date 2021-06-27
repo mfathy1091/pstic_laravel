@@ -26,8 +26,11 @@ Route::group(
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);
 
-        // Files
+        // File Search
         Route::resource('files', FileController::class);
+        
+        // Home (Dashboard)
+        Route::get('/', 'HomeController@index')->name('dashboard');
 
         // Referrals
         Route::resource('referrals', ReferralController::class);
@@ -69,8 +72,7 @@ Route::group(
         });
 
 
-        // Home (Dashboard)
-        Route::get('/', 'HomeController@index')->name('dashboard');
+
 
 
         // PS-Worker-Related Routes
