@@ -8,7 +8,7 @@ Add PS Case
 @section('page-header')
     <!-- breadcrumb -->
 @section('PageTitle')
-    Add PS Case
+    Add PS Case to {{ $file->number }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -28,12 +28,6 @@ Add PS Case
 
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <label for="file_number" class="mr-sm-2">File Number:</label>
-                            <input id="file_number" type="text" name="file_number" class="form-control" value="{{ $file->number }}">
-                        </div>
-                    </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
