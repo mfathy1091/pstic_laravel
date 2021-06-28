@@ -104,6 +104,7 @@ class UserSeeder extends Seeder
         $yara = User::find(7);
         $yara->assignRole('Administrator');
         $yara->assignRole('PS Supervisor');
+        
     }
 }
 
