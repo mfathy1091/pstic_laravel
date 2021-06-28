@@ -16,7 +16,8 @@ class RoleTableSeeder extends Seeder
     {
         $roles = [
             'Administrator',
-            'PSW'
+            'PSW',
+            'PS Supervisor'
         ];
         
         foreach ($roles as $role) {
@@ -28,17 +29,23 @@ class RoleTableSeeder extends Seeder
             'users-menu', 'user-list', 'user-delete', 'user-edit', 'user-create',
             'role-list', 'role-delete', 'role-edit', 'role-create',
             'settings-menu',
-        
-            'file-search', 'pss-case-list', 'pss-case-create','housing-case-list','housing-case-create',
-            'psychosocial-menu',
         ]);
 
-        $psWorkerRole = Role::findById(2);
-        $psWorkerRole->syncPermissions([
+
+
+        $pswRole = Role::findById(2);
+        $pswRole->syncPermissions([
             'file-search',
             'pss-case-list',
             'pss-case-create',
             'psw-menu',
+        ]);
+
+        $psSupervisorRole = Role::findById(3);
+        $psSupervisorRole->syncPermissions([
+            'file-search',
+            'pss-case-list',
+            'psychosocial-menu',
         ]);
 
 
