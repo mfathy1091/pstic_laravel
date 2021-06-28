@@ -123,9 +123,9 @@ Add PS Case
 
 
 
-                            <br><br>
+                            <br>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">Save</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-left" type="submit">Save</button>
                     </form>
                         </div>
                     </div>

@@ -131,7 +131,8 @@ Add New UNHCR File
                                 </div>
                             </div>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-left" type="submit">Save</button>
+                            <br>
+                            <button class="btn btn-success btn-sm nextBtn btn-sm pull-left" type="submit">Save</button>
                     </form>
                         </div>
                     </div>

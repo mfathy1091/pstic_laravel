@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BeneficiaryController;
+use App\Models\Beneficiary;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,11 @@ Route::group(
         // File Search
         Route::resource('files', FileController::class);
         
+
+        // Beneficiaries
+        Route::get('/beneficiaries/create/{id}', 'BeneficiaryController@create')->name('beneficiaries.create');
+        Route::resource('/beneficiaries', 'BeneficiaryController', ['except' => ['create']]);
+
         // Home (Dashboard)
         Route::get('/', 'HomeController@index')->name('dashboard');
 

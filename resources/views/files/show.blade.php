@@ -42,8 +42,13 @@ File Number
                 <div class="tab-content" id="myTabContent">
                     <!-- Individuals tab pane -->
                     <div class="tab-pane fade show active" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">            
-                        
-                        <div class="table-responsive mt-3">
+                        {{-- add button --}}
+
+                        <a href="{{route('beneficiaries.create', [$file->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">
+                            Add Beneficiary
+                        </a>
+
+                        <div class="table-responsive">
                             <table id="datatable1" class="table table-hover table-sm table-bordered p-0"
                                 data-page-length="50"
                                 style="text-align: center">
