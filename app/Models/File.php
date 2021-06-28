@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
-    protected $guarderd = [];
+    protected $fillable = ['number', 'created_user_id'];
 
     public function createdUser()
     {
