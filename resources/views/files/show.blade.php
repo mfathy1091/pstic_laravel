@@ -133,9 +133,14 @@ File Number
 
 
                     <!-- Housing Cases tab pane-->
-                    @can('houisng-case-list')
+                    @can('housing-case-list')
                         <div class="tab-pane fade" id="housing-cases" role="tabpanel" aria-labelledby="housing-cases-tab">
-        
+                            @can('housing-case-create')
+                            <a href="" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">
+                                Add Housing Case
+                            </a>
+                            <p>N/A</p>
+                        @endcan
         
                         </div>
                     @endcan
