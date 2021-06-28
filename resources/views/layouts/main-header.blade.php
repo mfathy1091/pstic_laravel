@@ -15,7 +15,7 @@ header start-->
             <a id="button-toggle" class="button-toggle-nav inline-block ml-20 pull-left"
                 href="javascript:void(0);"><i class="zmdi zmdi-menu ti-align-right"></i></a>
         </li>
-        <li class="nav-item">
+{{--         <li class="nav-item">
             <div class="search">
                 <a class="search-btn not_click" href="javascript:void(0);"></a>
                 <div class="search-box not-click">
@@ -24,7 +24,7 @@ header start-->
                     <button class="search-button" type="submit"> <i class="fa fa-search not-click"></i></button>
                 </div>
             </div>
-        </li>
+        </li> --}}
     </ul>
     <!-- top bar right -->
     <ul class="nav navbar-nav ml-auto">
@@ -51,7 +51,7 @@ header start-->
         <li class="nav-item fullscreen">
             <a id="btnFullscreen" href="#" class="nav-link"><i class="ti-fullscreen"></i></a>
         </li>
-        <li class="nav-item dropdown ">
+{{--         <li class="nav-item dropdown ">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false">
                 <i class="ti-bell"></i>
@@ -67,8 +67,8 @@ header start-->
                         class="float-right text-muted time">Just now</small> </a>
 
             </div>
-        </li>
-        <li class="nav-item dropdown ">
+        </li> --}}
+{{--         <li class="nav-item dropdown ">
             <a class="nav-link top-nav" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="true"> <i class=" ti-view-grid"></i> </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-big">
@@ -76,7 +76,7 @@ header start-->
                     <strong>Quick Links</strong>
                 </div>
                 <div class="dropdown-divider"></div>
-{{--                 <div class="nav-grid">
+                <div class="nav-grid">
                     <a href="#" class="nav-grid-item"><i class="ti-files text-primary"></i>
                         <h5>New Task</h5>
                     </a>
@@ -91,9 +91,9 @@ header start-->
                     <a href="#" class="nav-grid-item"><i class="ti-truck text-danger "></i>
                         <h5>New Orders</h5>
                     </a>
-                </div> --}}
+                </div>
             </div>
-        </li>
+        </li> --}}
         <li class="nav-item dropdown mr-30">
             <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
