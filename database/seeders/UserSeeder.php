@@ -54,6 +54,13 @@ class UserSeeder extends Seeder
                 //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
+            [
+                'name' => 'Gihan Babiker',
+                'email' => 'gihanbabiker@pstic-egypt.org',
+                'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
+            ],
 
         ];
         DB::table('users')->insert($data);
@@ -71,6 +78,10 @@ class UserSeeder extends Seeder
         
         $ahmedAlrajeh = User::find(3);
         $ahmedAlrajeh->assignRole('PSW');
+
+        $gihan = User::find(5);
+        $gihan->assignRole('Administrator');
+        $gihan->assignRole('PS Supervisor');
 
     }
 }
