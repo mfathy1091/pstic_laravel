@@ -69,6 +69,8 @@ class UserSeeder extends Seeder
         $admin->assignRole('Administrator');
 
         
+        $ahmedAlrajeh = User::find(3);
+        $ahmedAlrajeh->assignRole('PSW');
 
     }
 }

@@ -23,12 +23,19 @@ File Number
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals" aria-selected="true">Individuals</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="pss-cases-tab" data-toggle="tab" href="#pss-cases" role="tab" aria-controls="pss-cases" aria-selected="false">PSS Cases</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="housing-cases-tab" data-toggle="tab" href="#housing-cases" role="tab" aria-controls="housing-cases" aria-selected="false">Housing Cases</a>
-                    </li>
+                    
+                    @can('pss-case-list')
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pss-cases-tab" data-toggle="tab" href="#pss-cases" role="tab" aria-controls="pss-cases" aria-selected="false">PSS Cases</a>
+                        </li>
+                    @endcan
+
+                    @can('housing-case-list')
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="housing-cases-tab" data-toggle="tab" href="#housing-cases" role="tab" aria-controls="housing-cases" aria-selected="false">Housing Cases</a>
+                        </li>
+                    @endcan
+
                 </ul>
                 
                 
@@ -106,34 +113,39 @@ File Number
                     
 
                     <!-- PSS Cases tab pane-->
-                    <div class="tab-pane fade" id="pss-cases" role="tabpanel" aria-labelledby="pss-cases-tab">
-                        {{-- add button --}}
-                        <a href="{{route('psw.psscases.create', [$file->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">Add PSS Case
-                    </a>
-                        <br>
+                    @can('pss-case-list')
+                        <div class="tab-pane fade" id="pss-cases" role="tabpanel" aria-labelledby="pss-cases-tab">
+                            {{-- add button --}}
+                            @can('pss-case-create')
+                                <a href="{{route('psw.psscases.create', [$file->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">
+                                    Add PSS Case
+                                </a>
+                            @endcan
 
-                        <!-- table -->
-                        @include('files.partials.pss_cases')
-                        <!-- end table -->
-                    
+                            <!-- table -->
+                            @include('files.partials.pss_cases')
+                            <!-- end table -->
+                        
 
 
-                    </div>
+                        </div>
+                    @endcan
+
 
                     <!-- Housing Cases tab pane-->
-                    <div class="tab-pane fade" id="housing-cases" role="tabpanel" aria-labelledby="housing-cases-tab">
-    
-    
-
-
-                    </div>
+                    @can('houisng-case-list')
+                        <div class="tab-pane fade" id="housing-cases" role="tabpanel" aria-labelledby="housing-cases-tab">
+        
+        
+                        </div>
+                    @endcan
 
 
                 </div>
 
                 
                 
-                             
+                
 
                 
         </div>

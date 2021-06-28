@@ -27,8 +27,14 @@ class PermissionTableSeeder extends Seeder
 
             'settings-menu',
 
+            'dashboard',
+
             'file-search',
-            
+            'pss-case-list',
+            'pss-case-create',
+            'housing-case-list',
+            'housing-case-create',
+
             'psychosocial-menu',
 
             'psw-menu',
