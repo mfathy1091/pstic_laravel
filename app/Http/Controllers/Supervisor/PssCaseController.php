@@ -37,7 +37,9 @@ class PssCaseController extends Controller
         $tabs = array();
         $pssStatuses = PssStatus::all();
 
-        $i = 0;
+        $tabs[0] = ['name' => 'All', 'cases' => $pssCases];
+
+        $i = 1;
         foreach($pssStatuses as $pssStatus){
             $statusName = $pssStatus->name;
             $statusId = $pssStatus->id;
