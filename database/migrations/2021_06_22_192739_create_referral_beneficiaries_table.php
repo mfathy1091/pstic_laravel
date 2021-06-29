@@ -21,7 +21,7 @@ class CreateReferralBeneficiariesTable extends Migration
 
             // foreign keys
             $table->foreign('referral_id')->references('id')->on('referrals')->onDelete('cascade');
-            $table->foreign('beneficiary_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreign('beneficiary_id')->references('id')->on('beneficiaries')->onDelete('cascade');
         });
     }
 

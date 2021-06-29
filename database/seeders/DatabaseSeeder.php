@@ -49,9 +49,10 @@ class DatabaseSeeder extends Seeder
         $this->call(IdentityCardsSeeder::class);
         $this->call(CaseTypeSeeder::class);
         $this->call(MonthSeeder::class);
-        $this->call(VisitSeeder::class);
         $this->call(VulnerabilitySeeder::class);
         $this->call(SurveySeeder::class);
         $this->call(MonthlyRecordSeeder::class);
+        $this->call(VisitSeeder::class);
+
     }
 }

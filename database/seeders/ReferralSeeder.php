@@ -17,7 +17,7 @@ class ReferralSeeder extends Seeder
      */
     public function run()
     {
-        // (1) Referrals
+        // Referrals
         $referrals = [
             [    
                 'file_id' => '1',
@@ -55,7 +55,7 @@ class ReferralSeeder extends Seeder
 
 
 
-        // (3) Referral Sections
+        // PSS Cases
         $pssCases = [
             [   'file_id' => '1',
                 'referral_id' => '1',

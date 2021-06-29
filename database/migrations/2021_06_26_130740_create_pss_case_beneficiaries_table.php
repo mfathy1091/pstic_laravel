@@ -21,8 +21,8 @@ class CreatePssCaseBeneficiariesTable extends Migration
             $table->timestamps();
 
             // foreign keys
-            $table->foreign('pss_case_id')->references('id')->on('referrals')->onDelete('cascade');
-            $table->foreign('beneficiary_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreign('pss_case_id')->references('id')->on('pss_cases')->onDelete('cascade');
+            $table->foreign('beneficiary_id')->references('id')->on('beneficiaries')->onDelete('cascade');
         });
     }
 
