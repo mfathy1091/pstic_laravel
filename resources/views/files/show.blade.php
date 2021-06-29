@@ -19,19 +19,19 @@ File Number
         <div class="card card-statistics h-100">
             <div class="card-body">
                 
-                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
+                <ul class="nav nav-pills nav-fill mb-3" id="myTab" role="tablist">
+                    <li class="nav-item border border-secondary rounded" role="presentation">
                         <a class="nav-link active" id="individuals-tab" data-toggle="tab" href="#individuals" role="tab" aria-controls="individuals" aria-selected="true">Individuals</a>
                     </li>
                     
                     @can('pss-case-list')
-                        <li class="nav-item" role="presentation">
+                        <li class="nav-item border border-secondary rounded" role="presentation">
                             <a class="nav-link" id="pss-cases-tab" data-toggle="tab" href="#pss-cases" role="tab" aria-controls="pss-cases" aria-selected="false">PSS Cases</a>
                         </li>
                     @endcan
 
                     @can('housing-case-list')
-                        <li class="nav-item" role="presentation">
+                        <li class="nav-item border border-secondary rounded" role="presentation">
                             <a class="nav-link" id="housing-cases-tab" data-toggle="tab" href="#housing-cases" role="tab" aria-controls="housing-cases" aria-selected="false">Housing Cases</a>
                         </li>
                     @endcan
