@@ -5,28 +5,8 @@
             <div class="scrollbar side-menu-bg" style="overflow: scroll">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     
-                    <!-- menu item Dashboard-->
-                    <li>
-                        <a href="{{ url('/') }}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </li>
-
-
-                    <!-- menu item Dashboard-->
-                    <li>
-                        <a href="{{ route('files.index') }}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Files</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </li>
-                        
-                    
-                    <!-- Users -->
-                    @can('user-list')
+                    <!-- Users Menu-->
+                    @can('users-menu')
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#users">
                                 <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Users</span></div>
@@ -34,8 +14,11 @@
                                 <div class="clearfix"></div>
                             </a>
                             <ul id="users" class="collapse" data-parent="#sidebarnav">
-                                <li> <a href="{{ route('users.index') }}">Users</a> </li>
                                 
+                                @can('user-list')
+                                <li> <a href="{{ route('users.index') }}">Users</a> </li>
+                                @endcan
+
                                 @can('role-list')
                                     <li> <a href="{{ route('roles.index') }}">roles</a> </li>
                                 @endcan
@@ -44,11 +27,11 @@
                         </li>
                     @endcan
 
-                    <!-- Settings-->
+                    <!-- Settings Menu-->
                     @can('settings-menu')
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#settings">
-                                <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">System Config</span></div>
+                                <div class="pull-left"><i class="fas fa-cogs"></i><span class="right-nav-text">Settings</span></div>
                                 <div class="pull-right"><i class="ti-plus"></i></div>
                                 <div class="clearfix"></div>
                             </a>
@@ -66,7 +49,72 @@
                         </li>
                     @endcan
 
-                    @can('surveys-menu')
+
+                                        
+                    
+                    <!-- Dashboard-->
+                    @can('dashboard')
+                        <li>
+                            <a href="{{ url('/') }}">
+                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </li>
+                    @endcan
+
+
+
+                    <!--Search Files -->
+                    @can('file-search')
+                        <li>
+                            <a href="{{ route('files.index') }}">
+                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Search Files</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </li>
+                    @endcan
+                    
+
+                    <!-- Psychosocial -->
+                    @can('psychosocial-menu')
+                        <li>
+                            <a href="javascript:void(0);" data-toggle="collapse" data-target="#supervisor-menu">
+                                <div class="pull-left"><i class="fas fa-school"></i><span
+                                        class="right-nav-text">Psychosocial</span></div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+                            <ul id="supervisor-menu" class="collapse" data-parent="#sidebarnav">
+                                <li><a href="{{route('supervisor.psscases.index')}}">All PSS Cases</a></li>
+                                <li><a href="{{ route('supervisor.statistics.index') }}">Statistics</a></li>
+                            </ul>
+                        </li>
+                    @endcan
+
+
+                    <!-- PSW-->
+                    @can('psw-menu')
+                        <li>
+                            <a href="javascript:void(0);" data-toggle="collapse" data-target="#psw-menu">
+                                <div class="pull-left"><i class="fas fa-school"></i><span
+                                        class="right-nav-text">PSW</span></div>
+                                <div class="pull-right"><i class="ti-plus"></i></div>
+                                <div class="clearfix"></div>
+                            </a>
+                            <ul id="psw-menu" class="collapse" data-parent="#sidebarnav">
+                                <li><a href="{{route('psw.psscases.index')}}">PSS Cases</a></li>
+                            </ul>
+                        </li>
+                    @endcan
+
+
+
+
+{{-- 
+                    
+                        @can('surveys-menu')
                         <!-- Surveys-->
                         <li>
                             <a href="javascript:void(0);" data-toggle="collapse" data-target="#surveys-menu">
@@ -83,24 +131,7 @@
                     @endcan
 
 
-
-                    <!-- PS Cases-->
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#ps-cases-menu">
-                            <div class="pull-left"><i class="fas fa-school"></i><span
-                                    class="right-nav-text">PS Cases</span></div>
-                            <div class="pull-right"><i class="ti-plus"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="ps-cases-menu" class="collapse" data-parent="#sidebarnav">
-                            <li><a href="{{route('pscases.mycases.index')}}">My PS Cases</a></li>
-                            <li><a href="{{route('pscases.teamcases.index')}}">Team PS Cases</a></li>
-                            <li><a href="{{route('pscases.allcases.index')}}">All PS Cases</a></li>
-                            <li><a href="#">Statistics</a></li>
-                        </ul>
-                    </li>
-{{-- 
-                        <!-- Inventory-->
+                    <!-- Inventory-->
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#inventory-menu">
                             <div class="pull-left"><i class="fas fa-school"></i><span

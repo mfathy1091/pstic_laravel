@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\File;
+use App\Models\Gender;
+use App\Models\Nationality;
+use App\Models\Beneficiary;
 
 class FileController extends Controller
 {
@@ -26,7 +29,11 @@ class FileController extends Controller
      */
     public function create()
     {
-        //
+        $files = File::all();
+        $genders = Gender::all();
+        $nationalities = Nationality::all();
+
+		return view('files.create', compact('files', 'genders', 'nationalities'));
     }
 
     /**
@@ -37,7 +44,37 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fileData = request()->validate([
+            'number' => 'required',
+        ]);
+
+        $fileData += ['created_user_id' => auth()->id()];
+
+        $file = File::create($fileData);
+
+        //$file = File::find(10);
+        
+        //dd($request);
+        $PaBeneficiaryData = request()->validate([
+            'individual_id' => 'required',
+            'passport_number' => '',
+            'name' => 'required',
+            'native_name' => 'required',
+            'age' => 'required',
+            'gender_id' => 'required',
+            'nationality_id' => 'required',
+            'current_phone_number' => '',
+        ]);
+        
+        $PaBeneficiaryData += ['file_id' => $file->id];
+        $PaBeneficiaryData += ['relationship_id' => 1];
+        
+        //dd($PaBeneficiaryData);
+        
+        $beneficiary = Beneficiary::create($PaBeneficiaryData);
+        
+
+        return redirect()->route('files.index');
     }
 
     /**

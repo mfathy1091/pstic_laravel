@@ -52,6 +52,18 @@ class EmployeeSeeder extends Seeder
                 'gender_id' => '1',
                 'nationality_id' => '2',
                 'user_id' => '3',
+            ],
+            [
+                'name' => 'Mohamed Maher',
+                'job_title_id' => '2',
+                'department_id' => '2',
+                //'team_id' => '1',
+                'budget_id' => '2',
+                'hire_date' => '2013-05-01',
+                'age' => '40',
+                'gender_id' => '1',
+                'nationality_id' => '2',
+                'user_id' => '4',
             ]
         ];
 

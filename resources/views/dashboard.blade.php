@@ -48,6 +48,22 @@
                     </div>
                 </div>
             </div>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Select Month
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="">January</a>
+                    <a class="dropdown-item" href="">February</a>
+                    <a class="dropdown-item" href="">March</a>
+                    <a class="dropdown-item" href="">April</a>
+                    <a class="dropdown-item" href="">May</a>
+                    <a class="dropdown-item" href="">June</a>
+                </div>
+            </div>
+
+
             <!-- widgets -->
             <div class="row" >
                 <div class="col-xl-2 col-lg-6 col-md-6 mb-30">
@@ -89,7 +105,25 @@
                 </div>
             </div>
 
-                
+            <table class="table table-bordered">
+                <tr>
+                    <th>Month</th>
+                    <th>Referrals</th>
+                </tr>
+                @foreach ($months as $month)
+                <tr>
+                    <td>{{ $month->name }}</td>
+                    <td>
+                        <ul>
+                            @foreach ($month->referrals as $referral)
+                                <li>{{ $referral->file->number }}, {{ $referral->pivot->case_status }}</li>
+                            @endforeach    
+                        </ul>    
+                    </td>
+
+                </tr>
+                @endforeach
+            </table>
 
 
 

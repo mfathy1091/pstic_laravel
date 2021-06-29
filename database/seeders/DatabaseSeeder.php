@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,13 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(NationalitySeeder::class);
-        $this->call(GenderSeeder::class);
-        $this->call(FileSeeder::class);
+        $this->call(ServiceSeeder::class);
+        $this->call(PssStatusSeeder::class);
 
         $this->call(PermissionTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $this->call(UserSeeder::class);
+
+        $this->call(NationalitySeeder::class);
+        $this->call(GenderSeeder::class);
 
         $this->call(CitySeeder::class);
         $this->call(AreaSeeder::class);
@@ -30,27 +33,25 @@ class DatabaseSeeder extends Seeder
         $this->call(BudgetSeeder::class);
         $this->call(EmployeeSeeder::class);
 
+        $this->call(SectionSeeder::class);
+        $this->call(FileSeeder::class);
         $this->call(BeneficiaryTypeSeeder::class);
+        $this->call(ReferralSourceSeeder::class);
+        $this->call(ReferralSeeder::class);
+
+
+
+
+
+
         $this->call(BeneficiarySeeder::class);
 
         $this->call(IdentityCardsSeeder::class);
-        $this->call(ReferralSourceSeeder::class);
-        $this->call(CaseStatusSeeder::class);
         $this->call(CaseTypeSeeder::class);
         $this->call(MonthSeeder::class);
         $this->call(VisitSeeder::class);
         $this->call(VulnerabilitySeeder::class);
-        $this->call(PsCaseSeeder::class);
-        $this->call(DirectBeneficiarySeeder::class);
         $this->call(SurveySeeder::class);
-        $this->call(PsCaseActivitySeeder::class);
-
-
-
-        //$this->call(GroupSeeder::class);
-        //$this->call(GroupUserSeeder::class);
-        //$this->call(PsWorkersSeeder::class);
-
-
+        $this->call(MonthlyRecordSeeder::class);
     }
 }

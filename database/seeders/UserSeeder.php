@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->delete();
 
         //User::factory()->times(10)->create();
 
@@ -48,20 +47,64 @@ class UserSeeder extends Seeder
                 //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
+            [
+                'name' => 'Mohamed Maher',
+                'email' => 'mahershweiki@pstic-egypt.org',
+                'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
+            ],
+            [
+                'name' => 'Gihan Babiker',
+                'email' => 'gihanbabiker@pstic-egypt.org',
+                'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
+            ],
+            [
+                'name' => 'Nourhanne Hetta',
+                'email' => 'nourhannehetta@pstic-egypt.org',
+                'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
+            ],
+            [
+                'name' => 'Yara Negm',
+                'email' => 'yaranegm@pstic-egypt.org',
+                'password' => Hash::make('pstic12345'),
+                //'roles_name' => 'User',
+                //'Status' => 'Active'
+            ],
 
         ];
         DB::table('users')->insert($data);
         
 
-        $user = User::create([
+        $admin = User::create([
             'name' => 'Admin', 
             'email' => 'admin@gmail.com',
             'password' => bcrypt('pstic12345'),
             //'roles_name' => ['Owner'],
             //'Status' => 'Active'
         ]);  
-        $user->assignRole('Owner');
+        $admin->assignRole('Administrator');
 
+        
+        $ahmedAlrajeh = User::find(3);
+        $ahmedAlrajeh->assignRole('PSW');
+
+        $gihan = User::find(5);
+        $gihan->assignRole('Administrator');
+        $gihan->assignRole('PS Supervisor');
+
+        $nourhanne = User::find(6);
+        $nourhanne->assignRole('Administrator');
+        $nourhanne->assignRole('PS Supervisor');
+        
+        $yara = User::find(7);
+        $yara->assignRole('Administrator');
+        $yara->assignRole('PS Supervisor');
+        
     }
 }
 

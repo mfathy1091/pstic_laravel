@@ -7,15 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class File extends Model
 {
-    protected $guarderd = [];
+    protected $fillable = ['number', 'created_user_id'];
 
     public function createdUser()
     {
         return $this->belongsTo(User::class, 'created_user_id');
     }
 
-    public function members()
+    public function beneficiaries()
     {
-        return $this->hasMany(FileMember::class);
+        return $this->hasMany(Beneficiary::class);
+    }
+
+    public function referrals()
+    {
+        return $this->hasMany(Referral::class);
+    }
+
+    public function pssCases()
+    {
+        return $this->hasMany(PssCase::class);
     } 
 }

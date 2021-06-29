@@ -47,26 +47,31 @@ class PsCase extends Model
     } */
 
 
-    public function directBeneficiary()
+/*     public function directBeneficiary()
     {
         return $this->hasOne(Beneficiary::class)->direct();;
-    } 
+    }  */
 
 
 
  
 
-    public function beneficiariesIndirect()
+/*     public function beneficiariesIndirect()
     {
         return $this->hasMany(Beneficiary::class)->indirect();
         // or this way:
         // return $this->posts()->published();
-    }
+    } */
 
 
     public function beneficiaries()
     {
         return $this->hasMany(Beneficiary::class);
+    }
+
+    public function directBeneficiary()
+    {
+        return $this->belongsTo(Beneficiary::class, 'direct_beneficiary_id');
     }
 
     public function psCaseActivities()

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BeneficiaryController;
+use App\Models\Beneficiary;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,8 +28,19 @@ Route::group(
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);
 
-        // Files
+        // File Search
         Route::resource('files', FileController::class);
+        
+
+        // Beneficiaries
+        Route::get('/beneficiaries/create/{id}', 'BeneficiaryController@create')->name('beneficiaries.create');
+        Route::resource('/beneficiaries', 'BeneficiaryController', ['except' => ['create']]);
+
+        // Home (Dashboard)
+        Route::get('/', 'HomeController@index')->name('dashboard');
+
+        // Referrals
+        Route::resource('referrals', ReferralController::class);
 
         // Employees
         Route::resource('employees', Employee\EmployeeController::class);
@@ -37,11 +50,27 @@ Route::group(
             Route::resource('teams', 'TeamController');
         });
 
-        //PS Cases
-        Route::prefix('pscases')->name('pscases.')->group( function () {
-            Route::resource('/mycases', Employee\PsCaseController::class);
-            Route::resource('/teamcases', Team\PsCaseController::class);
-            Route::resource('/allcases', PsCase\PsCaseController::class);
+        // Statistics
+        Route::prefix('statistics')->name('statistics.')->group( function () {
+        });
+
+        // Supervisor
+        Route::prefix('supervisor')->name('supervisor.')->group( function () {
+            Route::resource('/psscases', Supervisor\PssCaseController::class);
+            Route::resource('/statistics', Supervisor\StatisticController::class);
+        });
+
+        //PSW
+        Route::prefix('psw')->name('psw.')->group( function () {
+            Route::get('/psscases/create/{id}', 'Psw\PssCaseController@create')->name('psscases.create');
+            Route::resource('/psscases', Psw\PssCaseController::class, ['except' => ['create']]);
+
+        });
+
+
+        //PSS Cases
+        Route::prefix('psscases')->name('psscases.')->group( function () {
+            Route::resource('/', PssCase\PssCaseController::class);
         });
 
         // PS Cases Activities
@@ -50,8 +79,7 @@ Route::group(
         });
 
 
-        // Home (Dashboard)
-        Route::get('/', 'HomeController@index')->name('dashboard');
+
 
 
         // PS-Worker-Related Routes
