@@ -52,6 +52,6 @@ class DatabaseSeeder extends Seeder
         $this->call(VisitSeeder::class);
         $this->call(VulnerabilitySeeder::class);
         $this->call(SurveySeeder::class);
-        $this->call(PssCaseActivitySeeder::class);
+        $this->call(MonthlyRecordSeeder::class);
     }
 }

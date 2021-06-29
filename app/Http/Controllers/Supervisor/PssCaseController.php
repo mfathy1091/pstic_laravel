@@ -13,7 +13,7 @@ use App\Models\PssCase;
 use App\Models\ReferralSource;
 use App\Models\PsWorker;
 use App\Models\DirectBeneficiary;
-use App\Models\PssCaseActivity;
+use App\Models\MonthlyRecord;
 use App\Models\PssStatus;
 use App\Models\CaseType;
 use App\Models\Team;
@@ -107,13 +107,11 @@ class PssCaseController extends Controller
     {
         $pssCase = PssCase::find($id);
         $referral = $pssCase->referral;
-        $pssCaseActivities = $pssCase->pssCaseActivities;
+        $monthlyRecords = $pssCase->monthlyRecords;
 
         $beneficiaries = $pssCase->pssCaseBeneficiaries;
 
-        //dd($pssCaseActivities);
-
-        return view('supervisor.pss_cases.show', compact('pssCase', 'referral', 'pssCaseActivities', 'beneficiaries'));
+        return view('supervisor.pss_cases.show', compact('pssCase', 'referral', 'monthlyRecords', 'beneficiaries'));
 
     }
 

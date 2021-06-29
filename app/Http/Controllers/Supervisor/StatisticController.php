@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Month;
 use App\Models\Employee;
-use App\Models\PssCaseActivity;
+use App\Models\MonthlyRecord;
 use App\Models\PssCase;
 
 class StatisticController extends Controller
@@ -20,19 +20,19 @@ class StatisticController extends Controller
     {
         $psWorkersCount = Employee::where('job_title_id', '1')->get()->count();
 
-        $months = Month::with('pssCaseActivities')
+        $months = Month::with('monthlyRecords')
             ->where('name', 'June')
             ->get();
         
 /*         $june = Month::where('name', 'June')->first();
-        $activitiesJune = $june->pssCaseActivities;
+        $activitiesJune = $june->monthlyRecords;
         $activitiesJuneNew = $activitiesJune->new->get(); */
 
-        //$activitiesJuneNew = PssCaseActivity::status(2)->months([1, 2, 3, 4, 5, 6])->get();
+        //$activitiesJuneNew = MonthlyRecord::status(2)->months([1, 2, 3, 4, 5, 6])->get();
 
-        //$pssCases = PssCase::has('pssCaseActivities')->get();
+        //$pssCases = PssCase::has('monthlyRecords')->get();
 
-        $pssCases = PssCase::whereHas('pssCaseActivities', function($query){
+        $pssCases = PssCase::whereHas('monthlyRecords', function($query){
             return $query->where('month_id', 6);
         })->get();
 

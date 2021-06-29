@@ -21,7 +21,6 @@ class CreateReferralsTable extends Migration
             $table->date('referral_date')->nullable();
             $table->string('referring_person_name');
             $table->string('referring_person_email');
-            //$table->boolean('is_emergency');    /* first month only */
             $table->unsignedBigInteger('created_user_id');
             $table->timestamps();
 

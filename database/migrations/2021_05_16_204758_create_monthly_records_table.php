@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePssCaseActivitiesTable extends Migration
+class CreateMonthlyRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,18 @@ class CreatePssCaseActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pss_case_activities', function (Blueprint $table) {
+        Schema::create('monthly_records', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('month_id');
-            $table->unsignedBigInteger('pss_status_id');
             $table->unsignedBigInteger('pss_case_id');
+            $table->unsignedBigInteger('pss_status_id');
+            $table->boolean('is_emergency');
             $table->timestamps();
 
             // foreign keys
             $table->foreign('month_id')->references('id')->on('months')->onDelete('cascade');
-            $table->foreign('pss_status_id')->references('id')->on('pss_statuses')->onDelete('cascade');
             $table->foreign('pss_case_id')->references('id')->on('pss_cases')->onDelete('cascade');
-
+            $table->foreign('pss_status_id')->references('id')->on('pss_statuses')->onDelete('cascade');
         });
     }
 
@@ -35,6 +35,6 @@ class CreatePssCaseActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pss_case_activities');
+        Schema::dropIfExists('monthly_records');
     }
 }

@@ -121,15 +121,29 @@ PSS Case Details:
 
 
 
-            @foreach ($pssCaseActivities as $pssCaseActivity)
+            @foreach ($monthlyRecords as $monthlyRecord)
                 <div class="card-body">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="text-dark">
-                                {{ $pssCaseActivity->month->name }}
-                                <span class="text-muted ml-2 mr-2">|</span>
-                                <span class="badge badge-pill badge-primary">{{ $pssCaseActivity->pssStatus->name }}</span>
-                            </h4>
+                            <div class="row justify-content-md-left">
+                                <div class="col-md-auto">
+                                    <h4 class="text-dark">
+                                        {{ $monthlyRecord->month->name }}
+                                    </h4>
+                                </div>
+                                <div class="col-md-auto">
+                                    <span class="badge badge-pill badge-primary h-auto">{{ $monthlyRecord->pssStatus->name }}</span>
+                                    
+                                    @if ($monthlyRecord->is_emergency == '1')
+                                        <span class="text-muted ml-2 mr-2">|</span>
+                                        <span class="badge badge-pill badge-danger h-auto">Emergency</span>
+                                    @endif
+                                </div>
+
+
+                            </div>
+
+                            
                         </div>
                         <div class="card-body">
 

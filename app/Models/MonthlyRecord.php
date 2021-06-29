@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PssCaseActivity extends Model
+class MonthlyRecord extends Model
 {
     protected $guarded =[];
 
