@@ -79,7 +79,7 @@ Add beneficary to {{ $file->number }}
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="age" class="mr-sm-2">age</label>
-                                            <input id="age" type="text" name="age" class="form-control">
+                                            <input id="age" type="number" name="age" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -124,6 +124,13 @@ Add beneficary to {{ $file->number }}
                                             @error('relationship_id')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="current_phone_number" class="mr-sm-2">Current Phone Number</label>
+                                            <input id="current_phone_number" type="text" name="current_phone_number" class="form-control">
                                         </div>
                                     </div>
                 

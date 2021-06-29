@@ -63,6 +63,7 @@ File Number
                                         <th class="align-middle">Age</th>
                                         <th class="align-middle">Gender</th>
                                         <th class="align-middle">Nationality</th>
+                                        <th class="align-middle">Current Phone #</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,6 +79,7 @@ File Number
                                             <td>{{ $beneficiary->age }}</td>
                                             <td>{{ $beneficiary->gender->name }}</td>
                                             <td>{{ $beneficiary->nationality->name }}</td>
+                                            <td>{{ $beneficiary->current_phone_number }}</td>
                                         </tr>
                         
                                         <div class="modal fade" id="delete_member{{$beneficiary->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

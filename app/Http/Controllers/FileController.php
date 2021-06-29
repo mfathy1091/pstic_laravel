@@ -63,6 +63,7 @@ class FileController extends Controller
             'age' => 'required',
             'gender_id' => 'required',
             'nationality_id' => 'required',
+            'current_phone_number' => '',
         ]);
         
         $PaBeneficiaryData += ['file_id' => $file->id];

@@ -1,10 +1,10 @@
 {{-- tabs buttons--}}
-<ul class="nav nav-pills" id="pills-tab" role="tablist">
+<ul class="nav nav-pills nav-fill mb-3" id="pills-tab" role="tablist">
     <?php $n = 0; ?>
     @foreach ($tabs as $tab)
     <?php $n++; ?>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#{{ $tab['name'] }}" type="button" role="tab" aria-controls="{{ $tab['name'] }}" aria-selected="{{ $tab['name'] == 'New' ? 'true' : 'false' }}">{{ $tab['name'] }}</button>
+        <li class="nav-item border border-secondary rounded" role="presentation">
+            <a class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-toggle="tab" href="#{{ $tab['name'] }}" role="tab" aria-controls="{{ $tab['name'] }}" aria-selected="{{ $tab['name'] == 'New' ? 'true' : 'false' }}">{{ $tab['name'] }}</a>
         </li>
     @endforeach
 </ul>

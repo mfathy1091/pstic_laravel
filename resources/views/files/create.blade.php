@@ -127,6 +127,13 @@ Add New UNHCR File
                                             @enderror
                                         </div>
                                     </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="current_phone_number" class="mr-sm-2">Current Phone Number</label>
+                                            <input id="current_phone_number" type="text" name="current_phone_number" class="form-control">
+                                        </div>
+                                    </div>
                 
                                 </div>
                             </div>

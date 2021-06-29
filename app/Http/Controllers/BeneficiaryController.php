@@ -54,6 +54,7 @@ class BeneficiaryController extends Controller
             'gender_id' => 'required',
             'nationality_id' => 'required',
             'relationship_id' => 'required',
+            'current_phone_number' => '',
         ]);
         
         
