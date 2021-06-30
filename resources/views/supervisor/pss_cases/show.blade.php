@@ -165,51 +165,103 @@ PSS Case Details:
                                     <hr>
 
                                     {{-- visits --}}
-                                        <div class="row">
-                                            <div class="col-lg-12 margin-tb">
-                                                <div class="pull-left">
-                                                    <h5>Visits</h2>
-                                                </div>
-                                                <div class="pull-right">
-                                                    <a href="{{route('visits.create', [$monthlyRecord->id])}}" class="btn btn-success btn-sm mb-3" >
-                                                        Add Visit
-                                                    </a>                                                
-                                                </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 margin-tb">
+                                            <div class="pull-left">
+                                                <h5>Visits</h2>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a href="{{route('visits.create', [$monthlyRecord->id])}}" class="btn btn-success btn-sm mb-3" >
+                                                    Add Visit
+                                                </a>                                                
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                @if(!$monthlyRecord->visits->isEmpty())
-            
-                                                <div class="table-responsive">
-                                                    <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
-                                                        data-page-length="50"
-                                                        style="text-align: center">
-                                                        <thead>
-                                                            <tr>                            
-                                                                <th class="align-left">Date</th>
-                                                                <th class="align-left">Comment</th>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @if(!$monthlyRecord->visits->isEmpty())
+        
+                                            <div class="table-responsive">
+                                                <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
+                                                    data-page-length="50"
+                                                    style="text-align: center">
+                                                    <thead>
+                                                        <tr>                            
+                                                            <th class="align-left">Date</th>
+                                                            <th class="align-left">Comment</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($monthlyRecord->visits as $visit)
+                                                            <tr>
+                                                                <td>{{ $visit->date }}</td>
+                                                                <td>{{ $visit->comment }}</td>
                                                             </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach($monthlyRecord->visits as $visit)
-                                                                <tr>
-                                                                    <td>{{ $visit->date }}</td>
-                                                                    <td>{{ $visit->comment }}</td>
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            @else
-                                                <div>This Month has no visits!</div>
-                                            @endif
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            
+                                        @else
+                                            <div>This Month has no visits!</div>
+                                        @endif
                                         </div>
+                                        
+                                    </div>
                                             
                                     <hr>
+                                    
+                                    {{-- Services --}}
+                                    <div class="row">
+                                        <div class="col-lg-12 margin-tb">
+                                            <div class="pull-left">
+                                                <h5>Services</h2>
+                                            </div>
+                                            <div class="pull-right">
+                                                <a href="{{route('visits.create', [$monthlyRecord->id])}}" class="btn btn-success btn-sm mb-3" >
+                                                    Add Service
+                                                </a>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            @if(!$monthlyRecord->visits->isEmpty())
 
+
+
+
+                                            <div class="table-responsive">
+                                                <table id="datatable1" class="table w-auto table-hover table-sm table-bordered p-0"
+                                                    data-page-length="50"
+                                                    style="text-align: center">
+                                                    <thead>
+                                                        <tr>                            
+                                                            <th>Name</th>
+                                                            <th>Services</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach($beneficiaries as $beneficiary)
+                                                            <tr>
+                                                                
+                                                                <td>
+                                                                    {{ $beneficiary->beneficiary->name }}
+                                                                    @if ($beneficiary->is_direct === '1')
+                                                                        <span class="badge badge-pill badge-info ml-4">direct</span>
+                                                                    @endif
+                                                                </td>
+                                                                <td></td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        @else
+                                            <div>This Month has no services provided!</div>
+                                        @endif
+                                        </div>
+                                        
+                                    </div>
 
 
                                             
