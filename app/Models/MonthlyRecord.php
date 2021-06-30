@@ -28,6 +28,15 @@ class MonthlyRecord extends Model
     }
 
 
+    // child tables
+    public function visits()
+    {
+        return $this->hasMany(Visit::class);
+    }
+
+
+
+
 
 
     public function scopeNew($query)

@@ -112,7 +112,6 @@ PSS Case Details:
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
 
@@ -121,36 +120,108 @@ PSS Case Details:
 
 
 
-            @foreach ($monthlyRecords as $monthlyRecord)
-                <div class="card-body">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row justify-content-md-left">
-                                <div class="col-md-auto">
-                                    <h4 class="text-dark">
-                                        {{ $monthlyRecord->month->name }}
-                                    </h4>
-                                </div>
-                                <div class="col-md-auto">
-                                    <span class="badge badge-pill badge-primary h-auto">{{ $monthlyRecord->pssStatus->name }}</span>
-                                    
-                                    @if ($monthlyRecord->is_emergency == '1')
-                                        <span class="text-muted ml-2 mr-2">|</span>
-                                        <span class="badge badge-pill badge-danger h-auto">Emergency</span>
-                                    @endif
-                                </div>
 
 
+            <div class="card-body">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row justify-content-md-left">
+                            <div class="col-md-auto">
+                                <h4 class="text-dark">Monthly Activities</h4>
                             </div>
+                        </div>                        
+                    </div>
+                    <div class="card-body">
+                        
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <?php $n = 0; ?>
+                            @foreach ($monthlyRecords as $monthlyRecord)
+                            <?php $n++; ?>
+                                <li class="nav-item border border-secondary rounded" role="presentation">
+                                    <a class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-toggle="tab" href="#{{ $monthlyRecord->id }}" 
+                                        role="tab" aria-controls="{{ $monthlyRecord->id }}" 
+                                        aria-selected="{{ $monthlyRecord->month->name == 'June' ? 'true' : 'false' }}">{{ $monthlyRecord->month->name }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                        {{-- end tabs buttons--}}
+        
+                        {{-- tab contents --}}
+                        <div class="tab-content" id="pills-tabContent">
+                            <?php $n = 0; ?>
+                            @foreach ($monthlyRecords as $monthlyRecord)
+                                <?php $n++; ?>
+                                <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $monthlyRecord->id }}" role="tabpanel" aria-labelledby="{{ $monthlyRecord }}-tab">
+                                    <div class="col-md-auto">
+                                        <span class="badge badge-pill badge-primary h-auto">{{ $monthlyRecord->pssStatus->name }}</span>
+                                        
+                                        @if ($monthlyRecord->is_emergency == '1')
+                                            <span class="text-muted ml-2 mr-2">|</span>
+                                            <span class="badge badge-pill badge-danger h-auto">Emergency</span>
+                                        @endif
+                                    </div>
 
-                            
-                        </div>
-                        <div class="card-body">
+                                    <hr>
 
+                                    {{-- visits --}}
+                                        <div class="row">
+                                            <div class="col-lg-12 margin-tb">
+                                                <div class="pull-left">
+                                                    <h5>Visits</h2>
+                                                </div>
+                                                <div class="pull-right">
+                                                    <a href="{{route('visits.create', [$monthlyRecord->id])}}" class="btn btn-success btn-sm mb-3" >
+                                                        Add Visit
+                                                    </a>                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                @if(!$monthlyRecord->visits->isEmpty())
+            
+                                                <div class="table-responsive">
+                                                    <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
+                                                        data-page-length="50"
+                                                        style="text-align: center">
+                                                        <thead>
+                                                            <tr>                            
+                                                                <th class="align-left">Date</th>
+                                                                <th class="align-left">Comment</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach($monthlyRecord->visits as $visit)
+                                                                <tr>
+                                                                    <td>{{ $visit->date }}</td>
+                                                                    <td>{{ $visit->comment }}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @else
+                                                <div>This Month has no visits!</div>
+                                            @endif
+                                            </div>
+                                            
+                                        </div>
+                                            
+                                    <hr>
+
+
+
+                                            
+
+
+                                </div>
+                            @endforeach
                         </div>
+
                     </div>
                 </div>
-            @endforeach
+            </div>
 
 
             
