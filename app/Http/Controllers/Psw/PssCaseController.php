@@ -13,7 +13,7 @@ use App\Models\PsCase;
 use App\Models\PssCase;
 use App\Models\ReferralSource;
 use App\Models\File;
-use App\Models\DirectBeneficiary;
+use App\Models\Reason;
 use App\Models\PsCaseActivity;
 use App\Models\PssStatus;
 use App\Models\CaseType;
@@ -86,9 +86,10 @@ class PssCaseController extends Controller
         $caseTypes = CaseType::all();
         $files = File::all();
         $file = File::find($id);
+        $reasons = Reason::all();
         //dd($id);
 
-		return view('psw.pss_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes', 'files', 'file'));
+		return view('psw.pss_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes', 'files', 'file', 'reasons'));
     }
 
     /**

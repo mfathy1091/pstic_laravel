@@ -40,8 +40,10 @@ PSS Case Details:
                             <div class="col mb-4">
                                 <h6 class="card-subtitle mb-2 text-muted">Reason of Referral</h6>
                                 <div class="ml-4">
-                                    <li>MH</li>
-                                    <li>Housing</li>
+                                    <?php $reasons = $referral->reasons; ?>
+                                    @foreach ($reasons as $reason)
+                                        <li>{{ $reason->name }}</li>
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -107,6 +109,7 @@ PSS Case Details:
                                             <td>{{ $beneficiary->beneficiary->age }}</td>
                                             <td>{{ $beneficiary->beneficiary->gender->name }}</td>
                                             <td>{{ $beneficiary->beneficiary->nationality->name }}</td>
+                                            <td></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

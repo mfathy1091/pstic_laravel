@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(ReasonSeeder::class);
         $this->call(ServiceSeeder::class);
         $this->call(PssStatusSeeder::class);
 

@@ -45,7 +45,7 @@ Add PS Case
                     </div>
 
                     <div class="form-row">
-                        <div class="col">
+                        <div class="form-group col-md-6">
                             <label for="referral_date">Referral Date</label>
                             <div class='input-group date'>
                                 <input class="form-control" type="text"  id="datepicker-action" name="referral_date" data-date-format="dd-mm-yyyy" autocomplete="off" required>
@@ -56,19 +56,34 @@ Add PS Case
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                             <label for="referring_person_name" class="mr-sm-2">Referring Person Name:</label>
                             <input id="referring_person_name" type="text" name="referring_person_name" class="form-control">
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                             <label for="referring_person_email" class="mr-sm-2">Referring Person Email:</label>
                             <input id="referring_person_email" type="text" name="referring_person_email" class="form-control">
                         </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="reasons" class="mr-sm-2">Reasons:</label>
+                            <div>
+                                <select class="form-select" multiple aria-label="reasons">
+                                    @foreach ($reasons as $reason)
+                                        <option value="{{ $reason->id }}">{{ $reason->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
 
                 </div>
             </div>

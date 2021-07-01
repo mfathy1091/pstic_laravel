@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Referral;
 use App\Models\PssCase;
 use App\Models\PssCaseBeneficiary;
-use App\Models\ReferralBeneficiary;
+use App\Models\ReferralReason;
 
 class ReferralSeeder extends Seeder
 {
@@ -52,7 +52,27 @@ class ReferralSeeder extends Seeder
 
 
 
+        // Reasons
+        $referralReasons = [
+            [
+                'referral_id' => '1',
+                'reason_id' => '1',
+            ],
+            [
+                'referral_id' => '1',
+                'reason_id' => '2',
+            ],
+            [
+                'referral_id' => '1',
+                'reason_id' => '3',
+            ],
 
+        ];
+
+        foreach($referralReasons as $n){
+            ReferralReason::create($n);
+        }
+        
 
 
         // PSS Cases

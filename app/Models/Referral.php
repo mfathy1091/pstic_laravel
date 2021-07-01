@@ -39,6 +39,10 @@ class Referral extends Model
     }
 
 
+    public function reasons()
+    {
+        return $this->belongsToMany(Reason::class, 'referral_reasons', 'referral_id', 'reason_id');
+    }
 
 
     // pivot tables
