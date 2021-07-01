@@ -101,7 +101,7 @@ PSS Case Details:
                                             <td>
                                                 {{ $beneficiary->beneficiary->name }}
                                                 @if ($beneficiary->is_direct === '1')
-                                                    <span class="badge badge-pill badge-info ml-4">direct</span>
+                                                    <span class="badge badge-pill badge-secondary ml-4 font-weight-bold font-italic">Direct</span>
                                                 @endif
                                             </td>
                                             <td>{{ $beneficiary->beneficiary->age }}</td>
@@ -117,7 +117,7 @@ PSS Case Details:
 
             </div>
             <br>
-
+            
 
 
 
@@ -154,14 +154,15 @@ PSS Case Details:
                                 <?php $n++; ?>
                                 <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $monthlyRecord->id }}" role="tabpanel" aria-labelledby="{{ $monthlyRecord }}-tab">
                                     <div class="col-md-auto">
-                                        <span class="badge badge-pill badge-primary h-auto">{{ $monthlyRecord->pssStatus->name }}</span>
+                                        <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic">{{ $monthlyRecord->pssStatus->name }}</span>
                                         
                                         @if ($monthlyRecord->is_emergency == '1')
                                             <span class="text-muted ml-2 mr-2">|</span>
-                                            <span class="badge badge-pill badge-danger h-auto">Emergency</span>
+                                            <span class="badge badge-pill badge-danger h-auto font-weight-bold font-italic">Emergency</span>
                                         @endif
                                     </div>
 
+                                    <br>
                                     <hr>
 
                                     {{-- visits --}}
@@ -207,6 +208,8 @@ PSS Case Details:
                                         </div>
                                         
                                     </div>
+
+                                    <br>
                                             
                                     <hr>
                                     
@@ -247,7 +250,7 @@ PSS Case Details:
                                                                 <td>
                                                                     {{ $beneficiary->beneficiary->name }}
                                                                     @if ($beneficiary->is_direct === '1')
-                                                                        <span class="badge badge-pill badge-info ml-4">direct</span>
+                                                                    <span class="badge badge-pill badge-secondary ml-4 font-weight-bold font-italic">Direct</span>
                                                                     @endif
                                                                 </td>
                                                                 <td></td>
