@@ -17,14 +17,14 @@ class CreateMonthlyRecordsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('month_id');
             $table->unsignedBigInteger('pss_case_id');
-            $table->unsignedBigInteger('pss_status_id');
+            $table->unsignedBigInteger('status_id');
             $table->boolean('is_emergency');
             $table->timestamps();
 
             // foreign keys
             $table->foreign('month_id')->references('id')->on('months')->onDelete('cascade');
             $table->foreign('pss_case_id')->references('id')->on('pss_cases')->onDelete('cascade');
-            $table->foreign('pss_status_id')->references('id')->on('pss_statuses')->onDelete('cascade');
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('cascade');
         });
     }
 

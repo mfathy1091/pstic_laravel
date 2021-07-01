@@ -15,7 +15,7 @@ use App\Models\ReferralSource;
 use App\Models\File;
 use App\Models\Reason;
 use App\Models\PsCaseActivity;
-use App\Models\PssStatus;
+use App\Models\Status;
 use App\Models\CaseType;
 use App\Models\Team;
 use App\Models\Employee;
@@ -55,13 +55,13 @@ class PssCaseController extends Controller
 
         $tabs[0] = ['name' => 'All', 'cases' => $pssCases];
 
-        $pssStatuses = PssStatus::all();
+        $statuses = Status::all();
         
         $i = 1;
-        foreach($pssStatuses as $pssStatus){
-            $statusName = $pssStatus->name;
-            $statusId = $pssStatus->id;
-            $cases = $pssCases->where('current_pss_status_id', '=', $statusId);
+        foreach($statuses as $statuses){
+            $statusName = $statuses->name;
+            $statusId = $statuses->id;
+            $cases = $pssCases->where('current_status_id', '=', $statusId);
             $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
             $i++;
         }

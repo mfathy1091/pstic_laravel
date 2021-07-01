@@ -22,9 +22,9 @@ class MonthlyRecord extends Model
         return $this->belongsTo(Month::class, 'month_id');
     }
 
-    public function pssStatus()
+    public function status()
     {
-        return $this->belongsTo(PssStatus::class, 'pss_status_id');
+        return $this->belongsTo(Status::class, 'status_id');
     }
 
 
@@ -41,7 +41,7 @@ class MonthlyRecord extends Model
 
     public function scopeNew($query)
     {
-        $query->where('pss_status_id', '1');
+        $query->where('status_id', '1');
     }
 
     public function scopeMonth($query, $monthId)
@@ -56,7 +56,7 @@ class MonthlyRecord extends Model
 
     public function scopeStatus($query, $statusId)
     {
-        $query->where('pss_status_id', $statusId);
+        $query->where('status_id', $statusId);
     }
 
 

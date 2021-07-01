@@ -21,31 +21,31 @@ class MonthlyRecordSeeder extends Seeder
             [
                 'month_id' => '2',
                 'pss_case_id' => '1',
-                'pss_status_id' => '1',
+                'status_id' => '1',
                 'is_emergency' => '1',
             ],
             [
                 'month_id' => '3',
                 'pss_case_id' => '1',
-                'pss_status_id' => '2',
+                'status_id' => '2',
                 'is_emergency' => '0',
             ],
             [
                 'month_id' => '4',
                 'pss_case_id' => '1',
-                'pss_status_id' => '2',
+                'status_id' => '2',
                 'is_emergency' => '1',
             ],
             [
                 'month_id' => '5',
                 'pss_case_id' => '1',
-                'pss_status_id' => '2',
+                'status_id' => '2',
                 'is_emergency' => '0',
             ],
             [
                 'month_id' => '6',
                 'pss_case_id' => '1',
-                'pss_status_id' => '2',
+                'status_id' => '2',
                 'is_emergency' => '0',
             ],
         ];

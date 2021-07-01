@@ -81,13 +81,13 @@ class ReferralSeeder extends Seeder
                 'referral_id' => '1',
                 'direct_beneficiary_id' => '1',
                 'assigned_psw_id' => '3',
-                'current_pss_status_id' => '2',
+                'current_status_id' => '2',
             ],
             [   'file_id' => '1',
                 'referral_id' => '2',
                 'direct_beneficiary_id' => '2',
                 'assigned_psw_id' => '3',
-                'current_pss_status_id' => '1',
+                'current_status_id' => '1',
             ],
 
         
@@ -95,7 +95,7 @@ class ReferralSeeder extends Seeder
                 'referral_id' => '3',
                 'direct_beneficiary_id' => '1',
                 'assigned_psw_id' => '2',
-                'current_pss_status_id' => '1',
+                'current_status_id' => '1',
             ],
 
         ];

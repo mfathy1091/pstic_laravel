@@ -32,7 +32,7 @@
                     <?php $i++; ?>
                     <td>{{ $i }}</td>
                     <td>{{ $pssCase->file->number }}</td>
-                    <td>{{ $pssCase->currentPssStatus->name }}</td>
+                    <td>{{ $pssCase->currentStatus->name }}</td>
                     <td>{{ $pssCase->is_emergency }}</td>
                     <td>{{ $pssCase->referral->referral_date }}</td>
                     <td>{{ $pssCase->referral->referralSource->name }}</td>

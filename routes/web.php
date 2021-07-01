@@ -109,9 +109,9 @@ Route::group(
             Route::resource('referralsources', 'ReferralSourceController');
         });
 
-        //==============================Case Statuses============================
-        Route::namespace('CaseStatuses')->group(function () {
-            Route::resource('casestatuses', 'CaseStatusController');
+        //============================== statuses============================
+        Route::namespace('Statuses')->group(function () {
+            Route::resource('statuses', 'StatusController');
         });
 
         //==============================Case Types============================

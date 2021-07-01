@@ -8,7 +8,7 @@ use App\Repositories\PsCaseRepositoryInterface;
 use App\Models\PssCase;
 use App\Models\ReferralSource;
 use App\Models\PsWorker;
-use App\Models\PssStatus;
+use App\Models\Status;
 use App\Models\CaseType;
 use App\Models\Gender;
 use App\Models\Nationality;
@@ -32,14 +32,14 @@ class PssCaseController extends Controller
             
 
         $tabs = array();
-        $pssStatuses = PssStatus::all();
+        $statuses = Status::all();
 
 
         $i = 0;
-        foreach($pssStatuses as $pssStatus){
-            $statusName = $pssStatus->name;
-            $statusId = $pssStatus->id;
-            $cases = $pssCases->where('current_pss_status_id', '=', $statusId);
+        foreach($statuses as $statuse){
+            $statusName = $statuses->name;
+            $statusId = $statuses->id;
+            $cases = $pssCases->where('current_status_id', '=', $statusId);
             $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
             $i++;
         }

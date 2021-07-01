@@ -23,9 +23,9 @@ class PssCase extends Model
         return $this->belongsTo(Referral::class, 'referral_id');
     }
 
-    public function currentPssStatus()
+    public function currentStatus()
     {
-        return $this->belongsTo(PssStatus::class, 'current_pss_status_id');
+        return $this->belongsTo(Status::class, 'current_status_id');
     }
 
     public function assignedPsw()
@@ -67,7 +67,7 @@ class PssCase extends Model
 
 
 
-    public function currentStatus()
+    public function currentStatus2()
     {
         $status = MonthlyRecord::with('caseStatus', 'month')
         ->where('month_id', date('n'))
@@ -113,7 +113,7 @@ class PssCase extends Model
     {
         return $this->hasMany(MonthlyRecord::class)
             ->where('month', $month)
-            ->where('pss_status_id', $status);
+            ->where('status_id', $status);
     }
 
 

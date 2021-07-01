@@ -157,7 +157,7 @@ PSS Case Details:
                                 <?php $n++; ?>
                                 <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $monthlyRecord->id }}" role="tabpanel" aria-labelledby="{{ $monthlyRecord }}-tab">
                                     <div class="col-md-auto">
-                                        <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic">{{ $monthlyRecord->pssStatus->name }}</span>
+                                        <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic">{{ $monthlyRecord->status->name }}</span>
                                         
                                         @if ($monthlyRecord->is_emergency == '1')
                                             <span class="text-muted ml-2 mr-2">|</span>
