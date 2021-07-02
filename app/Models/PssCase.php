@@ -33,9 +33,9 @@ class PssCase extends Model
         return $this->belongsTo(Employee::class, 'assigned_psw_id');
     }
 
-    public function directBeneficiary()
+    public function directIndividual()
     {
-        return $this->belongsTo(Beneficiary::class, 'direct_beneficiary_id');
+        return $this->belongsTo(Individual::class, 'direct_individual_id');
     }
 
 
@@ -53,11 +53,6 @@ class PssCase extends Model
         // return $this->posts()->published();
     }
 
-
-    public function beneficiaries()
-    {
-        return $this->hasMany(Beneficiary::class);
-    }
 
     public function visits()
     {
@@ -95,9 +90,9 @@ class PssCase extends Model
         return $this->hasMany(MonthlyRecord::class)->orderBy('month_id', 'DESC');
     }
 
-    public function pssCaseBeneficiaries()
+    public function beneficiaries()
     {
-        return $this->hasMany(PssCaseBeneficiary::class)->orderBy('is_direct', 'DESC');
+        return $this->hasMany(Beneficiary::class)->orderBy('is_direct', 'DESC');
     }
 
 

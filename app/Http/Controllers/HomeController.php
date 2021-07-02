@@ -5,7 +5,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\PssCase;
 use App\Models\Employee;
-use App\Models\Beneficiary;
+use App\Models\Individual;
 use App\Models\Month;
 use App\Models\Referral;
 use App\Models\Section;
@@ -31,6 +31,24 @@ class HomeController extends Controller
      */
     public function index()
     {
+                // June PSS Cases
+/*                 $pssCases = PssCase::with('monthly_records', 'beneficiaries')
+                ->whereHas('monthly_records', function($query){
+                    return $query->where('moonth_id', '6');
+                })->get(); */
+    
+            // June PSS Beneficiaries with Ahmed
+/*             $pssBeneficiaries = Beneficiary::with('monthly_records', 'pssCases')
+                ->whereHas('pssCases', function($query){
+                    return $query->where('assigned_psw_id', '3');
+                })->whereHas('monthly_records', function($query){
+                    return $query->where('moonth_id', '6');
+                })
+                ->get(); */
+
+
+
+
         $psWorkersCount = Employee::where('job_title_id', '1')->get()->count();
         $psCasesCount = PssCase::all()->count();
 

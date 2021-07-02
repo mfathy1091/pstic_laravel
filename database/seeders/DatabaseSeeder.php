@@ -54,6 +54,9 @@ class DatabaseSeeder extends Seeder
         $this->call(SurveySeeder::class);
         $this->call(MonthlyRecordSeeder::class);
         $this->call(VisitSeeder::class);
+        $this->call(ServiceRecordSeeder::class);
+
+        
 
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Supervisor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Individual;
 use App\Repositories\PsCaseRepositoryInterface;
 use Illuminate\Support\Facades\Auth;use App\Models\Gender;
 
@@ -12,13 +13,14 @@ use App\Models\PsCase;
 use App\Models\PssCase;
 use App\Models\ReferralSource;
 use App\Models\PsWorker;
-use App\Models\DirectBeneficiary;
 use App\Models\MonthlyRecord;
 use App\Models\Status;
 use App\Models\CaseType;
 use App\Models\Team;
 use App\Models\Employee;
+use App\Models\Service;
 use App\Models\JobTitle;
+use App\Models\ServiceRecord;
 
 class PssCaseController extends Controller
 {
@@ -105,13 +107,25 @@ class PssCaseController extends Controller
      */
     public function show($id)
     {
+
+
+        $services = Service::where('type', 'Psychosocial')->get();
+
         $pssCase = PssCase::find($id);
         $referral = $pssCase->referral;
         $monthlyRecords = $pssCase->monthlyRecords;
 
-        $beneficiaries = $pssCase->pssCaseBeneficiaries;
+        $beneficiaries = $pssCase->beneficiaries;
 
-        return view('supervisor.pss_cases.show', compact('pssCase', 'referral', 'monthlyRecords', 'beneficiaries'));
+
+        //dd($beneficiary->serviceRecords->first()->service->name);
+        //dd($beneficiary->serviceRecords);
+        
+        //foreach($beneficiary->serviceRecords as $serviceRecord){
+            //dd($serviceRecord->service->name);
+        //}
+
+        return view('supervisor.pss_cases.show', compact('pssCase', 'referral', 'monthlyRecords', 'beneficiaries', 'services'));
 
     }
 

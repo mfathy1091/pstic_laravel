@@ -11,9 +11,8 @@ use Illuminate\Http\Request;
 use App\Models\PsCase;
 use App\Models\ReferralSource;
 use App\Models\PsWorker;
-use App\Models\DirectBeneficiary;
 use App\Models\PsCaseActivity;
-use App\Models\CaseStatus;
+use App\Models\Status;
 use App\Models\CaseType;
 use App\Models\User;
 use App\Models\Employee;
@@ -51,12 +50,12 @@ class PsCaseController extends Controller
 
 
         $tabs = array();
-        $caseStatuses = CaseStatus::all();
+        $statuses = Status::all();
 
         $i = 0;
-        foreach($caseStatuses as $caseStatus){
-            $statusName = $caseStatus->name;
-            $statusId = $caseStatus->id;
+        foreach($statuses as $status){
+            $statusName = $status->name;
+            $statusId = $status->id;
             $cases = $psCases->where('case_status_id', '=', $statusId);
             $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
             $i++;

@@ -32,7 +32,7 @@ Add beneficary to {{ $file->number }}
                     <div class="col-xs-12">
                         <div class="col-md-12">
                             <br>
-                            <form action="{{route('beneficiaries.store')}}" method="post">
+                            <form action="{{route('individuals.store')}}" method="post">
                             @csrf
                             
                             

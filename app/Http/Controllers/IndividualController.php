@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\File;
 use App\Models\Gender;
 use App\Models\Nationality;
-use App\Models\Beneficiary;
+use App\Models\Individual;
 use App\Models\Relationship;
 
-class BeneficiaryController extends Controller
+class IndividualController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class BeneficiaryController extends Controller
         $nationalities = Nationality::all();
         $relationships = Relationship::all();
 
-		return view('beneficiaries.create', compact('file', 'genders', 'nationalities', 'relationships'));
+		return view('individuals.create', compact('file', 'genders', 'nationalities', 'relationships'));
     }
 
     /**
@@ -60,7 +60,7 @@ class BeneficiaryController extends Controller
         
         //dd($data);
         
-        $beneficiary = Beneficiary::create($data);
+        $individual = Individual::create($data);
         
         return redirect()->route('files.show', [$request->input('file_id')]);
     }

@@ -38,10 +38,10 @@
                     <td>{{ $pssCase->referral->referral_date }}</td>
                     <td>{{ $pssCase->referral->referralSource->name }}</td>
                     
-                    <td>{{ $pssCase->directBeneficiary->name }}</td>
-                    <td>{{ $pssCase->directBeneficiary->age }}</td>
-                    <td>{{ $pssCase->directBeneficiary->gender->name }}</td>
-                    <td>{{ $pssCase->directBeneficiary->nationality->name }}</td>
+                    <td>{{ $pssCase->directIndividual->name }}</td>
+                    <td>{{ $pssCase->directIndividual->age }}</td>
+                    <td>{{ $pssCase->directIndividual->gender->name }}</td>
+                    <td>{{ $pssCase->directIndividual->nationality->name }}</td>
 
                     <td>{{ $pssCase->assignedPsw->name }}</td>
 

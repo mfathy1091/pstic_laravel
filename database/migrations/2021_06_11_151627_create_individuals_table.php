@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBeneficiariesTable extends Migration
+class CreateIndividualsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBeneficiariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('beneficiaries', function (Blueprint $table) {
+        Schema::create('individuals', function (Blueprint $table) {
             $table->id();
             $table->unsignedbigInteger('file_id');
             $table->string('individual_id')->nullable();
@@ -42,6 +42,6 @@ class CreateBeneficiariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beneficiaries');
+        Schema::dropIfExists('individuals');
     }
 }

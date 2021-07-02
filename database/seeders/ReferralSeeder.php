@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Referral;
 use App\Models\PssCase;
-use App\Models\PssCaseBeneficiary;
+use App\Models\Beneficiary;
 use App\Models\ReferralReason;
 
 class ReferralSeeder extends Seeder
@@ -79,13 +79,13 @@ class ReferralSeeder extends Seeder
         $pssCases = [
             [   'file_id' => '1',
                 'referral_id' => '1',
-                'direct_beneficiary_id' => '1',
+                'direct_individual_id' => '1',
                 'assigned_psw_id' => '3',
                 'current_status_id' => '2',
             ],
             [   'file_id' => '1',
                 'referral_id' => '2',
-                'direct_beneficiary_id' => '2',
+                'direct_individual_id' => '2',
                 'assigned_psw_id' => '3',
                 'current_status_id' => '1',
             ],
@@ -93,7 +93,7 @@ class ReferralSeeder extends Seeder
         
             [   'file_id' => '2',
                 'referral_id' => '3',
-                'direct_beneficiary_id' => '1',
+                'direct_individual_id' => '1',
                 'assigned_psw_id' => '2',
                 'current_status_id' => '1',
             ],
@@ -106,49 +106,49 @@ class ReferralSeeder extends Seeder
         }
 
 
-        // (3) PSS Case Beneficiaries
-        $psscase_beneficiaries = [
+        // (3) Beneficiaries
+        $beneficiaries = [
             [
                 'pss_case_id' => '1',
-                'beneficiary_id' => '1',
+                'individual_id' => '1',
                 'is_direct' => '1',
             ],
             [
                 'pss_case_id' => '1',
-                'beneficiary_id' => '2',
+                'individual_id' => '2',
                 'is_direct' => '0',
             ],
 
             [
                 'pss_case_id' => '2',
-                'beneficiary_id' => '1',
+                'individual_id' => '1',
                 'is_direct' => '1',
             ],
             [
                 'pss_case_id' => '2',
-                'beneficiary_id' => '2',
+                'individual_id' => '2',
                 'is_direct' => '0',
             ],
 
             [
                 'pss_case_id' => '3',
-                'beneficiary_id' => '2',//4
+                'individual_id' => '2',//4
                 'is_direct' => '0',
             ],
             [
                 'pss_case_id' => '3',
-                'beneficiary_id' => '2',//5
+                'individual_id' => '2',//5
                 'is_direct' => '0',
             ],
             [
                 'pss_case_id' => '3',
-                'beneficiary_id' => '2',//6
+                'individual_id' => '2',//6
                 'is_direct' => '1',
             ],
         ];
 
-        foreach ($psscase_beneficiaries as $n) {
-            PssCaseBeneficiary::create($n);
+        foreach ($beneficiaries as $n) {
+            Beneficiary::create($n);
         }
 
 

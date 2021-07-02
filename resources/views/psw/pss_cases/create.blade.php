@@ -101,13 +101,13 @@ Add PS Case
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity">Direct Beneficiary</label>
-                            <select class="custom-select my-1 mr-sm-2" name="direct_beneficiary_id">
-                                <?php $beneficiaries = $file->beneficiaries; ?>
-                                @foreach($beneficiaries as $beneficiary)
-                                    <option value="{{$beneficiary->id}}">{{$beneficiary->name}}</option>
+                            <select class="custom-select my-1 mr-sm-2" name="direct_individual_id">
+                                <?php $individuals = $file->individuals; ?>
+                                @foreach($individuals as $individual)
+                                    <option value="{{$individual->id}}">{{$individual->name}}</option>
                                 @endforeach
                             </select>
-                            @error('direct_beneficiary_id')
+                            @error('direct_individual_id')
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>

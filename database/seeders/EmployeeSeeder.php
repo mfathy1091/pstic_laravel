@@ -57,7 +57,7 @@ class EmployeeSeeder extends Seeder
                 'name' => 'Mohamed Maher',
                 'job_title_id' => '2',
                 'department_id' => '2',
-                //'team_id' => '1',
+                'team_id' => '1',
                 'budget_id' => '2',
                 'hire_date' => '2013-05-01',
                 'age' => '40',

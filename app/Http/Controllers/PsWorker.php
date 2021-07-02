@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\File;
-use App\Models\Gender;
-use App\Models\Nationality;
-use App\Models\Individual;
+use App\Models\Employee;
 
-class FileController extends Controller
+class PsWorker extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,7 @@ class FileController extends Controller
      */
     public function index()
     {
-        $files = File::all();
-
-        return view('files.index',compact('files'));
+        $psWorkers = Employee::where('job_tite_id', '1');
     }
 
     /**
@@ -29,11 +24,7 @@ class FileController extends Controller
      */
     public function create()
     {
-        $files = File::all();
-        $genders = Gender::all();
-        $nationalities = Nationality::all();
-
-		return view('files.create', compact('files', 'genders', 'nationalities'));
+        //
     }
 
     /**
@@ -44,37 +35,7 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        $fileData = request()->validate([
-            'number' => 'required',
-        ]);
-
-        $fileData += ['created_user_id' => auth()->id()];
-
-        $file = File::create($fileData);
-
-        //$file = File::find(10);
-        
-        //dd($request);
-        $paIndividualData = request()->validate([
-            'individual_id' => 'required',
-            'passport_number' => '',
-            'name' => 'required',
-            'native_name' => 'required',
-            'age' => 'required',
-            'gender_id' => 'required',
-            'nationality_id' => 'required',
-            'current_phone_number' => '',
-        ]);
-        
-        $paIndividualData += ['file_id' => $file->id];
-        $paIndividualData += ['relationship_id' => 1];
-        
-        //dd($paIndividualData);
-        
-        $individual = Individual::create($paIndividualData);
-        
-
-        return redirect()->route('files.index');
+        //
     }
 
     /**
@@ -85,9 +46,7 @@ class FileController extends Controller
      */
     public function show($id)
     {
-        $file = File::find($id);
-
-        return view('files.show', compact('file'));
+        //
     }
 
     /**

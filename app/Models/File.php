@@ -14,9 +14,9 @@ class File extends Model
         return $this->belongsTo(User::class, 'created_user_id');
     }
 
-    public function beneficiaries()
+    public function individuals()
     {
-        return $this->hasMany(Beneficiary::class);
+        return $this->hasMany(Individual::class);
     }
 
     public function referrals()

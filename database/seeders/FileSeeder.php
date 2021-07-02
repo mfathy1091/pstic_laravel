@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\File;
 use App\Models\Relationship;
-use App\Models\Beneficiary;
+use App\Models\Individual;
 
 class FileSeeder extends Seeder
 {
@@ -59,7 +59,7 @@ class FileSeeder extends Seeder
 
 
 
-        $beneficiaries = [
+        $individuals = [
             [
                 'file_id' => '1',
                 'individual_id' => '555-00112677',
@@ -172,8 +172,8 @@ class FileSeeder extends Seeder
 
         ];
 
-        foreach ($beneficiaries as $n) {
-            Beneficiary::create($n);
+        foreach ($individuals as $n) {
+            Individual::create($n);
         } 
     }
 }

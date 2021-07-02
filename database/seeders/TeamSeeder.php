@@ -47,6 +47,10 @@ class TeamSeeder extends Seeder
             [
                 'name' => 'Program',
                 'department_id' => '3',
+            ],
+            [
+                'name' => 'Housing NC',
+                'department_id' => '3',
             ]
         ];
 

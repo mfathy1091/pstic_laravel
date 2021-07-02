@@ -30,11 +30,13 @@ Route::group(
 
         // File Search
         Route::resource('files', FileController::class);
-        
 
-        // Beneficiaries
-        Route::get('/beneficiaries/create/{id}', 'BeneficiaryController@create')->name('beneficiaries.create');
-        Route::resource('/beneficiaries', 'BeneficiaryController', ['except' => ['create']]);
+        // Serice Records
+        Route::resource('servicerecords', ServiceRecordController::class);
+
+        // Individuals
+        Route::get('/individuals/create/{id}', 'IndividualController@create')->name('individuals.create');
+        Route::resource('/individuals', 'IndividualController', ['except' => ['create']]);
 
         // Home (Dashboard)
         Route::get('/', 'HomeController@index')->name('dashboard');

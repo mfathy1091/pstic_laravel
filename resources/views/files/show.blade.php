@@ -44,8 +44,8 @@ File Number
                     <div class="tab-pane fade show active" id="individuals" role="tabpanel" aria-labelledby="individuals-tab">            
                         {{-- add button --}}
 
-                        <a href="{{route('beneficiaries.create', [$file->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">
-                            Add Beneficiary
+                        <a href="{{route('individuals.create', [$file->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">
+                            Add Individual
                         </a>
 
                         <div class="table-responsive">
@@ -67,22 +67,22 @@ File Number
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $beneficiaries = $file->beneficiaries; ?>
-                                    @foreach ($beneficiaries as $beneficiary)
+                                    <?php $individuals = $file->individuals; ?>
+                                    @foreach ($individuals as $individual)
                                         <tr>
-                                            <td>{{ $beneficiary->file->number }}
-                                            <td>{{ $beneficiary->individual_id }}
-                                            <td>{{ $beneficiary->passport_number }}
-                                            <td>{{ $beneficiary->name }}
-                                            <td>{{ $beneficiary->native_name }}
-                                            <td>{{ $beneficiary->relationship->name }}
-                                            <td>{{ $beneficiary->age }}</td>
-                                            <td>{{ $beneficiary->gender->name }}</td>
-                                            <td>{{ $beneficiary->nationality->name }}</td>
-                                            <td>{{ $beneficiary->current_phone_number }}</td>
+                                            <td>{{ $individual->file->number }}
+                                            <td>{{ $individual->individual_id }}
+                                            <td>{{ $individual->passport_number }}
+                                            <td>{{ $individual->name }}
+                                            <td>{{ $individual->native_name }}
+                                            <td>{{ $individual->relationship->name }}
+                                            <td>{{ $individual->age }}</td>
+                                            <td>{{ $individual->gender->name }}</td>
+                                            <td>{{ $individual->nationality->name }}</td>
+                                            <td>{{ $individual->current_phone_number }}</td>
                                         </tr>
                         
-                                        <div class="modal fade" id="delete_member{{$beneficiary->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="delete_member{{$individual->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <form action="" method="post">
                                                     {{method_field('delete')}}
@@ -96,7 +96,7 @@ File Number
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>'Are You Sure?'</p>
-                                                        <input type="hidden" name="id"  value="{{$beneficiary->id}}">
+                                                        <input type="hidden" name="id"  value="{{$individual->id}}">
                                                     </div>
                                                     <div class="modal-footer">
                                                         <div class="modal-footer">
@@ -203,7 +203,7 @@ File Number
                                 <tr>                        
                                     <th class="align-middle">Section</th>
                                     <th class="align-middle">Assigned Worker</th>
-                                    <th class="align-middle">Direct Beneficiary</th>
+                                    <th class="align-middle">Direct individual</th>
                                     <th class="align-middle">Action</th>
                                 </tr>
                             </thead>
@@ -213,7 +213,7 @@ File Number
                                     <tr>
                                         <td>{{ $section->name }} <span class="badge badge-primary">{{ $section->pivot->currentStatus->name }}</span></td>
                                         <td>{{ $section->pivot->assignedWorker->name }}</td>
-                                        <td>{{ $section->pivot->directBeneficiary->name }}</td>
+                                        <td>{{ $section->pivot->directindividual->name }}</td>
                                         <td>
                                             <a href="{{route('pss.show',$referral->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
                     
@@ -223,7 +223,7 @@ File Number
                                     </tr>
 
                     
-                                    <div class="modal fade" id="delete_member{{$beneficiary->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="delete_member{{$individual->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <form action="" method="post">
                                                 {{method_field('delete')}}
@@ -237,7 +237,7 @@ File Number
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>'Are You Sure?'</p>
-                                                    <input type="hidden" name="id"  value="{{$beneficiary->id}}">
+                                                    <input type="hidden" name="id"  value="{{$individual->id}}">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="modal-footer">

@@ -60,10 +60,10 @@ PSS Case Details:
                         <h5 class="text-primary">
                             PSS Case
                             <span class="text-muted ml-2 mr-2">|</span>
-                            {{ $pssCase->directBeneficiary->name }},
-                            {{ $pssCase->directBeneficiary->nationality->name }},
-                            {{ $pssCase->directBeneficiary->gender->name }},
-                            {{ $pssCase->directBeneficiary->age }} yrs
+                            {{ $pssCase->directIndividual->name }},
+                            {{ $pssCase->directIndividual->nationality->name }},
+                            {{ $pssCase->directIndividual->gender->name }},
+                            {{ $pssCase->directindividual->age }} yrs
                         </h5>
 
                     </div>
@@ -101,14 +101,14 @@ PSS Case Details:
                                         <tr>
                                             
                                             <td>
-                                                {{ $beneficiary->beneficiary->name }}
+                                                {{ $beneficiary->individual->name }}
                                                 @if ($beneficiary->is_direct === '1')
                                                     <span class="badge badge-pill badge-secondary ml-4 font-weight-bold font-italic">Direct</span>
                                                 @endif
                                             </td>
-                                            <td>{{ $beneficiary->beneficiary->age }}</td>
-                                            <td>{{ $beneficiary->beneficiary->gender->name }}</td>
-                                            <td>{{ $beneficiary->beneficiary->nationality->name }}</td>
+                                            <td>{{ $beneficiary->individual->age }}</td>
+                                            <td>{{ $beneficiary->individual->gender->name }}</td>
+                                            <td>{{ $beneficiary->individual->nationality->name }}</td>
                                             <td></td>
                                         </tr>
                                     @endforeach
@@ -175,9 +175,9 @@ PSS Case Details:
                                                 <h5>Visits</h2>
                                             </div>
                                             <div class="pull-right">
-                                                <a href="{{route('visits.create', [$monthlyRecord->id])}}" class="btn btn-success btn-sm mb-3" >
+                                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#addVisitModal">
                                                     Add Visit
-                                                </a>                                                
+                                                </button>                                                 
                                             </div>
                                         </div>
                                     </div>
@@ -216,6 +216,11 @@ PSS Case Details:
                                             
                                     <hr>
                                     
+
+
+
+
+
                                     {{-- Services --}}
                                     <div class="row">
                                         <div class="col-lg-12 margin-tb">
@@ -223,55 +228,53 @@ PSS Case Details:
                                                 <h5>Services</h2>
                                             </div>
                                             <div class="pull-right">
-                                                <a href="{{route('visits.create', [$monthlyRecord->id])}}" class="btn btn-success btn-sm mb-3" >
+                                                <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#addServiceModal">
                                                     Add Service
-                                                </a>                                                
+                                                </button>                                      
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
-                                            @if(!$monthlyRecord->visits->isEmpty())
 
+                                            @if(!$monthlyRecord->serviceRecords->isEmpty())
 
-
-
-                                            <div class="table-responsive">
-                                                <table id="datatable1" class="table w-auto table-hover table-sm table-bordered p-0"
-                                                    data-page-length="50"
-                                                    style="text-align: center">
-                                                    <thead>
-                                                        <tr>                            
-                                                            <th>Name</th>
-                                                            <th>Services</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach($beneficiaries as $beneficiary)
-                                                            <tr>
-                                                                
-                                                                <td>
-                                                                    {{ $beneficiary->beneficiary->name }}
-                                                                    @if ($beneficiary->is_direct === '1')
-                                                                    <span class="badge badge-pill badge-secondary ml-4 font-weight-bold font-italic">Direct</span>
-                                                                    @endif
-                                                                </td>
-                                                                <td></td>
+                                                <div class="table-responsive">
+                                                    <table id="datatable1" class="table w-auto table-hover table-sm table-bordered p-0"
+                                                        data-page-length="50"
+                                                        style="text-align: center">
+                                                        <thead>
+                                                            <tr>                            
+                                                                <th>Service</th>
+                                                                <th>Individuals</th>
                                                             </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        @else
-                                            <div>This Month has no services provided!</div>
-                                        @endif
+                                                        </thead>
+                                                        <tbody>
+
+                                                                
+                                                            @foreach($monthlyRecord->serviceRecords as $serviceRecord)
+                                                                <tr>
+                                                                    <td>
+                                                                        {{ $serviceRecord->service->name }}
+                                                                    </td>
+                                                                    <td>
+                                                                        @foreach ($serviceRecord->individuals as $individual)
+                                                                                
+                                                                                <div>{{ $individual->name }}</div>
+                                                                        @endforeach
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            @else
+                                                <div>This Month has no services!</div>
+                                            @endif
+
                                         </div>
                                         
                                     </div>
-
-
-                                            
-
 
                                 </div>
                             @endforeach
@@ -281,14 +284,133 @@ PSS Case Details:
                 </div>
             </div>
 
-
-            
-                
-                
-    
-
 </div>
 <!-- row closed -->
+
+
+
+<!-- ADD Visit MODAL -->
+<div class="modal fade" id="addVisitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                    Add Visit
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- add_form -->
+                <form action="{{ route('visits.store') }}" method="POST">
+                    @csrf
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="visit_date">Visit Date</label>
+                            <div class='input-group date'>
+                                <input class="form-control" type="text"  id="datepicker-action" name="visit_date" data-date-format="dd-mm-yyyy" autocomplete="off" required>
+                            </div>
+                            @error('visit_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>             
+
+                    <div class="form-group">
+                        <label for="comment">Comment</label>
+                        <textarea class="form-control" id="comment" rows="3"></textarea>
+                    </div>
+
+
+                    <br><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ADD Service MODAL -->
+<div class="modal fade" id="addServiceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+                    Add Service
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- add_form -->
+                <form action="{{ route('servicerecords.store') }}" method="POST">
+                    @csrf
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Service</label>
+                            <select class="custom-select my-1 mr-sm-2" name="service_id">
+                                <option selected>Select Service</option>
+                                @foreach($services as $service)
+                                    <option value="{{$service->id}}">{{$service->name}}</option>
+                                @endforeach
+                            </select>
+                            @error('service_id')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>                
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="beneficiaries" class="mr-sm-2">Beneficiaries:</label>
+                            <div>
+                                <select class="form-select" multiple aria-label="beneficiaries">
+                                    @foreach ($beneficiaries as $beneficiary)
+                                        <option>{{ $beneficiary->individual->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="provide_date">Provide Date</label>
+                            <div class='input-group date'>
+                                <input class="form-control" type="text"  id="datepicker-action" name="provide_date" data-date-format="dd-mm-yyyy" autocomplete="off" required>
+                            </div>
+                            @error('provide_date')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>  
+
+
+                    <br><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
 @endsection
 @section('js')
 

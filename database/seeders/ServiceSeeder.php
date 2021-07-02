@@ -15,21 +15,31 @@ class ServiceSeeder extends Seeder
     public function run()
     {
         $data = [
-            'PSS',
-            'Counseling - Problem Solving',
-            'Info Sharing',
-            'Community Support',
-            'Basic Needs',
-            'Protection - Security',
-            'Recreation',
-            'Health Care',
-            'MH Care',
-            'Housing Advocay',
-            'Health Advocay'
+            [
+                'name' => 'PSS',
+                'type' => 'Psychosocial',
+            ],
+            [
+                'name' => 'Info Sharing',
+                'type' => 'Counseling',
+            ],
+            [
+                'name' => 'Basic Needs',
+                'type' => 'Psychosocial',
+            ],
+            [
+                'name' => 'Community Support',
+                'type' => 'Psychosocial',
+            ],
+            [
+                'name' => 'Housing Advocacy',
+                'type' => 'Psychosocial',
+            ],
+
         ];
 
         foreach ($data as $n){
-            Service::create(['name' => $n]);
+            Service::create($n);
         }
     }
 }

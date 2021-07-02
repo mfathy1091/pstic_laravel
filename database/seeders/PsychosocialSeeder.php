@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Beneficiary;
 
-class PsCaseSeeder extends Seeder
+class PsychosocialSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class PsCaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('pss_cases')->delete();
+        DB::table('pychosocials')->delete();
         
         $data = [
             [    

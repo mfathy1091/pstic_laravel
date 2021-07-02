@@ -34,7 +34,10 @@ class MonthlyRecord extends Model
         return $this->hasMany(Visit::class);
     }
 
-
+    public function serviceRecords()
+    {
+        return $this->hasMany(ServiceRecord::class);
+    }
 
 
 
