@@ -43,8 +43,8 @@ class PssCaseController extends Controller
 
         $i = 1;
         foreach($statuses as $status){
-            $statusName = $statuses->name;
-            $statusId = $statuses->id;
+            $statusName = $status->name;
+            $statusId = $status->id;
             $cases = $pssCases->where('current_status_id', '=', $statusId);
             $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
             $i++;
