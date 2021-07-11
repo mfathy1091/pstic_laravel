@@ -107,6 +107,7 @@ class IndividualController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Individual::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }

@@ -30,6 +30,7 @@ class PermissionTableSeeder extends Seeder
             'dashboard',
 
             'file-search',
+            'individual-create',
             'pss-case-list',
             'pss-case-create',
             'housing-case-list',

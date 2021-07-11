@@ -36,6 +36,7 @@ class RoleTableSeeder extends Seeder
         $pswRole = Role::findById(2);
         $pswRole->syncPermissions([
             'file-search',
+            'individual-create',
             'pss-case-list',
             'pss-case-create',
             'psw-menu',
@@ -44,6 +45,7 @@ class RoleTableSeeder extends Seeder
         $psSupervisorRole = Role::findById(3);
         $psSupervisorRole->syncPermissions([
             'file-search',
+            'individual-create',
             'pss-case-list',
             'psychosocial-menu',
         ]);
