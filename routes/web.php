@@ -44,6 +44,9 @@ Route::group(
         // Referrals
         Route::resource('referrals', ReferralController::class);
 
+        // PSS Cases
+        Route::resource('psscases', PssCaseController::class);
+
         // Employees
         Route::resource('employees', Employee\EmployeeController::class);
 
@@ -70,10 +73,6 @@ Route::group(
         });
 
 
-        //PSS Cases
-        Route::prefix('psscases')->name('psscases.')->group( function () {
-            Route::resource('/', PssCase\PssCaseController::class);
-        });
 
         // PS Cases Activities
         Route::namespace('PsCaseActivities')->group(function () {

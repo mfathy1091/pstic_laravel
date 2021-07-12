@@ -17,7 +17,7 @@ class CreateVisitsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pss_case_id');
             $table->unsignedBigInteger('monthly_record_id');
-            $table->date('date');
+            $table->date('visit_date');
             $table->text('comment')->nullable();
             $table->timestamps();
 

@@ -18,17 +18,17 @@ class VisitSeeder extends Seeder
 
         $data = [
             [
-                'date' => '10-05-2021',
+                'visit_date' => '10-05-2021',
                 'pss_case_id' => '1',
                 'monthly_record_id' => '1',
             ],
             [
-                'date' => '11-05-2021',
+                'visit_date' => '11-05-2021',
                 'pss_case_id' => '1',
                 'monthly_record_id' => '1',
             ],
             [
-                'date' => '12-05-2021',
+                'visit_date' => '12-05-2021',
                 'pss_case_id' => '1',
                 'monthly_record_id' => '1',
             ],

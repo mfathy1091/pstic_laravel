@@ -87,7 +87,7 @@
                                 <div class="clearfix"></div>
                             </a>
                             <ul id="supervisor-menu" class="collapse" data-parent="#sidebarnav">
-                                <li><a href="{{route('supervisor.psscases.index')}}">All PSS Cases</a></li>
+                                <li><a href="{{route('psscases.index')}}">All PSS Cases</a></li>
                                 <li><a href="{{ route('supervisor.statistics.index') }}">Statistics</a></li>
                             </ul>
                         </li>

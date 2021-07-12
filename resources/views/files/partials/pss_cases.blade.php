@@ -55,9 +55,9 @@
                     </td> --}}
 
                     <td>
-                        <a href="{{route('supervisor.psscases.show',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
+                        <a href="{{route('psscases.show',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
 
-                        <a href="{{route('supervisor.psscases.edit',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('psscases.edit',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_ps_case{{ $pssCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
@@ -66,7 +66,7 @@
 
                 <div class="modal fade" id="delete_ps_case{{$pssCase->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <form action="{{route('supervisor.psscases.destroy','test')}}" method="post">
+                        <form action="{{route('psscases.destroy','test')}}" method="post">
                             {{method_field('delete')}}
                             {{csrf_field()}}
                         <div class="modal-content">
