@@ -58,14 +58,16 @@ class PssCaseController extends Controller
         $statuses = Status::all();
         
         $i = 1;
-        foreach($statuses as $statuses){
-            $statusName = $statuses->name;
-            $statusId = $statuses->id;
-            $cases = $pssCases->where('current_status_id', '=', $statusId);
+        foreach($statuses as $status){
+            $statusName = $status->name;
+            $statusId = $status->id;
+            //$cases = $pssCases->where('current_status_id', '=', $statusId);
+            $cases = PssCase::whereHas('monthlyRecords', function($query) use($statusId) {
+                return $query->where('status_id', 1)->where('month_id', 7);
+            })->get();
             $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
             $i++;
-        }
-
+        } 
 
         
 

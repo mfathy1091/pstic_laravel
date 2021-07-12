@@ -6,6 +6,7 @@
 @stop
 @endsection
 @section('page-header')
+<link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet" type="text/css" >
 <!-- breadcrumb -->
 @section('PageTitle')
 My PSS Cases

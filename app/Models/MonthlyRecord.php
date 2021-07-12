@@ -63,6 +63,9 @@ class MonthlyRecord extends Model
     }
 
 
-
+    public function scopeCurrentMonthlyRecords($query, $monthId)
+    {
+        $query->whereIn('month_id', date("m"));
+    }
 
 }

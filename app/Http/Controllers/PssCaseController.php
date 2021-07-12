@@ -90,15 +90,14 @@ class PssCaseController extends Controller
             $referral = Referral::create($referralData);
 
             // insert PSS Case
-            $fileData = request()->validate([
+            $pssCaseData = request()->validate([
                 'file_id' => 'required',
                 'referral_id' => 'required',
-                'referral_source' => 'required',
-                'referral_date' => 'required',
-                'referring_person_name' => 'required',
-                'referring_person_email' => 'required',
+                'current_status_id' => '1',
+                'direct_individual_id' => '1',
+                'assigned_psw_id' => '3',
             ]);
-            $file = File::create($fileData);
+            $PssCase = PssCase::create($pssCaseData);
 
 
 
@@ -175,9 +174,9 @@ class PssCaseController extends Controller
 
 
 
-    public function insertDefaultMonthlyStatuses($psCaseID, $referralMonth)
+    public function insertDefaultMonthlyStatuses($pssCaseID, $referralMonth)
     {
-        // count of months starting with referral month to current month
+        // count number of months starting with referral month to current month
         $monthsCount = date("m") - $referralMonth + 1;
 
         // array of months starting with referral month to current month
@@ -189,29 +188,35 @@ class PssCaseController extends Controller
         for ($x = 0; $x < $monthsCount; $x++) {
             if($x==0){
                 $data[0] = [
-                    'ps_case_id' => $psCaseID,
                     'month_id' => $months[0],
-                    'case_status_id' => '1',
+                    'pss_case_id' => $pssCaseID,
+                    'status_id' => '1',
+                    'is_emergency' => '0',
                 ];
             }else{
                 $data[$x] = [
-                    'ps_case_id' => $psCaseID,
                     'month_id' => $months[$x],   // using id is wrong because feb id may not be 2
-                    'case_status_id' => '2',
+                    'pss_case_id' => $pssCaseID,
+                    'status_id' => '2',
+                    'is_emergency' => '0',
                 ];
             }
         }
 
-        DB::table('ps_case_activities')->insert($data);
+        foreach ($data as $n) {
+            MonthlyRecord::create($n);
+        }
+        //DB::table('monthly_records')->insert($data);
     }
 
 
 
 
-    public function getMonthCaseStatus($psCaseId, $monthId)
+    public function getMonthCaseStatus($pssCaseId, $monthId)
     {
-        $psCaseActivity = PsCaseActivity::where('case_id', '=', $psCaseId)->where('month_id', '=', $monthId)->get();
-        $status = $psCaseActivity[0]->caseStatus->name;
+        $monthlyRecord = monthlyRecord::where('case_id', '=', $pssCaseId)
+            ->where('month_id', '=', $monthId)->get();
+        $status = $monthlyRecord[0]->caseStatus->name;
 
         return $status;
     }

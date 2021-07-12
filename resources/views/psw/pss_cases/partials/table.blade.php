@@ -4,6 +4,7 @@
         style="text-align: center">
         <thead >
             <tr>
+                <th></th>
                 <th class="align-middle">#</th>
                 <th class="align-middle">File Number</th>
                 <th class="align-middle">Status (Current Month)</th>
@@ -28,7 +29,8 @@
         <tbody>
             <?php $i = 0; ?>
             @foreach ($tab['cases'] as $pssCase)
-                <tr>
+            <tr data-toggle="collapse" data-target="#{{ $pssCase->id }}" class="accordion-toggle">
+                <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
                     <?php $i++; ?>
                     <td>{{ $i }}</td>
                     <td>{{ $pssCase->file->number }}</td>
@@ -58,6 +60,32 @@
 
                         <a href="{{route('psscases.edit',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_pss_case{{ $pssCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="12" class="hiddenRow">
+                        <div class="accordian-body collapse" id="{{ $pssCase->id }}"> 
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr class="info">
+                                        <th>Month</th>
+                                        <th>Status</th>
+                                        <th>Is Emergency</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php $monthlyRecords = $pssCase->monthlyRecords ?>
+                                    @foreach ($monthlyRecords as $monthlyRecord)
+                                    <tr>
+                                        <td>{{ $monthlyRecord->month->name }}</td>
+                                        <td>{{ $monthlyRecord->status->name }}</td>
+                                        <td>{{ $monthlyRecord->is_emergency }}</td>
+                                    </tr>    
+                                    @endforeach
+                                    
+                                </tbody>
+                            </table>
+                        </div>
                     </td>
                 </tr>
 
