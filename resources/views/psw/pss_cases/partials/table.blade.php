@@ -16,13 +16,7 @@
                 <th class="align-middle">Age</th>
                 <th class="align-middle">Gender</th>
                 <th class="align-middle">Nationality</th>
-
                 <th class="align-middle">Assigned PSW</th>
-
-
-{{--                 <th class="align-middle">Referring Person Name</th>
-                <th class="align-middle">Referring Person Email</th>
-                <th class="align-middle">Visits</th> --}}
                 <th class="align-middle">Action</th>
             </tr>
         </thead>
@@ -45,15 +39,6 @@
                     <td>{{ $pssCase->directIndividual->nationality->name }}</td>
 
                     <td>{{ $pssCase->assignedPsw->name }}</td>
-
-{{--                     <td>{{ $pssCase->referring_person_name }}</td>
-                    <td>{{ $pssCase->referring_person_email }}</td>
-                    <td>
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Show
-                        </button>         
-                    </td> --}}
 
                     <td>
                         <a href="{{route('psscases.show',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>

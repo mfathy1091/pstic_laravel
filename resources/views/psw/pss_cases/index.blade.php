@@ -24,10 +24,11 @@ My PSS Cases
         <div class="error">{{ $errors->first('Name') }}</div>
     @endif
 
+    
+    
     <div class="col-xl-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -37,6 +38,19 @@ My PSS Cases
                         </ul>
                     </div>
                 @endif
+                {!! Form::open(['action' => 'SearchController@index', 'method' => 'GET ']) !!}
+                <div class="form-group">
+                    <select name="statuses" id="statuses" class="form-control input-lgdynamic" data-dependent="state">
+                        <option value="">All</option>
+                        @foreach ($statuses as $status)
+                            <option>{{ $status }}</option>
+                        @endforeach
+                        <option value="">Ongoing</option>
+                        <option value="">Closed</option>
+                    </select>
+                    <br>
+                    {{ Form::Submit('submit', ['class' => 'btn btn-primary']) }}
+                </div>
 
                 <!-- tabs with table-->
                 @include('psw.pss_cases.partials.tabs')
