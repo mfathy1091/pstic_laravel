@@ -24,6 +24,9 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ], function () {
 
+        Route::resource('search', 'SearchController');
+
+        
         // users and roles
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);

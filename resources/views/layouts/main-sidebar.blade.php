@@ -5,6 +5,14 @@
             <div class="scrollbar side-menu-bg" style="overflow: scroll">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                     
+                    <li>
+                        <a href="{{ url('search') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Search</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
+
                     <!-- Users Menu-->
                     @can('users-menu')
                         <li>

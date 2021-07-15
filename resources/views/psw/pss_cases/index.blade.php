@@ -38,19 +38,7 @@ My PSS Cases
                         </ul>
                     </div>
                 @endif
-                {!! Form::open(['action' => 'SearchController@index', 'method' => 'GET ']) !!}
-                <div class="form-group">
-                    <select name="statuses" id="statuses" class="form-control input-lgdynamic" data-dependent="state">
-                        <option value="">All</option>
-                        @foreach ($statuses as $status)
-                            <option>{{ $status }}</option>
-                        @endforeach
-                        <option value="">Ongoing</option>
-                        <option value="">Closed</option>
-                    </select>
-                    <br>
-                    {{ Form::Submit('submit', ['class' => 'btn btn-primary']) }}
-                </div>
+                
 
                 <!-- tabs with table-->
                 @include('psw.pss_cases.partials.tabs')
