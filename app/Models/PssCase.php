@@ -30,7 +30,7 @@ class PssCase extends Model
 
     public function assignedPsw()
     {
-        return $this->belongsTo(Employee::class, 'assigned_psw_id');
+        return $this->belongsTo(User::class, 'assigned_psw_id');
     }
 
     public function directIndividual()

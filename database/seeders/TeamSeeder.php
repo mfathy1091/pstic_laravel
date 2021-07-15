@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
 use Illuminate\Database\Seeder;
 use App\Models\Team;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +52,10 @@ class TeamSeeder extends Seeder
             [
                 'name' => 'Housing NC',
                 'department_id' => '3',
+            ],
+            [
+                'name' => 'N/A',
+                'department_id' => Department::NA_ID,
             ]
         ];
 

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Http\Controllers\JobTitle;
+use App\Models\Department;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -19,17 +21,17 @@ class UserSeeder extends Seeder
     {
 
         //User::factory()->times(10)->create();
-
-
-
-
         
-        $data = [
+        $users = [
             [
                 'name' => 'Mohamed Fathy',
                 'email' => 'mohammedfathy@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
+                'job_title_id' => JobTitle::PROGRAM_OFFICER_ID,
+                'department_id' => Department::Management_ID,
+                'team_id' => '4',
+                'budget_id' => '2',
     
             ],
             [
@@ -37,66 +39,77 @@ class UserSeeder extends Seeder
                 'email' => 'mahahussaien@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
+                'job_title_id' => JobTitle::PSW_ID,
+                'department_id' => Department::PSS_ID,
+                'team_id' => '1',
+                'budget_id' => '2',
             ],
             [
                 'name' => 'Ahmed Alrajeh',
                 'email' => 'ahmedalrajeh@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
+                'job_title_id' => JobTitle::PSW_ID,
+                'department_id' => Department::PSS_ID,
+                'team_id' => '1',
+                'budget_id' => '2',
             ],
             [
                 'name' => 'Mohamed Maher',
                 'email' => 'mahershweiki@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
+                'job_title_id' => JobTitle::HOUSING_ADVOCATE_ID,
+                'department_id' => Department::HOUSING_ID,
+                'team_id' => '1',
+                'budget_id' => '2',
             ],
             [
                 'name' => 'Gihan Babiker',
                 'email' => 'gihanbabiker@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
+                'job_title_id' => JobTitle::PROGRAM_MANAGER_ID,
+                'department_id' => Department::Management_ID,
+                'team_id' => '1',
+                'budget_id' => '2',
             ],
             [
                 'name' => 'Nourhanne Hetta',
                 'email' => 'nourhannehetta@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
+                'job_title_id' => JobTitle::PROGRAM_OFFICER_ID,
+                'department_id' => Department::Management_ID,
+                'team_id' => '1',
+                'budget_id' => '2',
             ],
             [
                 'name' => 'Yara Negm',
                 'email' => 'yaranegm@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
+                'job_title_id' => JobTitle::PROGRAM_OFFICER_ID,
+                'department_id' => Department::Management_ID,
+                'team_id' => '1',
+                'budget_id' => '2',
             ],
 
         ];
-        DB::table('users')->insert($data);
-        
+        DB::table('users')->insert($users);
 
-        $admin = User::create([
-            'name' => 'Admin', 
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('pstic12345'),
-            //'Status' => 'Active'
-        ]);  
-        $admin->assignRole('Administrator');
-        $admin->assignRole('PS Supervisor');
-        $admin->assignRole('PSW');
-
-
-        
-        $ahmedAlrajeh = User::find(3);
+        $ahmedAlrajeh = User::where('name', 'Ahmed Alrajeh')->first();
         $ahmedAlrajeh->assignRole('PSW');
 
-        $gihan = User::find(5);
+        $gihan = User::where('name', 'Gihan Babiker')->first();
         $gihan->assignRole('Administrator');
         $gihan->assignRole('PS Supervisor');
 
-        $nourhanne = User::find(6);
+        $nourhanne = User::where('name', 'Nourhanne Hetta')->first();
         $nourhanne->assignRole('Administrator');
         $nourhanne->assignRole('PS Supervisor');
         
-        $yara = User::find(7);
+        $yara = User::where('name', 'Yara Negm')->first();
         $yara->assignRole('Administrator');
         $yara->assignRole('PS Supervisor');
         

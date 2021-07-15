@@ -57,12 +57,40 @@ class User extends Authenticatable implements MustVerifyEmail
     } 
  */
 
-    public function psWorker(){
-        return $this->hasOne(PsWorker::class);
+    public function nationality()
+    {
+        return $this->belongsTo(Nationality::class, 'nationality_id');
     }
 
-    public function employee(){
-        return $this->hasOne(Employee::class);
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class, 'gender_id');
+    }
+
+    public function jobTitle()
+    {
+        return $this->belongsTo(JobTitle::class, 'job_title_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
+    }
+
+    public function budget()
+    {
+        return $this->belongsTo(Budget::class, 'budget_id');
+    }
+
+    // child tables
+    public function pssCases()
+    {
+        return $this->hasMany(PssCase::class);
     }
 
 

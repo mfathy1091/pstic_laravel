@@ -34,7 +34,7 @@ class PssCaseController extends Controller
     public function index(Request $request)
     {
         // permissions
-        $employee = Auth::user()->employee;
+/*         $employee = Auth::user()->employee;
 
 
         $psWorkersIds = Employee::where('job_title_id', '1')->pluck('id');
@@ -42,13 +42,13 @@ class PssCaseController extends Controller
 
             dd('You are not a PS Worker!');
             return redirect('/');
-        }
+        } */
 
 
         
         $worker = Auth::user()->employee;
 
-        $pssCases = PssCase::where('assigned_psw_id', $worker->id)
+        $pssCases = PssCase::where('assigned_psw_id',  Auth::user()->id)
             ->get();
 
         $tabs = array();

@@ -8,7 +8,6 @@
                 <th class="align-middle">#</th>
                 <th class="align-middle">File Number</th>
                 <th class="align-middle">Status (Current Month)</th>
-                <th class="align-middle">Emergency (Current Month)</th>
                 <th class="align-middle">Referral Date</th>
                 <th class="align-middle">Referral Source</th>
 
@@ -29,7 +28,6 @@
                     <td>{{ $i }}</td>
                     <td>{{ $pssCase->file->number }}</td>
                     <td>{{ $pssCase->currentStatus->name }}</td>
-                    <td>{{ $pssCase->is_emergency }}</td>
                     <td>{{ $pssCase->referral->referral_date }}</td>
                     <td>{{ $pssCase->referral->referralSource->name }}</td>
                     

@@ -18,8 +18,9 @@ class DepartmentSeeder extends Seeder
             'PSS',
             'Housing',
             'Management',
-            'Senior Management',
+            'N/A',
         ];
+
         
         foreach ($data as $n) {
             Department::create(['name' => $n]);

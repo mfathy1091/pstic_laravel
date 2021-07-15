@@ -19,6 +19,7 @@ class BudgetSeeder extends Seeder
             'UNHCR NC',
             'BPRM',
             'SDC',
+            'N/A',
         ];
         
         foreach ($data as $n) {

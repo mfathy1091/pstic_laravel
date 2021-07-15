@@ -22,6 +22,7 @@ class JobTitleSeeder extends Seeder
             'Team Leader',
             'Deputy Team Leader',
             'Coordinator',
+            'N/A'
         ];
         
         foreach ($data as $n) {
