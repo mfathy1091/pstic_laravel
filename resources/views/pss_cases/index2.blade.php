@@ -44,20 +44,28 @@ All PSS Cases
                 <form action="{{route('search.index')}}" method="get">
                     @csrf
                     <div class="form-group">
-                        <select name="current_status_id" id="someid" class="form-control input-lgdynamic" data-dependent="state">
+                        <select name="current_status_id" id="current_status_id" class="form-control input-lgdynamic" data-dependent="state">
                             @foreach ($statuses as $status)
                                 <option value="{{ $status->id }}">{{ $status->name }}</option>
                             @endforeach
                         </select>
-
-                        
                     </div>
+
+                    <div class="form-group">
+                        <select name="team_id" id="team_id" class="form-control input-lgdynamic" data-dependent="state">
+                            @foreach ($teams as $team)
+                                <option value="{{ $team->id }}">{{ $team->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <button class="btn btn-success btn-sm nextBtn btn-lg pull-left" type="submit">Submit</button>
-                    
                 </form>
                 <!--End Filter -->
+
                 <br>
                 <br>
+
                 <!-- table-->
                 <div class="table-responsive">
                     <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"

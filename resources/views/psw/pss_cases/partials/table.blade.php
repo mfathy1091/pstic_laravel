@@ -48,21 +48,23 @@
                 <tr>
                     <td colspan="12" class="hiddenRow">
                         <div class="accordian-body collapse" id="{{ $pssCase->id }}"> 
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr class="info">
-                                        <th>Month</th>
-                                        <th>Status</th>
-                                        <th>Is Emergency</th>
-                                    </tr>
-                                </thead>
+                            
+                            <table class="table">
                                 <tbody>
                                     <?php $monthlyRecords = $pssCase->monthlyRecords ?>
                                     @foreach ($monthlyRecords as $monthlyRecord)
                                     <tr>
                                         <td>{{ $monthlyRecord->month->name }}</td>
-                                        <td>{{ $monthlyRecord->status->name }}</td>
-                                        <td>{{ $monthlyRecord->is_emergency }}</td>
+                                        <td>
+                                            <div class="col-md-auto">
+                                                <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic pull-left">{{ $monthlyRecord->status->name }}</span>
+                                                
+                                                @if ($monthlyRecord->is_emergency == '1')
+                                                    <span class="text-muted ml-2 mr-2 pull-left">|</span>
+                                                    <span class="badge badge-pill badge-danger h-auto font-weight-bold font-italic pull-left">Emergency</span>
+                                                @endif
+                                            </div>
+                                        </td>
                                     </tr>    
                                     @endforeach
                                     
