@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->unsignedInteger('budget_id');
             $table->date('hire_date');
             $table->unsignedInteger('user_id')->nullable();
+            $table->boolean('is_supervisor')->nullable();
 
 
             $table->unsignedInteger('age');

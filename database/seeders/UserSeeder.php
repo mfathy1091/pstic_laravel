@@ -29,7 +29,6 @@ class UserSeeder extends Seeder
                 'name' => 'Mohamed Fathy',
                 'email' => 'mohammedfathy@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'Owner',
                 //'Status' => 'Active'
     
             ],
@@ -37,42 +36,36 @@ class UserSeeder extends Seeder
                 'name' => 'Maha Osman',
                 'email' => 'mahahussaien@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
             [
                 'name' => 'Ahmed Alrajeh',
                 'email' => 'ahmedalrajeh@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
             [
                 'name' => 'Mohamed Maher',
                 'email' => 'mahershweiki@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
             [
                 'name' => 'Gihan Babiker',
                 'email' => 'gihanbabiker@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
             [
                 'name' => 'Nourhanne Hetta',
                 'email' => 'nourhannehetta@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
             [
                 'name' => 'Yara Negm',
                 'email' => 'yaranegm@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
-                //'roles_name' => 'User',
                 //'Status' => 'Active'
             ],
 
@@ -84,7 +77,6 @@ class UserSeeder extends Seeder
             'name' => 'Admin', 
             'email' => 'admin@gmail.com',
             'password' => bcrypt('pstic12345'),
-            //'roles_name' => ['Owner'],
             //'Status' => 'Active'
         ]);  
         $admin->assignRole('Administrator');
