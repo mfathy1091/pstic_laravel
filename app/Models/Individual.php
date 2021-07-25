@@ -44,6 +44,10 @@ class Individual extends Model
         return $this->belongsTo(File::class, 'file_id');
     }
 
+    public function beneficiaries()
+    {
+        return $this->hasMany(Beneficiary::class, 'beneficiary_id');
+    }
 
 
 }

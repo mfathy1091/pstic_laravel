@@ -18,19 +18,22 @@ class VisitSeeder extends Seeder
 
         $data = [
             [
-                'visit_date' => '10-05-2021',
+                'beneficiary_id' => '1',
+                'visit_date' => '10-06-2021',
                 'comment' => 'Assessment',
                 'pss_case_id' => '1',
                 'record_id' => '1',
             ],
             [
-                'visit_date' => '11-05-2021',
+                'beneficiary_id' => '1',
+                'visit_date' => '11-06-2021',
                 'comment' => 'Home Visit',
                 'pss_case_id' => '1',
                 'record_id' => '1',
             ],
             [
-                'visit_date' => '12-05-2021',
+                'beneficiary_id' => '1',
+                'visit_date' => '12-07-2021',
                 'comment' => 'Phone Call',
                 'pss_case_id' => '1',
                 'record_id' => '1',

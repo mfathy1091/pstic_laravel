@@ -53,32 +53,15 @@
 
                                         
                     
-{{--                     <!-- Dashboard-->
+                    <!-- Dashboard-->
                     <li>
                         <a href="{{ url('/') }}">
                             <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
                             </div>
                             <div class="clearfix"></div>
                         </a>
-                    </li> --}}
+                    </li> 
 
-                    <!-- Add Individual -->
-                    <li>
-                        <a href="{{ url('/') }}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Add Individual</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </li>
-
-                    <!-- Individuals -->
-                    <li>
-                        <a href="{{ url('individuals') }}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Individuals</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </li>
 
                     <!-- Beneficiaries -->
                     <li>
