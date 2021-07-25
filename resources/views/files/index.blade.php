@@ -67,14 +67,6 @@ Files Numbers
                                     <td>{{ $file->createdUser->name }}</td>
 
                 
-                {{--       
-                                    <td>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                            Show
-                                        </button>         
-                                    </td> --}}
-                
                                     <td>
                                         <a href="{{route('files.show',$file->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
                 

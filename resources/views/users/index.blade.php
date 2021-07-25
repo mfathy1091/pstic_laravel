@@ -46,7 +46,7 @@ Manage Users
             style="text-align: center">
                 <thead>    
                     <tr>
-                        <th>No</th>
+                        <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>User Status</th>
@@ -55,6 +55,7 @@ Manage Users
                         <th>Department</th>
                         <th>Team</th>
                         <th>Budget</th>
+                        <th>Last Login</th>
                         <th width="280px">Action</th>
                     </tr>
                 </thead >
@@ -64,7 +65,13 @@ Manage Users
                         <td>{{ ++$i }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->status }}</td>
+                        <td>
+                            @if ($user->status == '1')
+                                <span class="badge badge-pill badge-success h-auto font-weight-bold font-italic">Enabled</span>
+                            @elseif (($user->status == '0'))
+                                <span class="badge badge-pill badge-danger h-auto font-weight-bold font-italic">Disabled</span>
+                            @endif
+                        </td>
                         <td>
                             @if(!empty($user->getRoleNames()))
                                 @foreach($user->getRoleNames() as $v)
@@ -76,6 +83,7 @@ Manage Users
                         <td>{{$user->department->name}}</td>
                         <td>{{$user->team->name}}</td>
                         <td>{{$user->budget->name}}</td>
+                        <td></td>
                         <td>
                             <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
                             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>

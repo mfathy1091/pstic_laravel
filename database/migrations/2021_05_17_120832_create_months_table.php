@@ -15,6 +15,7 @@ class CreateMonthsTable extends Migration
     {
         Schema::create('months', function (Blueprint $table) {
             $table->id();
+            $table->string('code');
             $table->string('name');
             $table->timestamps();
         });
@@ -23,7 +24,7 @@ class CreateMonthsTable extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return void
+    * @return void
      */
     public function down()
     {

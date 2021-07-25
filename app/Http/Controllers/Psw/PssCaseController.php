@@ -9,7 +9,7 @@ use App\Models\Gender;
 
 use App\Models\Nationality;
 use Illuminate\Http\Request;
-use App\Models\PsCase;
+use App\Models\Referral;
 use App\Models\PssCase;
 use App\Models\ReferralSource;
 use App\Models\File;
@@ -62,7 +62,7 @@ class PssCaseController extends Controller
             $statusName = $status->name;
             $statusId = $status->id;
             //$cases = $pssCases->where('current_status_id', '=', $statusId);
-            $cases = PssCase::whereHas('monthlyRecords', function($query) use($statusId) {
+            $cases = PssCase::whereHas('records', function($query) use($statusId) {
                 return $query->where('status_id', 1)->where('month_id', 7);
             })->get();
             $tabs[$i] = ['name' => $statusName, 'cases' => $cases];
@@ -74,32 +74,10 @@ class PssCaseController extends Controller
 		return view('psw.pss_cases.index', compact('tabs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create($id)
-    {
-        $referralSources = ReferralSource::all();
-        $psWorkers = Employee::where('job_title_id', '1')->get();
-        $genders = Gender::all();
-        $nationalities = Nationality::all();
-        $caseTypes = CaseType::all();
-        $files = File::all();
-        $file = File::find($id);
-        $reasons = Reason::all();
-        //dd($id);
 
-		return view('psw.pss_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes', 'files', 'file', 'reasons'));
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store(Request $request)
+
+/*     public function store(Request $request)
     {
         //dd($request);
         $this->psCaseRepo->storePsCase($request);
@@ -108,74 +86,15 @@ class PssCaseController extends Controller
         return redirect()->route('pscases.index');
 
     
-/*         try {
+       try {
  
 
         }
         
         catch (\Exception $e){
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        } */
-    }
+        } 
+    } */
 
 
-
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-    }
-
-
-    public function update(Request $request, $id)
-    {
-
-        try {
-            //$validated = $request->validated();
-            $psCase = PsCase::find($id);
-
-            $psCase->referral_date = $request->referral_date;
-            $psCase->direct_beneficiary_name = $request->direct_beneficiary_name;
-
-            $psCase->save();
-            toastr()->success('Added Successfuly');
-            return redirect()->route('pscases.index');
-        }
-        
-        catch (\Exception $e){
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
-
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy(Request $request, $id)
-    {
-        PsCase::findOrFail($request->id)->delete();
-        return redirect()->route('pscases.index');
-    }
 }

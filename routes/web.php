@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\BeneficiaryController;
-use App\Models\Beneficiary;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,22 +23,36 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth']
     ], function () {
 
-        Route::resource('search', 'SearchController');
 
-        
         // users and roles
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);
 
-        // File Search
-        Route::resource('files', FileController::class);
+        // Files
+        Route::resource('files', File\FileController::class);
+        
+        // Beneficiary
+        Route::resource('beneficiaries', BeneficiaryController::class);
 
-        // Serice Records
-        Route::resource('servicerecords', ServiceRecordController::class);
+        // Benefits
+        Route::resource('benefits', BenefitController::class);
 
         // Individuals
-        Route::get('/individuals/create/{id}', 'IndividualController@create')->name('individuals.create');
-        Route::resource('/individuals', 'IndividualController', ['except' => ['create']]);
+        //Route::prefix('individuals')->group( function () {
+            
+            //Route::resource('/psscases', Supervisor\PssCaseController::class);
+            //Route::resource('/statistics', Supervisor\StatisticController::class);
+        //});
+
+
+
+
+        Route::get('/individuals/create/{id}', 'Individual\IndividualController@create')->name('individuals.create');
+        Route::resource('/individuals', 'Individual\IndividualController', ['except' => ['create']], ['names' => 'individuals']);
+
+        //Route::resource('individuals', Individual\IndividualController::class, ['names' => 'individuals']);
+        Route::get('search', 'Individual\SearchController@index')->name('individuals.search');
+
 
         // Home (Dashboard)
         Route::get('/', 'HomeController@index')->name('dashboard');
@@ -58,39 +71,24 @@ Route::group(
             Route::resource('teams', 'TeamController');
         });
 
+
+
         // Statistics
         Route::prefix('statistics')->name('statistics.')->group( function () {
         });
 
-        // Supervisor
-        Route::prefix('supervisor')->name('supervisor.')->group( function () {
-            Route::resource('/psscases', Supervisor\PssCaseController::class);
-            Route::resource('/statistics', Supervisor\StatisticController::class);
-        });
+
 
         //PSW
         Route::prefix('psw')->name('psw.')->group( function () {
             Route::get('/psscases/create/{id}', 'Psw\PssCaseController@create')->name('psscases.create');
             Route::resource('/psscases', Psw\PssCaseController::class, ['except' => ['create']]);
-
         });
 
+        //PSW
+        Route::get('psscases/create/{id}', 'PssCaseController@create')->name('psscases.create');
+        Route::resource('psscases', PssCaseController::class, ['except' => ['create']]);
 
-
-        // PS Cases Activities
-        Route::namespace('PsCaseActivities')->group(function () {
-            Route::resource('pscaseactivities', 'PsCaseActivityController');
-        });
-
-
-
-
-
-        // PS-Worker-Related Routes
-        Route::prefix('psworker')->name('psworker.')->group( function () {
-            Route::resource('/profile', PsWorkers\PsWorkerController::class);
-            Route::resource('/cases', PsWorkers\CaseController::class);
-        });
 
 
         //for now, create the CaseController inside the PSWorkers controllers namespace
@@ -113,10 +111,6 @@ Route::group(
             Route::resource('referralsources', 'ReferralSourceController');
         });
 
-        //============================== statuses============================
-        Route::namespace('Statuses')->group(function () {
-            Route::resource('statuses', 'StatusController');
-        });
 
         //==============================Case Types============================
         Route::namespace('CaseTypes')->group(function () {
@@ -128,10 +122,6 @@ Route::group(
             Route::resource('visits', 'VisitController');
         });
 
-        //==============================PS Workers============================
-        Route::namespace('PsWorkers')->group(function () {
-            Route::resource('psworkers', 'PsWorkerController');
-        });
 
 
 

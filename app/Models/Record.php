@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MonthlyRecord extends Model
+class Record extends Model
 {
     protected $guarded =[];
 
@@ -34,9 +34,15 @@ class MonthlyRecord extends Model
         return $this->hasMany(Visit::class);
     }
 
-    public function serviceRecords()
+    public function benefits()
     {
-        return $this->hasMany(ServiceRecord::class);
+        return $this->hasMany(Benefit::class);
+    }
+
+    public function Beneficiaries()
+    {
+        return $this->belongsToMany(Beneficiary::class, 'records_beneficiaries', 'record_id', 'beneficiary_id');
+
     }
 
 
@@ -63,7 +69,7 @@ class MonthlyRecord extends Model
     }
 
 
-    public function scopeCurrentMonthlyRecords($query, $monthId)
+    public function scopeCurrentRecords($query, $monthId)
     {
         $query->whereIn('month_id', date("m"));
     }

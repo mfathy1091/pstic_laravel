@@ -31,31 +31,27 @@ class DatabaseSeeder extends Seeder
 
         $this->call(JobTitleSeeder::class);
         $this->call(BudgetSeeder::class);
-        //$this->call(EmployeeSeeder::class);
         $this->call(AdminUserSeeder::class);
         $this->call(UserSeeder::class);
 
         $this->call(SectionSeeder::class);
         $this->call(FileSeeder::class);
-        $this->call(BeneficiaryTypeSeeder::class);
         $this->call(ReferralSourceSeeder::class);
         $this->call(ReferralSeeder::class);
 
 
 
 
-
-
+        $this->call(MonthSeeder::class);
+        $this->call(RecordSeeder::class);
         $this->call(BeneficiarySeeder::class);
 
         $this->call(IdentityCardsSeeder::class);
         $this->call(CaseTypeSeeder::class);
-        $this->call(MonthSeeder::class);
         $this->call(VulnerabilitySeeder::class);
         $this->call(SurveySeeder::class);
-        $this->call(MonthlyRecordSeeder::class);
         $this->call(VisitSeeder::class);
-        $this->call(ServiceRecordSeeder::class);
+        $this->call(BenefitSeeder::class);
 
         
 

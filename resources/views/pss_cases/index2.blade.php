@@ -41,23 +41,34 @@ All PSS Cases
 
 
                 <!-- Filter -->
-                <form action="{{route('search.index')}}" method="get">
+                <form action="{{route('individuals.search.index')}}" method="get">
                     @csrf
-                    <div class="form-group">
-                        <select name="current_status_id" id="current_status_id" class="form-control input-lgdynamic" data-dependent="state">
-                            @foreach ($statuses as $status)
-                                <option value="{{ $status->id }}">{{ $status->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="form-group">
+                            <select name="current_status_id" id="current_status_id" class="custom-control" data-dependent="state">
+                                @foreach ($statuses as $status)
+                                    <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+    
+                        <div class="form-group">
+                            <select name="assigned_psw_id" id="assigned_psw_id" class="custom-control input-lgdynamic h-100" data-dependent="state">
+                                @foreach ($psWorkers as $psWorker)
+                                    <option value="{{ $psWorker->id }}">{{ $psWorker->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+    
+                        <div class="form-group">
+                            <select name="team_id" id="team_id" class="custom-control input-lgdynamic h-100" data-dependent="state">
+                                @foreach ($teams as $team)
+                                    <option value="{{ $team->id }}">{{ $team->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <select name="team_id" id="team_id" class="form-control input-lgdynamic" data-dependent="state">
-                            @foreach ($teams as $team)
-                                <option value="{{ $team->id }}">{{ $team->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
 
                     <button class="btn btn-success btn-sm nextBtn btn-lg pull-left" type="submit">Submit</button>
                 </form>
@@ -120,15 +131,15 @@ All PSS Cases
                                             
                                             <table class="table">
                                                 <tbody>
-                                                    <?php $monthlyRecords = $pssCase->monthlyRecords ?>
-                                                    @foreach ($monthlyRecords as $monthlyRecord)
+                                                    <?php $records = $pssCase->records ?>
+                                                    @foreach ($records as $record)
                                                     <tr>
-                                                        <td>{{ $monthlyRecord->month->name }}</td>
+                                                        <td>{{ $record->month->name }}</td>
                                                         <td>
                                                             <div class="col-md-auto">
-                                                                <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic pull-left">{{ $monthlyRecord->status->name }}</span>
+                                                                <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic pull-left">{{ $record->status->name }}</span>
                                                                 
-                                                                @if ($monthlyRecord->is_emergency == '1')
+                                                                @if ($record->is_emergency == '1')
                                                                     <span class="text-muted ml-2 mr-2 pull-left">|</span>
                                                                     <span class="badge badge-pill badge-danger h-auto font-weight-bold font-italic pull-left">Emergency</span>
                                                                 @endif

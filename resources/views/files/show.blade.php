@@ -61,7 +61,7 @@ File Number
                         <div class="tab-pane fade" id="pss-cases" role="tabpanel" aria-labelledby="pss-cases-tab">
                             {{-- add button --}}
                             @can('pss-case-create')
-                                <a href="{{route('psw.psscases.create', [$file->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">
+                                <a href="{{route('psscases.create', [$individual->id])}}" class="btn btn-success btn-sm mb-3" role="button" aria-pressed="true">
                                     Add PSS Case
                                 </a>
                             @endcan

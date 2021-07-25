@@ -1,12 +1,12 @@
 <?php 
 
-namespace App\Repositories\Elequent;
+namespace App\Repositories;
 
 use App\Models\DirectBeneficiary;
 use App\Models\Gender;
 use App\Models\Nationality;
-use App\Models\PsCaseActivity;
-use App\Models\PsCase;
+use App\Models\Record;
+use App\Models\PssCase;
 use App\Models\PsTeam;
 
 use App\Models\PsWorker;
@@ -16,13 +16,20 @@ use Illuminate\Support\Facades\DB;
 use App\Repositories\PsCaseRepositoryInterface; 
 
 
-class PsCaseRepository extends BaseRepository implements PsCaseRepositoryInterface
+class PssCaseRepository implements PssCaseRepositoryInterface
 {
+
+    protected $pssCase;
+
+    public function __construct(PssCase $pssCase)
+    {
+        $this->pssCase = $pssCase;
+    }
 
 
     public function getAllPsCases()
     {
-		return PsCase::all();
+		return PssCase::all();
 	}
 
 
@@ -31,7 +38,7 @@ class PsCaseRepository extends BaseRepository implements PsCaseRepositoryInterfa
             // validate if referradate is in future (reject it - it must be today or older)
 
             // insert PS Case
-            $psCase = new PsCase();
+            $psCase = new PssCase();
             $psCase->referral_date = $request->referral_date;
             $psCase->file_number = $request->file_number;
             $psCase->referral_source_id = $request->referral_source_id;
@@ -110,7 +117,7 @@ class PsCaseRepository extends BaseRepository implements PsCaseRepositoryInterfa
 
     public function getMonthCaseStatus($psCaseId, $monthId)
     {
-        $psCaseActivity = PsCaseActivity::where('case_id', '=', $psCaseId)->where('month_id', '=', $monthId)->get();
+        $psCaseActivity = Record::where('case_id', '=', $psCaseId)->where('month_id', '=', $monthId)->get();
         $status = $psCaseActivity[0]->caseStatus->name;
 
         return $status;

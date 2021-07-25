@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Models\MonthlyRecord;
+use App\Models\Record;
 
 
-class MonthlyRecordSeeder extends Seeder
+class RecordSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -52,7 +52,7 @@ class MonthlyRecordSeeder extends Seeder
 
         foreach($data as $n)
         {
-            MonthlyRecord::create($n);
+            Record::create($n);
         }
     }
 }

@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
                 'email' => 'mahahussaien@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
-                'job_title_id' => JobTitle::PSW_ID,
+                'job_title_id' => JobTitle::PS_WORKER_ID,
                 'department_id' => Department::PSS_ID,
                 'team_id' => '1',
                 'budget_id' => '2',
@@ -49,7 +49,7 @@ class UserSeeder extends Seeder
                 'email' => 'ahmedalrajeh@pstic-egypt.org',
                 'password' => Hash::make('pstic12345'),
                 //'Status' => 'Active'
-                'job_title_id' => JobTitle::PSW_ID,
+                'job_title_id' => JobTitle::PS_WORKER_ID,
                 'department_id' => Department::PSS_ID,
                 'team_id' => '1',
                 'budget_id' => '2',

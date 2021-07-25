@@ -47,42 +47,58 @@ Add beneficary to {{ $file->number }}
                                         Beneficiary Details
                                     </h5>
                                 </div>
+
+
                                 <div class="card-body">
-                                    <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <input type="checkbox" aria-label="Radio button for following text input">
+                                        <label for="individual_id" class="mr-sm-2 text-danger">UNREGISTERED?</label>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="form-group col-md-6">
+                                            <label for="individual_id" class="mr-sm-2">File Number</label>
+                                            <input id="individual_id" type="text" name="individual_id" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="individual_id" class="mr-sm-2">Individual ID</label>
                                             <input id="individual_id" type="text" name="individual_id" class="form-control">
                                         </div>
                                     </div>
                 
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="passport_number" class="mr-sm-2">Passport ID</label>
                                             <input id="passport_number" type="text" name="passport_number" class="form-control">
                                         </div>
                                     </div>
                 
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="name" class="mr-sm-2">Name</label>
                                             <input id="name" type="text" name="name" class="form-control">
                                         </div>
                                     </div>
                 
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="native_name" class="mr-sm-2">Native Name</label>
                                             <input id="native_name" type="text" name="native_name" class="form-control">
                                         </div>
                                     </div>
                 
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="age" class="mr-sm-2">age</label>
                                             <input id="age" type="number" name="age" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col">
                                             <label for="inputState">Gender</label>
                                             <select class="custom-select my-1 mr-sm-2" name="gender_id">
@@ -97,7 +113,7 @@ Add beneficary to {{ $file->number }}
                                         </div>
                                     </div>
                 
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col">
                                             <label for="inputCity">Nationality</label>
                                             <select class="custom-select my-1 mr-sm-2" name="nationality_id">
@@ -112,7 +128,7 @@ Add beneficary to {{ $file->number }}
                                         </div>
                                     </div>
 
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col">
                                             <label for="inputCity">Relationship to PA</label>
                                             <select class="custom-select my-1 mr-sm-2" name="relationship_id">
@@ -127,7 +143,7 @@ Add beneficary to {{ $file->number }}
                                         </div>
                                     </div>
 
-                                    <div class="form-row">
+                                    <div class="form-group">
                                         <div class="form-group col-md-6">
                                             <label for="current_phone_number" class="mr-sm-2">Current Phone Number</label>
                                             <input id="current_phone_number" type="text" name="current_phone_number" class="form-control">

@@ -14,6 +14,11 @@ class Referral extends Model
     {
         return $this->belongsTo(File::class, 'file_id');
     }
+
+    public function directIndividual()
+    {
+        return $this->belongsTo(Individual::class, 'individual_id');
+    }
     
     public function referralSource()
     {

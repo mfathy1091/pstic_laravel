@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceRecordBeneficiary extends Model
+class BenefitBeneficiary extends Model
 {
     use HasFactory;
 
-    protected $table = 'service_record_beneficiaries';
+    protected $table = 'benefits_beneficiaries';
 }

@@ -1,6 +1,6 @@
 <?php namespace App\Repositories;
 
-interface PsCaseRepositoryInterface{
+interface PssCaseRepositoryInterface{
 	
     public function getAllPsCases();
 

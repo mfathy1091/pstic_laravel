@@ -45,9 +45,5 @@ class Individual extends Model
     }
 
 
-    public function serviceRecords()
-    {
-        return $this->belongsToMany(ServiceRecord::class, 'service_record_beneficiaries', 'service_record_id', 'individual_id');
 
-    }
 }

@@ -1,49 +1,31 @@
 @extends('layouts.master')
 @section('css')
-@toastr_css
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 @section('title')
-All Individuals
+    Search Results
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-All Individuals
+    Search Results
 @stop
 <!-- breadcrumb -->
 @endsection
-
-
-
 @section('content')
-
+<!-- row -->
 <div class="row">
-
-    @if ($errors->any())
-        <div class="error">{{ $errors->first('Name') }}</div>
-    @endif
-
-    <div class="col-xl-12 mb-30">
+    <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                {{-- Table --}}
+                @if(!$individuals->isEmpty())
+                <!-- Table -->
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-hover table-sm table-bordered p-0"
+                    <table id="datatable1" class="table table-hover table-sm table-bordered p-0"
                         data-page-length="50"
                         style="text-align: center">
                         <thead>
-                            <tr>   
+                            <tr>
                                 <th class="align-middle">File Number</th>
                                 <th class="align-middle">Individual ID</th>
                                 <th class="align-middle">Individual Passport #</th>                     
@@ -77,8 +59,7 @@ All Individuals
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_individual{{ $individual->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
-
-                                {{-- Delete Modal --}}
+                
                                 <div class="modal fade" id="delete_individual{{$individual->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <form action="{{route('individuals.destroy', $individual->id)}}" method="post">
@@ -107,23 +88,25 @@ All Individuals
                                         </form>
                                     </div>
                                 </div>
-                                {{-- End Delete Modal --}}
-                                
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                {{-- End table --}}  
+                <!-- End Table -->
+                @else
+                    <strong class="text-danger">This individual is not in the DB</strong>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary">Add Individual</button>
+                @endif
                     
             </div>
+            </div>
         </div>
-            
-        
     </div>
 </div>
-
+<!-- row closed -->
 @endsection
 @section('js')
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 @endsection

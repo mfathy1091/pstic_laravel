@@ -15,10 +15,10 @@ class CreatePssCasesTable extends Migration
     {
         Schema::create('pss_cases', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('direct_individual_id');
             $table->unsignedBigInteger('file_id');
             $table->unsignedBigInteger('referral_id');
             $table->unsignedBigInteger('current_status_id')->nullable();
-            $table->unsignedBigInteger('direct_individual_id');
             $table->unsignedBigInteger('assigned_psw_id');
             //$table->boolean('is_emergency');    /* first month only */
             $table->timestamps();

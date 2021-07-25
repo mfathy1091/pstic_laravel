@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\PssCase;
 use App\Models\Status;
 use App\Models\Team;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,11 +21,18 @@ class SearchController extends Controller
         $teams = Team::where('department_id', Department::PSS_ID)->get();
         //$teams = Auth::user()->teams;
 
+        $psWorkers = User::where('job_title_id', JobTitle::PS_WORKER_ID)->get();
+
         $pssCases = PssCase::query();
 
         if($request->filled('current_status_id'))
         {
             $pssCases->where('current_status_id', $request->current_status_id);                                         
+        }
+
+        if($request->filled('assigned_psw_id'))
+        {
+            $pssCases->where('assigned_psw_id', $request->assigned_psw_id);                                         
         }
 
 /*         if($request->filled('team_id'))
@@ -43,6 +51,7 @@ class SearchController extends Controller
         return view('pss_cases.index2', [
             'statuses' => $statueses,
             'teams' => $teams,
+            'psWorkers' => $psWorkers,
             'pssCases' => $pssCases->get(),
         ]);
     }

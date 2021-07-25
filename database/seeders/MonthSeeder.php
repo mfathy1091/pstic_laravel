@@ -18,14 +18,59 @@ class MonthSeeder extends Seeder
     {
         DB::table('months')->delete();
         $data = [
-            'January', 'February', 'March', 'April', 'May', 'June', 
-            'July', 'August', 'September', 'October', 'November', 'December'
+            [
+                'code' => '01-2021',
+                'name' => 'January 2021',
+            ],
+            [
+                'code' => '02-2021',
+                'name' => 'February 2021',
+            ],
+            [
+                'code' => '03-2021',
+                'name' => 'March 2021',
+            ],
+            [
+                'code' => '04-2021',
+                'name' => 'April 2021',
+            ],
+            [
+                'code' => '05-2021',
+                'name' => 'May 2021',
+            ],
+            [
+                'code' => '06-2021',
+                'name' => 'June 2021',
+            ],
+            [
+                'code' => '07-2021',
+                'name' => 'July 2021',
+            ],
+            [
+                'code' => '08-2021',
+                'name' => 'August 2021',
+            ],
+            [
+                'code' => '09-2021',
+                'name' => 'September 2021',
+            ],
+            [
+                'code' => '10-2021',
+                'name' => 'October 2021',
+            ],
+            [
+                'code' => '11-2021',
+                'name' => 'November 2021',
+            ],
+            [
+                'code' => '12-2021',
+                'name' => 'December 2021',
+            ],
         ];
 
         foreach ($data as $n) {
-            Month::create(['name' => $n]);
+            Month::create($n);
         }
-
 
 
         DB::table('month_referral')->delete();

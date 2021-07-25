@@ -15,6 +15,15 @@ header start-->
             <a id="button-toggle" class="button-toggle-nav inline-block ml-20 pull-left"
                 href="javascript:void(0);"><i class="zmdi zmdi-menu ti-align-right"></i></a>
         </li>
+        
+        <!-- Search -->
+        <form class="form-inline ml-3" action="{{ route('individuals.search') }}" method="GET">
+            <input class="form-control mr-sm-2" id="query" name="query" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+
+
 {{--         <li class="nav-item">
             <div class="search">
                 <a class="search-btn not_click" href="javascript:void(0);"></a>
@@ -25,20 +34,21 @@ header start-->
                 </div>
             </div>
         </li> --}}
+
     </ul>
     <!-- top bar right -->
     <ul class="nav navbar-nav ml-auto">
 
         <div class="btn-group mb-1">
             <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              @if (App::getLocale() == 'ar')
-              {{ LaravelLocalization::getCurrentLocaleName() }}
-             <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
-              @else
-              {{ LaravelLocalization::getCurrentLocaleName() }}
-              <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
-              @endif
-              </button>
+                @if (App::getLocale() == 'ar')
+                {{ LaravelLocalization::getCurrentLocaleName() }}
+                <img src="{{ URL::asset('assets/images/flags/EG.png') }}" alt="">
+                @else
+                {{ LaravelLocalization::getCurrentLocaleName() }}
+                <img src="{{ URL::asset('assets/images/flags/US.png') }}" alt="">
+                @endif
+            </button>
             <div class="dropdown-menu">
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <a class="dropdown-item" rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">

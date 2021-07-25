@@ -12,25 +12,18 @@ use App\Models\PsCase;
 use App\Models\PssCase;
 use App\Models\ReferralSource;
 use App\Models\Referral;
-use App\Models\MonthlyRecord;
+use App\Models\Record;
 use App\Models\Status;
 use App\Models\CaseType;
 use App\Models\File;
 use App\Models\Employee;
 use App\Models\Service;
-use App\Models\JobTitle;
-use App\Models\ServiceRecord;
+use App\Models\Reason;
+use App\Models\Benefit;
 
 class PssCaseController extends Controller
 {
 
-
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
     public function index(Request $request)
     {
         $pssCases = PssCase::all();
@@ -52,52 +45,60 @@ class PssCaseController extends Controller
 		return view('pss_cases.index', compact('tabs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
 
+
+
+
+    public function create($id)
+    {
         $referralSources = ReferralSource::all();
         $psWorkers = Employee::where('job_title_id', '1')->get();
         $genders = Gender::all();
         $nationalities = Nationality::all();
         $caseTypes = CaseType::all();
+        $files = File::all();
+        //$file = File::find($id);
+        $individual = Individual::find($id);
+        //dd($individual);
 
-		return view('pss_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes'));
+        $reasons = Reason::all();
+        //dd($id);
+
+		return view('pss_cases.create', compact('referralSources','psWorkers', 'genders', 'nationalities', 'caseTypes', 'files', 'individual', 'reasons'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
+
     public function store(Request $request)
     {
-            // validate if referradate is in future (reject it - it must be today or older)
+        //dd($request);
 
-            // insert Referral
-            $referralData = request()->validate([
-                'file_id' => 'required',
-                'referral_code' => '',
-                'referral_source' => 'required',
-                'referral_date' => 'required',
-                'referring_person_name' => 'required',
-                'referring_person_email' => 'required',
-            ]);
-            $referral = Referral::create($referralData);
+        // validate if referradate is in future (reject it - it must be today or older)
 
-            // insert PSS Case
-            $pssCaseData = request()->validate([
-                'file_id' => 'required',
-                'referral_id' => 'required',
-                'current_status_id' => '1',
-                'direct_individual_id' => '1',
-                'assigned_psw_id' => '3',
-            ]);
-            $PssCase = PssCase::create($pssCaseData);
+        // insert Referral
+        $referral = new Referral();
+        $referral->direct_individual_id = $request->direct_individual_id;
+        $referral->referral_source_id = $request->referral_source_id;
+        $referral->referral_date = $request->referral_date;
+        $referral->referring_person_name = $request->referring_person_name;
+        $referral->referring_person_email = $request->referring_person_email;
+
+        $referral->save();
+
+        // insert Pss Case
+        $pssCase = new PssCase();
+        $pssCase->direct_individual_id = $request->direct_individual_id;
+        $pssCase->file_id = $request->file_id;
+        $pssCase->referral_id = $referral->id;
+        $pssCase->current_status_id = '1';
+        $pssCase->assigned_psw_id = Auth::id();
+
+        $pssCase->save();
+
+        // insert Beneficiaries
+        
+        return redirect()->route('individuals.show', [$request->input('direct_individual_id')]);
+
+
 
 
 
@@ -146,24 +147,14 @@ class PssCaseController extends Controller
             // insert default caseActivities
             $this->insertDefaultMonthlyStatuses($psCase->id, $referralMonth);
 
+        toastr()->success('Added Successfuly'); */
 
 
 
-
-
-
-
-
-
-
-
-
-        toastr()->success('Added Successfuly');
-        return redirect()->back();
 
     
-/*         try {
- 
+        /*  try {
+
         }
         
         catch (\Exception $e){
@@ -204,9 +195,9 @@ class PssCaseController extends Controller
         }
 
         foreach ($data as $n) {
-            MonthlyRecord::create($n);
+            Record::create($n);
         }
-        //DB::table('monthly_records')->insert($data);
+        //DB::table('records')->insert($data);
     }
 
 
@@ -214,76 +205,15 @@ class PssCaseController extends Controller
 
     public function getMonthCaseStatus($pssCaseId, $monthId)
     {
-        $monthlyRecord = monthlyRecord::where('case_id', '=', $pssCaseId)
+        $record = Record::where('case_id', '=', $pssCaseId)
             ->where('month_id', '=', $monthId)->get();
-        $status = $monthlyRecord[0]->caseStatus->name;
+        $status = $record[0]->caseStatus->name;
 
         return $status;
     }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-
-
-        $services = Service::where('type', 'Psychosocial')->get();
-
-        $pssCase = PssCase::find($id);
-        $referral = $pssCase->referral;
-        $monthlyRecords = $pssCase->monthlyRecords;
-
-        $beneficiaries = $pssCase->beneficiaries;
-
-
-        //dd($beneficiary->serviceRecords->first()->service->name);
-        //dd($beneficiary->serviceRecords);
-        
-        //foreach($beneficiary->serviceRecords as $serviceRecord){
-            //dd($serviceRecord->service->name);
-        //}
-
-        return view('pss_cases.show', compact('pssCase', 'referral', 'monthlyRecords', 'beneficiaries', 'services'));
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-    }
 
 
     public function update(Request $request, $id)
@@ -316,7 +246,54 @@ class PssCaseController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        PssCase::findOrFail($request->id)->delete();
-        return redirect()->back();
+        PsCase::findOrFail($request->id)->delete();
+        return redirect()->route('pscases.index');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    public function show($id)
+    {
+
+
+        $pssServices = Service::where('type', 'Psychosocial')->get();
+
+        $pssCase = PssCase::find($id);
+        $referral = $pssCase->referral;
+        $records = $pssCase->records;
+
+        $beneficiaries = $pssCase->beneficiaries;
+
+
+        //dd($beneficiary->benefits->first()->service->name);
+        //dd($beneficiary->benefits);
+        
+        //foreach($beneficiary->benefits as $benefit){
+            //dd($benefit->service->name);
+        //}
+
+        return view('pss_cases.show', compact('pssCase', 'referral', 'records', 'beneficiaries', 'pssServices'));
+
+    }
+
+    
 }

@@ -138,12 +138,12 @@ PSS Case Details:
                         
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <?php $n = 0; ?>
-                            @foreach ($monthlyRecords as $monthlyRecord)
+                            @foreach ($records as $record)
                             <?php $n++; ?>
                                 <li class="nav-item border border-secondary rounded" role="presentation">
-                                    <a class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-toggle="tab" href="#{{ $monthlyRecord->id }}" 
-                                        role="tab" aria-controls="{{ $monthlyRecord->id }}" 
-                                        aria-selected="{{ $monthlyRecord->month->name == 'June' ? 'true' : 'false' }}">{{ $monthlyRecord->month->name }}
+                                    <a class="nav-link{{ $n == '1' ? ' active' : '' }}" id="pills-home-tab" data-toggle="tab" href="#{{ $record->id }}" 
+                                        role="tab" aria-controls="{{ $record->id }}" 
+                                        aria-selected="{{ $record->month->name == 'June' ? 'true' : 'false' }}">{{ $record->month->name }}
                                     </a>
                                 </li>
                             @endforeach
@@ -153,13 +153,13 @@ PSS Case Details:
                         {{-- tab contents --}}
                         <div class="tab-content" id="pills-tabContent">
                             <?php $n = 0; ?>
-                            @foreach ($monthlyRecords as $monthlyRecord)
+                            @foreach ($records as $record)
                                 <?php $n++; ?>
-                                <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $monthlyRecord->id }}" role="tabpanel" aria-labelledby="{{ $monthlyRecord }}-tab">
+                                <div class="tab-pane fade{{ $n == '1' ? ' show active' : '' }}" id="{{ $record->id }}" role="tabpanel" aria-labelledby="{{ $record }}-tab">
                                     <div class="col-md-auto">
-                                        <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic">{{ $monthlyRecord->status->name }}</span>
+                                        <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic">{{ $record->status->name }}</span>
                                         
-                                        @if ($monthlyRecord->is_emergency == '1')
+                                        @if ($record->is_emergency == '1')
                                             <span class="text-muted ml-2 mr-2">|</span>
                                             <span class="badge badge-pill badge-danger h-auto font-weight-bold font-italic">Emergency</span>
                                         @endif
@@ -183,7 +183,7 @@ PSS Case Details:
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
-                                            @if(!$monthlyRecord->visits->isEmpty())
+                                            @if(!$record->visits->isEmpty())
         
                                             <div class="table-responsive">
                                                 <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
@@ -196,7 +196,7 @@ PSS Case Details:
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach($monthlyRecord->visits as $visit)
+                                                        @foreach($record->visits as $visit)
                                                             <tr>
                                                                 <td>{{ $visit->date }}</td>
                                                                 <td>{{ $visit->comment }}</td>
@@ -237,7 +237,7 @@ PSS Case Details:
                                     <div class="row">
                                         <div class="col-12">
 
-                                            @if(!$monthlyRecord->serviceRecords->isEmpty())
+                                            @if(!$record->benefits->isEmpty())
 
                                                 <div class="table-responsive">
                                                     <table id="datatable1" class="table w-auto table-hover table-sm table-bordered p-0"
@@ -252,13 +252,13 @@ PSS Case Details:
                                                         <tbody>
 
                                                                 
-                                                            @foreach($monthlyRecord->serviceRecords as $serviceRecord)
+                                                            @foreach($record->benefits as $benefit)
                                                                 <tr>
                                                                     <td>
-                                                                        {{ $serviceRecord->service->name }}
+                                                                        {{ $benefit->service->name }}
                                                                     </td>
                                                                     <td>
-                                                                        @foreach ($serviceRecord->individuals as $individual)
+                                                                        @foreach ($benefit->individuals as $individual)
                                                                                 
                                                                                 <div>{{ $individual->name }}</div>
                                                                         @endforeach
@@ -353,7 +353,7 @@ PSS Case Details:
             </div>
             <div class="modal-body">
                 <!-- add_form -->
-                <form action="{{ route('servicerecords.store') }}" method="POST">
+                <form action="{{ route('benefits.store') }}" method="POST">
                     @csrf
 
                     <div class="form-row">

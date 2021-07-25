@@ -64,13 +64,13 @@ class PssCase extends Model
 
     public function currentStatus2()
     {
-        $status = MonthlyRecord::with('caseStatus', 'month')
+        $status = Record::with('caseStatus', 'month')
         ->where('month_id', date('n'))
         ->get()
-        ->map(function ($monthlyRecord){
+        ->map(function ($record){
             return[
-                'currentStatus' => $monthlyRecord->caseStatus->name,
-                'currentMonth' => $monthlyRecord->month->name,
+                'currentStatus' => $record->caseStatus->name,
+                'currentMonth' => $record->month->name,
             ];
         });
 
@@ -85,9 +85,9 @@ class PssCase extends Model
 
 
 
-    public function monthlyRecords()
+    public function records()
     {
-        return $this->hasMany(MonthlyRecord::class)->orderBy('month_id', 'DESC');
+        return $this->hasMany(Record::class)->orderBy('month_id', 'DESC');
     }
 
     public function beneficiaries()
@@ -96,17 +96,17 @@ class PssCase extends Model
     }
 
 
-    public function monthlyRecordsByMonth($month)
+    public function recordsByMonth($month)
     {
-        return $this->hasMany(MonthlyRecord::class)
+        return $this->hasMany(Record::class)
             ->where('month', $month);
     }
 
 
 
-    public function monthlyRecordsByMonthlyStatus($month, $status)
+    public function recordsByMonthlyStatus($month, $status)
     {
-        return $this->hasMany(MonthlyRecord::class)
+        return $this->hasMany(Record::class)
             ->where('month', $month)
             ->where('status_id', $status);
     }

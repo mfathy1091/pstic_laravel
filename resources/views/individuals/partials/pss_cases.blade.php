@@ -4,10 +4,10 @@
         style="text-align: center">
         <thead >
             <tr>
-                <th></th>
                 <th class="align-middle">#</th>
                 <th class="align-middle">File Number</th>
-                <th class="align-middle">Status (Current Month)</th>
+                <th class="align-middle">Current Status</th>
+                <th class="align-middle">Emergency</th>
                 <th class="align-middle">Referral Date</th>
                 <th class="align-middle">Referral Source</th>
 
@@ -15,19 +15,26 @@
                 <th class="align-middle">Age</th>
                 <th class="align-middle">Gender</th>
                 <th class="align-middle">Nationality</th>
+
                 <th class="align-middle">Assigned PSW</th>
+
+
+{{--                 <th class="align-middle">Referring Person Name</th>
+                <th class="align-middle">Referring Person Email</th>
+                <th class="align-middle">Visits</th> --}}
                 <th class="align-middle">Action</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 0; ?>
-            @foreach ($tab['cases'] as $pssCase)
-            <tr data-toggle="collapse" data-target="#{{ $pssCase->id }}" class="accordion-toggle">
-                <td><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-eye-open"></span></button></td>
+            <?php $pssCases = $file->pssCases; ?>
+            @foreach ($pssCases as $pssCase)
+                <tr>
                     <?php $i++; ?>
                     <td>{{ $i }}</td>
                     <td>{{ $pssCase->file->number }}</td>
                     <td>{{ $pssCase->currentStatus->name }}</td>
+                    <td>{{ $pssCase->is_emergency }}</td>
                     <td>{{ $pssCase->referral->referral_date }}</td>
                     <td>{{ $pssCase->referral->referralSource->name }}</td>
                     
@@ -38,47 +45,28 @@
 
                     <td>{{ $pssCase->assignedPsw->name }}</td>
 
+{{--                     <td>{{ $pssCase->referring_person_name }}</td>
+                    <td>{{ $pssCase->referring_person_email }}</td>
+                    <td>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Show
+                        </button>         
+                    </td> --}}
+
                     <td>
                         <a href="{{route('psscases.show',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true">Show</a>
 
                         <a href="{{route('psscases.edit',$pssCase->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_pss_case{{ $pssCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="12" class="hiddenRow">
-                        <div class="accordian-body collapse" id="{{ $pssCase->id }}"> 
-                            
-                            <table class="table">
-                                <tbody>
-                                    <?php $records = $pssCase->records ?>
-                                    @foreach ($records as $record)
-                                    <tr>
-                                        <td>{{ $record->month->name }}</td>
-                                        <td>
-                                            <div class="col-md-auto">
-                                                <span class="badge badge-pill badge-warning h-auto font-weight-bold font-italic pull-left">{{ $record->status->name }}</span>
-                                                
-                                                @if ($record->is_emergency == '1')
-                                                    <span class="text-muted ml-2 mr-2 pull-left">|</span>
-                                                    <span class="badge badge-pill badge-danger h-auto font-weight-bold font-italic pull-left">Emergency</span>
-                                                @endif
-                                            </div>
-                                        </td>
-                                    </tr>    
-                                    @endforeach
-                                    
-                                </tbody>
-                            </table>
-                        </div>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_ps_case{{ $pssCase->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                     </td>
                 </tr>
 
 
 
-                <div class="modal fade" id="delete_pss_case{{$pssCase->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="delete_ps_case{{$pssCase->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <form action="{{route('psscases.destroy',$pssCase->id)}}" method="post">
+                        <form action="{{route('psscases.destroy','test')}}" method="post">
                             {{method_field('delete')}}
                             {{csrf_field()}}
                         <div class="modal-content">

@@ -22,9 +22,9 @@ class Month extends Model
     }
 
 
-    public function monthlyRecords()
+    public function records()
     {
-        return $this->hasMany(MonthlyRecord::class)->where('month_id', '6');
+        return $this->hasMany(Record::class)->where('month_id', '6');
     }
 
 

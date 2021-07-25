@@ -50,6 +50,65 @@
                 </div>
             </div>
 
+            <br><br><br>
+            
+            <p>Is the client Registered:</p>
+
+            <input type="radio" id="yes" name="fav_language" value="HTML">
+            <label for="yes">Yes</label><br>
+            
+            <input type="radio" id="no" name="fav_language" value="CSS">
+            <label for="no">No</label><br>
+
+
+            <input id="file_number" type="text" placeholder="Enter the UNHCR Number" class="text">
+            <button class="btn btn-success" id="unregistered">check</button>
+
+
+            <script>
+                var fileNumberInput = document.getElementById('file_number');
+                fileNumberInput.addEventListener('blur', searchEvent);
+
+                function searchEvent(e){
+                    var query = e.target.value;
+                    console.log(query);
+
+                }
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script src="js/dom.js"></script>
+
+
+
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
+
+
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Select Month

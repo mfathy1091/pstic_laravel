@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceRecord extends Model
+class Benefit extends Model
 {
     use HasFactory;
+    
+    protected $guarded=[];
 
-    public function individuals()
+    public function beneficiaries()
     {
-        return $this->belongsToMany(Individual::class, 'service_record_beneficiaries', 'service_record_id', 'individual_id');
+        return $this->belongsToMany(Beneficiary::class, 'benefits_beneficiaries', 'benefit_id', 'beneficiary_id');
     }
 
 

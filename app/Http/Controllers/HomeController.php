@@ -32,16 +32,16 @@ class HomeController extends Controller
     public function index()
     {
                 // June PSS Cases
-/*                 $pssCases = PssCase::with('monthly_records', 'beneficiaries')
-                ->whereHas('monthly_records', function($query){
-                    return $query->where('moonth_id', '6');
+/*                 $pssCases = PssCase::with('records', 'beneficiaries')
+                ->whereHas('records', function($query){
+                    return $query->where('month_id', '6');
                 })->get(); */
     
             // June PSS Beneficiaries with Ahmed
-/*             $pssBeneficiaries = Beneficiary::with('monthly_records', 'pssCases')
+/*             $pssBeneficiaries = Beneficiary::with('records', 'pssCases')
                 ->whereHas('pssCases', function($query){
                     return $query->where('assigned_psw_id', '3');
-                })->whereHas('monthly_records', function($query){
+                })->whereHas('records', function($query){
                     return $query->where('moonth_id', '6');
                 })
                 ->get(); */

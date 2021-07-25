@@ -15,12 +15,13 @@ class CreateIndividualsTable extends Migration
     {
         Schema::create('individuals', function (Blueprint $table) {
             $table->id();
-            $table->unsignedbigInteger('file_id');
-            $table->string('individual_id')->nullable();
             $table->string('passport_number')->nullable();
             $table->string('name');
             $table->string('native_name');
             $table->integer('age');
+            $table->boolean('is_registered')->nullable();
+            $table->unsignedbigInteger('file_id')->nullable();
+            $table->string('individual_id')->nullable();
             $table->unsignedbigInteger('gender_id');
             $table->unsignedbigInteger('nationality_id');
             $table->unsignedbigInteger('relationship_id')->nullable();
