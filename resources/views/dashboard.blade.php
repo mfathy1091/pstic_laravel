@@ -83,32 +83,6 @@
             <br>
 
 
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Beneficiary</th>
-                        <th>Services</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($julyBeneficiaries as $beneficiary)
-                    <tr>
-                        <td>{{ $beneficiary->individual->name }}</td>
-                        <td>
-                            <ul>
-                                @foreach ($beneficiary->benefits as $benefit)
-                                    <li>{{ $benefit->service->name }}</li>
-                                @endforeach   
-                            </ul>    
-                        </td>
-
-                    </tr>
-                    @endforeach
-                </tbody>
-
-            </table>
-
-
 
 
 

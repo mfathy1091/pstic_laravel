@@ -34,7 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminUserSeeder::class);
         $this->call(UserSeeder::class);
 
-        $this->call(SectionSeeder::class);
         $this->call(FileSeeder::class);
         $this->call(ReferralSourceSeeder::class);
         $this->call(ReferralSeeder::class);
@@ -46,10 +45,8 @@ class DatabaseSeeder extends Seeder
         $this->call(RecordSeeder::class);
         $this->call(BeneficiarySeeder::class);
 
-        $this->call(IdentityCardsSeeder::class);
         $this->call(CaseTypeSeeder::class);
         $this->call(VulnerabilitySeeder::class);
-        $this->call(SurveySeeder::class);
         $this->call(FollowUpSeeder::class);
         $this->call(BenefitSeeder::class);
 

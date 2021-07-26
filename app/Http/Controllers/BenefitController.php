@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beneficiary;
 use Illuminate\Http\Request;
 use App\Models\Benefit;
 
@@ -9,22 +10,13 @@ class BenefitController extends Controller
 {
     public function store(Request $request)
     {
-
-        $data = request()->validate([
-            'pss_case_id' => 'required',
-            'service_id' => 'required',
-            'record_id' => 'required',
-            'provide_date' => 'required',
-        ]);
-            
-                        
-        $benefit = Benefit::create($data);
-
-        $d = $request->input('beneficiaries');
-
-        //dd($d);
-
-        $benefit->beneficiaries()->attach($d);
+        
+        foreach($request->input('services') as $service){
+            Benefit::create([
+                'beneficiary_id' => $request->input('beneficiary_id'),
+                'service_id' => $service
+            ]);
+        }
             
         return redirect()->back();
     }

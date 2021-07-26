@@ -32,7 +32,7 @@ Route::group(
         Route::resource('files', File\FileController::class);
         
         // Beneficiary
-        Route::resource('beneficiaries', BeneficiaryController::class);
+        Route::resource('beneficiaries', Beneficiary\BeneficiaryController::class);
 
         // Benefits
         Route::resource('benefits', BenefitController::class);

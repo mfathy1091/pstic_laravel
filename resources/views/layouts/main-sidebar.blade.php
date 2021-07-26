@@ -77,7 +77,7 @@
                     @can('file-search')
                         <li>
                             <a href="{{ route('files.index') }}">
-                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Search Files</span>
+                                <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">Files</span>
                                 </div>
                                 <div class="clearfix"></div>
                             </a>

@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $julyBeneficiaries = Beneficiary::all();
-        //$julyBeneficiaries = Beneficiary::whereHas('records')->get();
+        $julyBeneficiaries = Beneficiary::whereHas('record')->get();
 
         //$julyBeneficiaries = Beneficiary::whereHas('records', function($query){
         //    $query->where('month_id', '3');
@@ -66,12 +66,6 @@ class HomeController extends Controller
             ->where('name', 'June')
             ->get();
         
-        $referral = Referral::find(1);
-        foreach($referral->sections as $section)
-        {
-            //dd($section->pivot->assigned_worker_id);
-            //dd($section->pivot->assignedWorker);
-        }
 
         return view('dashboard', compact('psWorkersCount', 'psCasesCount', 'months', 'julyBeneficiaries'));
     }
