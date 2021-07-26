@@ -1,19 +1,19 @@
-{{-- visits --}}
+{{-- Follow Ups --}}
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h5>Visits</h2>
+            <h5>Follow Ups</h2>
         </div>
         <div class="pull-right">
-            <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#addVisitModal{{ $record->id }}">
-                Add Visit
+            <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#addFollowUpModal{{ $record->id }}">
+                Add Follow Ups
             </button>                                                 
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-        @if(!$record->visits->isEmpty())
+        @if(!$record->followUps->isEmpty())
 
             <div class="table-responsive">
                 <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
@@ -27,20 +27,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($record->visits as $visit)
+                        @foreach($record->followUps as $followUp)
                             <tr>
-                                <td>{{ $visit->visit_date }}</td>
-                                <td>{{ $visit->comment }}</td>
+                                <td>{{ $followUp->follow_up_date }}</td>
+                                <td>{{ $followUp->comment }}</td>
                                 <td>        
-                                    <a href="{{route('visits.edit', $visit->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_visit{{ $visit->id }}" title="Delete"><i class="fa fa-trash"></i></button>
+                                    <a href="{{route('followups.edit', $followUp->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_follow_up{{ $followUp->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
 
                             {{-- Delete Modal --}}
-                            <div class="modal fade" id="delete_visit{{$visit->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="delete_follow_up{{ $followUp->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
-                                    <form action="{{route('visits.destroy', $visit->id)}}" method="post">
+                                    <form action="{{route('followups.destroy', $followUp->id)}}" method="post">
                                         {{method_field('delete')}}
                                         {{csrf_field()}}
                                     <div class="modal-content">
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <p>'Are You Sure?'</p>
-                                            <input type="hidden" name="id"  value="{{$visit->id}}">
+                                            <input type="hidden" name="id"  value="{{$followUp->id}}">
                                         </div>
                                         <div class="modal-footer">
                                             <div class="modal-footer">
@@ -73,20 +73,20 @@
                 </table>
             </div>
         @else
-            <div>This Month has no visits!</div>
+            <div>This Month has no follow ups!</div>
         @endif
     </div>
     
 </div>
 
-<!-- ADD Visit MODAL -->
-<div class="modal fade" id="addVisitModal{{ $record->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- ADD Follow Up MODAL -->
+<div class="modal fade" id="addFollowUpModal{{ $record->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                        Add Visit
+                        Add Follow Up
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- add_form -->
-                    <form action="{{ route('visits.store') }}" method="POST">
+                    <form action="{{ route('followups.store') }}" method="POST">
                         @csrf
 
                         <input type="hidden" name="pss_case_id" value="{{ $pssCase->id }}">
@@ -103,11 +103,11 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="visit_date">Visit Date</label>
+                                <label for="follow_up_date">Follow Up Date</label>
                                 <div class='input-group date'>
-                                    <input class="form-control" type="text"  id="datepicker-action" name="visit_date" data-date-format="dd-mm-yyyy" autocomplete="off" required>
+                                    <input class="form-control" type="text"  id="datepicker-action" name="follow_up_date" data-date-format="dd-mm-yyyy" autocomplete="off" required>
                                 </div>
-                                @error('visit_date')
+                                @error('follow_up_date')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -131,4 +131,4 @@
             </div>
         </div>
     </div>
-    <!-- End Add Visit Modal -->
+    <!-- End Add Follow Up Modal -->

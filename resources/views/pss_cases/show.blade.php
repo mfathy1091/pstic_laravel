@@ -168,9 +168,9 @@ PSS Case Details:
                                     <br>
                                     <hr>
 
-                                    <!-- visits and its modal-->
-                                    @include('pss_cases.partials.visits')
-                                    <!-- end visits -->
+                                    <!-- Follow Ups and its modal-->
+                                    @include('pss_cases.partials.follow_ups')
+                                    <!-- End Follow Ups -->
                                     
                                     <br>      
                                     <hr>

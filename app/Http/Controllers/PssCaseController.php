@@ -281,8 +281,13 @@ class PssCaseController extends Controller
         $referral = $pssCase->referral;
         $records = $pssCase->records;
 
-        $beneficiaries = $pssCase->beneficiaries;
+        $beneficiaries = $pssCase->records;
 
+        $julyRecord = Record::where('month_id', '7')
+            ->where('pss_case_id', $pssCase->id)->first();
+        
+        //dd($julyRecord);
+        $beneficiaries = $julyRecord->beneficiaries;
 
         //dd($beneficiary->benefits->first()->service->name);
         //dd($beneficiary->benefits);

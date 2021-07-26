@@ -9,25 +9,9 @@ class Beneficiary extends Model
 {
     use HasFactory;
 
-
-    public function benefits()
-    {
-        return $this->hasMany(Benefit::class);
-    }
-
-    public function visits()
-    {
-        return $this->hasMany(Visit::class);
-    }
-
     public function individual()
     {
         return $this->belongsTo(Individual::class, 'individual_id');
-    }
-
-    public function pssCase()
-    {
-        return $this->belongsTo(PssCase::class, 'pss_case_id');
     }
 
     public function record()
@@ -35,10 +19,31 @@ class Beneficiary extends Model
         return $this->belongsTo(Record::class, 'record_id');
     }
 
-    public function month()
+
+
+    public function benefits()
     {
-        return $this->belongsTo(Month::class, 'month_id');
+        return $this->hasMany(Benefit::class);
     }
+
+    public function followUps()
+    {
+        return $this->hasMany(followUp::class);
+    }
+
+
+
+    // public function pssCase()
+    // {
+    //     return $this->belongsTo(PssCase::class, 'pss_case_id');
+    // }
+
+
+
+    // public function month()
+    // {
+    //     return $this->belongsTo(Month::class, 'month_id');
+    // }
 
     // public function benefits()
     // {

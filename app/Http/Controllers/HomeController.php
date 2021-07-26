@@ -31,12 +31,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$julyBeneficiaries = Beneficiary::all();
+        $julyBeneficiaries = Beneficiary::all();
         //$julyBeneficiaries = Beneficiary::whereHas('records')->get();
 
-        $julyBeneficiaries = Beneficiary::whereHas('records', function($query){
-            $query->where('month_id', '3');
-        })->get();
+        //$julyBeneficiaries = Beneficiary::whereHas('records', function($query){
+        //    $query->where('month_id', '3');
+        //})->get();
 
         //dd($julyBeneficiaries);
 

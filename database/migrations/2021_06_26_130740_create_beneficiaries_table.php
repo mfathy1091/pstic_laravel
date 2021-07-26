@@ -16,17 +16,13 @@ class CreateBeneficiariesTable extends Migration
         Schema::create('beneficiaries', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('individual_id');
-            $table->unsignedInteger('pss_case_id');
             $table->unsignedInteger('record_id');
-            $table->unsignedInteger('month_id');
             $table->boolean('is_direct');
             $table->timestamps();
 
             // foreign keys
             $table->foreign('individual_id')->references('id')->on('individuals')->onDelete('cascade');
             $table->foreign('record_id')->references('id')->on('records')->onDelete('cascade');
-            $table->foreign('pss_case_id')->references('id')->on('pss_cases')->onDelete('cascade');
-            $table->foreign('month_id')->references('id')->on('months')->onDelete('cascade');
         });
     }
 

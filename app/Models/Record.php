@@ -29,9 +29,9 @@ class Record extends Model
 
 
     // child tables
-    public function visits()
+    public function followUps()
     {
-        return $this->hasMany(Visit::class);
+        return $this->hasMany(FollowUp::class);
     }
 
     public function benefits()
@@ -39,11 +39,15 @@ class Record extends Model
         return $this->hasMany(Benefit::class);
     }
 
-    public function Beneficiaries()
+    public function beneficiaries()
+    {
+        return $this->hasMany(Beneficiary::class);
+    }
+
+/*     public function Beneficiaries()
     {
         return $this->belongsToMany(Beneficiary::class, 'records_beneficiaries', 'record_id', 'beneficiary_id');
-
-    }
+    } */
 
 
 

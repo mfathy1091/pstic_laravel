@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CaseTypeSeeder::class);
         $this->call(VulnerabilitySeeder::class);
         $this->call(SurveySeeder::class);
-        $this->call(VisitSeeder::class);
+        $this->call(FollowUpSeeder::class);
         $this->call(BenefitSeeder::class);
 
         

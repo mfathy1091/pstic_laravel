@@ -117,9 +117,9 @@ Route::group(
             Route::resource('casetypes', 'CaseTypeController');
         });
 
-        //==============================Visits============================
-        Route::namespace('Visits')->group(function () {
-            Route::resource('visits', 'VisitController');
+        //==============================Follow Ups============================
+        Route::namespace('FollowUp')->group(function () {
+            Route::resource('followups', 'FollowUpController');
         });
 
 

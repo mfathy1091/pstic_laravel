@@ -22,61 +22,61 @@
                     style="text-align: center">
                     <thead>
                         <tr>                            
-                            <th>Provide Date</th>
-                            <th>Benefit</th>
-                            <th>Beneficiaries</th>
+                            <th>Beneficiary</th>
+                            <th>Benefits</th>
                             <th class="align-middle">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
 
                             
-                        @foreach($record->benefits as $benefit)
+                        @foreach($record->beneficiaries as $beneficiary)
                             <tr>
-                                <td>{{ $benefit->provide_date }}</td>
-                                <td>{{ $benefit->service->name }}</td>
+                                <td>{{ $beneficiary->individual->name }}</td>
                                 <td>
-                                    @foreach ($benefit->beneficiaries as $beneficiary)
-                                            
-                                            <div>{{ $beneficiary->individual->name }}</div>
+                                    @foreach ($beneficiary->benefits as $benefit)                                            
+                                        <div>
+                                            {{ $benefit->service->name }}
+                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_benefit{{ $benefit->id }}" title="Delete"><i class="fa fa-trash"></i></button>
+                                        </div>
+
+                                        {{-- Delete Modal --}}
+                                        <div class="modal fade" id="delete_benefit{{$benefit->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form action="{{route('benefits.destroy', $benefit->id)}}" method="post">
+                                                    {{method_field('delete')}}
+                                                    {{csrf_field()}}
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">Delete</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>'Are You Sure?'</p>
+                                                        <input type="hidden" name="id"  value="{{$benefit->id}}">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close</button>
+                                                            <button type="submit"
+                                                                    class="btn btn-danger">Submit</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        {{-- End Delete Modal --}}
                                     @endforeach
                                 </td>
                                 <td>        
-                                    <a href="{{route('benefits.edit', $benefit->id)}}" class="btn btn-info btn-sm" role="button" aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_benefit{{ $benefit->id }}" title="Delete"><i class="fa fa-trash"></i></button>
                                 </td>
                             </tr>
 
-                            {{-- Delete Modal --}}
-                            <div class="modal fade" id="delete_benefit{{$benefit->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <form action="{{route('benefits.destroy', $benefit->id)}}" method="post">
-                                        {{method_field('delete')}}
-                                        {{csrf_field()}}
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">Delete</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p>'Are You Sure?'</p>
-                                            <input type="hidden" name="id"  value="{{$benefit->id}}">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Close</button>
-                                                <button type="submit"
-                                                        class="btn btn-danger">Submit</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                            {{-- End Delete Modal --}}
+                            
 
                         @endforeach
                     </tbody>
@@ -112,29 +112,16 @@
                         <input type="hidden" name="pss_case_id" value="{{ $pssCase->id }}">
                         <input type="hidden" name="record_id" value="{{ $record->id }}">
 
-
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="provide_date">Provide Date</label>
-                                <div class='input-group date'>
-                                    <input class="form-control" type="text"  id="datepicker-action" name="provide_date" data-date-format="dd-mm-yyyy" autocomplete="off" required>
-                                </div>
-                                @error('provide_date')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>  
-
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputCity">Service</label>
-                                <select class="custom-select my-1 mr-sm-2" name="service_id">
-                                    <option selected>Select Service</option>
-                                    @foreach($pssServices as $pssService)
-                                        <option value="{{$pssService->id}}">{{$pssService->name}}</option>
+                                <label for="inputCity">Beneficiary</label>
+                                <select class="custom-select my-1 mr-sm-2" name="beneficiary_id">
+                                    <option selected>Select Beneficiary</option>
+                                    @foreach($record->beneficiaries as $beneficiary)
+                                        <option value="{{$beneficiary->id}}">{{$beneficiary->individual->name}}</option>
                                     @endforeach
                                 </select>
-                                @error('service_id')
+                                @error('beneficiary_id')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -142,11 +129,11 @@
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="beneficiaries" class="mr-sm-2">Beneficiaries:</label>
+                                <label for="services" class="mr-sm-2">Services:</label>
                                 <div>
-                                    <select class="form-select" multiple aria-label="beneficiaries" name="beneficiaries[]">
-                                        @foreach ($beneficiaries as $beneficiary)
-                                            <option value="{{ $beneficiary->id }}">{{ $beneficiary->individual->name }}</option>
+                                    <select class="form-select" multiple aria-label="services" name="services[]">
+                                        @foreach ($pssServices as $pssService)
+                                            <option value="{{ $pssService->id }}">{{ $pssService->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

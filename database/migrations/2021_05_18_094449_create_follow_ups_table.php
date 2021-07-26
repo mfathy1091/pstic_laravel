@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVisitsTable extends Migration
+class CreateFollowUpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateVisitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('visits', function (Blueprint $table) {
+        Schema::create('follow_ups', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('beneficiary_id');
             $table->unsignedBigInteger('pss_case_id');
             $table->unsignedBigInteger('record_id');
-            $table->date('visit_date');
+            $table->date('follow_up_date');
             $table->text('comment')->nullable();
             $table->timestamps();
 
@@ -36,6 +36,6 @@ class CreateVisitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('visits');
+        Schema::dropIfExists('follow_ups');
     }
 }
