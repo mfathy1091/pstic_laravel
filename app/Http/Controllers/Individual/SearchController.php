@@ -56,13 +56,13 @@ class SearchController extends Controller
             });
         }
         if($request->filled('individual_id')){
-            $individuals->Where('individual_id', 'like', "%$individual_id%");
+            $individuals->orWhere('individual_id', 'like', "%$individual_id%");
         }
         if($request->filled('passport_number')){
-            $individuals->Where('passport_number', 'like', "%$passport_number%");
+            $individuals->orWhere('passport_number', 'like', "%$passport_number%");
         }
         if($request->filled('name')){
-            $individuals->Where('name', 'like', "%$name%")
+            $individuals->orWhere('name', 'like', "%$name%")
             ->orWhere('native_name', 'like', "%$name%");
         }
 
