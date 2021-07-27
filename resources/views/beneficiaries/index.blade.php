@@ -33,7 +33,12 @@ Beneficiaries
                 </div>
 
                 <br>
-                
+
+                <input type="text" name="search" id="search" placeholder="Enter Month" class="form-control">
+                <br>
+                <div id="search_list"></div>
+                <br>
+
                 <div class="table-responsive">
                     <table id="datatable1" class="table  table-hover table-sm table-bordered p-0"
                         data-page-length="50"
@@ -80,7 +85,22 @@ Beneficiaries
 <!-- row closed -->
 @endsection
 @section('js')
-
+    <script>
+        $(document).ready(function(){
+            $('#search').on('keyup', function(){
+                var query = $(this).val();
+                $.ajax({
+                    url:"search",
+                    type:"GET",
+                    data:{'search':query},
+                    success:function(data){
+                        s('#search_list').html(data);
+                    }
+                });
+            });
+            // end of ajax call
+        });
+    </script>
 @endsection
 
 

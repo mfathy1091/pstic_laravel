@@ -33,6 +33,8 @@ Route::group(
         
         // Beneficiary
         Route::resource('beneficiaries', Beneficiary\BeneficiaryController::class);
+        Route::get('searchbeneficiaries', [Beneficiary\BeneficiaryController::class, 'search']);
+
 
         // Benefits
         Route::resource('benefits', BenefitController::class);
