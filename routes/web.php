@@ -56,6 +56,7 @@ Route::group(
         Route::get('search', 'Individual\SearchController@index')->name('individuals.search');
 
 
+
         // Home (Dashboard)
         Route::get('/', 'HomeController@index')->name('dashboard');
 

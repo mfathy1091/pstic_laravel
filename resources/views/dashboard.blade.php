@@ -52,7 +52,7 @@
             <br>
 
         <!-- Individual Search -->
-        <div class="card col-6">
+        {{-- <div class="card col-6">
             <div class="card-body">
                 <h5 class="card-title">Individual Search</h5>
                 <form class="form-inline" action="{{ route('individuals.search') }}" method="GET">
@@ -69,7 +69,7 @@
 
                 </ul>
             </div>
-        </div>
+        </div> --}}
 
 
         <!-- Individual Search 2 -->
@@ -88,7 +88,7 @@
                             <input class="form-control" id="passport_number" name="passport_number" type="search" placeholder="Passport Number" aria-label="File Number">
                         </div>
                         <div class="col-sm-6 mb-2">
-                            <input class="form-control" id="name" name="query" type="search" placeholder="Name" aria-label="name">
+                            <input class="form-control" id="name" name="name" type="search" placeholder="Name" aria-label="name">
                         </div>
                     </div>
 

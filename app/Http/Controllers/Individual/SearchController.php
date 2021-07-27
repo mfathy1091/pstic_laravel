@@ -9,7 +9,7 @@ use App\Models\Individual;
 
 class SearchController extends Controller
 {
-    public function index(Request $request)
+    public function index2(Request $request)
     {
 /*         $data = request()->validate([
             'file_number' => 'required',
@@ -37,31 +37,36 @@ class SearchController extends Controller
         return view('individuals.search_results', compact('individuals'));
     }
 
-    public function index2(Request $request)
+    public function index(Request $request)
     {
-/*         $data = request()->validate([
-            'file_number' => 'required',
-            'individual_number' => 'required',
-            'passport_number' => 'required',
-        ]); */
+        //dd($request);
 
-        $request->validate([
-            'query' =>'required',
-        ]);
+        $file_number = $request->input('file_number');
+        $individual_id = $request->input('individual_id');
+        $passport_number = $request->input('passport_number');
+        $name = $request->input('name');
 
-        $query = $request->input('query');
-        //dd($query);
-        //$files = File::where('number', 'like', "%$query%")->get();
-        
-        $individuals = Individual::with('file')->whereHas('file', function($q) use ($query){
-            return $q->where('number', 'like', "%$query%");
-        })->orWhere('individual_id', 'like', "%$query%")
-        ->orWhere('passport_number', 'like', "%$query%")
-        ->orWhere('name', 'like', "%$query%")
-        ->orWhere('native_name', 'like', "%$query%")
-        ->get();
+
+        $individuals = Individual::query();
         //dd($individuals);
-        
-        return view('individuals.search_results', compact('individuals'));
+
+        if($request->filled('file_number')){
+            $individuals->with('file')->whereHas('file', function($q) use ($file_number){
+                return $q->where('number', 'like', "%$file_number%");
+            });
+        }
+        if($request->filled('individual_id')){
+            $individuals->Where('individual_id', 'like', "%$individual_id%");
+        }
+        if($request->filled('passport_number')){
+            $individuals->Where('passport_number', 'like', "%$passport_number%");
+        }
+        if($request->filled('name')){
+            $individuals->Where('name', 'like', "%$name%")
+            ->orWhere('native_name', 'like', "%$name%");
+        }
+
+                
+        return view('individuals.search_results', ['individuals' => $individuals->get()]);
     }
 }
