@@ -49,8 +49,61 @@
                     </div>
                 </div>
             </div>
+            <br>
 
-            <br><br><br>
+        <!-- Individual Search -->
+        <div class="card col-6">
+            <div class="card-body">
+                <h5 class="card-title">Individual Search</h5>
+                <form class="form-inline" action="{{ route('individuals.search') }}" method="GET">
+                    <input class="form-control mr-sm-2" id="query" name="query" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <p class="font-weight-bold">You can search by:</p>
+                <p>
+                    <li>UNHCR File Number</li>
+                    <li>UNHCR Individual Number</li>
+                    <li>Passport Number</li>
+                </p>
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Individual Search 2 -->
+        <div class="card col-12">
+            <div class="card-body">
+                <h5 class="card-title">Individual Search</h5>
+                <form action="{{ route('individuals.search') }}" method="GET">
+                    <div class="row">
+                        <div class="col-sm-6 mb-2">
+                            <input class="form-control" id="file_number" name="file_number" type="search" placeholder="File Number" aria-label="File Number">
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <input class="form-control" id="individual_id" name="individual_id" type="search" placeholder="Individual ID" aria-label="Individual ID">
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <input class="form-control" id="passport_number" name="passport_number" type="search" placeholder="Passport Number" aria-label="File Number">
+                        </div>
+                        <div class="col-sm-6 mb-2">
+                            <input class="form-control" id="name" name="query" type="search" placeholder="Name" aria-label="name">
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline-success my-2 my-sm-2" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br>
             
             <p>Is the client Registered:</p>
 
@@ -98,13 +151,7 @@
 
 
 
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br>
+
 
 
             <div class="dropdown">

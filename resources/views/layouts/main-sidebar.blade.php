@@ -5,6 +5,14 @@
             <div class="scrollbar side-menu-bg" style="overflow: scroll">
                 <ul class="nav navbar-nav side-menu" id="sidebarnav">
                 
+                    <!-- Dashboard-->
+                    <li>
+                        <a href="{{ url('/') }}">
+                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
+                            </div>
+                            <div class="clearfix"></div>
+                        </a>
+                    </li>
 
                     <!-- Users Menu-->
                     @can('users-menu')
@@ -49,19 +57,6 @@
                             </ul>
                         </li>
                     @endcan
-
-
-                                        
-                    
-                    <!-- Dashboard-->
-                    <li>
-                        <a href="{{ url('/') }}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">{{trans('main_trans.Dashboard')}}</span>
-                            </div>
-                            <div class="clearfix"></div>
-                        </a>
-                    </li> 
-
 
                     <!-- Beneficiaries -->
                     <li>

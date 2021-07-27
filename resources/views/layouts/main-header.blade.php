@@ -17,10 +17,10 @@ header start-->
         </li>
         
         <!-- Search -->
-        <form class="form-inline ml-3" action="{{ route('individuals.search') }}" method="GET">
+        {{-- <form class="form-inline ml-3" action="{{ route('individuals.search') }}" method="GET">
             <input class="form-control mr-sm-2" id="query" name="query" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </form> --}}
 
 
 
